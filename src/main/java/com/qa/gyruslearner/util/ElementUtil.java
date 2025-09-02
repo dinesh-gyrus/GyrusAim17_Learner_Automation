@@ -104,7 +104,6 @@ public class ElementUtil extends TestBase {
 
 	public String waitForTitleIs(String title, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-
 		try {
 			if (wait.until(ExpectedConditions.titleIs(title))) {
 				return driver.getTitle();
@@ -113,7 +112,39 @@ public class ElementUtil extends TestBase {
 			System.out.println("title is not found within : " + timeOut);
 		}
 		return driver.getTitle();
-
 	}
+	
+	public boolean isElementDisplayed(WebElement locator) {
+		try {
+			return getElement(locator).isDisplayed();
+		} catch (NoSuchElementException e) {
+			System.out.println("element is not present on the page using : " + locator);
+			return false;
+		}
+	}
+	
+	public boolean isElementEnable(WebElement locator) {
+		try {
+			return getElement(locator).isEnabled();
+		} catch (NoSuchElementException e) {
+			System.out.println("element is not Enable on the page using : " + locator);
+			return false;
+		}
+	}
+	
+	public WebElement getElement(By locator) {
+		WebElement element = driver.findElement(locator);
+		checkHighlight(element);
+		return element;
+	}
+	
+	public String doGetElementText(WebElement loginHeader) {
+		return getElement(loginHeader).getText();
+	}
+	
+	public String doElementGetAttribute(WebElement locator, String attrName) {
+		return getElement(locator).getDomAttribute(attrName);
+	}
+	
 
 }

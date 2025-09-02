@@ -11,6 +11,10 @@ public class AppConstants {
 	public final static int DEFAULT_TIME = 500;
 	
 	public final static String LOGIN_PAGE_TITLE ="Login";
+	public final static String DASHBOARD_PAGE_TITLE ="Dashboard";
+	
 	public final static String LOGIN_PAGE_URL = "https://vspqa.gyrusaim.net/Auth/Login";
+	public final static String CHANGEPASSWORD_PAGE_URL ="https://vspqa.gyrusaim.net/Auth/MustChangePassword";
 
+	
 }

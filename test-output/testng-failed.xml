@@ -6,9 +6,10 @@
       <class name="com.qa.gyruslearner.testcases.LoginPageTestCase">
         <methods>
           <include name="setUp"/>
+          <include name="verifyValidLoginTest"/>
           <include name="tearDown"/>
-          <include name="LoginPageUrlTest"/>
-          <include name="LoginPageTitleTest"/>
+          <include name="verifyValidUserNameAndWrongPassTest"/>
+          <include name="goToLoginPage"/>
         </methods>
       </class> <!-- com.qa.gyruslearner.testcases.LoginPageTestCase -->
     </classes>
