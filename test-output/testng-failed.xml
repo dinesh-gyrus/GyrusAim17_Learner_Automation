@@ -3,15 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.gyruslearner.testcases.LoginPageTestCase">
+      <class name="com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase">
         <methods>
+          <include name="forgotPasswordPageTitleTest"/>
           <include name="setUp"/>
-          <include name="verifyValidLoginTest"/>
           <include name="tearDown"/>
-          <include name="verifyValidUserNameAndWrongPassTest"/>
-          <include name="goToLoginPage"/>
         </methods>
-      </class> <!-- com.qa.gyruslearner.testcases.LoginPageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

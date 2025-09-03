@@ -79,7 +79,25 @@ public class LoginPage extends TestBase {
 
 		return eleUtil.doGetElementText(loginHeader);
 	}
-
+	
+	public boolean isUsernameDisplayed() {
+		
+		return eleUtil.isElementDisplayed(txtUserName);
+	}
+	
+	public boolean isUsernameEnabled() {
+		return eleUtil.isElementEnable(txtUserName);
+	}
+	
+	public boolean isPasswordDisplayed() {
+		return eleUtil.isElementDisplayed(txtPassword);
+	}
+	
+	public boolean isPasswordEnabled() {
+		
+		return eleUtil.isElementEnable(txtPassword);
+	}
+	
 	public boolean isSignInButtonExits() {
 		return eleUtil.isElementDisplayed(btnSignIn);
 	}
@@ -91,9 +109,14 @@ public class LoginPage extends TestBase {
 	public boolean isForgotPasswordExits() {
 		return eleUtil.isElementDisplayed(frgotPasswordlink);
 	}
+	
 
 	public boolean isForgotPasswordEnable() {
 		return eleUtil.isElementEnable(frgotPasswordlink);
+	}
+	
+	public void doclickOnForgotPasswordLinkButton() {
+		eleUtil.doClick(frgotPasswordlink);
 	}
 
 	public boolean isSignUpExits() {
@@ -103,12 +126,16 @@ public class LoginPage extends TestBase {
 	public boolean isSignUpEnable() {
 		return eleUtil.isElementEnable(singUplink);
 	}
+	
+	public void doclickOnSignUpLinkButton() {
+		eleUtil.doClick(frgotPasswordlink);
+	}
+	
 
 	public String getPasswordFieldEncrypted() {
 
 		eleUtil.doSendKeys(txtPassword, "123456");
 		return eleUtil.doElementGetAttribute(txtPassword, "type");
-
 	}
 
 	public void getUserFirstTimeLogin(String username, String pwd) {
@@ -119,7 +146,7 @@ public class LoginPage extends TestBase {
 	}
 
 	public DashboardPage doValidLogin(String username, String pwd) {
-
+		
 		eleUtil.doSendKeys(txtUserName, username);
 		eleUtil.doSendKeys(txtPassword, pwd);
 		eleUtil.doClick(btnSignIn);
@@ -131,6 +158,10 @@ public class LoginPage extends TestBase {
 		eleUtil.doSendKeys(txtUserName, username);
 		eleUtil.doSendKeys(txtPassword, pwd);
 		eleUtil.doClick(btnSignIn);
+	}
+	
+	public String getToastMessage() {
+		return eleUtil.doGetToastMessage();
 	}
 
 }

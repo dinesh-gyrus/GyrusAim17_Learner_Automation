@@ -103,6 +103,13 @@ public class JavaScriptUtil extends TestBase {
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 	
+	public String toastMessageHandle() {
+		 String toastMsg = (String) ((JavascriptExecutor) driver)
+		            .executeScript("return document.querySelector('.toast, [role=\"alert\"]').innerText");
+		 return toastMsg;
+
+	}
+	
 	
 	public void drawBorder(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;

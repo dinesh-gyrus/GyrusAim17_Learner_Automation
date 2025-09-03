@@ -146,5 +146,10 @@ public class ElementUtil extends TestBase {
 		return getElement(locator).getDomAttribute(attrName);
 	}
 	
+	public String doGetToastMessage() {
+		
+		return jsUtil.toastMessageHandle();
+	}
+	
 
 }
