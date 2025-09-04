@@ -38,7 +38,7 @@ public class LoginPageTestCase extends TestBase {
 	@BeforeMethod
 	public void goToLoginPage() {
 		// Always return to login page before each test
-		// driver.get("https://vspqa.gyrusaim.net/Auth/Login");
+		// driver.get("https://vspqa.gyrusaim.net/Auth/login");
 		loginpage.ensureAtLoginPage();
 	}
 

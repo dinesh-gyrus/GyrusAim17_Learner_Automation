@@ -16,6 +16,20 @@ public class ChangePasswordPage extends TestBase {
 	@FindBy(xpath = "//*[@type='button']")
 	WebElement btnSignOut;
 	
+	@FindBy(xpath = "//*[text()='Change Password']")
+	WebElement changePasswordPanelTitle;
+	
+	@FindBy(id ="NewPassword")
+	WebElement txtNewPassword;
+	
+	@FindBy(id ="CPassword")
+	WebElement txtConfirmPassword;
+	
+	@FindBy(id="btnSubmit")
+	WebElement btnResetpassword;
+	
+	
+	
 	
 	public ChangePasswordPage() {
 		PageFactory.initElements(driver, this);
@@ -43,5 +57,17 @@ public class ChangePasswordPage extends TestBase {
 		//eleUtil.doClick(btnSignOut);
 	}
 	
+	public String getChangePasswordPanelTitle() {
+		
+		return changePasswordPanelTitle.getText();
+	}
+	
+	public void getNewChangePasswordWithValidInputs() {
+		
+		eleUtil.doSendKeys(txtNewPassword, "123456");
+		eleUtil.doSendKeys(txtConfirmPassword,"123456");
+		eleUtil.doClick(btnResetpassword);
+		
+	}
 	
 }

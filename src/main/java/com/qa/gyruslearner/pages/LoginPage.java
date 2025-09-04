@@ -54,7 +54,7 @@ public class LoginPage extends TestBase {
 	
 	public void ensureAtLoginPage() {
         if (!driver.getCurrentUrl().contains("Login")) {
-            driver.get("https://vspqa.gyrusaim.net/Auth/Login"); // 🔹 fallback navigation
+            driver.get("https://vspqa.gyrusaim.net/auth/login"); // 🔹 fallback navigation
         }
     }
 
