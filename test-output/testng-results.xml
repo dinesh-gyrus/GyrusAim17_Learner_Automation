@@ -1,131 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="17" passed="16" failed="1" skipped="0">
+<testng-results ignored="0" total="7" passed="7" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-04T18:41:37 IST" name="Default suite" finished-at="2025-09-04T18:42:20 IST" duration-ms="43213">
+  <suite started-at="2025-09-05T18:24:57 IST" name="Default suite" finished-at="2025-09-05T18:25:14 IST" duration-ms="17508">
     <groups>
     </groups>
-    <test started-at="2025-09-04T18:41:37 IST" name="Default test" finished-at="2025-09-04T18:42:20 IST" duration-ms="43213">
-      <class name="com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:37 IST" name="setUp" finished-at="2025-09-04T18:41:40 IST" duration-ms="3192" status="PASS">
+    <test started-at="2025-09-05T18:24:57 IST" name="Default test" finished-at="2025-09-05T18:25:14 IST" duration-ms="17508">
+      <class name="com.qa.gyruslearner.testcases.ChangePasswordPageTestCase">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.ChangePasswordPageTestCase@4218d6a3]" started-at="2025-09-05T18:24:57 IST" name="setUp" finished-at="2025-09-05T18:25:01 IST" duration-ms="4350" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="forgotPasswordPageUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:40 IST" name="forgotPasswordPageUrlTest" finished-at="2025-09-04T18:41:50 IST" duration-ms="9932" status="PASS">
+        <test-method signature="changePasswordUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.ChangePasswordPageTestCase@4218d6a3]" started-at="2025-09-05T18:25:01 IST" name="changePasswordUrlTest" finished-at="2025-09-05T18:25:04 IST" duration-ms="3428" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- forgotPasswordPageUrlTest -->
-        <test-method signature="forgotPasswordPageTitleTest()[pri:2, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:50 IST" name="forgotPasswordPageTitleTest" finished-at="2025-09-04T18:41:55 IST" duration-ms="5230" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[expected [ForgotPassword] but found []]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: expected [ForgotPassword] but found []
-at org.testng.Assert.fail(Assert.java:111)
-at org.testng.Assert.failNotEquals(Assert.java:1578)
-at org.testng.Assert.assertEqualsImpl(Assert.java:150)
-at org.testng.Assert.assertEquals(Assert.java:132)
-at org.testng.Assert.assertEquals(Assert.java:656)
-at org.testng.Assert.assertEquals(Assert.java:666)
-at com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase.forgotPasswordPageTitleTest(ForgotPasswordPageTestCase.java:55)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:819)
-at org.testng.TestRunner.run(TestRunner.java:619)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-at org.testng.TestNG.runSuites(TestNG.java:1134)
-at org.testng.TestNG.run(TestNG.java:1101)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+        </test-method> <!-- changePasswordUrlTest -->
+        <test-method signature="verifyChangePasswordPanelTitleTest()[pri:3, instance:com.qa.gyruslearner.testcases.ChangePasswordPageTestCase@4218d6a3]" started-at="2025-09-05T18:25:04 IST" name="verifyChangePasswordPanelTitleTest" finished-at="2025-09-05T18:25:04 IST" depends-on-methods="com.qa.gyruslearner.testcases.ChangePasswordPageTestCase.changePasswordUrlTest" duration-ms="30" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- forgotPasswordPageTitleTest -->
-        <test-method signature="verifyForgotPasswordPageVisableAndEnableTest()[pri:3, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:55 IST" name="verifyForgotPasswordPageVisableAndEnableTest" finished-at="2025-09-04T18:41:55 IST" duration-ms="147" status="PASS">
+        </test-method> <!-- verifyChangePasswordPanelTitleTest -->
+        <test-method signature="verifyChangePasswordPageUIElementsTest()[pri:4, instance:com.qa.gyruslearner.testcases.ChangePasswordPageTestCase@4218d6a3]" started-at="2025-09-05T18:25:04 IST" name="verifyChangePasswordPageUIElementsTest" finished-at="2025-09-05T18:25:05 IST" depends-on-methods="com.qa.gyruslearner.testcases.ChangePasswordPageTestCase.changePasswordUrlTest" duration-ms="155" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyForgotPasswordPageVisableAndEnableTest -->
-        <test-method signature="verifyContinueButtonDisabledUntilOptionSelectedTest()[pri:4, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:55 IST" name="verifyContinueButtonDisabledUntilOptionSelectedTest" finished-at="2025-09-04T18:41:55 IST" duration-ms="20" status="PASS">
+        </test-method> <!-- verifyChangePasswordPageUIElementsTest -->
+        <test-method signature="VerifyWrongCurrentPasswordTest()[pri:6, instance:com.qa.gyruslearner.testcases.ChangePasswordPageTestCase@4218d6a3]" started-at="2025-09-05T18:25:05 IST" name="VerifyWrongCurrentPasswordTest" finished-at="2025-09-05T18:25:08 IST" depends-on-methods="com.qa.gyruslearner.testcases.ChangePasswordPageTestCase.changePasswordUrlTest" duration-ms="2904" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyContinueButtonDisabledUntilOptionSelectedTest -->
-        <test-method signature="verifyBackToLoginButtonNavigatesToLoginPageTest()[pri:5, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:55 IST" name="verifyBackToLoginButtonNavigatesToLoginPageTest" finished-at="2025-09-04T18:41:56 IST" duration-ms="1278" status="PASS">
+        </test-method> <!-- VerifyWrongCurrentPasswordTest -->
+        <test-method signature="verifyErrorForMismatchedPasswordsTest()[pri:7, instance:com.qa.gyruslearner.testcases.ChangePasswordPageTestCase@4218d6a3]" started-at="2025-09-05T18:25:08 IST" name="verifyErrorForMismatchedPasswordsTest" finished-at="2025-09-05T18:25:10 IST" depends-on-methods="com.qa.gyruslearner.testcases.ChangePasswordPageTestCase.changePasswordUrlTest" duration-ms="2968" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyBackToLoginButtonNavigatesToLoginPageTest -->
-        <test-method signature="verifyPasswordOptionDisplaysUsernameAndSecurityQuestionTest()[pri:6, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:56 IST" name="verifyPasswordOptionDisplaysUsernameAndSecurityQuestionTest" finished-at="2025-09-04T18:41:57 IST" duration-ms="322" status="PASS">
+        </test-method> <!-- verifyErrorForMismatchedPasswordsTest -->
+        <test-method signature="verifyCurrentAndNewPasswordAreSameTest()[pri:8, instance:com.qa.gyruslearner.testcases.ChangePasswordPageTestCase@4218d6a3]" started-at="2025-09-05T18:25:11 IST" name="verifyCurrentAndNewPasswordAreSameTest" finished-at="2025-09-05T18:25:11 IST" depends-on-methods="com.qa.gyruslearner.testcases.ChangePasswordPageTestCase.changePasswordUrlTest" duration-ms="631" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyPasswordOptionDisplaysUsernameAndSecurityQuestionTest -->
-        <test-method signature="verifySelectedPasswordOptionContinueButtonEnabledTest()[pri:7, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:57 IST" name="verifySelectedPasswordOptionContinueButtonEnabledTest" finished-at="2025-09-04T18:41:57 IST" duration-ms="43" status="PASS">
+        </test-method> <!-- verifyCurrentAndNewPasswordAreSameTest -->
+        <test-method signature="verifySignOutFunctionalityTest()[pri:9, instance:com.qa.gyruslearner.testcases.ChangePasswordPageTestCase@4218d6a3]" started-at="2025-09-05T18:25:11 IST" name="verifySignOutFunctionalityTest" finished-at="2025-09-05T18:25:14 IST" depends-on-methods="com.qa.gyruslearner.testcases.ChangePasswordPageTestCase.changePasswordUrlTest" duration-ms="2772" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifySelectedPasswordOptionContinueButtonEnabledTest -->
-        <test-method signature="verifyValidationForEmptyUsernameTest()[pri:8, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:57 IST" name="verifyValidationForEmptyUsernameTest" finished-at="2025-09-04T18:41:58 IST" duration-ms="880" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyValidationForEmptyUsernameTest -->
-        <test-method signature="verifySecurityAnswerEmptyTest()[pri:9, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:58 IST" name="verifySecurityAnswerEmptyTest" finished-at="2025-09-04T18:41:59 IST" duration-ms="982" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySecurityAnswerEmptyTest -->
-        <test-method signature="verifyCorrectUsernameWithWrongSecurityAnswerTest()[pri:10, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:41:59 IST" name="verifyCorrectUsernameWithWrongSecurityAnswerTest" finished-at="2025-09-04T18:42:01 IST" duration-ms="1845" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCorrectUsernameWithWrongSecurityAnswerTest -->
-        <test-method signature="verifyInvalidUsernameShowsErrorTest()[pri:11, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:42:01 IST" name="verifyInvalidUsernameShowsErrorTest" finished-at="2025-09-04T18:42:02 IST" duration-ms="1681" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyInvalidUsernameShowsErrorTest -->
-        <test-method signature="verifyValidUsernameAndCorrectAnswerTest()[pri:12, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:42:02 IST" name="verifyValidUsernameAndCorrectAnswerTest" finished-at="2025-09-04T18:42:08 IST" duration-ms="5892" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyValidUsernameAndCorrectAnswerTest -->
-        <test-method signature="verifyIDontKnowMyUsernameShowsEmailFieldTest()[pri:13, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:42:08 IST" name="verifyIDontKnowMyUsernameShowsEmailFieldTest" finished-at="2025-09-04T18:42:11 IST" duration-ms="3247" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyIDontKnowMyUsernameShowsEmailFieldTest -->
-        <test-method signature="verifySelectedUserNameOptionContinueButtonEnabledTest()[pri:14, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:42:11 IST" name="verifySelectedUserNameOptionContinueButtonEnabledTest" finished-at="2025-09-04T18:42:11 IST" duration-ms="17" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySelectedUserNameOptionContinueButtonEnabledTest -->
-        <test-method signature="verifyValidationForEmptyEmailTest()[pri:15, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:42:11 IST" name="verifyValidationForEmptyEmailTest" finished-at="2025-09-04T18:42:14 IST" duration-ms="2577" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyValidationForEmptyEmailTest -->
-        <test-method signature="verifyUnregisteredEmailTest()[pri:16, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:42:14 IST" name="verifyUnregisteredEmailTest" finished-at="2025-09-04T18:42:17 IST" duration-ms="2720" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyUnregisteredEmailTest -->
-        <test-method signature="verifyRegisteredEmailTest()[pri:17, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:42:17 IST" name="verifyRegisteredEmailTest" finished-at="2025-09-04T18:42:19 IST" duration-ms="2742" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyRegisteredEmailTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase@71d44a3]" started-at="2025-09-04T18:42:19 IST" name="tearDown" finished-at="2025-09-04T18:42:20 IST" duration-ms="383" status="PASS">
+        </test-method> <!-- verifySignOutFunctionalityTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.ChangePasswordPageTestCase@4218d6a3]" started-at="2025-09-05T18:25:14 IST" name="tearDown" finished-at="2025-09-05T18:25:14 IST" duration-ms="196" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.ChangePasswordPageTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

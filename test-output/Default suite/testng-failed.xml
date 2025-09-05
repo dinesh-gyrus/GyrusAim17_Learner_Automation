@@ -3,13 +3,19 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase">
+      <class name="com.qa.gyruslearner.testcases.ChangePasswordPageTestCase">
         <methods>
-          <include name="forgotPasswordPageTitleTest"/>
-          <include name="setUp"/>
+          <include name="verifySignOutFunctionalityTest"/>
+          <include name="verifyChangePasswordPanelTitleTest"/>
+          <include name="changePasswordUrlTest"/>
+          <include name="verifyCurrentAndNewPasswordAreSameTest"/>
+          <include name="verifyChangePasswordPageUIElementsTest"/>
           <include name="tearDown"/>
+          <include name="verifyErrorForMismatchedPasswordsTest"/>
+          <include name="setUp"/>
+          <include name="VerifyWrongCurrentPasswordTest"/>
         </methods>
-      </class> <!-- com.qa.gyruslearner.testcases.ForgotPasswordPageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.ChangePasswordPageTestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

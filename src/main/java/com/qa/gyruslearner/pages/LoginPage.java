@@ -138,11 +138,13 @@ public class LoginPage extends TestBase {
 		return eleUtil.doElementGetAttribute(txtPassword, "type");
 	}
 
-	public void getUserFirstTimeLogin(String username, String pwd) {
+	public ChangePasswordPage getUserFirstTimeLogin(String username, String pwd) {
 
 		eleUtil.doSendKeys(txtUserName, username);
 		eleUtil.doSendKeys(txtPassword, pwd);
 		eleUtil.doClick(btnSignIn);
+		
+		return new ChangePasswordPage();
 	}
 
 	public DashboardPage doValidLogin(String username, String pwd) {

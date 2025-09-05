@@ -118,7 +118,10 @@ public class LoginPageTestCase extends TestBase {
 	@Ignore
 	@Test(priority = 11)
 	public void verifyFirstTimeLoginRedirectsToChangePasswordTest() {
-		loginpage.getUserFirstTimeLogin("TTeam3", "123");
+		 //This Login First Time Login User   
+		//loginpage.getUserFirstTimeLogin("TTeam3", "123");
+		loginpage.getUserFirstTimeLogin("TTeam4", "123");
+		
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
@@ -126,6 +129,7 @@ public class LoginPageTestCase extends TestBase {
 		}
 		Assert.assertEquals(chanPassword.getChangedPassPageUrl(), AppConstants.CHANGEPASSWORD_PAGE_URL,
 				"User was not redirected to Change Password page!");
+		
 		chanPassword.doClickOnSignOut();
 	}
 

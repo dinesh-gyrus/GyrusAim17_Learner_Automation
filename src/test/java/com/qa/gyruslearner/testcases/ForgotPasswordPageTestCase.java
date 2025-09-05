@@ -6,9 +6,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.qa.gyruslearner.base.TestBase;
@@ -214,7 +212,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		Assert.assertEquals(changepassword.getChangePasswordPanelTitle(), "Change Password",
 				"Panel Title is not Match!");
 		
-		changepassword.getNewChangePasswordWithValidInputs();
+		changepassword.getNewChangePasswordWithValidInputs("123456","123456");
 		
 		changepassword.doClickOnSignOut();
 

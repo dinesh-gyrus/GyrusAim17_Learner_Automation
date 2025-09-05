@@ -15,7 +15,10 @@ public class DashboardPage extends TestBase {
 		eleUtil = new ElementUtil();
 	}
 	
-	
+	public String getDashBoardPageUrl() {
+		String DashboardCurrentUrl = driver.getCurrentUrl();
+		return DashboardCurrentUrl;
+	}
 	
 	public String getDashBoardTitle() {
 
@@ -24,5 +27,8 @@ public class DashboardPage extends TestBase {
 		return DashBoardTitle;
 
 	}
+	
+	
+	
 	
 }
