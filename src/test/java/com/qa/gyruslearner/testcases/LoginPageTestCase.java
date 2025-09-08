@@ -52,11 +52,11 @@ public class LoginPageTestCase extends TestBase {
 	public void LoginPageUrlTest() {
 
 		String loginUrl = loginpage.getLoginPageUrl();
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-	    wait.until(ExpectedConditions.urlToBe(AppConstants.LOGIN_PAGE_URL));
-	    
-	    Assert.assertEquals(loginUrl, AppConstants.LOGIN_PAGE_URL);
+		wait.until(ExpectedConditions.urlToBe(AppConstants.LOGIN_PAGE_URL));
+
+		Assert.assertEquals(loginUrl, AppConstants.LOGIN_PAGE_URL);
 
 	}
 
@@ -78,14 +78,14 @@ public class LoginPageTestCase extends TestBase {
 
 	@Test(priority = 6, description = "TC_LOGIN_006: Verify Username and Password fields is display and Enable. ")
 	public void verifyUsernameAndPasswordFieldsTest() {
-		
+
 		// Username field
 		Assert.assertTrue(loginpage.isUsernameDisplayed(), "Username field was not displayed");
 		Assert.assertTrue(loginpage.isUsernameEnabled(), "Username field was not enabled");
-		
-		 // Password field
+
+		// Password field
 		Assert.assertTrue(loginpage.isPasswordDisplayed(), "Password field was not displayed");
-        Assert.assertTrue(loginpage.isPasswordEnabled(), "Password field was not enabled");
+		Assert.assertTrue(loginpage.isPasswordEnabled(), "Password field was not enabled");
 
 	}
 
@@ -114,22 +114,21 @@ public class LoginPageTestCase extends TestBase {
 		Assert.assertEquals(loginpage.getPasswordFieldEncrypted(), "password",
 				"Password field is not masked properly!");
 	}
-	
+
 	@Ignore
 	@Test(priority = 11)
 	public void verifyFirstTimeLoginRedirectsToChangePasswordTest() {
-		 //This Login First Time Login User   
-		//loginpage.getUserFirstTimeLogin("TTeam3", "123");
+		// This Login First Time Login User
+		// loginpage.getUserFirstTimeLogin("TTeam3", "123");
 		loginpage.getUserFirstTimeLogin("TTeam4", "123");
-		
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+
+		// Verify navigation to Login page
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.urlToBe(AppConstants.CHANGEPASSWORD_PAGE_URL));
+
 		Assert.assertEquals(chanPassword.getChangedPassPageUrl(), AppConstants.CHANGEPASSWORD_PAGE_URL,
 				"User was not redirected to Change Password page!");
-		
+
 		chanPassword.doClickOnSignOut();
 	}
 
@@ -144,7 +143,7 @@ public class LoginPageTestCase extends TestBase {
 		String toastMsg = loginpage.getToastMessage();
 		Assert.assertEquals(toastMsg, "Invalid username or password");
 	}
-	
+
 	@Test(priority = 13)
 	public void verifyWrongUserNameAndValidPassTest() {
 		loginpage.doValidUerNameWrongPass("TTeam2156", "123456");
@@ -156,26 +155,27 @@ public class LoginPageTestCase extends TestBase {
 		String toastMsg = loginpage.getToastMessage();
 		Assert.assertEquals(toastMsg, "Invalid username or password");
 	}
-	
+
 	@Ignore
 	@Test(priority = 14)
 	public void verifyLastLoginAttemptMessage() {
-		
-		for (int i = 1; i<2; i++) {
-			
+
+		for (int i = 1; i < 2; i++) {
+
 			loginpage.doValidUerNameWrongPass("TTeam2", "Test123");
-			
-        }
+
+		}
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		String toastMsg = loginpage.getToastMessage();
-		Assert.assertEquals(toastMsg,"Invalid username or password. You have one Attempt remaining. Click on forgot password to get your username or password");
-		
+		Assert.assertEquals(toastMsg,
+				"Invalid username or password. You have one Attempt remaining. Click on forgot password to get your username or password");
+
 	}
-	
+
 	@Ignore
 	@Test(priority = 15)
 	public void verifyAccountLockAfterFailedAttemptTest() {
@@ -190,15 +190,15 @@ public class LoginPageTestCase extends TestBase {
 		Assert.assertEquals(toastMsg,
 				"Your Account has been blocked. Please contact system administrator or try after 24 hours.");
 	}
-	
+
 	@Test(priority = 16)
 	public void verifyValidLoginTest() {
-		
+
 		loginpage.doValidLogin("TTeam", "123");
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-	    wait.until(ExpectedConditions.titleIs(AppConstants.DASHBOARD_PAGE_TITLE));
-		
+		wait.until(ExpectedConditions.titleIs(AppConstants.DASHBOARD_PAGE_TITLE));
+
 		Assert.assertEquals(dashboard.getDashBoardTitle(), AppConstants.DASHBOARD_PAGE_TITLE);
 	}
 

@@ -14,11 +14,14 @@ public class AppConstants {
 	public final static String DASHBOARD_PAGE_TITLE ="Dashboard";
 	public final static String CHANGEPASSWORD_PAGE_TITLE ="Change Password";
 	public final static String FORGOTPASSWORD_PAGE_TITLE ="Forgot Password";
+	public final static String SIGNUP_PAGE_TITLE ="User Registration";
 	
 	public final static String LOGIN_PAGE_URL = "https://vspqa.gyrusaim.net/auth/login";
 	public final static String DASHBOARD_PAGE_URL="https://vspqa.gyrusaim.net/v2/dashboard";
 	public final static String CHANGEPASSWORD_PAGE_URL ="https://vspqa.gyrusaim.net/Auth/MustChangePassword";
-	public final static String FORGOTPASSWORD_PAGE_URL ="https://vspqa.gyrusaim.net/Auth/ForgotPassword";  
+	public final static String FORGOTPASSWORD_PAGE_URL ="https://vspqa.gyrusaim.net/Auth/ForgotPassword";
+	public final static String SIGNUP_PAGE_URL ="https://vspqa.gyrusaim.net/Registration/UserSelfRegistration";
+	
 
 	
 	

@@ -141,6 +141,20 @@ public class ForgotPasswordPage extends TestBase {
 		driver.navigate().refresh();
 	}
 	
+	
+	public ChangePasswordPage doForgotPassword(String userName,String securityQ1, String securityQ2,String securityQ3) {
+		
+		eleUtil.doSendKeys(txtUserName, userName);
+		eleUtil.doSendKeys(txtSecurityQue1, securityQ1);
+		eleUtil.doSendKeys(txtSecurityQue2, securityQ2);
+		eleUtil.doSendKeys(txtSecurityQue3, securityQ3);
+		eleUtil.doClick(btnContinue);
+		
+		return new ChangePasswordPage();
+	}
+	
+	
+	
 	public void getValidationForEmptyUsername() {
 		eleUtil.doSendKeys(txtSecurityQue1, "Test1");
 		eleUtil.doSendKeys(txtSecurityQue2, "Test2");
@@ -183,6 +197,13 @@ public class ForgotPasswordPage extends TestBase {
 		return new ChangePasswordPage();
 	}
 	
+	public void doForgotUserName(String Email) {
+		
+		eleUtil.doSendKeys(txtEmail, Email);
+		eleUtil.doClick(btnContinue);
+	}
+	
+	/*
 	public void getUnRegisterEmail() {
 		eleUtil.doSendKeys(txtEmail, "test@gmail.com");
 		eleUtil.doClick(btnContinue);
@@ -192,7 +213,7 @@ public class ForgotPasswordPage extends TestBase {
 		eleUtil.doSendKeys(txtEmail, "test1gyrus@yopmail.com");
 		eleUtil.doClick(btnContinue);
 	}
-	
+	*/
 	
 	
 	

@@ -84,7 +84,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 
 		// Verify navigation to Login page
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		wait.until(ExpectedConditions.titleIs(AppConstants.LOGIN_PAGE_TITLE));
+		wait.until(ExpectedConditions.urlToBe(AppConstants.LOGIN_PAGE_URL));
 
 		Assert.assertEquals(loginpage.getLoginPageUrl(), AppConstants.LOGIN_PAGE_URL,
 				"User was not redirected to Login page!");
@@ -132,7 +132,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill All Security Questions
-		forgotpasspage.getValidationForEmptyUsername();
+		forgotpasspage.doForgotPassword("", "Test1", "Test2", "Test3");
+		// forgotpasspage.getValidationForEmptyUsername();
 
 		String toastMsg = loginpage.getToastMessage();
 		Assert.assertEquals(toastMsg, "Please enter username");
@@ -151,7 +152,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill All Security Questions
-		forgotpasspage.getValidationEmptySecurityQ();
+		forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "");
+		// forgotpasspage.getValidationEmptySecurityQ();
 
 		String toastMsg = loginpage.getToastMessage();
 		Assert.assertEquals(toastMsg, "Login security answer 3 cannot be null.");
@@ -160,7 +162,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 
 	@Test(priority = 10)
 	public void verifyCorrectUsernameWithWrongSecurityAnswerTest() {
-		
+
 		// Refresh Current Page
 		forgotpasspage.doRefreshCurrentPage();
 
@@ -170,7 +172,15 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill All Security Questions
-		forgotpasspage.getWrongSecurityQ();
+		forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "WrongAnsw");
+		// forgotpasspage.getWrongSecurityQ();
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		String toastMsg = loginpage.getToastMessage();
 		Assert.assertEquals(toastMsg, "Incorrect answer");
@@ -189,7 +199,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill inValid Username and all Security Questions
-		forgotpasspage.getInvalidUsername();
+		forgotpasspage.doForgotPassword("TTeam59999", "Test1", "Test2", "Test3");
+		// forgotpasspage.getInvalidUsername();
 
 		String toastMsg = loginpage.getToastMessage();
 		Assert.assertEquals(toastMsg, "Please enter valid username.");
@@ -207,15 +218,28 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill Valid Username and all Security Questions
-		forgotpasspage.getUsernameAndCorrectAnswer();
+		forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "test3");
+
+		// forgotpasspage.getUsernameAndCorrectAnswer();
 
 		Assert.assertEquals(changepassword.getChangePasswordPanelTitle(), "Change Password",
 				"Panel Title is not Match!");
-		
-		changepassword.getNewChangePasswordWithValidInputs("123456","123456");
-		
-		changepassword.doClickOnSignOut();
 
+		changepassword.getNewChangePasswordWithValidInputs("123456", "123456");
+
+		try {
+	        // Verify toast message
+	        String toastMsg = loginpage.getToastMessage();
+	        Assert.assertEquals(toastMsg, "Password updated.", "Toast message mismatch!");
+	    } catch (AssertionError e) {
+	        // log assertion failure
+	        System.out.println("Toast message validation failed: " + e.getMessage());
+	        throw e;  
+	    } finally {
+	        // Always click Sign Out, even if assertion fails
+	        changepassword.doClickOnSignOut();
+	    }
+		
 	}
 
 	@Test(priority = 13)
@@ -276,7 +300,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioUserName();
 
 		// Fill Data Unregister
-		forgotpasspage.getUnRegisterEmail();
+		forgotpasspage.doForgotUserName("test@gmail.com");
+		// forgotpasspage.getUnRegisterEmail();
 
 		try {
 			Thread.sleep(2000);
@@ -300,7 +325,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioUserName();
 
 		// Fill Data Unregister
-		forgotpasspage.getRegisterEmail();
+		forgotpasspage.doForgotUserName("test1gyrus@yopmail.com");
+		// forgotpasspage.getRegisterEmail();
 
 		try {
 			Thread.sleep(2000);

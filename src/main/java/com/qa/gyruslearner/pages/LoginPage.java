@@ -116,7 +116,7 @@ public class LoginPage extends TestBase {
 	}
 	
 	public void doclickOnForgotPasswordLinkButton() {
-		eleUtil.doClick(frgotPasswordlink);
+		eleUtil.doClick(singUplink);
 	}
 
 	public boolean isSignUpExits() {
@@ -128,7 +128,7 @@ public class LoginPage extends TestBase {
 	}
 	
 	public void doclickOnSignUpLinkButton() {
-		eleUtil.doClick(frgotPasswordlink);
+		eleUtil.doClick(singUplink);
 	}
 	
 
