@@ -138,6 +138,11 @@ public class ElementUtil extends TestBase {
 		return element;
 	}
 	
+	public void clickElementWhenReady(WebElement locator, long timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(timeOut));
+		wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+	}
+	
 	public String doGetElementText(WebElement loginHeader) {
 		return getElement(loginHeader).getText();
 	}

@@ -31,7 +31,7 @@ public class LoginPage extends TestBase {
 	WebElement btnSignIn;
 
 	@FindBy(xpath = "//*[text()='Forgot Password ?']")
-	WebElement frgotPasswordlink;
+	WebElement forgotPasswordlink;
 
 	@FindBy(xpath = "//*[text()='Sign Up']")
 	WebElement singUplink;
@@ -53,6 +53,7 @@ public class LoginPage extends TestBase {
 	}
 	
 	public void ensureAtLoginPage() {
+		
         if (!driver.getCurrentUrl().contains("Login")) {
             driver.get("https://vspqa.gyrusaim.net/auth/login"); // 🔹 fallback navigation
         }
@@ -107,16 +108,16 @@ public class LoginPage extends TestBase {
 	}
 
 	public boolean isForgotPasswordExits() {
-		return eleUtil.isElementDisplayed(frgotPasswordlink);
+		return eleUtil.isElementDisplayed(forgotPasswordlink);
 	}
 	
 
 	public boolean isForgotPasswordEnable() {
-		return eleUtil.isElementEnable(frgotPasswordlink);
+		return eleUtil.isElementEnable(forgotPasswordlink);
 	}
 	
 	public void doclickOnForgotPasswordLinkButton() {
-		eleUtil.doClick(singUplink);
+		eleUtil.doClick(forgotPasswordlink);
 	}
 
 	public boolean isSignUpExits() {
@@ -155,7 +156,7 @@ public class LoginPage extends TestBase {
 		return new DashboardPage();
 	}
 	
-	public void doValidUerNameWrongPass(String username, String pwd) {
+	public void doValidUserNameWrongPass(String username, String pwd) {
 		
 		eleUtil.doSendKeys(txtUserName, username);
 		eleUtil.doSendKeys(txtPassword, pwd);

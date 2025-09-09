@@ -38,11 +38,9 @@ public class ForgotPasswordPageTestCase extends TestBase {
 
 		loginpage.doclickOnForgotPasswordLinkButton();
 
-		String forgotpasswordUrl = forgotpasspage.getForgotPasswordPageUrl();
-
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.urlToBe(AppConstants.FORGOTPASSWORD_PAGE_URL));
-
+		String forgotpasswordUrl = forgotpasspage.getForgotPasswordPageUrl();
 		Assert.assertEquals(forgotpasswordUrl, AppConstants.FORGOTPASSWORD_PAGE_URL);
 	}
 
@@ -116,6 +114,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 
 	@Test(priority = 7)
 	public void verifySelectedPasswordOptionContinueButtonEnabledTest() {
+
 		// Verify Continue Button Enable Or not
 		Assert.assertTrue(forgotpasspage.isContinueEnable(), "Continue Button was not enabled");
 	}
@@ -126,8 +125,6 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		// Refresh Current Page
 		forgotpasspage.doRefreshCurrentPage();
 
-		// driver.navigate().refresh();
-
 		// Click on Password Radio
 		forgotpasspage.doClickOnRadioPassword();
 
@@ -135,8 +132,15 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doForgotPassword("", "Test1", "Test2", "Test3");
 		// forgotpasspage.getValidationForEmptyUsername();
 
-		String toastMsg = loginpage.getToastMessage();
-		Assert.assertEquals(toastMsg, "Please enter username");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		String toastMsg = wait.until(d -> loginpage.getToastMessage());
+
+		Assert.assertTrue(toastMsg.equals("Please enter username"), "Unexpected toast message: " + toastMsg);
+
+		/*
+		 * String toastMsg = loginpage.getToastMessage(); Assert.assertEquals(toastMsg,
+		 * "Please enter username");
+		 */
 
 	}
 
@@ -185,6 +189,9 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		String toastMsg = loginpage.getToastMessage();
 		Assert.assertEquals(toastMsg, "Incorrect answer");
 
+		// Maximum number of failed attempts exceeded, contact administrator to recover
+		// password.
+
 	}
 
 	@Test(priority = 11)
@@ -192,8 +199,6 @@ public class ForgotPasswordPageTestCase extends TestBase {
 
 		// Refresh Current Page
 		forgotpasspage.doRefreshCurrentPage();
-
-		// driver.navigate().refresh();
 
 		// Click on Password Radio
 		forgotpasspage.doClickOnRadioPassword();
@@ -228,25 +233,27 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		changepassword.getNewChangePasswordWithValidInputs("123456", "123456");
 
 		try {
-	        // Verify toast message
-	        String toastMsg = loginpage.getToastMessage();
-	        Assert.assertEquals(toastMsg, "Password updated.", "Toast message mismatch!");
-	    } catch (AssertionError e) {
-	        // log assertion failure
-	        System.out.println("Toast message validation failed: " + e.getMessage());
-	        throw e;  
-	    } finally {
-	        // Always click Sign Out, even if assertion fails
-	        changepassword.doClickOnSignOut();
-	    }
-		
+			// Verify toast message
+			String toastMsg = loginpage.getToastMessage();
+			Assert.assertEquals(toastMsg, "Password updated.", "Toast message mismatch!");
+		} catch (AssertionError e) {
+			// log assertion failure
+			System.out.println("Toast message validation failed: " + e.getMessage());
+			throw e;
+		} finally {
+			// Always click Sign Out, even if assertion fails
+			changepassword.doClickOnSignOut();
+		}
+
 	}
 
 	@Test(priority = 13)
 	public void verifyIDontKnowMyUsernameShowsEmailFieldTest() {
 
+		
+
 		// Click on forgot Password Link Button
-		loginpage.doclickOnForgotPasswordLinkButton();
+		 loginpage.doclickOnForgotPasswordLinkButton();
 
 		// Click on I don't know my username Radio Button
 		forgotpasspage.doClickOnRadioUserName();

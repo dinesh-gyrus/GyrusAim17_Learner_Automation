@@ -104,13 +104,25 @@ public class JavaScriptUtil extends TestBase {
 	}
 	
 	public String toastMessageHandle() {
-		 String toastMsg = (String) ((JavascriptExecutor) driver)
+		
+		/* 
+		String toastMsg = (String) ((JavascriptExecutor) driver)
 		            .executeScript("return document.querySelector('.toast, [role=\"alert\"]').innerText");
+		 */
+		 String toastMsg = (String) ((JavascriptExecutor) driver).executeScript(
+				    "var el = document.querySelector('.toast, [role=\"alert\"]');" +
+				    "return el ? el.innerText : null;"
+				);
+		 
+		 if (toastMsg == null) {
+			    System.out.println("No toast message found!");
+			} else {
+			    System.out.println("Toast: " + toastMsg);
+			}
 		 return toastMsg;
 
 	}
-	
-	
+
 	public void drawBorder(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].style.border='3px solid red'", element);

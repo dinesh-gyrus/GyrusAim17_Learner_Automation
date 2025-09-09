@@ -154,7 +154,7 @@ public class ForgotPasswordPage extends TestBase {
 	}
 	
 	
-	
+	/*
 	public void getValidationForEmptyUsername() {
 		eleUtil.doSendKeys(txtSecurityQue1, "Test1");
 		eleUtil.doSendKeys(txtSecurityQue2, "Test2");
@@ -196,27 +196,13 @@ public class ForgotPasswordPage extends TestBase {
 		
 		return new ChangePasswordPage();
 	}
+	*/
 	
 	public void doForgotUserName(String Email) {
 		
 		eleUtil.doSendKeys(txtEmail, Email);
 		eleUtil.doClick(btnContinue);
 	}
-	
-	/*
-	public void getUnRegisterEmail() {
-		eleUtil.doSendKeys(txtEmail, "test@gmail.com");
-		eleUtil.doClick(btnContinue);
-	}
-	
-	public void getRegisterEmail() {
-		eleUtil.doSendKeys(txtEmail, "test1gyrus@yopmail.com");
-		eleUtil.doClick(btnContinue);
-	}
-	*/
-	
-	
-	
 	
 
 }

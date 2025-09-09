@@ -29,17 +29,24 @@ public class SignUpPage extends TestBase {
 
 	@FindBy(xpath = "//*[@title='Back to Login']")
 	WebElement btnBackToLogin;
-	
+
 	@FindBy(xpath = "//*[@title='reCAPTCHA']")
 	WebElement iframeCaptcha;
-	
-	@FindBy(id="recaptcha-anchor")
+
+	@FindBy(id = "recaptcha-anchor")
 	WebElement reCaptchaCheckBox;
-	
+
 	@FindBy(id = "btnselfregistration")
 	WebElement btnRegister;
-	
-	
+
+	@FindBy(xpath = "//label[normalize-space(text())='First Name is required.']") // label[contains(@ng-show,'txtFirstName')]
+	WebElement firstNameErrorMsg;
+
+	@FindBy(xpath = "//label[contains(@ng-show,'txtLastName')]")
+	WebElement lastNameErrorMsg;
+
+	@FindBy(xpath = "//label[contains(@ng-show,'txteMail')]")
+	WebElement emailErrorMsg;
 
 	public SignUpPage() {
 
@@ -62,7 +69,7 @@ public class SignUpPage extends TestBase {
 	}
 
 	public boolean isComoanyLogoDisplayed() {
-		
+
 		return eleUtil.isElementDisplayed(inSignupcompnayLogo);
 	}
 
@@ -85,35 +92,75 @@ public class SignUpPage extends TestBase {
 
 		return eleUtil.isElementDisplayed(txteMail);
 	}
+
+	public boolean isCaptchaDisplayed() {
+
+		driver.switchTo().frame(iframeCaptcha);
+		return eleUtil.isElementDisplayed(reCaptchaCheckBox);
+
+	}
+
+	public boolean isRegisterButtonDisplayed() {
+
+		return eleUtil.isElementDisplayed(btnRegister);
+	}
+
+	public boolean isRegisterButtonEnable() {
+
+		return eleUtil.isElementEnable(btnRegister);
+	}
+
+	public boolean isBackToLoginDisplayed() {
+
+		return eleUtil.isElementDisplayed(btnBackToLogin);
+	}
+
+	public boolean isBackToLoginEnable() {
+
+		return eleUtil.isElementEnable(btnBackToLogin);
+	}
+
+	public LoginPage doClickOnBackToLogin() {
+
+		eleUtil.doClick(btnBackToLogin);
+
+		return new LoginPage();
+	}
+
+	public boolean isFirstNameErrorMsgDisplayed() {
+
+		return eleUtil.isElementDisplayed(firstNameErrorMsg);
+	}
+
+	public boolean isLastNameErrorMsgDisplayed() {
+
+		return eleUtil.isElementDisplayed(lastNameErrorMsg);
+	}
+
+	public boolean isEmailErrorMsgDisplayed() {
+
+		return eleUtil.isElementDisplayed(emailErrorMsg);
+	}
+
+	public void doClickOnRegisterButton() {
+
+		eleUtil.clickElementWhenReady(btnRegister,1);
+	}
+
+	public void fillMandatoryFields(String firstName, String lastName, String Email) {
+
+		eleUtil.doSendKeys(txtFirstName, firstName);
+		eleUtil.doSendKeys(txtLastName, lastName);
+		eleUtil.doSendKeys(txteMail, Email);
+	}
+
+	public void getHandleRecaptchaCheckBox() {
 	
-	 public boolean isCaptchaDisplayed() {
-		 
-		 driver.switchTo().frame(iframeCaptcha);
-		 return eleUtil.isElementDisplayed(reCaptchaCheckBox);
-		
-	 }
-	 
-	 public boolean isRegisterButtonDisplayed() {
-		 
-		 return eleUtil.isElementDisplayed(btnRegister);	 
-	 }
-	 
-	 public boolean isRegisterButtonEnable() {
-		 
-		 return eleUtil.isElementEnable(btnRegister);
-	 }
-	 
-	 
-	 public void fillMandatoryFields(String firstName,String lastName, String Email) {
-		 
-		 eleUtil.doSendKeys(txtFirstName, firstName);
-		 eleUtil.doSendKeys(txtLastName, lastName);
-		 eleUtil.doSendKeys(txteMail, Email);
-		 driver.switchTo().frame(iframeCaptcha);
-		 eleUtil.doClick(reCaptchaCheckBox);
-	 }
-	 
-	 
-	 
-	 
+		driver.switchTo().frame(iframeCaptcha);
+		eleUtil.doClick(reCaptchaCheckBox);
+		driver.switchTo().defaultContent();
+	}
+
+	
+
 }
