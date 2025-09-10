@@ -48,7 +48,8 @@ public class LoginPageTestCase extends TestBase {
 		String loginPagetitle = loginpage.getLoginPageTitle();
 		Assert.assertEquals(loginPagetitle, AppConstants.LOGIN_PAGE_TITLE);
 	}
-
+	
+	
 	@Test(priority = 2, description = "TC_LOGIN_002 :Verify the Login Page URL matches the expected.")
 	public void LoginPageUrlTest() {
 
@@ -61,8 +62,8 @@ public class LoginPageTestCase extends TestBase {
 
 	@Test(priority = 3, description = "TC_LOGIN_003 : Verify company  logo presence")
 	public void isCompanyLogoExitsTest() {
-
-		Assert.assertTrue(loginpage.isCompanyLogoExits());
+		
+		Assert.assertTrue(loginpage.isCompanyLogoExits(), "Company logo is not displayed on the login page!");
 	}
 
 	@Test(priority = 4, description = "TC_LOGIN_004 : Verify BackGround Image presence")

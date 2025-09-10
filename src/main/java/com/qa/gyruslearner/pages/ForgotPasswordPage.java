@@ -153,51 +153,6 @@ public class ForgotPasswordPage extends TestBase {
 		return new ChangePasswordPage();
 	}
 	
-	
-	/*
-	public void getValidationForEmptyUsername() {
-		eleUtil.doSendKeys(txtSecurityQue1, "Test1");
-		eleUtil.doSendKeys(txtSecurityQue2, "Test2");
-		eleUtil.doSendKeys(txtSecurityQue3, "Test3");
-		eleUtil.doClick(btnContinue);
-	}
-	
-	public void getInvalidUsername() {
-		eleUtil.doSendKeys(txtUserName, "TTeam59999");
-		eleUtil.doSendKeys(txtSecurityQue1, "Test1");
-		eleUtil.doSendKeys(txtSecurityQue2, "Test2");
-		eleUtil.doSendKeys(txtSecurityQue3, "Test3");
-		eleUtil.doClick(btnContinue);
-	}
-	
-	public void getValidationEmptySecurityQ(){
-		
-		eleUtil.doSendKeys(txtUserName, "TTeam");
-		eleUtil.doSendKeys(txtSecurityQue1, "test1");
-		eleUtil.doSendKeys(txtSecurityQue2, "test2");
-		eleUtil.doClick(btnContinue);
-	}
-	public void getWrongSecurityQ() {
-		
-		eleUtil.doSendKeys(txtUserName,"TTeam");
-		eleUtil.doSendKeys(txtSecurityQue1,"test1");
-		eleUtil.doSendKeys(txtSecurityQue2,"test2");
-		eleUtil.doSendKeys(txtSecurityQue3,"WrongAnsw");
-		eleUtil.doClick(btnContinue);
-	}
-	
-	public ChangePasswordPage getUsernameAndCorrectAnswer() {
-		
-		eleUtil.doSendKeys(txtUserName,"TTeam");
-		eleUtil.doSendKeys(txtSecurityQue1,"test1");
-		eleUtil.doSendKeys(txtSecurityQue2,"test2");
-		eleUtil.doSendKeys(txtSecurityQue3,"test3");
-		eleUtil.doClick(btnContinue);
-		
-		return new ChangePasswordPage();
-	}
-	*/
-	
 	public void doForgotUserName(String Email) {
 		
 		eleUtil.doSendKeys(txtEmail, Email);

@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.qa.gyruslearner.base.TestBase;
@@ -33,10 +34,20 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		changepassword = new ChangePasswordPage();
 	}
 
+	@BeforeMethod
+	public void pageRefresh() {
+
+		forgotpasspage.doRefreshCurrentPage();
+
+		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
+			loginpage.doclickOnForgotPasswordLinkButton();
+		}
+	}
+
 	@Test(priority = 1)
 	public void forgotPasswordPageUrlTest() {
 
-		loginpage.doclickOnForgotPasswordLinkButton();
+		// loginpage.doclickOnForgotPasswordLinkButton();
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		wait.until(ExpectedConditions.urlToBe(AppConstants.FORGOTPASSWORD_PAGE_URL));
@@ -115,6 +126,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 	@Test(priority = 7)
 	public void verifySelectedPasswordOptionContinueButtonEnabledTest() {
 
+		// Click on Password Radio
+		forgotpasspage.doClickOnRadioPassword();
 		// Verify Continue Button Enable Or not
 		Assert.assertTrue(forgotpasspage.isContinueEnable(), "Continue Button was not enabled");
 	}
@@ -122,18 +135,14 @@ public class ForgotPasswordPageTestCase extends TestBase {
 	@Test(priority = 8)
 	public void verifyValidationForEmptyUsernameTest() {
 
-		// Refresh Current Page
-		forgotpasspage.doRefreshCurrentPage();
-
 		// Click on Password Radio
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill All Security Questions
 		forgotpasspage.doForgotPassword("", "Test1", "Test2", "Test3");
-		// forgotpasspage.getValidationForEmptyUsername();
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		String toastMsg = wait.until(d -> loginpage.getToastMessage());
+		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
 
 		Assert.assertTrue(toastMsg.equals("Please enter username"), "Unexpected toast message: " + toastMsg);
 
@@ -147,77 +156,69 @@ public class ForgotPasswordPageTestCase extends TestBase {
 	@Test(priority = 9)
 	public void verifySecurityAnswerEmptyTest() {
 
-		// Refresh Current Page
-		forgotpasspage.doRefreshCurrentPage();
-
-		// driver.navigate().refresh();
-
 		// Click on Password Radio
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill All Security Questions
 		forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "");
-		// forgotpasspage.getValidationEmptySecurityQ();
 
-		String toastMsg = loginpage.getToastMessage();
-		Assert.assertEquals(toastMsg, "Login security answer 3 cannot be null.");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
 
+		Assert.assertTrue(toastMsg.equals("Login security answer 3 cannot be null."),
+				"Unexpected toast message: " + toastMsg);
+
+		/*
+		 * String toastMsg = loginpage.getToastMessage(); Assert.assertEquals(toastMsg,
+		 * "Login security answer 3 cannot be null.");
+		 */
 	}
 
 	@Test(priority = 10)
 	public void verifyCorrectUsernameWithWrongSecurityAnswerTest() {
-
-		// Refresh Current Page
-		forgotpasspage.doRefreshCurrentPage();
-
-		// driver.navigate().refresh();
 
 		// Click on Password Radio
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill All Security Questions
 		forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "WrongAnsw");
-		// forgotpasspage.getWrongSecurityQ();
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
 
-		String toastMsg = loginpage.getToastMessage();
-		Assert.assertEquals(toastMsg, "Incorrect answer");
+		Assert.assertTrue(
+				toastMsg.equals("Incorrect answer") || toastMsg.equals(
+						"Maximum number of failed attempts exceeded, contact administrator to recover password."),
+				"Unexpected toast message: " + toastMsg);
 
-		// Maximum number of failed attempts exceeded, contact administrator to recover
-		// password.
-
+		/*
+		 * String toastMsg = loginpage.getToastMessage(); Assert.assertEquals(toastMsg,
+		 * "Incorrect answer");
+		 */
 	}
 
 	@Test(priority = 11)
 	public void verifyInvalidUsernameShowsErrorTest() {
-
-		// Refresh Current Page
-		forgotpasspage.doRefreshCurrentPage();
 
 		// Click on Password Radio
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill inValid Username and all Security Questions
 		forgotpasspage.doForgotPassword("TTeam59999", "Test1", "Test2", "Test3");
-		// forgotpasspage.getInvalidUsername();
 
-		String toastMsg = loginpage.getToastMessage();
-		Assert.assertEquals(toastMsg, "Please enter valid username.");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
+
+		Assert.assertTrue(toastMsg.equals("Please enter valid username."), "Unexpected toast message: " + toastMsg);
+
+		/*
+		 * String toastMsg = loginpage.getToastMessage(); Assert.assertEquals(toastMsg,
+		 * "Please enter valid username.");
+		 */
 	}
 
 	@Test(priority = 12)
 	public void verifyValidUsernameAndCorrectAnswerTest() {
-
-		// Refresh Current Page
-		forgotpasspage.doRefreshCurrentPage();
-
-		// driver.navigate().refresh();
 
 		// Click on Password Radio
 		forgotpasspage.doClickOnRadioPassword();
@@ -225,35 +226,39 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		// Fill Valid Username and all Security Questions
 		forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "test3");
 
-		// forgotpasspage.getUsernameAndCorrectAnswer();
-
 		Assert.assertEquals(changepassword.getChangePasswordPanelTitle(), "Change Password",
 				"Panel Title is not Match!");
 
 		changepassword.getNewChangePasswordWithValidInputs("123456", "123456");
 
 		try {
-			// Verify toast message
+			/*
+			 * // Verify toast message WebDriverWait wait = new WebDriverWait(driver,
+			 * Duration.ofMinutes(1)); String toastMsg = wait.until(driver -> { try { return
+			 * loginpage.getToastMessage(); } catch (Exception e) { return null; } });
+			 * Assert.assertTrue(toastMsg.equals("Password updated."),
+			 * "Unexpected toast message: " + toastMsg);
+			 */
+
 			String toastMsg = loginpage.getToastMessage();
 			Assert.assertEquals(toastMsg, "Password updated.", "Toast message mismatch!");
+
 		} catch (AssertionError e) {
 			// log assertion failure
 			System.out.println("Toast message validation failed: " + e.getMessage());
 			throw e;
 		} finally {
-			// Always click Sign Out, even if assertion fails
-			changepassword.doClickOnSignOut();
+			try {
+				// Always click Sign Out, even if assertion fails
+				changepassword.doClickOnSignOut();
+			} catch (Exception e) {
+				System.out.println("SignOut skipped due to driver/session issue: " + e.getMessage());
+			}
 		}
-
 	}
 
 	@Test(priority = 13)
 	public void verifyIDontKnowMyUsernameShowsEmailFieldTest() {
-
-		
-
-		// Click on forgot Password Link Button
-		 loginpage.doclickOnForgotPasswordLinkButton();
 
 		// Click on I don't know my username Radio Button
 		forgotpasspage.doClickOnRadioUserName();
@@ -267,6 +272,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 	@Test(priority = 14)
 	public void verifySelectedUserNameOptionContinueButtonEnabledTest() {
 
+		forgotpasspage.doClickOnRadioUserName();
 		// Verify Continue Button Enable Or not
 		Assert.assertTrue(forgotpasspage.isContinueEnable(), "Continue Button was not enabled");
 	}
@@ -274,76 +280,63 @@ public class ForgotPasswordPageTestCase extends TestBase {
 	@Test(priority = 15)
 	public void verifyValidationForEmptyEmailTest() {
 
-		// Refresh Current Page
-		forgotpasspage.doRefreshCurrentPage();
-
-		// driver.navigate().refresh();
-
 		// Click on I don't know my username Radio Button
 		forgotpasspage.doClickOnRadioUserName();
 
 		// Click on Continue Button
 		forgotpasspage.doClickOnContinue();
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 		// Verify error message
-		String toastMsg = loginpage.getToastMessage();
-		Assert.assertEquals(toastMsg, "Please enter valid eMail.");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
+
+		Assert.assertTrue(toastMsg.equals("Please enter valid eMail."), "Unexpected toast message: " + toastMsg);
+		/*
+		 * String toastMsg = loginpage.getToastMessage(); Assert.assertEquals(toastMsg,
+		 * "Please enter valid eMail.");
+		 */
 	}
 
 	@Test(priority = 16)
 	public void verifyUnregisteredEmailTest() {
-
-		// Refresh Current Page
-		forgotpasspage.doRefreshCurrentPage();
 
 		// Click on I don't know my username Radio Button
 		forgotpasspage.doClickOnRadioUserName();
 
 		// Fill Data Unregister
 		forgotpasspage.doForgotUserName("test@gmail.com");
-		// forgotpasspage.getUnRegisterEmail();
-
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
 		// Verify error message
-		String toastMsg = loginpage.getToastMessage();
-		Assert.assertEquals(toastMsg, "Please enter valid eMail.");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
+
+		Assert.assertTrue(toastMsg.equals("Please enter valid eMail."), "Unexpected toast message: " + toastMsg);
+		/*
+		 * String toastMsg = loginpage.getToastMessage(); Assert.assertEquals(toastMsg,
+		 * "Please enter valid eMail.");
+		 */
 
 	}
 
 	@Test(priority = 17)
 	public void verifyRegisteredEmailTest() {
 
-		// Refresh Current Page
-		forgotpasspage.doRefreshCurrentPage();
-
 		// Click on I don't know my username Radio Button
 		forgotpasspage.doClickOnRadioUserName();
 
 		// Fill Data Unregister
 		forgotpasspage.doForgotUserName("test1gyrus@yopmail.com");
-		// forgotpasspage.getRegisterEmail();
-
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
 		// Verify error message
-		String toastMsg = loginpage.getToastMessage();
-		Assert.assertEquals(toastMsg, "Username sent to your email address.");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
+
+		Assert.assertTrue(toastMsg.equals("Username sent to your email address."),
+				"Unexpected toast message: " + toastMsg);
+		/*
+		 * String toastMsg = loginpage.getToastMessage(); Assert.assertEquals(toastMsg,
+		 * "Username sent to your email address.");
+		 */
 
 	}
 

@@ -109,6 +109,7 @@ public class JavaScriptUtil extends TestBase {
 		String toastMsg = (String) ((JavascriptExecutor) driver)
 		            .executeScript("return document.querySelector('.toast, [role=\"alert\"]').innerText");
 		 */
+		
 		 String toastMsg = (String) ((JavascriptExecutor) driver).executeScript(
 				    "var el = document.querySelector('.toast, [role=\"alert\"]');" +
 				    "return el ? el.innerText : null;"
@@ -116,9 +117,11 @@ public class JavaScriptUtil extends TestBase {
 		 
 		 if (toastMsg == null) {
 			    System.out.println("No toast message found!");
+			   // return (toastMsg != null && !toastMsg.trim().isEmpty()) ? toastMsg : null;
 			} else {
 			    System.out.println("Toast: " + toastMsg);
 			}
+
 		 return toastMsg;
 
 	}
