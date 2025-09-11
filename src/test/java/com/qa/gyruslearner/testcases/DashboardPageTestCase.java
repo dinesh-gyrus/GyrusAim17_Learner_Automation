@@ -11,6 +11,7 @@ import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.qa.gyruslearner.base.TestBase;
@@ -70,14 +71,57 @@ public class DashboardPageTestCase extends TestBase {
 
 		Assert.assertTrue(dashboard.isWelcomeTextDisplayed(), "Welcome Banner text not displayed!");
 		Assert.assertEquals(dashboard.getWelcomeText().trim(), welcomeBannerText, "welcome Banner text mismatch!");
-		
-		 Assert.assertTrue(dashboard.isSliderImageDisplay(), "Slider is not displayed!");
+
+		Assert.assertTrue(dashboard.isSliderImageDisplay(), "Slider is not displayed!");
 
 		List<WebElement> slides = driver.findElements(By.cssSelector("kendo-scrollview .k-scrollview-wrap > div"));
 
 		System.out.println(slides.size());
-		
+
 		Assert.assertTrue(slides.size() > 1, "Slider has less than 2 slides, cannot auto-slide!");
+
+	}
+
+	@Test(priority = 6)
+	public void verifyQuickLinksPopupTest() {
+
+		// Quick Links
+		Assert.assertTrue(dashboard.isQuickLinksDisplayed(), "Quick Links icon is not displayed!");
+		Assert.assertTrue(dashboard.isQuickLinkEnabled(), "Quick Links icon was not enabled");
+		
+		dashboard.doClickOnQuicklinks();
+		
+		Assert.assertTrue(dashboard.isQuicklinkPopUpDisplayed(), "Quick Links popup not displayed!");
+		
+		
+		
+		
+
+	}
+
+	@Ignore
+	@Test(priority = 6)
+	public void verifyHeaderIconsFunctionality() {
+
+		// Quick Links
+		Assert.assertTrue(dashboard.isQuickLinksDisplayed(), "Quick Links icon is not displayed!");
+		Assert.assertTrue(dashboard.isQuickLinkEnabled(), "Quick Links icon was not enabled");
+
+		// Cart
+		Assert.assertTrue(dashboard.isCartIconDisplayed(), "Cart icon is not displayed!");
+		Assert.assertTrue(dashboard.isCartIconEnabled(), "Cart icon was not enabled");
+
+		// calender
+		Assert.assertTrue(dashboard.isCalenderIconDisplayed(), "Calender icon is not displayed!");
+		Assert.assertTrue(dashboard.isCartIconEnabled(), "Calender icon was not enabled");
+
+		// Notification
+		Assert.assertTrue(dashboard.isNotificationIconDisplayed(), "Notification icon is not displayed!");
+		Assert.assertTrue(dashboard.isNotificationIconEnabled(), "Notification icon was not enabled");
+
+		// Profile
+		Assert.assertTrue(dashboard.isProdfileMenuIconDisplayed(), "Profile icon is not displayed!");
+		Assert.assertTrue(dashboard.isProfileMenuIconEnabled(), "Profile icon was not enabled");
 
 	}
 
