@@ -11,11 +11,11 @@ import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Ignore;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
+import com.qa.gyruslearner.pages.CalendarPage;
 import com.qa.gyruslearner.pages.DashboardPage;
 import com.qa.gyruslearner.pages.LoginPage;
 
@@ -23,6 +23,7 @@ public class DashboardPageTestCase extends TestBase {
 
 	LoginPage loginpage;
 	DashboardPage dashboard;
+	CalendarPage calender;
 
 	public DashboardPageTestCase() {
 		super();
@@ -33,12 +34,25 @@ public class DashboardPageTestCase extends TestBase {
 		initialazation();
 		loginpage = new LoginPage();
 		dashboard = new DashboardPage();
+		calender = new CalendarPage();
 	}
+	
+	
+	@BeforeMethod
+	public void pageRefresh() {
+		
+		//driver.navigate().refresh();
+
+		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
+			loginpage.getUserFirstTimeLogin("TTeam", "123");
+		}
+	}
+	
 
 	@Test(priority = 1)
 	public void dashBoardUrlTest() {
-
-		loginpage.getUserFirstTimeLogin("TTeam", "123");
+		
+		//loginpage.getUserFirstTimeLogin("TTeam", "123");
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		try {
@@ -83,51 +97,107 @@ public class DashboardPageTestCase extends TestBase {
 	}
 
 	@Test(priority = 6)
-	public void verifyQuickLinksPopupTest() {
-
-		// Quick Links
-		Assert.assertTrue(dashboard.isQuickLinksDisplayed(), "Quick Links icon is not displayed!");
-		Assert.assertTrue(dashboard.isQuickLinkEnabled(), "Quick Links icon was not enabled");
-		
-		dashboard.doClickOnQuicklinks();
-		
-		Assert.assertTrue(dashboard.isQuicklinkPopUpDisplayed(), "Quick Links popup not displayed!");
-		
-		
-		
-		
-
-	}
-
-	@Ignore
-	@Test(priority = 6)
 	public void verifyHeaderIconsFunctionality() {
 
 		// Quick Links
 		Assert.assertTrue(dashboard.isQuickLinksDisplayed(), "Quick Links icon is not displayed!");
 		Assert.assertTrue(dashboard.isQuickLinkEnabled(), "Quick Links icon was not enabled");
+		dashboard.doClickOnQuicklinks();
+		Assert.assertTrue(dashboard.isQuicklinkPopUpDisplayed(), "Quick Links popup not displayed!");
+		dashboard.doClickQuickCloseIcon();
+
+	}
+
+	@Test(priority = 7)
+	public void verifyCartPopUpTest() {
 
 		// Cart
 		Assert.assertTrue(dashboard.isCartIconDisplayed(), "Cart icon is not displayed!");
 		Assert.assertTrue(dashboard.isCartIconEnabled(), "Cart icon was not enabled");
+		dashboard.doclickOnCarticon();
+		Assert.assertTrue(dashboard.isCartPopUpDisplayed(), "Cart icon popup not displayed!");
+		dashboard.doPressKeyEscape();
+	}
+
+	@Test(priority = 8)
+	public void verifyCalenderDisplayTest() {
 
 		// calender
 		Assert.assertTrue(dashboard.isCalenderIconDisplayed(), "Calender icon is not displayed!");
 		Assert.assertTrue(dashboard.isCartIconEnabled(), "Calender icon was not enabled");
+		
+		/*
+		dashboard.doClickOnCalender();
+		
+		String CalenderUrl = calender.getCalenderPageUrl();
+		Assert.assertEquals(CalenderUrl, AppConstants.CALENDER_PAGE_URL);
+		
+		calender.doClickOnBackToDashboard();
+		*/
+	}
+
+	@Test(priority = 9)
+	public void verifyNotificationPopUpTest() {
 
 		// Notification
 		Assert.assertTrue(dashboard.isNotificationIconDisplayed(), "Notification icon is not displayed!");
 		Assert.assertTrue(dashboard.isNotificationIconEnabled(), "Notification icon was not enabled");
+		dashboard.doclickNotificationIcon();
+		Assert.assertTrue(dashboard.isNotificationPopUpDisplayed(), "Notification popup not displayed!");
+		dashboard.doPressKeyEscape();
+	}
 
+	@Test(priority = 10)
+	public void verifyProfilePopUpTest() {
 		// Profile
 		Assert.assertTrue(dashboard.isProdfileMenuIconDisplayed(), "Profile icon is not displayed!");
 		Assert.assertTrue(dashboard.isProfileMenuIconEnabled(), "Profile icon was not enabled");
-
+		dashboard.doclickProfileIcon();
+		Assert.assertTrue(dashboard.isProfilePopUpDisplayed(), "Profile popup not displayed!");
+		dashboard.doPressKeyEscape();
 	}
+	
+	
+	@Test(priority =11)
+	public void verifyQuickLinksPopupTest() {
 
+		// Quick Links
+		Assert.assertTrue(dashboard.isQuickLinksDisplayed(), "Quick Links icon is not displayed!");
+		Assert.assertTrue(dashboard.isQuickLinkEnabled(), "Quick Links icon was not enabled");
+
+		// Step 2: Verify popup is displayed
+		dashboard.doClickOnQuicklinks();
+		Assert.assertTrue(dashboard.isQuicklinkPopUpDisplayed(), "Quick Links popup not displayed!");
+	
+		// Step 3: Verify items inside popup
+	    Assert.assertTrue(dashboard.isQuickLinkItemCourseCataLogDisplayed(), "Course Catalog link missing!");
+	    Assert.assertTrue(dashboard.isQuickLinkItemIDPDisplayed(), "IDP link missing!");
+	    Assert.assertTrue(dashboard.isQuickLinkItemTrainingTranscriptDisplayed(), "Training Transcript link missing!");
+		
+	    // Step 4: Close popup
+	    dashboard.doClickQuickCloseIcon();
+	    
+	    try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+	    /*
+	    // Step 5: Verify popup closed
+	    Assert.assertFalse(dashboard.isQuicklinkPopUpDisplayed(), "Quick Links popup did not close!");
+	    */
+	}
+	
+
+	
 	@AfterClass
 	public void tearDown() {
-		driver.close();
+		if(driver!=null) {
+			driver.close();
+		}
+		
 	}
 
 }

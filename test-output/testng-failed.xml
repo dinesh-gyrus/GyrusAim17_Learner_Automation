@@ -6,11 +6,9 @@
       <class name="com.qa.gyruslearner.testcases.DashboardPageTestCase">
         <methods>
           <include name="tearDown"/>
+          <include name="verifyQuickLinksPopupTest"/>
           <include name="setUp"/>
-          <include name="dashBoardUrlTest"/>
-          <include name="dashBoardPageTitleTest"/>
-          <include name="VerifyCompanyLogoInDashBoardTest"/>
-          <include name="verifyWelcomeHeadertextTest"/>
+          <include name="pageRefresh"/>
         </methods>
       </class> <!-- com.qa.gyruslearner.testcases.DashboardPageTestCase -->
     </classes>

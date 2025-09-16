@@ -1,10 +1,15 @@
 package com.qa.gyruslearner.pages;
 
+import java.time.Duration;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.util.ElementUtil;
@@ -34,13 +39,35 @@ public class DashboardPage extends TestBase {
 	@FindBy(xpath = "//*[@title='Notification']")
 	WebElement notificationIcon;
 
-	@FindBy(xpath = "//*[@class='user_profile_img']")
+	@FindBy(xpath = "//*[@title='Profile Menu']")
 	WebElement profileIcon;
-	
+
 	@FindBy(xpath = "//*[@class='modal-content quick_links_main_popup']")
 	WebElement quicklinkPopUp;
+
+	@FindBy(xpath = "//*[@class='modal-content top_header_popup_cart_container']")
+	WebElement cartPopUp;
+
+	@FindBy(xpath = "//*[@class='modal-content top_header_popup_notification_container']")
+	WebElement notificationPopUp;
+
+	@FindBy(xpath = "//*[@aria-labelledby='profileMenuButton']")
+	WebElement profilePopup;
+
+	@FindBy(xpath = "//div[@title='Course Catalog']")
+	WebElement quick_links_items_CourseCatalog;
+
+	@FindBy(xpath = "//div[@title='IDP']")
+	WebElement quick_links_items_IDP;
+
+	@FindBy(xpath = "//div[@title='Training Transcript']")
+	WebElement quick_links_items_TrainingTranscript;
+
+	@FindBy(xpath = "(//*[@title='Close'])[1]")
+	WebElement QuickLinksCloseIcon;
 	
-	// WebElement slider = driver.findElement(By.cssSelector("div.k-scrollview"));
+	@FindBy(id = "training-heading")
+	WebElement  InProgressTrainingsCount; 
 
 	public DashboardPage() {
 		PageFactory.initElements(driver, this);
@@ -105,7 +132,7 @@ public class DashboardPage extends TestBase {
 
 		return eleUtil.isElementEnable(cartIcon);
 	}
-	
+
 	public boolean isCalenderIconDisplayed() {
 
 		return eleUtil.isElementDisplayed(calenderIcon);
@@ -135,15 +162,124 @@ public class DashboardPage extends TestBase {
 
 		return eleUtil.isElementEnable(profileIcon);
 	}
-	
-	public void doClickOnQuicklinks() {
+
+	public boolean isQuickLinkItemCourseCataLogDisplayed() {
 		
-		eleUtil.clickElementWhenReady(btnQuickLinks, AppConstants.MEDIUM_TIME_OUT);
+		 return	eleUtil.isElementDisplayed(quick_links_items_CourseCatalog);
 	}
-	
+
+	public boolean  isQuickLinkItemIDPDisplayed() {
+			
+	   return eleUtil.isElementDisplayed(quick_links_items_IDP);
+	}
+
+	public boolean isQuickLinkItemTrainingTranscriptDisplayed() {
+
+		return	eleUtil.isElementDisplayed(quick_links_items_TrainingTranscript);
+	}
+
+	public void doClickOnQuicklinks() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(btnQuickLinks));
+		eleUtil.doClick(btnQuickLinks);
+	}
+
 	public boolean isQuicklinkPopUpDisplayed() {
-		
-	   return eleUtil.isElementDisplayed(quicklinkPopUp);
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+		try {
+			wait.until(ExpectedConditions.visibilityOf(quicklinkPopUp)); 
+			return eleUtil.isElementDisplayed(quicklinkPopUp);
+		} catch (StaleElementReferenceException e) {
+
+			System.out.println("Quick Link Popup went stale.");
+			return false;
+		}
+	}
+
+	public void doClickQuickCloseIcon() {
+
+		eleUtil.doClick(QuickLinksCloseIcon);
+	}
+
+	public void doclickOnCarticon() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(cartIcon));
+		eleUtil.doClick(cartIcon);
+	}
+
+	public boolean isCartPopUpDisplayed() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+		try {
+			wait.until(ExpectedConditions.visibilityOf(cartPopUp)); //
+
+			return eleUtil.isElementDisplayed(cartPopUp);
+		} catch (StaleElementReferenceException e) {
+
+			System.out.println("Cart Popup went stale.");
+			return false;
+		}
+	}
+
+	public void doClickOnCalender() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(calenderIcon));
+		eleUtil.doClick(calenderIcon);
+	}
+
+	public void doclickNotificationIcon() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(notificationIcon));
+		eleUtil.doClick(notificationIcon);
+	}
+
+	public boolean isNotificationPopUpDisplayed() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+		try {
+			wait.until(ExpectedConditions.visibilityOf(notificationPopUp)); //
+
+			return eleUtil.isElementDisplayed(notificationPopUp);
+		} catch (StaleElementReferenceException e) {
+
+			System.out.println("Notification Popup went stale.");
+			return false;
+		}
+	}
+
+	public void doclickProfileIcon() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(profileIcon));
+		eleUtil.doClick(profileIcon);
+	}
+
+	public boolean isProfilePopUpDisplayed() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+		try {
+			wait.until(ExpectedConditions.visibilityOf(profilePopup)); //
+
+			return eleUtil.isElementDisplayed(profilePopup);
+		} catch (StaleElementReferenceException e) {
+
+			System.out.println("profile Popup went stale.");
+			return false;
+		}
+	}
+
+	public void doPressKeyEscape() {
+
+		Actions action = new Actions(driver);
+		action.sendKeys(Keys.ESCAPE).perform();
 	}
 
 }

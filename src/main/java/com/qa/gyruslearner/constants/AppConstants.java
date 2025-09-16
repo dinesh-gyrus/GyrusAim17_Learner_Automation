@@ -21,6 +21,7 @@ public class AppConstants {
 	public final static String CHANGEPASSWORD_PAGE_URL ="https://vspqa.gyrusaim.net/Auth/MustChangePassword";
 	public final static String FORGOTPASSWORD_PAGE_URL ="https://vspqa.gyrusaim.net/Auth/ForgotPassword";
 	public final static String SIGNUP_PAGE_URL ="https://vspqa.gyrusaim.net/Registration/UserSelfRegistration";
+	public final static String CALENDER_PAGE_URL="https://vspqa.gyrusaim.net/v2/classcalendar";
 	
 
 	
