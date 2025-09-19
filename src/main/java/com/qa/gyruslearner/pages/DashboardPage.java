@@ -66,8 +66,24 @@ public class DashboardPage extends TestBase {
 	@FindBy(xpath = "(//*[@title='Close'])[1]")
 	WebElement QuickLinksCloseIcon;
 	
-	@FindBy(id = "training-heading")
-	WebElement  InProgressTrainingsCount; 
+	@FindBy(xpath ="(//*[@class='LS-card-content'])[1]")
+	private WebElement  inProgressTrainingsCount; 
+	
+	@FindBy(xpath ="(//*[@class='LS-card-content'])[2]")
+	private WebElement   completedTrainingsCount;
+	
+	@FindBy(xpath ="(//*[@class='LS-card-content'])[3]")
+	private WebElement   earnedBadgesCount;
+	
+	@FindBy(xpath ="//*[@aria-label='View statistics for this year']")
+	WebElement lnkThisYear;
+	
+	@FindBy(xpath ="//*[@aria-label='View statistics for this month']")
+	WebElement lnkThisMonth;
+	
+	@FindBy(xpath ="//*[@aria-label='View statistics for this week']")
+	WebElement lnkThisWeek;
+	
 
 	public DashboardPage() {
 		PageFactory.initElements(driver, this);
@@ -281,5 +297,48 @@ public class DashboardPage extends TestBase {
 		Actions action = new Actions(driver);
 		action.sendKeys(Keys.ESCAPE).perform();
 	}
+	
+	
+	public int getInProgressTrainingsCount() {
+		
+	    String text = inProgressTrainingsCount.getText().trim(); // "0\nIn Progress Trainings"
+	    String numberOnly = text.split("\n")[0].trim();          //  "0"
+	    return Integer.parseInt(numberOnly);
+	}
+	
+	public int getCompletedTrainingsCount() {
+		
+	    String text = completedTrainingsCount.getText().trim(); 
+	    String numberOnly = text.split("\n")[0].trim();          
+	    return Integer.parseInt(numberOnly);
+	}
 
+	public int getEarnedBadgesCount() {
+		
+	    String text = earnedBadgesCount.getText().trim(); 
+	    String numberOnly = text.split("\n")[0].trim();          
+	    return Integer.parseInt(numberOnly);
+	}
+	
+	public void doclickOnThisYear() {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(lnkThisYear));
+		eleUtil.doClick(lnkThisYear);
+	}
+	
+	public void doclickOnThisMonth() {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(lnkThisMonth));
+		eleUtil.doClick(lnkThisMonth);
+	}
+	
+	public void doclickOnThisWeek() {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(lnkThisWeek));
+		eleUtil.doClick(lnkThisWeek);
+	}
+	
 }

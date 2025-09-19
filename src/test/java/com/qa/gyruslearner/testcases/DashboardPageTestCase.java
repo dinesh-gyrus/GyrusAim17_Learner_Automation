@@ -177,12 +177,6 @@ public class DashboardPageTestCase extends TestBase {
 	    // Step 4: Close popup
 	    dashboard.doClickQuickCloseIcon();
 	    
-	    try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	    
 	    /*
 	    // Step 5: Verify popup closed
@@ -190,7 +184,35 @@ public class DashboardPageTestCase extends TestBase {
 	    */
 	}
 	
-
+	@Test(priority = 12)
+	public void verifyStatisticsDisplayed() {
+		
+		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
+		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "In Progress Trainings not displayed!");
+		
+		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
+		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "Completed Trainings not displayed!");
+		
+		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
+		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "Earned Badges not displayed!");
+	}
+	
+	@Test(priority = 13)
+	public void verifyStatisticsWithFilters() {
+		
+		dashboard.doclickOnThisYear();
+		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "This Year filter not working for InProgress Trainings !");
+		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "This Year filter not working for InProgress Trainings Completed Trainings!");
+		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Year filter not working for Earned Badges!");
+		
+		/*
+		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
+		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "Completed Trainings not displayed!");
+		
+		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
+		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "Earned Badges not displayed!");
+		*/
+	}
 	
 	@AfterClass
 	public void tearDown() {
