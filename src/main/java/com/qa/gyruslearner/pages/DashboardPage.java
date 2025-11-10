@@ -1,6 +1,8 @@
 package com.qa.gyruslearner.pages;
 
 import java.time.Duration;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -27,7 +29,7 @@ public class DashboardPage extends TestBase {
 	@FindBy(css = "div.k-scrollview")
 	WebElement SliderBanner;
 
-	@FindBy(xpath = "//*[@title='Quick Links ']")
+	@FindBy(xpath = "//*[@title='Quick Links  ']")
 	WebElement btnQuickLinks;
 
 	@FindBy(xpath = "(//*[@title='Cart'])[1]")
@@ -66,13 +68,17 @@ public class DashboardPage extends TestBase {
 	@FindBy(xpath = "(//*[@title='Close'])[1]")
 	WebElement QuickLinksCloseIcon;
 	
+	@FindBy(xpath ="(//*[@class='heading'])[1]")
+	private WebElement  inProgressTrainingsCount;
+	
+	/*
 	@FindBy(xpath ="(//*[@class='LS-card-content'])[1]")
 	private WebElement  inProgressTrainingsCount; 
-	
-	@FindBy(xpath ="(//*[@class='LS-card-content'])[2]")
+	*/
+	@FindBy(xpath ="(//*[@class='heading'])[2]")
 	private WebElement   completedTrainingsCount;
 	
-	@FindBy(xpath ="(//*[@class='LS-card-content'])[3]")
+	@FindBy(xpath ="(//*[@class='heading'])[3]")
 	private WebElement   earnedBadgesCount;
 	
 	@FindBy(xpath ="//*[@aria-label='View statistics for this year']")
@@ -84,7 +90,30 @@ public class DashboardPage extends TestBase {
 	@FindBy(xpath ="//*[@aria-label='View statistics for this week']")
 	WebElement lnkThisWeek;
 	
+	@FindBy(xpath ="//*[@aria-label='Learning Status In Progress']")
+	WebElement lnkLearningStatusInProgress;
+	
+	@FindBy(xpath ="//*[@aria-label='Learning Status Not Started']")
+	WebElement lnkLearningStatusNotStarted;
+	
+	@FindBy(xpath="//*[@aria-label='View all Schedule data']")
+	WebElement lnkViewAllScheduleData;
+	
+	@FindBy(xpath = "//*[@class='calendar-month m-0']")
+	WebElement txtTodayScheduleDate;
+	
+	@FindBy(id = "curDate")
+	WebElement mySchedulesDatePicker;
+	
+	
+	//@FindBy(xpath = "(//gyrusaim-cardview)[1]")
+	//List<WebElement> learningCards;
+	
+	
+	
+	
 
+	
 	public DashboardPage() {
 		PageFactory.initElements(driver, this);
 		eleUtil = new ElementUtil();
@@ -301,13 +330,18 @@ public class DashboardPage extends TestBase {
 	
 	public int getInProgressTrainingsCount() {
 		
-	    String text = inProgressTrainingsCount.getText().trim(); // "0\nIn Progress Trainings"
-	    String numberOnly = text.split("\n")[0].trim();          //  "0"
-	    return Integer.parseInt(numberOnly);
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+			wait.until(ExpectedConditions.visibilityOf(inProgressTrainingsCount)); 
+			String text = inProgressTrainingsCount.getText().trim(); // "0\nIn Progress Trainings"
+		    String numberOnly = text.split("\n")[0].trim();          //  "0"
+		    return Integer.parseInt(numberOnly);
 	}
 	
 	public int getCompletedTrainingsCount() {
 		
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.visibilityOf(completedTrainingsCount)); 
 	    String text = completedTrainingsCount.getText().trim(); 
 	    String numberOnly = text.split("\n")[0].trim();          
 	    return Integer.parseInt(numberOnly);
@@ -315,6 +349,8 @@ public class DashboardPage extends TestBase {
 
 	public int getEarnedBadgesCount() {
 		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.visibilityOf(earnedBadgesCount)); 
 	    String text = earnedBadgesCount.getText().trim(); 
 	    String numberOnly = text.split("\n")[0].trim();          
 	    return Integer.parseInt(numberOnly);
@@ -339,6 +375,13 @@ public class DashboardPage extends TestBase {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		wait.until(ExpectedConditions.elementToBeClickable(lnkThisWeek));
 		eleUtil.doClick(lnkThisWeek);
+	}
+	
+	public int learningStatusGetCardCount() {
+		
+		List<WebElement> cards = driver.findElements(By.xpath("//gyrusaim-cardview"));
+		//System.out.println("Total cards found: " + cards.size());
+		return cards.size();
 	}
 	
 }

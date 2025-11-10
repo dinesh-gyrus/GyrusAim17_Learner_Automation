@@ -201,17 +201,33 @@ public class DashboardPageTestCase extends TestBase {
 	public void verifyStatisticsWithFilters() {
 		
 		dashboard.doclickOnThisYear();
+		System.out.println("------------------Display Year Wise My Statistics Data-----------------------------");
+		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
 		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "This Year filter not working for InProgress Trainings !");
+		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
 		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "This Year filter not working for InProgress Trainings Completed Trainings!");
+		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
 		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Year filter not working for Earned Badges!");
 		
-		/*
+		dashboard.doclickOnThisMonth();
+		System.out.println("------------------Display Month Wise My Statistics Data-----------------------------");
+		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
+		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "This Month filter not working for InProgress Trainings !");
 		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
-		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "Completed Trainings not displayed!");
-		
+		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "This Month filter not working for InProgress Trainings Completed Trainings!");
 		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
-		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "Earned Badges not displayed!");
-		*/
+		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Month filter not working for Earned Badges!");
+		
+		dashboard.doclickOnThisWeek();
+		System.out.println("------------------Display Week Wise My Statistics Data-----------------------------");
+		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
+		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "This Week filter not working for InProgress Trainings !");
+		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
+		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "This Week filter not working for InProgress Trainings Completed Trainings!");
+		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
+		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Week filter not working for Earned Badges!");
+		
+		
 	}
 	
 	@AfterClass
