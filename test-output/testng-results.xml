@@ -1,117 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="12" passed="12" failed="0" skipped="0">
+<testng-results ignored="0" total="11" passed="9" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-09-17T11:42:13 IST" name="Default suite" finished-at="2025-09-17T11:42:52 IST" duration-ms="39155">
+  <suite started-at="2025-10-30T12:09:45 IST" name="Default suite" finished-at="2025-10-30T12:11:12 IST" duration-ms="86583">
     <groups>
     </groups>
-    <test started-at="2025-09-17T11:42:13 IST" name="Default test" finished-at="2025-09-17T11:42:52 IST" duration-ms="39155">
-      <class name="com.qa.gyruslearner.testcases.DashboardPageTestCase">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:13 IST" name="setUp" finished-at="2025-09-17T11:42:19 IST" duration-ms="6793" status="PASS">
+    <test started-at="2025-10-30T12:09:45 IST" name="Default test" finished-at="2025-10-30T12:11:12 IST" duration-ms="86583">
+      <class name="com.qa.gyruslearner.testcases.SignUpPageTestCase">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:09:45 IST" name="setUp" finished-at="2025-10-30T12:09:51 IST" duration-ms="6068" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:19 IST" name="pageRefresh" finished-at="2025-09-17T11:42:20 IST" duration-ms="282" status="PASS">
+        <test-method signature="verifySignUpUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:09:51 IST" name="verifySignUpUrlTest" finished-at="2025-10-30T12:09:54 IST" duration-ms="2696" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="dashBoardUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:20 IST" name="dashBoardUrlTest" finished-at="2025-09-17T11:42:26 IST" duration-ms="5747" status="PASS">
+        </test-method> <!-- verifySignUpUrlTest -->
+        <test-method signature="verifySignUpPageTitle()[pri:2, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:09:54 IST" name="verifySignUpPageTitle" finished-at="2025-10-30T12:09:54 IST" duration-ms="39" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- dashBoardUrlTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:26 IST" name="pageRefresh" finished-at="2025-09-17T11:42:26 IST" duration-ms="10" status="PASS">
+        </test-method> <!-- verifySignUpPageTitle -->
+        <test-method signature="verifyCompnayLogoAndHeadingTextTest()[pri:3, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:09:54 IST" name="verifyCompnayLogoAndHeadingTextTest" finished-at="2025-10-30T12:09:54 IST" duration-ms="64" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="dashBoardPageTitleTest()[pri:2, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:26 IST" name="dashBoardPageTitleTest" finished-at="2025-09-17T11:42:28 IST" duration-ms="2647" status="PASS">
+        </test-method> <!-- verifyCompnayLogoAndHeadingTextTest -->
+        <test-method signature="verifyMandatoryFieldsDisplayedTest()[pri:4, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:09:54 IST" name="verifyMandatoryFieldsDisplayedTest" finished-at="2025-10-30T12:09:54 IST" duration-ms="269" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- dashBoardPageTitleTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:28 IST" name="pageRefresh" finished-at="2025-09-17T11:42:28 IST" duration-ms="21" status="PASS">
+        </test-method> <!-- verifyMandatoryFieldsDisplayedTest -->
+        <test-method signature="verifyCaptchaDisplayedTest()[pri:5, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:09:54 IST" name="verifyCaptchaDisplayedTest" finished-at="2025-10-30T12:09:54 IST" duration-ms="139" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="VerifyCompanyLogoInDashBoardTest()[pri:3, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:28 IST" name="VerifyCompanyLogoInDashBoardTest" finished-at="2025-09-17T11:42:28 IST" duration-ms="42" status="PASS">
+        </test-method> <!-- verifyCaptchaDisplayedTest -->
+        <test-method signature="verifyRegisterButtonEnableTest()[pri:6, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:09:54 IST" name="verifyRegisterButtonEnableTest" finished-at="2025-10-30T12:10:06 IST" duration-ms="12074" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- VerifyCompanyLogoInDashBoardTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:28 IST" name="pageRefresh" finished-at="2025-09-17T11:42:28 IST" duration-ms="11" status="PASS">
+        </test-method> <!-- verifyRegisterButtonEnableTest -->
+        <test-method signature="verifyBackToLoginButtonTest()[pri:7, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:10:06 IST" name="verifyBackToLoginButtonTest" finished-at="2025-10-30T12:10:08 IST" duration-ms="1203" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyWelcomeHeadertextTest()[pri:4, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:28 IST" name="verifyWelcomeHeadertextTest" finished-at="2025-09-17T11:42:33 IST" duration-ms="5060" status="PASS">
+        </test-method> <!-- verifyBackToLoginButtonTest -->
+        <test-method signature="verifyValidationErrorOnEmptyRegisterTest()[pri:8, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:10:08 IST" name="verifyValidationErrorOnEmptyRegisterTest" finished-at="2025-10-30T12:10:10 IST" duration-ms="2527" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyWelcomeHeadertextTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:33 IST" name="pageRefresh" finished-at="2025-09-17T11:42:33 IST" duration-ms="5" status="PASS">
+        </test-method> <!-- verifyValidationErrorOnEmptyRegisterTest -->
+        <test-method signature="verifyInvalidEmailFormatTest()[pri:9, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:10:10 IST" name="verifyInvalidEmailFormatTest" finished-at="2025-10-30T12:10:13 IST" duration-ms="2812" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyHeaderIconsFunctionality()[pri:6, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:33 IST" name="verifyHeaderIconsFunctionality" finished-at="2025-09-17T11:42:34 IST" duration-ms="846" status="PASS">
+        </test-method> <!-- verifyInvalidEmailFormatTest -->
+        <test-method signature="verifyAlreadyRegisteredEmailTest()[pri:10, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:10:13 IST" name="verifyAlreadyRegisteredEmailTest" finished-at="2025-10-30T12:10:54 IST" duration-ms="41354" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Toast message mismatch! expected [System cannot have duplicate eMail address.] but found [Please Enter Captcha.]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Toast message mismatch! expected [System cannot have duplicate eMail address.] but found [Please Enter Captcha.]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at com.qa.gyruslearner.testcases.SignUpPageTestCase.verifyAlreadyRegisteredEmailTest(SignUpPageTestCase.java:195)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyHeaderIconsFunctionality -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:34 IST" name="pageRefresh" finished-at="2025-09-17T11:42:34 IST" duration-ms="9" status="PASS">
+        </test-method> <!-- verifyAlreadyRegisteredEmailTest -->
+        <test-method signature="verifySuccessfulRegistrationWithValidDataTest()[pri:11, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:10:54 IST" name="verifySuccessfulRegistrationWithValidDataTest" finished-at="2025-10-30T12:11:11 IST" duration-ms="16885" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Toast message mismatch! expected [Registration complete, approval required for system access.] but found [Change E-mail, duplicate found.]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Toast message mismatch! expected [Registration complete, approval required for system access.] but found [Change E-mail, duplicate found.]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+at org.testng.Assert.assertEquals(Assert.java:132)
+at org.testng.Assert.assertEquals(Assert.java:656)
+at com.qa.gyruslearner.testcases.SignUpPageTestCase.verifySuccessfulRegistrationWithValidDataTest(SignUpPageTestCase.java:225)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyCartPopUpTest()[pri:7, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:34 IST" name="verifyCartPopUpTest" finished-at="2025-09-17T11:42:35 IST" duration-ms="993" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCartPopUpTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:35 IST" name="pageRefresh" finished-at="2025-09-17T11:42:35 IST" duration-ms="11" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyCalenderDisplayTest()[pri:8, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:35 IST" name="verifyCalenderDisplayTest" finished-at="2025-09-17T11:42:35 IST" duration-ms="61" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCalenderDisplayTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:35 IST" name="pageRefresh" finished-at="2025-09-17T11:42:35 IST" duration-ms="11" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyNotificationPopUpTest()[pri:9, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:35 IST" name="verifyNotificationPopUpTest" finished-at="2025-09-17T11:42:36 IST" duration-ms="926" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyNotificationPopUpTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:36 IST" name="pageRefresh" finished-at="2025-09-17T11:42:36 IST" duration-ms="20" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyProfilePopUpTest()[pri:10, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:36 IST" name="verifyProfilePopUpTest" finished-at="2025-09-17T11:42:37 IST" duration-ms="495" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyProfilePopUpTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:37 IST" name="pageRefresh" finished-at="2025-09-17T11:42:37 IST" duration-ms="13" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyQuickLinksPopupTest()[pri:11, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:37 IST" name="verifyQuickLinksPopupTest" finished-at="2025-09-17T11:42:38 IST" duration-ms="890" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyQuickLinksPopupTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:38 IST" name="pageRefresh" finished-at="2025-09-17T11:42:38 IST" duration-ms="10" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyStatisticsDisplayed()[pri:12, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:38 IST" name="verifyStatisticsDisplayed" finished-at="2025-09-17T11:42:45 IST" duration-ms="7634" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyStatisticsDisplayed -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:45 IST" name="pageRefresh" finished-at="2025-09-17T11:42:45 IST" duration-ms="6" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyStatisticsWithFilters()[pri:13, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:45 IST" name="verifyStatisticsWithFilters" finished-at="2025-09-17T11:42:52 IST" duration-ms="6292" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyStatisticsWithFilters -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@73a1e9a9]" started-at="2025-09-17T11:42:52 IST" name="tearDown" finished-at="2025-09-17T11:42:52 IST" duration-ms="226" status="PASS">
+        </test-method> <!-- verifySuccessfulRegistrationWithValidDataTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.SignUpPageTestCase@5656be13]" started-at="2025-10-30T12:11:11 IST" name="tearDown" finished-at="2025-10-30T12:11:12 IST" duration-ms="352" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.gyruslearner.testcases.DashboardPageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.SignUpPageTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

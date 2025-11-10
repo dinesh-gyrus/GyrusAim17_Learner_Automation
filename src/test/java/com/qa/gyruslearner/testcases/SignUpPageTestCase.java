@@ -51,7 +51,7 @@ public class SignUpPageTestCase extends TestBase {
 	@Test(priority = 3)
 	public void verifyCompnayLogoAndHeadingTextTest() {
 
-		Assert.assertTrue(signuppage.isComoanyLogoDisplayed(), "Company Logo is not displayed!");
+		Assert.assertTrue(signuppage.iscompanyLogoDisplayed(), "Company Logo is not displayed!");
 		Assert.assertTrue(signuppage.isRegisterTextDisplayed(), "Register text is not displayed!");
 	}
 
@@ -61,6 +61,10 @@ public class SignUpPageTestCase extends TestBase {
 		Assert.assertTrue(signuppage.isFirstNameDisplayed(), "First Name field is not displayed!");
 		Assert.assertTrue(signuppage.isLastNameDisplayed(), "Last Name field is not displayed!");
 		Assert.assertTrue(signuppage.isEMailDisplayed(), "Email field is not displayed!");
+		Assert.assertTrue(signuppage.isPhoneDisplayed(), "PhoneNumber field is not displayed!");
+		Assert.assertTrue(signuppage.isCompanyDisplayed(), "CompanyName field is not displayed!");
+		Assert.assertTrue(signuppage.isRoleWithinCompanyDisplayed(), "RoleWithinCompany field is not displayed!");
+		
 	}
 
 	@Test(priority = 5)
@@ -85,7 +89,7 @@ public class SignUpPageTestCase extends TestBase {
 		Assert.assertFalse(signuppage.isRegisterButtonEnable(),
 				"Register button should be disabled before filling fields!");
 
-		signuppage.fillMandatoryFields("test6", "team6", "test6gyrus@yopmail.com");
+		signuppage.fillMandatoryFields("test6", "team6", "test6gyrus@yopmail.com","9033329316","Gyrus System","Student");
 
 		// Handle Recaptcha
 		signuppage.getHandleRecaptchaCheckBox();
@@ -126,7 +130,7 @@ public class SignUpPageTestCase extends TestBase {
 		loginpage.doclickOnSignUpLinkButton();
 
 		// Do not enter anything in First Name, Last Name, Email fields.
-		signuppage.fillMandatoryFields("", "", "");
+		signuppage.fillMandatoryFields("", "", "","","","");
 		// Handle Re-captcha
 		signuppage.getHandleRecaptchaCheckBox();
 
@@ -155,7 +159,7 @@ public class SignUpPageTestCase extends TestBase {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		driver.navigate().refresh();
-		signuppage.fillMandatoryFields("test1", "team1", "testuser@invalid");
+		signuppage.fillMandatoryFields("test1", "team1", "testuser@invalid","9033329316","gyrus system","Student");
 		// (e.g., "testuser@invalid", "testuser.com", "@gmail.com")
 
 		wait.until(driver -> signuppage.isEmailErrorMsgDisplayed());
@@ -173,7 +177,7 @@ public class SignUpPageTestCase extends TestBase {
 			loginpage.doclickOnSignUpLinkButton();
 		}
 
-		signuppage.fillMandatoryFields("test5", "test5", "test5gyrus@yopmail.com");
+		signuppage.fillMandatoryFields("test5", "test5", "test5gyrus@yopmail.com","9033329316","gyrus system","Student");
 
 		// Handle Re-captcha
 		signuppage.getHandleRecaptchaCheckBox();
@@ -202,7 +206,7 @@ public class SignUpPageTestCase extends TestBase {
 			loginpage.doclickOnSignUpLinkButton();
 		}
 
-		signuppage.fillMandatoryFields("test6", "test6", "test6gyrus@yopmail.com");
+		signuppage.fillMandatoryFields("test6", "test6", "test6gyrus@yopmail.com","9033329316","gyrus System","student");
 
 		// Handle Re-captcha
 		signuppage.getHandleRecaptchaCheckBox();

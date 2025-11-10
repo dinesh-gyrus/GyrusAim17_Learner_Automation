@@ -47,6 +47,19 @@ public class SignUpPage extends TestBase {
 
 	@FindBy(xpath = "//label[contains(@ng-show,'txteMail')]")
 	WebElement emailErrorMsg;
+	
+	@FindBy(id = "txtPhone")
+	WebElement txtphoneNumber;
+	
+	@FindBy(id = "txtCompany")
+	WebElement txtcompanyName;
+	
+	@FindBy(id = "txtRoleWithinCompany")
+	WebElement txtRoleWithinCompany;
+	
+	
+	
+	
 
 	public SignUpPage() {
 
@@ -68,7 +81,7 @@ public class SignUpPage extends TestBase {
 		return SignUpPageTitle;
 	}
 
-	public boolean isComoanyLogoDisplayed() {
+	public boolean iscompanyLogoDisplayed() {
 
 		return eleUtil.isElementDisplayed(inSignupcompnayLogo);
 	}
@@ -91,6 +104,21 @@ public class SignUpPage extends TestBase {
 	public boolean isEMailDisplayed() {
 
 		return eleUtil.isElementDisplayed(txteMail);
+	}
+	
+	public boolean isPhoneDisplayed() {
+
+		return eleUtil.isElementDisplayed(txtphoneNumber);
+	}
+	
+	public boolean isCompanyDisplayed() {
+
+		return eleUtil.isElementDisplayed(txtcompanyName);
+	}
+	
+	public boolean isRoleWithinCompanyDisplayed() {
+
+		return eleUtil.isElementDisplayed(txtRoleWithinCompany);
 	}
 
 	public boolean isCaptchaDisplayed() {
@@ -147,11 +175,14 @@ public class SignUpPage extends TestBase {
 		eleUtil.clickElementWhenReady(btnRegister,1);
 	}
 
-	public void fillMandatoryFields(String firstName, String lastName, String Email) {
+	public void fillMandatoryFields(String firstName, String lastName, String Email,String PhoneNumber,String company,String RoleWithinCompany) {
 
 		eleUtil.doSendKeys(txtFirstName, firstName);
 		eleUtil.doSendKeys(txtLastName, lastName);
 		eleUtil.doSendKeys(txteMail, Email);
+		eleUtil.doSendKeys(txtphoneNumber, PhoneNumber);
+		eleUtil.doSendKeys(txtcompanyName, company);
+		eleUtil.doSendKeys(txtRoleWithinCompany, RoleWithinCompany);
 	}
 
 	public void getHandleRecaptchaCheckBox() {
