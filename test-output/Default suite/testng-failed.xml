@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.gyruslearner.testcases.DashboardPageTestCase">
+      <class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase">
         <methods>
+          <include name="pageRefresh"/>
+          <include name="myProfileUrlTest"/>
           <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="dashBoardPageTitleTest"/>
-          <include name="pageRefresh"/>
         </methods>
-      </class> <!-- com.qa.gyruslearner.testcases.DashboardPageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.MyProfilePageTestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -128,7 +128,7 @@ public class DashboardPage extends TestBase {
 
 		String DashBoardTitle = eleUtil.waitForTitleIs(AppConstants.DASHBOARD_PAGE_TITLE,
 				AppConstants.DEFAULT_TIME_OUT);
-		System.out.println("Login page title==>" + DashBoardTitle);
+		System.out.println("DashBoard page title==>" + DashBoardTitle);
 		return DashBoardTitle;
 
 	}
