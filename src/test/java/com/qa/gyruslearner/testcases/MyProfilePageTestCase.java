@@ -107,7 +107,6 @@ public class MyProfilePageTestCase extends TestBase {
 		myprofile.doclickOnBackToDashBoardLinkButton();
 		
 		Assert.assertEquals(dashboard.getDashBoardPageUrl(), AppConstants.DASHBOARD_PAGE_URL,"Dashboard page URL mismatch after clicking Back to Dashboard");
-		
 		myprofile.doClickProfileIcon();
 		myprofile.doClickProfilePage();
 		
