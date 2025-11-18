@@ -71,6 +71,50 @@ public class MyProfilePageTestCase extends TestBase {
 		}
 	}
 	
+	@Test(priority = 2)
+	public void myprofileTitleTest() {
+
+		String myProfilePagetitle = myprofile.getMyProfileTitle();
+		Assert.assertEquals(myProfilePagetitle, AppConstants.MYPROFILE_PAGE_TITLE);
+	}
+	
+	@Test(priority = 3)
+	public void verifyUserProfileDetails() {
+		
+		Assert.assertTrue(myprofile.isLearnerNameDisplayed(),"Learner name not visible");
+		Assert.assertTrue(myprofile.isJobCodeDisplayed(),"Job code not visible");
+		Assert.assertTrue(myprofile.isOrganizationNameDisplayed(),"OrganizationName not visible");
+		Assert.assertTrue(myprofile.isEmailIdDisplayed(),"Email not visible");
+		Assert.assertTrue(myprofile.isAddressDisplayed(),"Adsress not visible");
+		Assert.assertTrue(myprofile.isPhoneDisplayed(),"Phone number not visible");
+	}
+	
+	@Test(priority = 4)
+	public void verifyProfileImage() {
+		
+		Assert.assertTrue(myprofile.isProfileImageDisplayed(), "Profile picture not displayed");
+	}
+	
+	@Test(priority = 5)
+	public void verifyQRCodeDisplayed() {
+		
+		Assert.assertTrue(myprofile.isProfileQRDisplayed(), "QR Code not displayed");
+	}
+	@Test(priority = 6)
+	public void verifyBackToDashboardLink() {
+			
+		Assert.assertTrue(myprofile.isProfileQRDisplayed(), "Back to Dashboard link is not displayed on the Profile page");
+		myprofile.doclickOnBackToDashBoardLinkButton();
+		
+		Assert.assertEquals(dashboard.getDashBoardPageUrl(), AppConstants.DASHBOARD_PAGE_URL,"Dashboard page URL mismatch after clicking Back to Dashboard");
+		
+		myprofile.doClickProfileIcon();
+		myprofile.doClickProfilePage();
+		
+	}
+	
+	
+	
 	@AfterClass
 	public void tearDown() {
 		if(driver!=null) {
