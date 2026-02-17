@@ -17,13 +17,13 @@ public class AppConstants {
 	public final static String SIGNUP_PAGE_TITLE ="User Registration";
 	public final static String MYPROFILE_PAGE_TITLE ="My Profile";
 	
-	public final static String LOGIN_PAGE_URL = "https://vspqa.gyrusaim.net/auth/login";
-	public final static String DASHBOARD_PAGE_URL="https://vspqa.gyrusaim.net/v2/dashboard";
-	public final static String CHANGEPASSWORD_PAGE_URL ="https://vspqa.gyrusaim.net/Auth/MustChangePassword";
-	public final static String FORGOTPASSWORD_PAGE_URL ="https://vspqa.gyrusaim.net/Auth/ForgotPassword";
-	public final static String SIGNUP_PAGE_URL ="https://vspqa.gyrusaim.net/Registration/UserSelfRegistration";
-	public final static String CALENDER_PAGE_URL="https://vspqa.gyrusaim.net/v2/classcalendar";
-	public final static String MYPROFILE_PAGE_URL="https://vspqa.gyrusaim.net/v2/profile";
+	public final static String LOGIN_PAGE_URL = "https://nverma.gyrusaim.net/auth/login";
+	public final static String DASHBOARD_PAGE_URL="https://nverma.gyrusaim.net/v2/dashboard";
+	public final static String CHANGEPASSWORD_PAGE_URL ="https://nverma.gyrusaim.net/Auth/MustChangePassword";
+	public final static String FORGOTPASSWORD_PAGE_URL ="https://nverma.gyrusaim.net/Auth/ForgotPassword";
+	public final static String SIGNUP_PAGE_URL ="https://nverma.gyrusaim.net/Registration/UserSelfRegistration";
+	public final static String CALENDER_PAGE_URL="https://nverma.gyrusaim.net/v2/classcalendar";
+	public final static String MYPROFILE_PAGE_URL="https://nverma.gyrusaim.net/v2/profile";
 	
 
 	

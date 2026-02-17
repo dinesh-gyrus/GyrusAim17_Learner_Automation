@@ -37,7 +37,7 @@ public class ChangePasswordPageTestCase extends TestBase {
 	public void changePasswordUrlTest() {
 
 		// Login with First Time User
-		loginpage.getUserFirstTimeLogin("TTeam4", "123456");
+		loginpage.getUserFirstTimeLogin("TTeam4", "123");
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
 		

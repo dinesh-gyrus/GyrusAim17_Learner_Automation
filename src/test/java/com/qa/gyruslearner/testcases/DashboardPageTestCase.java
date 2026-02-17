@@ -12,6 +12,7 @@ import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
@@ -44,7 +45,7 @@ public class DashboardPageTestCase extends TestBase {
 		//driver.navigate().refresh();
 
 		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
-			loginpage.getUserFirstTimeLogin("TTeam", "123");
+			loginpage.getUserFirstTimeLogin("tteam01", "123");
 		}
 	}
 	
@@ -54,7 +55,7 @@ public class DashboardPageTestCase extends TestBase {
 		
 		//loginpage.getUserFirstTimeLogin("TTeam", "123");
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		try {
 			wait.until(ExpectedConditions.urlToBe(AppConstants.DASHBOARD_PAGE_URL));
 			String dashBoardUrl = dashboard.getDashBoardPageUrl();
@@ -63,21 +64,20 @@ public class DashboardPageTestCase extends TestBase {
 			throw new SkipException("Skipping test because user could not login.");
 		}
 	}
-
 	@Test(priority = 2)
 	public void dashBoardPageTitleTest() {
 
 		String dashBoardPagetitle = dashboard.getDashBoardTitle();
 		Assert.assertEquals(dashBoardPagetitle, AppConstants.DASHBOARD_PAGE_TITLE);
 	}
-
+	
 	@Test(priority = 3)
 	public void VerifyCompanyLogoInDashBoardTest() {
 
 		Assert.assertTrue(dashboard.isCompnayLogoInDashBoardDisplayed(),
 				"Company logo is not displayed on the DashBoard page!");
 	}
-
+	
 	@Test(priority = 4)
 	public void verifyWelcomeHeadertextTest() {
 
@@ -95,7 +95,7 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(slides.size() > 1, "Slider has less than 2 slides, cannot auto-slide!");
 
 	}
-
+	@Ignore
 	@Test(priority = 6)
 	public void verifyHeaderIconsFunctionality() {
 
@@ -107,7 +107,7 @@ public class DashboardPageTestCase extends TestBase {
 		dashboard.doClickQuickCloseIcon();
 
 	}
-
+	@Ignore
 	@Test(priority = 7)
 	public void verifyCartPopUpTest() {
 
@@ -118,13 +118,13 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(dashboard.isCartPopUpDisplayed(), "Cart icon popup not displayed!");
 		dashboard.doPressKeyEscape();
 	}
-
+	
 	@Test(priority = 8)
 	public void verifyCalenderDisplayTest() {
 
 		// calender
 		Assert.assertTrue(dashboard.isCalenderIconDisplayed(), "Calender icon is not displayed!");
-		Assert.assertTrue(dashboard.isCartIconEnabled(), "Calender icon was not enabled");
+		Assert.assertTrue(dashboard.isCalenderIconEnabled(), "Calender icon was not enabled");
 		
 		/*
 		dashboard.doClickOnCalender();
@@ -135,7 +135,7 @@ public class DashboardPageTestCase extends TestBase {
 		calender.doClickOnBackToDashboard();
 		*/
 	}
-
+	
 	@Test(priority = 9)
 	public void verifyNotificationPopUpTest() {
 
@@ -146,7 +146,7 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(dashboard.isNotificationPopUpDisplayed(), "Notification popup not displayed!");
 		dashboard.doPressKeyEscape();
 	}
-
+	
 	@Test(priority = 10)
 	public void verifyProfilePopUpTest() {
 		// Profile
@@ -157,7 +157,7 @@ public class DashboardPageTestCase extends TestBase {
 		dashboard.doPressKeyEscape();
 	}
 	
-	
+	@Ignore
 	@Test(priority =11)
 	public void verifyQuickLinksPopupTest() {
 

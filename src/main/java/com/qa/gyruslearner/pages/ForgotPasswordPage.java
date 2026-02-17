@@ -142,12 +142,15 @@ public class ForgotPasswordPage extends TestBase {
 	}
 	
 	
-	public ChangePasswordPage doForgotPassword(String userName,String securityQ1, String securityQ2,String securityQ3) {
-		
+	public ChangePasswordPage doForgotPassword(String userName) {
+		 //Secuirty Quection hide 
+		//ChangePasswordPage doForgotPassword(String userName,String securityQ1, String securityQ2,String securityQ3)
 		eleUtil.doSendKeys(txtUserName, userName);
+		/*
 		eleUtil.doSendKeys(txtSecurityQue1, securityQ1);
 		eleUtil.doSendKeys(txtSecurityQue2, securityQ2);
 		eleUtil.doSendKeys(txtSecurityQue3, securityQ3);
+		*/
 		eleUtil.doClick(btnContinue);
 		
 		return new ChangePasswordPage();

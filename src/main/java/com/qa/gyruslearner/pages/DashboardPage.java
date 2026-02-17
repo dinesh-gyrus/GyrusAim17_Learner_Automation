@@ -38,7 +38,7 @@ public class DashboardPage extends TestBase {
 	@FindBy(xpath = "//*[@title='Class Calendar']")
 	WebElement calenderIcon;
 
-	@FindBy(xpath = "//*[@title='Notification']")
+	@FindBy(xpath = "//*[@title=' Notification']")
 	WebElement notificationIcon;
 
 	@FindBy(xpath = "//*[@title='Profile Menu']")

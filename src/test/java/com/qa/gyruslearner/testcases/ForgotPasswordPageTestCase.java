@@ -62,7 +62,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		String forgotPassPagetitle = forgotpasspage.getForgotPasswordPageTitle();
 		Assert.assertEquals(forgotPassPagetitle, "ForgotPassword");
 	}
-
+	
 	@Test(priority = 3)
 	public void verifyForgotPasswordPageVisableAndEnableTest() {
 
@@ -78,14 +78,14 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		Assert.assertTrue(forgotpasspage.isContinueExits(), "Continue button is not displayed!");
 
 	}
-
+	
 	@Test(priority = 4)
 	public void verifyContinueButtonDisabledUntilOptionSelectedTest() {
 
 		// Verify Continue button is disabled by default
 		Assert.assertFalse(forgotpasspage.isContinueEnable(), "Continue button should be disabled initially!");
 	}
-
+	
 	@Test(priority = 5)
 	public void verifyBackToLoginButtonNavigatesToLoginPageTest() {
 
@@ -101,17 +101,18 @@ public class ForgotPasswordPageTestCase extends TestBase {
 
 		driver.navigate().back();
 	}
-	@Ignore
+	
+	
 	@Test(priority = 6)
 	public void verifyPasswordOptionDisplaysUsernameAndSecurityQuestionTest() {
 
 		// Click on RadioPassword Button
 		forgotpasspage.doClickOnRadioPassword();
-
+		
 		// Verify Username field is displayed
 		Assert.assertTrue(forgotpasspage.isUserNameExits(),
 				"Username field is not displayed after selecting password option!");
-
+		/*
 		// Verify Security Question1 field is displayed
 		Assert.assertTrue(forgotpasspage.isSecuiryQ1Exits(),
 				"Security Question1 field is not displayed after selecting password option!");
@@ -121,9 +122,11 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		// Verify Security Question3 field is displayed
 		Assert.assertTrue(forgotpasspage.isSecuiryQ3Exits(),
 				"Security Question3 field is not displayed after selecting password option!");
+				
+				*/
 
 	}
-
+	
 	@Test(priority = 7)
 	public void verifySelectedPasswordOptionContinueButtonEnabledTest() {
 
@@ -132,7 +135,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		// Verify Continue Button Enable Or not
 		Assert.assertTrue(forgotpasspage.isContinueEnable(), "Continue Button was not enabled");
 	}
-
+	
 	@Test(priority = 8)
 	public void verifyValidationForEmptyUsernameTest() {
 
@@ -140,7 +143,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill All Security Questions
-		forgotpasspage.doForgotPassword("", "Test1", "Test2", "Test3");
+		forgotpasspage.doForgotPassword("");
+		//forgotpasspage.doForgotPassword("", "Test1", "Test2", "Test3");
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
@@ -161,7 +165,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill All Security Questions
-		forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "");
+		forgotpasspage.doForgotPassword("");
+		//forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "");
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
@@ -182,7 +187,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill All Security Questions
-		forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "WrongAnsw");
+		forgotpasspage.doForgotPassword("");
+		//forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "WrongAnsw");
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
@@ -205,7 +211,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill inValid Username and all Security Questions
-		forgotpasspage.doForgotPassword("TTeam59999", "Test1", "Test2", "Test3");
+		forgotpasspage.doForgotPassword("");
+		//forgotpasspage.doForgotPassword("TTeam59999", "Test1", "Test2", "Test3");
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		String toastMsg = wait.until(driver -> loginpage.getToastMessage());
@@ -217,6 +224,20 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		 * "Please enter valid username.");
 		 */
 	}
+	
+	@Test(priority = 12)
+	public void verifyValidUsername() {
+				// Click on Password Radio
+				forgotpasspage.doClickOnRadioPassword();
+
+				// Fill Valid Username and all Security Questions
+				forgotpasspage.doForgotPassword("tteam01");
+				
+				String toastMsg = loginpage.getToastMessage();
+				Assert.assertEquals(toastMsg, "Password reset and sent to your email address on file.", "Toast message mismatch!");
+
+	}
+	
 	@Ignore
 	@Test(priority = 12)
 	public void verifyValidUsernameAndCorrectAnswerTest() {
@@ -225,7 +246,8 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioPassword();
 
 		// Fill Valid Username and all Security Questions
-		forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "test3");
+		forgotpasspage.doForgotPassword("");
+		//forgotpasspage.doForgotPassword("TTeam", "test1", "test2", "test3");
 
 		Assert.assertEquals(changepassword.getChangePasswordPanelTitle(), "Change Password",
 				"Panel Title is not Match!");
@@ -257,7 +279,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 			}
 		}
 	}
-	@Ignore
+	
 	@Test(priority = 13)
 	public void verifyIDontKnowMyUsernameShowsEmailFieldTest() {
 
@@ -269,7 +291,6 @@ public class ForgotPasswordPageTestCase extends TestBase {
 				"Email input field is not displayed after selecting 'I don't know my username'.");
 		Assert.assertTrue(forgotpasspage.isEmailEnable(), "Email input field is not enabled.");
 	}
-
 	@Test(priority = 14)
 	public void verifySelectedUserNameOptionContinueButtonEnabledTest() {
 
@@ -277,7 +298,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		// Verify Continue Button Enable Or not
 		Assert.assertTrue(forgotpasspage.isContinueEnable(), "Continue Button was not enabled");
 	}
-
+	
 	@Test(priority = 15)
 	public void verifyValidationForEmptyEmailTest() {
 
@@ -297,7 +318,6 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		 * "Please enter valid eMail.");
 		 */
 	}
-
 	@Test(priority = 16)
 	public void verifyUnregisteredEmailTest() {
 
@@ -305,7 +325,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioUserName();
 
 		// Fill Data Unregister
-		forgotpasspage.doForgotUserName("test@gmail.com");
+		forgotpasspage.doForgotUserName("test9998@gmail.com");
 
 		// Verify error message
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -318,7 +338,6 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		 */
 
 	}
-	@Ignore
 	@Test(priority = 17)
 	public void verifyRegisteredEmailTest() {
 
@@ -326,7 +345,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		forgotpasspage.doClickOnRadioUserName();
 
 		// Fill Data Unregister
-		forgotpasspage.doForgotUserName("test1gyrus@yopmail.com");
+		forgotpasspage.doForgotUserName("testbyteam01@yopmail.com");
 
 		// Verify error message
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));

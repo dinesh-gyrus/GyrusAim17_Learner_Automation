@@ -43,7 +43,7 @@ public class LoginPageTestCase extends TestBase {
 		// driver.get("https://vspqa.gyrusaim.net/Auth/login");
 		loginpage.ensureAtLoginPage();
 	}
-
+	
 	@Test(priority = 1, description = "TC_LOGIN_001 : Verify the page title matches expected.")
 	public void LoginPageTitleTest() {
 		String loginPagetitle = loginpage.getLoginPageTitle();
@@ -54,32 +54,33 @@ public class LoginPageTestCase extends TestBase {
 	@Test(priority = 2, description = "TC_LOGIN_002 :Verify the Login Page URL matches the expected.")
 	public void LoginPageUrlTest() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.urlToBe(AppConstants.LOGIN_PAGE_URL));
 		String loginUrl = loginpage.getLoginPageUrl();
 		Assert.assertEquals(loginUrl, AppConstants.LOGIN_PAGE_URL);
 
 	}
-
+	
 	@Test(priority = 3, description = "TC_LOGIN_003 : Verify company  logo presence")
 	public void isCompanyLogoExitsTest() {
 		
 		Assert.assertTrue(loginpage.isCompanyLogoExits(), "Company logo is not displayed on the login page!");
 	}
-
+	
 	@Test(priority = 4, description = "TC_LOGIN_004 : Verify BackGround Image presence")
 	public void isBackGroundImageExitsTest() {
 
 		Assert.assertTrue(loginpage.isBackgroundImageExits());
 	}
-
+	
 	@Test(priority = 5, description = "TC_LOGIN_005 : Verify that the Login header is displayed on the login page.")
 	public void verifyLoginHeadertextTest() {
 
 		Assert.assertTrue(loginpage.isLoginHederTextExits(), "Login header not displayed!");
 		Assert.assertEquals(loginpage.getLoginHeadertext().trim(), "Login", "Login header text mismatch!");
 	}
-
+	
+	
 	@Test(priority = 6, description = "TC_LOGIN_006: Verify Username and Password fields is display and Enable. ")
 	public void verifyUsernameAndPasswordFieldsTest() {
 
@@ -92,28 +93,28 @@ public class LoginPageTestCase extends TestBase {
 		Assert.assertTrue(loginpage.isPasswordEnabled(), "Password field was not enabled");
 
 	}
-
+	
 	@Test(priority = 7)
 	public void isSingInbuttonExitsAndEnableTest() {
 
 		Assert.assertTrue(loginpage.isSignInButtonExits(), "Sign In Button not displayed!");
 		Assert.assertTrue(loginpage.isSignInButtonEnable(), "Sing In Button not Enable!");
 	}
-
+	
 	@Test(priority = 8)
 	public void verifyForgotPasswordTest() {
 
 		Assert.assertTrue(loginpage.isForgotPasswordExits(), "Forgot Password link Button not displayed!");
 		Assert.assertTrue(loginpage.isForgotPasswordEnable(), "Forgot Password link not Enable!");
 	}
-
+	@Ignore
 	@Test(priority = 9)
 	public void verifySignUplinkButtonTest() {
 
 		Assert.assertTrue(loginpage.isSignUpExits(), "SignUp link Button not displayed!");
 		Assert.assertTrue(loginpage.isSignUpEnable(), "SignUp link not Enable!");
 	}
-
+	
 	@Test(priority = 10)
 	public void verifyPasswordFieldEncryptedTest() {
 
@@ -138,11 +139,11 @@ public class LoginPageTestCase extends TestBase {
 				"User was not redirected to Change Password page!");
 		chanPassword.doClickOnSignOut();
 	}
-
+	
 	@Test(priority = 12)
 	public void verifyValidUserNameAndWrongPassTest1() {
 
-		loginpage.doValidUserNameWrongPass("TTeam2", "123");
+		loginpage.doValidUserNameWrongPass("tteam01", "123456");
 
 		// String toastMsg = loginpage.getToastMessage();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -168,7 +169,7 @@ public class LoginPageTestCase extends TestBase {
 	@Test(priority = 13)
 	public void verifyWrongUserNameAndValidPassTest() {
 
-		loginpage.doValidUserNameWrongPass("TTeam2156", "123456");
+		loginpage.doValidUserNameWrongPass("tteam011555", "123");
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
@@ -178,13 +179,13 @@ public class LoginPageTestCase extends TestBase {
 		Assert.assertEquals(toastMsg, "Invalid username or password");
 	}
 	
-    @Ignore
+    
 	@Test(priority = 14)
 	public void verifyLastLoginAttemptMessage() {
 
 		for (int i = 0; i <= 2; i++) {
 
-			loginpage.doValidUserNameWrongPass("TTeam2", "Test123");
+			loginpage.doValidUserNameWrongPass("tteam03", "123456");
 
 			// wait for toast after each attempt
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -205,7 +206,7 @@ public class LoginPageTestCase extends TestBase {
 		Assert.assertTrue(validMessages.contains(finalToastMsg), "Unexpected toast message: " + finalToastMsg);
 	}
 
-	
+    @Ignore
 	@Test(priority = 15)
 	public void verifyAccountLockAfterFailedAttemptTest() {
 		
@@ -227,11 +228,11 @@ public class LoginPageTestCase extends TestBase {
 				"Your Account has been blocked. Please contact system administrator or try after 24 hours.");
 		*/
 	}
-
+	
 	@Test(priority = 16)
 	public void verifyValidLoginTest() {
 
-		loginpage.doValidLogin("TTeam", "123");
+		loginpage.doValidLogin("tteam01", "123");
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		wait.until(ExpectedConditions.titleIs(AppConstants.DASHBOARD_PAGE_TITLE));

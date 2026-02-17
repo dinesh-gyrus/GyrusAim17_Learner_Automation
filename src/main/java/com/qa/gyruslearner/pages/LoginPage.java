@@ -15,7 +15,7 @@ public class LoginPage extends TestBase {
 	@FindBy(xpath = "//*[@alt='Gyrus Company Logo']")
 	WebElement companyLogo;
 
-	@FindBy(xpath = "//*[@class='login-container login-bg login-2']")
+	@FindBy(xpath = "//*[@class='login-container login-bg login-1']")
 	WebElement backGroundImage;
 
 	@FindBy(xpath = "(//*[text()='Login'])[2]")
@@ -55,7 +55,7 @@ public class LoginPage extends TestBase {
 	public void ensureAtLoginPage() {
 		
         if (!driver.getCurrentUrl().contains("Login")) {
-            driver.get("https://vspqa.gyrusaim.net/auth/login"); // 🔹 fallback navigation
+            driver.get(prop.getProperty("url"));   //("https://nverma.gyrusaim.net/auth/login"); // 🔹 fallback navigation
         }
     }
 
