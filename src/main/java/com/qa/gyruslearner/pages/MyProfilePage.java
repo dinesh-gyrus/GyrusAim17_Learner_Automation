@@ -50,7 +50,8 @@ public class MyProfilePage extends TestBase {
 	@FindBy(xpath = "//*[@title='Back to Dashboard']")
 	WebElement backToDashBoardlnk;
 	
-	
+	@FindBy(xpath = "//*[@title='Change Language']")
+	WebElement  changeLanguage;
 	
 	
 	

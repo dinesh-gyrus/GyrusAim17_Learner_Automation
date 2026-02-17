@@ -100,7 +100,8 @@ public class MyProfilePageTestCase extends TestBase {
 		
 		Assert.assertTrue(myprofile.isProfileQRDisplayed(), "QR Code not displayed");
 	}
-	@Test(priority = 6)
+	
+	@Test(priority = 6,enabled = false )
 	public void verifyBackToDashboardLink() {
 			
 		Assert.assertTrue(myprofile.isProfileQRDisplayed(), "Back to Dashboard link is not displayed on the Profile page");

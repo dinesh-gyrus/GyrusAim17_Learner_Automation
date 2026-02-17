@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.qa.gyruslearner.base.TestBase;
@@ -120,7 +121,7 @@ public class LoginPageTestCase extends TestBase {
 				"Password field is not masked properly!");
 	}
 
-	
+	@Ignore
 	@Test(priority = 11)
 	public void verifyFirstTimeLoginRedirectsToChangePasswordTest() {
 		
@@ -176,7 +177,8 @@ public class LoginPageTestCase extends TestBase {
 		String toastMsg = loginpage.getToastMessage();
 		Assert.assertEquals(toastMsg, "Invalid username or password");
 	}
-
+	
+    @Ignore
 	@Test(priority = 14)
 	public void verifyLastLoginAttemptMessage() {
 

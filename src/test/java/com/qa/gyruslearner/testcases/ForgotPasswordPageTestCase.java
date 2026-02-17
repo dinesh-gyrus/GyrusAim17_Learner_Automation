@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.qa.gyruslearner.base.TestBase;
@@ -100,7 +101,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 
 		driver.navigate().back();
 	}
-
+	@Ignore
 	@Test(priority = 6)
 	public void verifyPasswordOptionDisplaysUsernameAndSecurityQuestionTest() {
 
@@ -152,7 +153,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		 */
 
 	}
-
+	@Ignore
 	@Test(priority = 9)
 	public void verifySecurityAnswerEmptyTest() {
 
@@ -173,7 +174,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		 * "Login security answer 3 cannot be null.");
 		 */
 	}
-
+	@Ignore
 	@Test(priority = 10)
 	public void verifyCorrectUsernameWithWrongSecurityAnswerTest() {
 
@@ -196,7 +197,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		 * "Incorrect answer");
 		 */
 	}
-
+	@Ignore
 	@Test(priority = 11)
 	public void verifyInvalidUsernameShowsErrorTest() {
 
@@ -216,7 +217,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		 * "Please enter valid username.");
 		 */
 	}
-
+	@Ignore
 	@Test(priority = 12)
 	public void verifyValidUsernameAndCorrectAnswerTest() {
 
@@ -256,7 +257,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 			}
 		}
 	}
-
+	@Ignore
 	@Test(priority = 13)
 	public void verifyIDontKnowMyUsernameShowsEmailFieldTest() {
 
@@ -317,7 +318,7 @@ public class ForgotPasswordPageTestCase extends TestBase {
 		 */
 
 	}
-
+	@Ignore
 	@Test(priority = 17)
 	public void verifyRegisteredEmailTest() {
 

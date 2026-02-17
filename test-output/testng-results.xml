@@ -1,69 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="6" passed="6" failed="0" skipped="0">
+<testng-results ignored="0" total="14" passed="14" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-11-18T18:34:46 IST" name="Default suite" finished-at="2025-11-18T18:35:12 IST" duration-ms="25786">
+  <suite started-at="2026-01-27T18:18:24 IST" name="Default suite" finished-at="2026-01-27T18:18:57 IST" duration-ms="33595">
     <groups>
     </groups>
-    <test started-at="2025-11-18T18:34:46 IST" name="Default test" finished-at="2025-11-18T18:35:12 IST" duration-ms="25786">
-      <class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:34:46 IST" name="setUp" finished-at="2025-11-18T18:34:53 IST" duration-ms="7480" status="PASS">
+    <test started-at="2026-01-27T18:18:24 IST" name="Default test" finished-at="2026-01-27T18:18:57 IST" duration-ms="33595">
+      <class name="com.qa.gyruslearner.testcases.LoginPageTestCase">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:24 IST" name="setUp" finished-at="2026-01-27T18:18:29 IST" duration-ms="5033" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:34:54 IST" name="pageRefresh" finished-at="2025-11-18T18:35:03 IST" duration-ms="9249" status="PASS">
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:29 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:29 IST" duration-ms="458" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="myProfileUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:03 IST" name="myProfileUrlTest" finished-at="2025-11-18T18:35:03 IST" duration-ms="116" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="LoginPageTitleTest()[pri:1, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:29 IST" name="LoginPageTitleTest" description="TC_LOGIN_001 : Verify the page title matches expected." finished-at="2026-01-27T18:18:29 IST" duration-ms="33" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- myProfileUrlTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:03 IST" name="pageRefresh" finished-at="2025-11-18T18:35:03 IST" duration-ms="154" status="PASS">
+        </test-method> <!-- LoginPageTitleTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:29 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:30 IST" duration-ms="440" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="myprofileTitleTest()[pri:2, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:03 IST" name="myprofileTitleTest" finished-at="2025-11-18T18:35:03 IST" duration-ms="29" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="LoginPageUrlTest()[pri:2, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:30 IST" name="LoginPageUrlTest" description="TC_LOGIN_002 :Verify the Login Page URL matches the expected." finished-at="2026-01-27T18:18:30 IST" duration-ms="24" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- myprofileTitleTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:03 IST" name="pageRefresh" finished-at="2025-11-18T18:35:03 IST" duration-ms="16" status="PASS">
+        </test-method> <!-- LoginPageUrlTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:30 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:31 IST" duration-ms="1213" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyUserProfileDetails()[pri:3, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:03 IST" name="verifyUserProfileDetails" finished-at="2025-11-18T18:35:03 IST" duration-ms="137" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="isCompanyLogoExitsTest()[pri:3, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:31 IST" name="isCompanyLogoExitsTest" description="TC_LOGIN_003 : Verify company  logo presence" finished-at="2026-01-27T18:18:31 IST" duration-ms="61" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUserProfileDetails -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:03 IST" name="pageRefresh" finished-at="2025-11-18T18:35:03 IST" duration-ms="17" status="PASS">
+        </test-method> <!-- isCompanyLogoExitsTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:31 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:32 IST" duration-ms="404" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyProfileImage()[pri:4, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:03 IST" name="verifyProfileImage" finished-at="2025-11-18T18:35:11 IST" duration-ms="7858" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="isBackGroundImageExitsTest()[pri:4, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:32 IST" name="isBackGroundImageExitsTest" description="TC_LOGIN_004 : Verify BackGround Image presence" finished-at="2026-01-27T18:18:32 IST" duration-ms="48" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyProfileImage -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:11 IST" name="pageRefresh" finished-at="2025-11-18T18:35:11 IST" duration-ms="13" status="PASS">
+        </test-method> <!-- isBackGroundImageExitsTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:32 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:32 IST" duration-ms="434" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyQRCodeDisplayed()[pri:5, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:11 IST" name="verifyQRCodeDisplayed" finished-at="2025-11-18T18:35:11 IST" duration-ms="18" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyLoginHeadertextTest()[pri:5, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:32 IST" name="verifyLoginHeadertextTest" description="TC_LOGIN_005 : Verify that the Login header is displayed on the login page." finished-at="2026-01-27T18:18:32 IST" duration-ms="62" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyQRCodeDisplayed -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:11 IST" name="pageRefresh" finished-at="2025-11-18T18:35:11 IST" duration-ms="10" status="PASS">
+        </test-method> <!-- verifyLoginHeadertextTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:32 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:33 IST" duration-ms="410" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyBackToDashboardLink()[pri:6, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:11 IST" name="verifyBackToDashboardLink" finished-at="2025-11-18T18:35:12 IST" duration-ms="357" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyUsernameAndPasswordFieldsTest()[pri:6, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:33 IST" name="verifyUsernameAndPasswordFieldsTest" description="TC_LOGIN_006: Verify Username and Password fields is display and Enable. " finished-at="2026-01-27T18:18:33 IST" duration-ms="101" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyBackToDashboardLink -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@235834f2]" started-at="2025-11-18T18:35:12 IST" name="tearDown" finished-at="2025-11-18T18:35:12 IST" duration-ms="266" status="PASS">
+        </test-method> <!-- verifyUsernameAndPasswordFieldsTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:33 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:33 IST" duration-ms="406" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="isSingInbuttonExitsAndEnableTest()[pri:7, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:33 IST" name="isSingInbuttonExitsAndEnableTest" finished-at="2026-01-27T18:18:33 IST" duration-ms="52" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- isSingInbuttonExitsAndEnableTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:33 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:34 IST" duration-ms="465" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyForgotPasswordTest()[pri:8, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:34 IST" name="verifyForgotPasswordTest" finished-at="2026-01-27T18:18:34 IST" duration-ms="52" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyForgotPasswordTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:34 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:34 IST" duration-ms="453" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifySignUplinkButtonTest()[pri:9, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:34 IST" name="verifySignUplinkButtonTest" finished-at="2026-01-27T18:18:34 IST" duration-ms="53" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySignUplinkButtonTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:34 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:35 IST" duration-ms="461" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyPasswordFieldEncryptedTest()[pri:10, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:35 IST" name="verifyPasswordFieldEncryptedTest" finished-at="2026-01-27T18:18:35 IST" duration-ms="197" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPasswordFieldEncryptedTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:35 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:35 IST" duration-ms="421" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyValidUserNameAndWrongPassTest1()[pri:12, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:35 IST" name="verifyValidUserNameAndWrongPassTest1" finished-at="2026-01-27T18:18:37 IST" duration-ms="1354" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyValidUserNameAndWrongPassTest1 -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:37 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:37 IST" duration-ms="468" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyWrongUserNameAndValidPassTest()[pri:13, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:37 IST" name="verifyWrongUserNameAndValidPassTest" finished-at="2026-01-27T18:18:42 IST" duration-ms="5314" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyWrongUserNameAndValidPassTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:42 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:43 IST" duration-ms="1055" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyAccountLockAfterFailedAttemptTest()[pri:15, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:43 IST" name="verifyAccountLockAfterFailedAttemptTest" finished-at="2026-01-27T18:18:44 IST" duration-ms="840" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAccountLockAfterFailedAttemptTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:44 IST" name="goToLoginPage" finished-at="2026-01-27T18:18:45 IST" duration-ms="386" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyValidLoginTest()[pri:16, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:45 IST" name="verifyValidLoginTest" finished-at="2026-01-27T18:18:57 IST" duration-ms="12507" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyValidLoginTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@59474f18]" started-at="2026-01-27T18:18:57 IST" name="tearDown" finished-at="2026-01-27T18:18:57 IST" duration-ms="291" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.gyruslearner.testcases.MyProfilePageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.LoginPageTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
