@@ -43,7 +43,7 @@ public class MyProfilePageTestCase extends TestBase {
 		//driver.navigate().refresh();
 
 		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
-			loginpage.getUserFirstTimeLogin("TTeam", "123");
+			loginpage.getUserFirstTimeLogin("TTeam01", "123");
 			
 			myprofile.doClickProfileIcon();
 			myprofile.doClickProfilePage();
@@ -101,7 +101,7 @@ public class MyProfilePageTestCase extends TestBase {
 		Assert.assertTrue(myprofile.isProfileQRDisplayed(), "QR Code not displayed");
 	}
 	
-	@Test(priority = 6,enabled = false )
+	@Test(priority = 6,enabled = true )
 	public void verifyBackToDashboardLink() {
 			
 		Assert.assertTrue(myprofile.isProfileQRDisplayed(), "Back to Dashboard link is not displayed on the Profile page");
