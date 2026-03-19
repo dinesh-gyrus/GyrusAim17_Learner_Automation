@@ -1,11 +1,10 @@
 package com.qa.gyruslearner.util;
 
-import java.time.Duration;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import com.qa.gyruslearner.base.TestBase;
 

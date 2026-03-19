@@ -1,13 +1,14 @@
 package com.qa.gyruslearner.pages;
 
 import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.util.ElementUtil;
@@ -93,8 +94,27 @@ public class MyProfilePage extends TestBase {
 
 	@FindBy(xpath = "(//kendo-dropdownlist//span[contains(@class,'k-input-inner')])[2]")
 	WebElement drpSelectedDateformat;
+
+	@FindBy(xpath = "//kendo-dropdownlist[contains(@class,'profile_account_edit_profile_accordion_input')]")
+	WebElement drpUserTimeZone;
+
+	@FindBy(xpath = "(//kendo-dropdownlist//span[contains(@class,'k-input')])[7]")
+	WebElement drpSelectedUserTimezone;
+
+	@FindBy(id = "ClientWorkingDateTime_RO")
+	WebElement txtSystemDateAndTime;
+
+	@FindBy(id = "UTCDateTime_RO")
+	WebElement txtUTCDateTime;
+
+	@FindBy(id = "allusertime")
+	WebElement txtAllUsersUseSystemTimeZone;
+
+	@FindBy(id = "PersonWorkingDateTime_RO")
+	WebElement txtUserDateAndTime;
 	
-	@FindBy(xpath = ) 
+	@FindBy(xpath ="(//button[contains(@class,'my_profile_edit_profile_save_button')])[5]")
+	WebElement btnTimezoneSettingSaveButton;
 
 	@FindBy(id = "CurrentPassword")
 	WebElement txtCurrentPassword;
@@ -108,9 +128,6 @@ public class MyProfilePage extends TestBase {
 	@FindBy(xpath = "(//*[@class='my_profile_edit_profile_save_button mt-3'])[1]")
 	WebElement btnResetPasswordSave;
 
-	// List<WebElement> currentPinList = driver.findElements(By.id("ExistingPIN"));
-	// WebElement currentPin = driver.findElement(By.id("ExistingPIN"));
-
 	@FindBy(id = "ExistingPIN")
 	WebElement txtCurrentPin;
 
@@ -123,7 +140,11 @@ public class MyProfilePage extends TestBase {
 	@FindBy(xpath = "(//*[@class='my_profile_edit_profile_save_button mt-3'])[2]")
 	WebElement btnCFR21SecuritySave;
 	
+	@FindBy(xpath = "//*[@class='get_color_code profile_account_theme_6_c']")
+	WebElement RadiobuttonTheme8;
 	
+	@FindBy(xpath ="(//button[contains(@class,'my_profile_edit_profile_save_button')])[6]")
+	WebElement btnThemeSaveButton;
 	
 
 	public MyProfilePage() {
@@ -392,8 +413,72 @@ public class MyProfilePage extends TestBase {
 		wait.until(ExpectedConditions.elementToBeClickable(btnCFR21SecuritySave));
 		eleUtil.doClick(btnCFR21SecuritySave);
 	}
+
+	public boolean isUserTimeZoneDisplay() {
+
+		return eleUtil.isElementDisplayed(drpUserTimeZone);
+	}
+
+	public String getUserTimeZone() {
+
+		return eleUtil.doGetElementText(drpSelectedUserTimezone);
+	}
+
+	public boolean isSystemDateAndTimeDisplay() {
+
+		return eleUtil.isElementDisplayed(txtSystemDateAndTime);
+	}
+	public boolean isUTCDateTimeDisplay() {
+
+		return eleUtil.isElementDisplayed(txtUTCDateTime);
+	}
+
+	public boolean isAllUsersUseSystemTimeZoneDisplay() {
+
+		return eleUtil.isElementDisplayed(txtAllUsersUseSystemTimeZone);
+	}
+	public boolean isUserDateAndTimeDisplay() {
+
+		return eleUtil.isElementDisplayed(txtUserDateAndTime);
+	}
 	
+	public void selectUserTimeZone(String partialValue) {
+			
+		
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    
+	    drpUserTimeZone.click();
+	    
+	    By option = By.xpath("//kendo-popup[contains(@class,'k-animation-container-shown')],'" + partialValue + "')]");
+	    
+	    wait.until(ExpectedConditions.elementToBeClickable(option)).click();  
+	    
+	}
 	
+	public void doValidTimezoneSettingSave() {
+		
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
+				btnTimezoneSettingSaveButton);
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 550)");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.elementToBeClickable(btnTimezoneSettingSaveButton));
+		eleUtil.doClick(btnTimezoneSettingSaveButton);
+		
+	}
+	
+	public void dovalidThemeSave() {
+		
+		RadiobuttonTheme8.click();
+		
+		
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
+				btnThemeSaveButton);
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 550)");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.elementToBeClickable(btnThemeSaveButton));
+		eleUtil.doClick(btnThemeSaveButton);
+		
+	}
 	
 
 	public String getToastMessage() {

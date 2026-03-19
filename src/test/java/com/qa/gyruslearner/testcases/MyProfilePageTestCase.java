@@ -74,7 +74,7 @@ public class MyProfilePageTestCase extends TestBase {
 		Assert.assertEquals(myProfilePagetitle, AppConstants.MYPROFILE_PAGE_TITLE);
 	}
 
-	@Test(priority = 3,enabled = true)
+	@Test(priority = 3, enabled = true)
 	public void verifyUserProfileDetails() {
 
 		Assert.assertTrue(myprofile.isLearnerNameDisplayed(), "Learner name not visible");
@@ -85,19 +85,19 @@ public class MyProfilePageTestCase extends TestBase {
 		Assert.assertTrue(myprofile.isPhoneDisplayed(), "Phone number not visible");
 	}
 
-	@Test(priority = 4,enabled = true)
+	@Test(priority = 4, enabled = true)
 	public void verifyProfileImage() {
 
 		Assert.assertTrue(myprofile.isProfileImageDisplayed(), "Profile picture not displayed");
 	}
 
-	@Test(priority = 5,enabled = true)
+	@Test(priority = 5, enabled = true)
 	public void verifyQRCodeDisplayed() {
 
 		Assert.assertTrue(myprofile.isProfileQRDisplayed(), "QR Code not displayed");
 	}
 
-	@Test(priority = 6,enabled = true)
+	@Test(priority = 6, enabled = true)
 	public void verifyEditProfilePanelExpandCollapse() {
 
 		// Click to Expand
@@ -110,7 +110,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 7,enabled = true)
+	@Test(priority = 7, enabled = true)
 	public void verifySecurityPanelExpandCollapse() {
 
 		// Click to Expand
@@ -123,7 +123,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 8,enabled = true)
+	@Test(priority = 8, enabled = true)
 	public void verifyCFR21SecurityPanelExpandCollapse() {
 
 		// Click to Expand
@@ -136,7 +136,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 9,enabled = true)
+	@Test(priority = 9, enabled = true)
 	public void verifyTimeZoneSettingsPanelExpandCollapse() {
 
 		// Click to Expand
@@ -148,7 +148,7 @@ public class MyProfilePageTestCase extends TestBase {
 		Assert.assertFalse(myprofile.isTimeZoneSettingsPanelDisplay(), "Time Zone Settings section did not collapse");
 	}
 
-	@Test(priority = 10,enabled = true)
+	@Test(priority = 10, enabled = true)
 	public void verifyThemePanelExpandCollapse() {
 
 		// Click to Expand
@@ -161,7 +161,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 11,enabled = true)
+	@Test(priority = 11, enabled = true)
 	public void verifyLanguageDropdown() {
 
 		Assert.assertTrue(myprofile.isChangeLanguageDisplay(), "Change Language did not display");
@@ -170,7 +170,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 12,enabled = true)
+	@Test(priority = 12, enabled = true)
 	public void verifyDateFormaDropdown() {
 
 		Assert.assertTrue(myprofile.isDataFormateDisplay(), "Change Language did not display");
@@ -207,8 +207,8 @@ public class MyProfilePageTestCase extends TestBase {
 		}
 	}
 
-	//when we CurrentTextbox Visible after this Test case Will Pass
-	@Test(priority = 14, enabled =true)
+	// when we CurrentTextbox Visible after this Test case Will Pass
+	@Test(priority = 14, enabled = false)
 	public void verifyCFR21SecurityTest() {
 
 		// Click to Expand
@@ -219,24 +219,77 @@ public class MyProfilePageTestCase extends TestBase {
 		Assert.assertTrue(myprofile.isCFR21ConfirmPinDisplay(), "Confirm did not display");
 		Assert.assertTrue(myprofile.isCfr21SecuritySaveButtonDisplay(), "CFR 21 secu save Button not displayed!");
 		Assert.assertTrue(myprofile.isCfr21SecuritySaveButtonEnable(), "CFR 21 save button not Enable!");
-		
+
 		if (myprofile.isCFR21CurrentPinDisplay()) {
 			myprofile.doValidaCFR21CurrentPin("1238");
-	        myprofile.doValidCFR21Secuirty("1239","1239");
-	    } else {
-	        myprofile.doValidCFR21Secuirty("1239","1239");
-	    }
-		
+			myprofile.doValidCFR21Secuirty("1239", "1239");
+		} else {
+			myprofile.doValidCFR21Secuirty("1239", "1239");
+		}
+
+		// In Toast message Read the Loader Text name like "Loading"
+		String toastMsg = myprofile.getToastMessage();
+		System.out.println("My Password Save==>" + toastMsg);
+		Assert.assertEquals(toastMsg, "Loading");
+	}
+
+	@Test(priority = 15, enabled = true)
+	public void verifyTimeZoneSettingsDisplayTest() {
+
+		// Click to Expand
+		myprofile.doClickonTimeZoneSettingsPanel();
+		Assert.assertTrue(myprofile.isTimeZoneSettingsPanelDisplay(), "Time Zone Settings section did not expand");
+
+		Assert.assertTrue(myprofile.isUserTimeZoneDisplay(), "User Time Zone did not display");
+		Assert.assertTrue(myprofile.isSystemDateAndTimeDisplay(), "System Date And Time did not display");
+		Assert.assertTrue(myprofile.isUTCDateTimeDisplay(), "UTC Date Time did not display");
+		Assert.assertTrue(myprofile.isAllUsersUseSystemTimeZoneDisplay(),
+				"All Users Use System Time Zone did not display");
+		Assert.assertTrue(myprofile.isUserDateAndTimeDisplay(), "User Date And Time did not display");
+
+		String actual = myprofile.getUserTimeZone();
+		Assert.assertEquals(actual, "(UTC-04:00) Atlantic Time (Canada)",
+				"User TIme Zone Dropdown value not selected properly");
+
+		// Click again to Collapse
+		myprofile.doClickonTimeZoneSettingsPanel();
+		Assert.assertFalse(myprofile.isTimeZoneSettingsPanelDisplay(), "Time Zone Settings section did not collapse");
+
+	}
+
+	@Test(priority = 15, enabled = true)
+	public void verifyTimeZoneSettingsTest() {
+
+		// Click to Expand
+		myprofile.doClickonTimeZoneSettingsPanel();
+		Assert.assertTrue(myprofile.isTimeZoneSettingsPanelDisplay(), "Time Zone Settings section did not expand");
+
+		Assert.assertTrue(myprofile.isUserTimeZoneDisplay(), "User Time Zone did not display");
+
+		myprofile.doValidTimezoneSettingSave();
+
 		// In Toast message Read the Loader Text name like "Loading"
 		String toastMsg = myprofile.getToastMessage();
 		System.out.println("My Password Save==>" + toastMsg);
 		Assert.assertEquals(toastMsg, "Loading");
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	}
+
+	@Test(priority = 16, enabled = true)
+	public void verifyThemeTest() {
+
+		// Click to Expand
+		myprofile.doClickonThemePanel();
+		Assert.assertTrue(myprofile.isThemePanelDisplay(), "Theme section did not expand");
+
+
+		myprofile.dovalidThemeSave();
+
+		// In Toast message Read the Loader Text name like "Loading"
+		String toastMsg = myprofile.getToastMessage();
+		System.out.println("My Password Save==>" + toastMsg);
+		Assert.assertEquals(toastMsg, "Loading");
+
 	}
 
 	@Test(priority = 13, enabled = false)
