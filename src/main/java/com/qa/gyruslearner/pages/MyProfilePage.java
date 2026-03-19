@@ -1,7 +1,7 @@
 package com.qa.gyruslearner.pages;
 
 import java.time.Duration;
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -21,42 +21,109 @@ public class MyProfilePage extends TestBase {
 
 	@FindBy(xpath = "//*[text()='Profile']")
 	WebElement openProfilePage;
-	
-	
-	@FindBy(xpath ="(//*[@class='my_profile_account_details_left_container_user_profile_text']//h4)[1]" )
+
+	@FindBy(xpath = "(//*[@class='my_profile_account_details_left_container_user_profile_text']//h4)[1]")
 	WebElement profileName;
-	
+
 	@FindBy(xpath = "(//*[@class='my_profile_account_details_left_container_user_profile_text']//p)")
-	WebElement jobCode;
-	
+	WebElement jobName;
+
 	@FindBy(xpath = "//*[@aria-label='organizationLabel']")
 	WebElement organizationLabel;
-	
-	@FindBy(xpath ="//*[@aria-label='addressLabel']")
+
+	@FindBy(xpath = "//*[@aria-label='addressLabel']")
 	WebElement addressLabel;
-	
+
 	@FindBy(xpath = "//*[@aria-label='emailLabel']")
 	WebElement emailLabel;
-	
+
 	@FindBy(xpath = "//*[@aria-label='phoneLabel']")
 	WebElement phoneLabel;
-	
-	@FindBy(xpath ="//*[@alt='profileMenu']")
+
+	@FindBy(xpath = "//*[@alt='profileMenu']")
 	WebElement profileImage;
 
-	@FindBy(xpath ="//*[@alt='Profile QR']")
+	@FindBy(xpath = "//*[@alt='Profile QR']")
 	WebElement profileQR;
-	
+
 	@FindBy(xpath = "//*[@title='Back to Dashboard']")
 	WebElement backToDashBoardlnk;
-	
-	@FindBy(xpath = "//*[@title='Change Language']")
-	WebElement  changeLanguage;
-	
-	
-	
-	
 
+	@FindBy(xpath = "//*[@title='Change Language']")
+	WebElement changeLanguage;
+
+	@FindBy(xpath = "//*[@id='flush-heading-editProfile']")
+	WebElement editProfilePanel;
+
+	@FindBy(xpath = "//*[@id='flush-collapse-editProfile']")
+	WebElement editprofilePanelShow;
+
+	@FindBy(xpath = "//*[@id='flush-heading-security']")
+	WebElement securityPanel;
+
+	@FindBy(xpath = "//*[@id='flush-collapse-security']")
+	WebElement securityPanelShow;
+
+	@FindBy(xpath = "//*[@id='flush-heading-cfrPin']")
+	WebElement cfr21SecurityPanel;
+
+	@FindBy(xpath = "//*[@id='flush-collapse-cfrPin']")
+	WebElement cfr21SecurityPanelShow;
+
+	@FindBy(xpath = "//*[@id='flush-heading-timeZone']")
+	WebElement timeZoneSettingsPanel;
+
+	@FindBy(xpath = "//*[@id='flush-collapse-timeZone']")
+	WebElement timeZoneSettingsPanelShow;
+
+	@FindBy(xpath = "//*[@id='flush-heading-theme']")
+	WebElement themePanel;
+
+	@FindBy(xpath = "//*[@id='flush-collapse-theme']")
+	WebElement themePanelShow;
+
+	@FindBy(xpath = "(//kendo-dropdownlist//button[@aria-label='Select'])[1]")
+	WebElement drpChangeLanguage;
+
+	@FindBy(xpath = "(//kendo-dropdownlist//span[contains(@class,'k-input-inner')])[1]")
+	WebElement drpLanguageSelectedName;
+
+	@FindBy(xpath = "(//kendo-dropdownlist//button[@aria-label='Select'])[2]")
+	WebElement drpeDateFormat;
+
+	@FindBy(xpath = "(//kendo-dropdownlist//span[contains(@class,'k-input-inner')])[2]")
+	WebElement drpSelectedDateformat;
+	
+	@FindBy(xpath = ) 
+
+	@FindBy(id = "CurrentPassword")
+	WebElement txtCurrentPassword;
+
+	@FindBy(id = "NewPassword")
+	WebElement txtNewPassword;
+
+	@FindBy(id = "ConfirmPassword")
+	WebElement txtConfirmPassword;
+
+	@FindBy(xpath = "(//*[@class='my_profile_edit_profile_save_button mt-3'])[1]")
+	WebElement btnResetPasswordSave;
+
+	// List<WebElement> currentPinList = driver.findElements(By.id("ExistingPIN"));
+	// WebElement currentPin = driver.findElement(By.id("ExistingPIN"));
+
+	@FindBy(id = "ExistingPIN")
+	WebElement txtCurrentPin;
+
+	@FindBy(id = "NewPIN")
+	WebElement txtNewPin;
+
+	@FindBy(id = "ConfirmPin")
+	WebElement txtConfirmPin;
+
+	@FindBy(xpath = "(//*[@class='my_profile_edit_profile_save_button mt-3'])[2]")
+	WebElement btnCFR21SecuritySave;
+	
+	
 	
 
 	public MyProfilePage() {
@@ -96,49 +163,241 @@ public class MyProfilePage extends TestBase {
 
 		return eleUtil.isElementDisplayed(profileName);
 	}
-	
+
 	public boolean isJobCodeDisplayed() {
 
-		return eleUtil.isElementDisplayed(jobCode);
+		return eleUtil.isElementDisplayed(jobName);
 	}
-	
+
 	public boolean isOrganizationNameDisplayed() {
 
 		return eleUtil.isElementDisplayed(organizationLabel);
 	}
-	
+
 	public boolean isEmailIdDisplayed() {
 
 		return eleUtil.isElementDisplayed(emailLabel);
 	}
-	
+
 	public boolean isAddressDisplayed() {
 
 		return eleUtil.isElementDisplayed(addressLabel);
 	}
-	
+
 	public boolean isPhoneDisplayed() {
 
 		return eleUtil.isElementDisplayed(phoneLabel);
 	}
-	
+
 	public boolean isProfileImageDisplayed() {
 
 		return eleUtil.isElementDisplayed(profileImage);
 	}
-	
+
 	public boolean isProfileQRDisplayed() {
-		
-		return eleUtil.isElementDisplayed(profileQR);		
+
+		return eleUtil.isElementDisplayed(profileQR);
 	}
-	
+
 	public boolean isBackToDashBoardDisplayed() {
-		
-		return eleUtil.isElementDisplayed(backToDashBoardlnk);		
+
+		return eleUtil.isElementDisplayed(backToDashBoardlnk);
 	}
-	
+
 	public void doclickOnBackToDashBoardLinkButton() {
 		eleUtil.doClick(backToDashBoardlnk);
 	}
+
+	public void doClickonEditProfilePanel() {
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'nearest'});",
+				editProfilePanel);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(editProfilePanel));
+
+		eleUtil.doClick(editProfilePanel);
+	}
+
+	public boolean isEditProfilePanelDisplay() {
+
+		return eleUtil.isElementDisplayed(editprofilePanelShow);
+	}
+
+	public void doClickonSecurityPanel() {
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", securityPanel);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(securityPanel));
+
+		eleUtil.doClick(securityPanel);
+	}
+
+	public boolean isSecurityPanelDisplay() {
+
+		return eleUtil.isElementDisplayed(securityPanelShow);
+	}
+
+	public void doClickonCFR21SecurityPanel() {
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
+				cfr21SecurityPanel);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(cfr21SecurityPanel));
+		eleUtil.doClick(cfr21SecurityPanel);
+	}
+
+	public boolean isCFR21SecurityPanelDisplay() {
+
+		return eleUtil.isElementDisplayed(cfr21SecurityPanelShow);
+	}
+
+	public void doClickonTimeZoneSettingsPanel() {
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
+				timeZoneSettingsPanel);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(timeZoneSettingsPanel));
+		eleUtil.doClick(timeZoneSettingsPanel);
+	}
+
+	public boolean isTimeZoneSettingsPanelDisplay() {
+
+		return eleUtil.isElementDisplayed(timeZoneSettingsPanelShow);
+	}
+
+	public void doClickonThemePanel() {
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", themePanel);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(themePanel));
+		eleUtil.doClick(themePanel);
+	}
+
+	public boolean isThemePanelDisplay() {
+
+		return eleUtil.isElementDisplayed(themePanelShow);
+	}
+
+	public boolean isChangeLanguageDisplay() {
+
+		return eleUtil.isElementDisplayed(drpChangeLanguage);
+	}
+
+	public String getLangaugeName() {
+
+		return eleUtil.doGetElementText(drpLanguageSelectedName);
+	}
+
+	public boolean isDataFormateDisplay() {
+
+		return eleUtil.isElementDisplayed(drpeDateFormat);
+	}
+
+	public String getDataFormateName() {
+
+		return eleUtil.doGetElementText(drpSelectedDateformat);
+	}
+
+	public boolean isCurrentPasswordDisplay() {
+
+		return eleUtil.isElementDisplayed(txtCurrentPassword);
+	}
+
+	public boolean isNewPasswordDisplay() {
+
+		return eleUtil.isElementDisplayed(txtNewPassword);
+	}
+
+	public boolean isConfirmPasswordDisplay() {
+
+		return eleUtil.isElementDisplayed(txtConfirmPassword);
+	}
+
+	public boolean isResetPasswordSaveButtonDisplay() {
+
+		return eleUtil.isElementDisplayed(btnResetPasswordSave);
+	}
+
+	public boolean isResetPasswordSaveButtonEnable() {
+
+		return eleUtil.isElementEnable(btnResetPasswordSave);
+	}
+
+	public boolean isCFR21NewPinDisplay() {
+
+		return eleUtil.isElementDisplayed(txtNewPin);
+	}
+
+	public boolean isCFR21ConfirmPinDisplay() {
+
+		return eleUtil.isElementDisplayed(txtConfirmPin);
+	}
+
+	public boolean isCFR21CurrentPinDisplay() {
+
+		try {
+			return eleUtil.isElementDisplayed(txtCurrentPin);
+		} catch (Exception e) {
+			return false;
+		}
+	}
+
+	public boolean isCfr21SecuritySaveButtonDisplay() {
+
+		return eleUtil.isElementDisplayed(btnCFR21SecuritySave);
+	}
+
+	public boolean isCfr21SecuritySaveButtonEnable() {
+
+		return eleUtil.isElementEnable(btnCFR21SecuritySave);
+	}
+
+	public void doValidResetPassword(String currentPwd, String newPwd, String confirmPwd) {
+
+		eleUtil.doSendKeys(txtCurrentPassword, currentPwd);
+
+		eleUtil.doSendKeys(txtNewPassword, newPwd);
+		eleUtil.doSendKeys(txtConfirmPassword, confirmPwd);
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
+				btnResetPasswordSave);
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 200)");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.elementToBeClickable(btnResetPasswordSave));
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		eleUtil.doClick(btnResetPasswordSave);
+	}
+
+	public void doValidaCFR21CurrentPin(String currentPin1) {
+
+		if (txtCurrentPin.isDisplayed()) {
+			txtCurrentPin.sendKeys(currentPin1);
+		}
+
+	}
+
+	public void doValidCFR21Secuirty(String newPin, String confirmPin) {
+
+		eleUtil.doSendKeys(txtNewPin, newPin);
+		eleUtil.doSendKeys(txtConfirmPin, confirmPin);
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
+				btnCFR21SecuritySave);
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 200)");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.elementToBeClickable(btnCFR21SecuritySave));
+		eleUtil.doClick(btnCFR21SecuritySave);
+	}
 	
+	
+	
+
+	public String getToastMessage() {
+		return eleUtil.doGetToastMessage();
+	}
+
 }

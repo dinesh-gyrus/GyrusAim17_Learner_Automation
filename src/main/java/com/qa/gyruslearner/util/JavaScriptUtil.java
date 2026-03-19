@@ -1,8 +1,11 @@
 package com.qa.gyruslearner.util;
 
+import java.time.Duration;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.gyruslearner.base.TestBase;
 
@@ -104,26 +107,44 @@ public class JavaScriptUtil extends TestBase {
 	}
 	
 	public String toastMessageHandle() {
+	
 		
-		/* 
-		String toastMsg = (String) ((JavascriptExecutor) driver)
-		            .executeScript("return document.querySelector('.toast, [role=\"alert\"]').innerText");
-		 */
+		// new Code 18-03-2026 but not Correct 
+		/*
+		 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		 String toastMsg = wait.until(driver -> {
+		        String msg = (String) ((JavascriptExecutor) driver).executeScript(
+		            "var el = document.querySelector('.toast, [role=\"alert\"]');" +
+		            "return el ? el.innerText : null;"
+		        );
+
+		        // Return only when valid message appears (not Loading)
+		        if (msg != null && !msg.trim().isEmpty() && !msg.equalsIgnoreCase("Loading")) {
+		            return msg;
+		        }
+		        return null; // keep waiting
+		    });
+		 
+		 	System.out.println("Captured Toast: " + toastMsg);
+		    return toastMsg;
+		
+		*/
+		
+		// old Code before november2025
+		 
 		
 		 String toastMsg = (String) ((JavascriptExecutor) driver).executeScript(
 				    "var el = document.querySelector('.toast, [role=\"alert\"]');" +
 				    "return el ? el.innerText : null;"
 				);
-		 
 		 if (toastMsg == null) {
 			    System.out.println("No toast message found!");
 			   // return (toastMsg != null && !toastMsg.trim().isEmpty()) ? toastMsg : null;
 			} else {
 			    System.out.println("Toast: " + toastMsg);
 			}
-
 		 return toastMsg;
-
+		 
 	}
 
 	public void drawBorder(WebElement element) {

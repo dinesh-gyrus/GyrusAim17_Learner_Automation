@@ -151,6 +151,10 @@ public class ElementUtil extends TestBase {
 		return getElement(locator).getDomAttribute(attrName);
 	}
 	
+	public boolean isElementPresent(By locator) {
+	    return driver.findElements(locator).size() > 0;
+	}
+	
 	public String doGetToastMessage() {
 		
 		return jsUtil.toastMessageHandle();
