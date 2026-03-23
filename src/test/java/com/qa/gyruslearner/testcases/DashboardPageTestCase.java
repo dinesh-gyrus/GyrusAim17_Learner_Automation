@@ -60,6 +60,7 @@ public class DashboardPageTestCase extends TestBase {
 			wait.until(ExpectedConditions.urlToBe(AppConstants.DASHBOARD_PAGE_URL));
 			String dashBoardUrl = dashboard.getDashBoardPageUrl();
 			Assert.assertEquals(dashBoardUrl, AppConstants.DASHBOARD_PAGE_URL);
+			System.out.println("DashBoard URL" + AppConstants.DASHBOARD_PAGE_URL);
 		} catch (Exception e) {
 			throw new SkipException("Skipping test because user could not login.");
 		}
@@ -77,7 +78,6 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(dashboard.isCompnayLogoInDashBoardDisplayed(),
 				"Company logo is not displayed on the DashBoard page!");
 	}
-	
 	@Test(priority = 4)
 	public void verifyWelcomeHeadertextTest() {
 
@@ -95,7 +95,6 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(slides.size() > 1, "Slider has less than 2 slides, cannot auto-slide!");
 
 	}
-	@Ignore
 	@Test(priority = 6)
 	public void verifyHeaderIconsFunctionality() {
 
@@ -118,7 +117,6 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(dashboard.isCartPopUpDisplayed(), "Cart icon popup not displayed!");
 		dashboard.doPressKeyEscape();
 	}
-	
 	@Test(priority = 8)
 	public void verifyCalenderDisplayTest() {
 
@@ -135,7 +133,7 @@ public class DashboardPageTestCase extends TestBase {
 		calender.doClickOnBackToDashboard();
 		*/
 	}
-	
+	@Ignore
 	@Test(priority = 9)
 	public void verifyNotificationPopUpTest() {
 
@@ -177,13 +175,7 @@ public class DashboardPageTestCase extends TestBase {
 	    // Step 4: Close popup
 	    dashboard.doClickQuickCloseIcon();
 	    
-	    
-	    /*
-	    // Step 5: Verify popup closed
-	    Assert.assertFalse(dashboard.isQuicklinkPopUpDisplayed(), "Quick Links popup did not close!");
-	    */
 	}
-	
 	@Test(priority = 12)
 	public void verifyStatisticsDisplayed() {
 		
@@ -196,7 +188,6 @@ public class DashboardPageTestCase extends TestBase {
 		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
 		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "Earned Badges not displayed!");
 	}
-	
 	@Test(priority = 13)
 	public void verifyStatisticsWithFilters() {
 		

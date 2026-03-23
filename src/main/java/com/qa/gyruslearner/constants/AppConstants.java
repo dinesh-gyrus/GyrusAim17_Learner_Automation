@@ -1,9 +1,12 @@
 package com.qa.gyruslearner.constants;
 
-public class AppConstants {
+import com.qa.gyruslearner.base.TestBase;
+
+public class AppConstants extends TestBase {
 	
 	
-	
+	public final static String BaseUrl=prop.getProperty("baseUrl");
+
 	public final static int DEFAULT_TIME_OUT = 5;
 	public final static int SHORT_TIME_OUT = 10;
 	public final static int MEDIUM_TIME_OUT = 15;
@@ -17,6 +20,18 @@ public class AppConstants {
 	public final static String SIGNUP_PAGE_TITLE ="User Registration";
 	public final static String MYPROFILE_PAGE_TITLE ="My Profile";
 	
+	
+	public final static String LOGIN_PAGE_URL = BaseUrl + "/auth/login";
+	public final static String DASHBOARD_PAGE_URL= BaseUrl +"/v2/dashboard";
+	public final static String CHANGEPASSWORD_PAGE_URL =BaseUrl +"/Auth/MustChangePassword";
+	public final static String FORGOTPASSWORD_PAGE_URL =BaseUrl +"/Auth/ForgotPassword";
+	public final static String SIGNUP_PAGE_URL =BaseUrl +"/Registration/UserSelfRegistration";
+	public final static String CALENDER_PAGE_URL=BaseUrl + "/v2/classcalendar";
+	public final static String MYPROFILE_PAGE_URL=BaseUrl +"/v2/profile";
+	
+	
+	
+	/*
 	public final static String LOGIN_PAGE_URL = "https://nverma.gyrusaim.net/auth/login";
 	public final static String DASHBOARD_PAGE_URL="https://nverma.gyrusaim.net/v2/dashboard";
 	public final static String CHANGEPASSWORD_PAGE_URL ="https://nverma.gyrusaim.net/Auth/MustChangePassword";
@@ -24,8 +39,9 @@ public class AppConstants {
 	public final static String SIGNUP_PAGE_URL ="https://nverma.gyrusaim.net/Registration/UserSelfRegistration";
 	public final static String CALENDER_PAGE_URL="https://nverma.gyrusaim.net/v2/classcalendar";
 	public final static String MYPROFILE_PAGE_URL="https://nverma.gyrusaim.net/v2/profile";
+	*/
 	
-
+	
 	
 	
 }

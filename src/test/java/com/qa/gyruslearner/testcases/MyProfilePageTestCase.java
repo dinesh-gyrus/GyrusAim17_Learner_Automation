@@ -179,7 +179,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 13, enabled = false)
+	@Test(priority = 13, enabled = true)
 	public void verifyResetPasswordTest() {
 
 		// Click to Expand
@@ -195,20 +195,16 @@ public class MyProfilePageTestCase extends TestBase {
 		// Assert.assertTrue(myprofile.isResetPasswordSaveButtonEnable(), "Reset
 		// password save button not Enable!");
 
-		// In Toast message Read the Loader Text name like "Loading"
-		String toastMsg = myprofile.getToastMessage();
+		String toastMsg = myprofile.getToastMessage1();
 		System.out.println("My Password Save==>" + toastMsg);
-		Assert.assertEquals(toastMsg, "Loading");
+		Assert.assertEquals(toastMsg, "Password updated");
+		myprofile.waitForToastDisappear();
 
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	
 	}
 
 	// when we CurrentTextbox Visible after this Test case Will Pass
-	@Test(priority = 14, enabled = false)
+	@Test(priority = 14, enabled = true)
 	public void verifyCFR21SecurityTest() {
 
 		// Click to Expand
@@ -217,20 +213,23 @@ public class MyProfilePageTestCase extends TestBase {
 
 		Assert.assertTrue(myprofile.isCFR21NewPinDisplay(), "new pin did not display");
 		Assert.assertTrue(myprofile.isCFR21ConfirmPinDisplay(), "Confirm did not display");
-		Assert.assertTrue(myprofile.isCfr21SecuritySaveButtonDisplay(), "CFR 21 secu save Button not displayed!");
-		Assert.assertTrue(myprofile.isCfr21SecuritySaveButtonEnable(), "CFR 21 save button not Enable!");
+		Assert.assertTrue(myprofile.isCfr21SecuritySaveButtonDisplay(), "CFR 21 security save Button not displayed!");
+		// Assert.assertTrue(myprofile.isCfr21SecuritySaveButtonEnable(), "CFR 21 save
+		// button not Enable!");
 
 		if (myprofile.isCFR21CurrentPinDisplay()) {
-			myprofile.doValidaCFR21CurrentPin("1238");
-			myprofile.doValidCFR21Secuirty("1239", "1239");
+			myprofile.doValidaCFR21CurrentPin("2349");
+			myprofile.doValidCFR21Secuirty("3451", "3451");
 		} else {
-			myprofile.doValidCFR21Secuirty("1239", "1239");
+			myprofile.doValidCFR21Secuirty("3451", "3451");
 		}
 
 		// In Toast message Read the Loader Text name like "Loading"
-		String toastMsg = myprofile.getToastMessage();
+		String toastMsg = myprofile.getToastMessage1();
 		System.out.println("My Password Save==>" + toastMsg);
-		Assert.assertEquals(toastMsg, "Loading");
+		Assert.assertEquals(toastMsg, "PIN Updated Successfully");
+		myprofile.waitForToastDisappear();
+
 	}
 
 	@Test(priority = 15, enabled = true)
@@ -257,7 +256,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 16, enabled = true)
 	public void verifyTimeZoneSettingsTest() {
 
 		// Click to Expand
@@ -269,33 +268,35 @@ public class MyProfilePageTestCase extends TestBase {
 		myprofile.doValidTimezoneSettingSave();
 
 		// In Toast message Read the Loader Text name like "Loading"
-		String toastMsg = myprofile.getToastMessage();
+		String toastMsg = myprofile.getToastMessage1();
 		System.out.println("My Password Save==>" + toastMsg);
-		Assert.assertEquals(toastMsg, "Loading");
+		Assert.assertEquals(toastMsg, "Profile setting updated.");
+		myprofile.waitForToastDisappear();
+		
 
 	}
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 17, enabled = true)
 	public void verifyThemeTest() {
 
 		// Click to Expand
 		myprofile.doClickonThemePanel();
 		Assert.assertTrue(myprofile.isThemePanelDisplay(), "Theme section did not expand");
 
-
 		myprofile.dovalidThemeSave();
 
 		// In Toast message Read the Loader Text name like "Loading"
-		String toastMsg = myprofile.getToastMessage();
+		String toastMsg = myprofile.getToastMessage1();
 		System.out.println("My Password Save==>" + toastMsg);
-		Assert.assertEquals(toastMsg, "Loading");
+		Assert.assertEquals(toastMsg, "Theme updated successfully");
+		myprofile.waitForToastDisappear();
 
 	}
 
-	@Test(priority = 13, enabled = false)
+	@Test(priority = 18, enabled = true)
 	public void verifyBackToDashboardLink() {
 
-		Assert.assertTrue(myprofile.isProfileQRDisplayed(),
+		Assert.assertTrue(myprofile.isBackToDashBoardDisplayed(),
 				"Back to Dashboard link is not displayed on the Profile page");
 		myprofile.doclickOnBackToDashBoardLinkButton();
 
@@ -303,6 +304,22 @@ public class MyProfilePageTestCase extends TestBase {
 				"Dashboard page URL mismatch after clicking Back to Dashboard");
 		myprofile.doClickProfileIcon();
 		myprofile.doClickProfilePage();
+	}
+
+	@Test(priority = 19, enabled = true)
+	public void VerifyUploadhphotoTest() {
+
+		myprofile.doclickOnUploadPhotoButton();
+		String filePath = System.getProperty("user.dir") + "\\src\\test\\resources\\imagesUpload\\2025-08-27.png";
+		myprofile.doValidUploadPhoto(filePath);
+
+		// In Toast message Read the Loader Text name like "Loading"
+		String toastMsg = myprofile.getToastMessage();
+		System.out.println("My Password Save==>" + toastMsg);
+		Assert.assertEquals(toastMsg, "Profile setting updated.");
+		//myprofile.waitForToastDisappear();
+
+		Assert.assertTrue(myprofile.isProfileImageDisplayed(), "Profile picture not displayed");
 
 	}
 

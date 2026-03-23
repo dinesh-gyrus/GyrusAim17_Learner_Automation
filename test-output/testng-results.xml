@@ -1,141 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="15" passed="15" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-03-19T19:00:44 IST" name="Default suite" finished-at="2026-03-19T19:01:08 IST" duration-ms="24653">
+  <suite started-at="2026-03-23T11:04:56 IST" name="Default suite" finished-at="2026-03-23T11:05:09 IST" duration-ms="13258">
     <groups>
     </groups>
-    <test started-at="2026-03-19T19:00:44 IST" name="Default test" finished-at="2026-03-19T19:01:08 IST" duration-ms="24653">
-      <class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:00:44 IST" name="setUp" finished-at="2026-03-19T19:00:49 IST" duration-ms="5601" status="PASS">
+    <test started-at="2026-03-23T11:04:56 IST" name="Default test" finished-at="2026-03-23T11:05:09 IST" duration-ms="13258">
+      <class name="com.qa.gyruslearner.testcases.DashboardPageTestCase">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@71d44a3]" started-at="2026-03-23T11:04:56 IST" name="setUp" finished-at="2026-03-23T11:05:00 IST" duration-ms="4438" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:00:49 IST" name="pageRefresh" finished-at="2026-03-19T19:00:59 IST" duration-ms="9927" status="PASS">
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@71d44a3]" started-at="2026-03-23T11:05:00 IST" name="pageRefresh" finished-at="2026-03-23T11:05:00 IST" duration-ms="307" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="myProfileUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:00:59 IST" name="myProfileUrlTest" finished-at="2026-03-19T19:00:59 IST" duration-ms="105" status="PASS">
+        <test-method signature="dashBoardUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@71d44a3]" started-at="2026-03-23T11:05:00 IST" name="dashBoardUrlTest" finished-at="2026-03-23T11:05:05 IST" duration-ms="4914" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- myProfileUrlTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:00:59 IST" name="pageRefresh" finished-at="2026-03-19T19:01:00 IST" duration-ms="34" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="myprofileTitleTest()[pri:2, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:00 IST" name="myprofileTitleTest" finished-at="2026-03-19T19:01:01 IST" duration-ms="1125" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- myprofileTitleTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:01 IST" name="pageRefresh" finished-at="2026-03-19T19:01:01 IST" duration-ms="19" status="PASS">
+        </test-method> <!-- dashBoardUrlTest -->
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@71d44a3]" started-at="2026-03-23T11:05:05 IST" name="pageRefresh" finished-at="2026-03-23T11:05:05 IST" duration-ms="7" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyUserProfileDetails()[pri:3, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:01 IST" name="verifyUserProfileDetails" finished-at="2026-03-19T19:01:01 IST" duration-ms="143" status="PASS">
+        <test-method signature="dashBoardPageTitleTest()[pri:2, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@71d44a3]" started-at="2026-03-23T11:05:05 IST" name="dashBoardPageTitleTest" finished-at="2026-03-23T11:05:05 IST" duration-ms="11" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUserProfileDetails -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:01 IST" name="pageRefresh" finished-at="2026-03-19T19:01:01 IST" duration-ms="15" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyProfileImage()[pri:4, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:01 IST" name="verifyProfileImage" finished-at="2026-03-19T19:01:01 IST" duration-ms="340" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyProfileImage -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:01 IST" name="pageRefresh" finished-at="2026-03-19T19:01:01 IST" duration-ms="14" status="PASS">
+        </test-method> <!-- dashBoardPageTitleTest -->
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@71d44a3]" started-at="2026-03-23T11:05:05 IST" name="pageRefresh" finished-at="2026-03-23T11:05:05 IST" duration-ms="9" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyQRCodeDisplayed()[pri:5, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:01 IST" name="verifyQRCodeDisplayed" finished-at="2026-03-19T19:01:02 IST" duration-ms="428" status="PASS">
+        <test-method signature="VerifyCompanyLogoInDashBoardTest()[pri:3, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@71d44a3]" started-at="2026-03-23T11:05:05 IST" name="VerifyCompanyLogoInDashBoardTest" finished-at="2026-03-23T11:05:09 IST" duration-ms="3183" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyQRCodeDisplayed -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:02 IST" name="pageRefresh" finished-at="2026-03-19T19:01:02 IST" duration-ms="14" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyEditProfilePanelExpandCollapse()[pri:6, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:02 IST" name="verifyEditProfilePanelExpandCollapse" finished-at="2026-03-19T19:01:02 IST" duration-ms="396" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyEditProfilePanelExpandCollapse -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:02 IST" name="pageRefresh" finished-at="2026-03-19T19:01:02 IST" duration-ms="16" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifySecurityPanelExpandCollapse()[pri:7, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:02 IST" name="verifySecurityPanelExpandCollapse" finished-at="2026-03-19T19:01:04 IST" duration-ms="2155" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySecurityPanelExpandCollapse -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:04 IST" name="pageRefresh" finished-at="2026-03-19T19:01:04 IST" duration-ms="15" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyCFR21SecurityPanelExpandCollapse()[pri:8, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:04 IST" name="verifyCFR21SecurityPanelExpandCollapse" finished-at="2026-03-19T19:01:05 IST" duration-ms="577" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCFR21SecurityPanelExpandCollapse -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:05 IST" name="pageRefresh" finished-at="2026-03-19T19:01:05 IST" duration-ms="15" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyTimeZoneSettingsPanelExpandCollapse()[pri:9, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:05 IST" name="verifyTimeZoneSettingsPanelExpandCollapse" finished-at="2026-03-19T19:01:05 IST" duration-ms="356" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyTimeZoneSettingsPanelExpandCollapse -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:05 IST" name="pageRefresh" finished-at="2026-03-19T19:01:05 IST" duration-ms="15" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyThemePanelExpandCollapse()[pri:10, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:05 IST" name="verifyThemePanelExpandCollapse" finished-at="2026-03-19T19:01:06 IST" duration-ms="401" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyThemePanelExpandCollapse -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:06 IST" name="pageRefresh" finished-at="2026-03-19T19:01:06 IST" duration-ms="16" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyLanguageDropdown()[pri:11, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:06 IST" name="verifyLanguageDropdown" finished-at="2026-03-19T19:01:06 IST" duration-ms="88" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyLanguageDropdown -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:06 IST" name="pageRefresh" finished-at="2026-03-19T19:01:06 IST" duration-ms="12" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyDateFormaDropdown()[pri:12, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:06 IST" name="verifyDateFormaDropdown" finished-at="2026-03-19T19:01:06 IST" duration-ms="91" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyDateFormaDropdown -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:06 IST" name="pageRefresh" finished-at="2026-03-19T19:01:06 IST" duration-ms="11" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyTimeZoneSettingsDisplayTest()[pri:15, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:06 IST" name="verifyTimeZoneSettingsDisplayTest" finished-at="2026-03-19T19:01:06 IST" duration-ms="585" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyTimeZoneSettingsDisplayTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:06 IST" name="pageRefresh" finished-at="2026-03-19T19:01:06 IST" duration-ms="11" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyTimeZoneSettingsTest()[pri:15, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:06 IST" name="verifyTimeZoneSettingsTest" finished-at="2026-03-19T19:01:07 IST" duration-ms="421" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyTimeZoneSettingsTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:07 IST" name="pageRefresh" finished-at="2026-03-19T19:01:07 IST" duration-ms="19" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyThemeTest()[pri:16, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:07 IST" name="verifyThemeTest" finished-at="2026-03-19T19:01:08 IST" duration-ms="1067" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyThemeTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.MyProfilePageTestCase@65fb9ffc]" started-at="2026-03-19T19:01:08 IST" name="tearDown" finished-at="2026-03-19T19:01:08 IST" duration-ms="498" status="PASS">
+        </test-method> <!-- VerifyCompanyLogoInDashBoardTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@71d44a3]" started-at="2026-03-23T11:05:09 IST" name="tearDown" finished-at="2026-03-23T11:05:09 IST" duration-ms="305" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.gyruslearner.testcases.MyProfilePageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.DashboardPageTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -1,6 +1,7 @@
 package com.qa.gyruslearner.pages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,6 +20,18 @@ public class MyProfilePage extends TestBase {
 
 	@FindBy(xpath = "//*[@title='Profile Menu']")
 	WebElement profileIcon;
+
+	@FindBy(xpath = "//*[@aria-label='Upload Photo']")
+	WebElement btnUploadPhoto;
+
+	@FindBy(xpath = "//*[contains(@class,'my_profile_account_user_profile_icon')]")
+	WebElement imgProfileIcon;
+
+	@FindBy(xpath = "//input[@type='file']")
+	WebElement imagesChoose;
+
+	@FindBy(xpath = "//*[@title='Upload']")
+	WebElement btnUpload;
 
 	@FindBy(xpath = "//*[text()='Profile']")
 	WebElement openProfilePage;
@@ -112,8 +125,8 @@ public class MyProfilePage extends TestBase {
 
 	@FindBy(id = "PersonWorkingDateTime_RO")
 	WebElement txtUserDateAndTime;
-	
-	@FindBy(xpath ="(//button[contains(@class,'my_profile_edit_profile_save_button')])[5]")
+
+	@FindBy(xpath = "(//button[contains(@class,'my_profile_edit_profile_save_button')])[5]")
 	WebElement btnTimezoneSettingSaveButton;
 
 	@FindBy(id = "CurrentPassword")
@@ -137,14 +150,19 @@ public class MyProfilePage extends TestBase {
 	@FindBy(id = "ConfirmPin")
 	WebElement txtConfirmPin;
 
-	@FindBy(xpath = "(//*[@class='my_profile_edit_profile_save_button mt-3'])[2]")
+	@FindBy(xpath = "(//*[@class='my_profile_edit_profile_save_button mt-3'])[3]")
 	WebElement btnCFR21SecuritySave;
-	
+
 	@FindBy(xpath = "//*[@class='get_color_code profile_account_theme_6_c']")
 	WebElement RadiobuttonTheme8;
-	
-	@FindBy(xpath ="(//button[contains(@class,'my_profile_edit_profile_save_button')])[6]")
+
+	@FindBy(xpath = "(//button[contains(@class,'my_profile_edit_profile_save_button')])[6]")
 	WebElement btnThemeSaveButton;
+
+	@FindBy(xpath = "//*[@role='alert']//span")
+	WebElement toastMessage;
+	
+	List<WebElement> toastElements = driver.findElements(By.xpath("//*[@role='alert']//span"));
 	
 
 	public MyProfilePage() {
@@ -180,6 +198,34 @@ public class MyProfilePage extends TestBase {
 		return myprofileTitle;
 	}
 
+	public void uploadImage(String filePath) {
+
+		imagesChoose.sendKeys(filePath);
+	}
+
+	public void doclickOnUploadPhotoButton() {
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'start'});",
+				backToDashBoardlnk);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.elementToBeClickable(btnUploadPhoto));
+
+		try {
+			eleUtil.doClick(btnUploadPhoto);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnUploadPhoto);
+		}
+	}
+
+	public void doValidUploadPhoto(String Filepath) {
+
+		uploadImage(Filepath);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		wait.until(ExpectedConditions.elementToBeClickable(btnUpload));
+		btnUpload.click();
+
+	}
+
 	public boolean isLearnerNameDisplayed() {
 
 		return eleUtil.isElementDisplayed(profileName);
@@ -212,6 +258,8 @@ public class MyProfilePage extends TestBase {
 
 	public boolean isProfileImageDisplayed() {
 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		wait.until(ExpectedConditions.visibilityOf(profileImage));
 		return eleUtil.isElementDisplayed(profileImage);
 	}
 
@@ -222,21 +270,41 @@ public class MyProfilePage extends TestBase {
 
 	public boolean isBackToDashBoardDisplayed() {
 
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'start'});",
+				backToDashBoardlnk);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		wait.until(ExpectedConditions.visibilityOf(backToDashBoardlnk));
 		return eleUtil.isElementDisplayed(backToDashBoardlnk);
 	}
 
 	public void doclickOnBackToDashBoardLinkButton() {
-		eleUtil.doClick(backToDashBoardlnk);
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'start'});",
+				backToDashBoardlnk);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		wait.until(ExpectedConditions.elementToBeClickable(backToDashBoardlnk));
+
+		try {
+			eleUtil.doClick(backToDashBoardlnk);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", backToDashBoardlnk);
+		}
+
 	}
 
 	public void doClickonEditProfilePanel() {
 
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'nearest'});",
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
 				editProfilePanel);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
 		wait.until(ExpectedConditions.elementToBeClickable(editProfilePanel));
 
-		eleUtil.doClick(editProfilePanel);
+		try {
+			eleUtil.doClick(editProfilePanel);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", editProfilePanel);
+		}
+
 	}
 
 	public boolean isEditProfilePanelDisplay() {
@@ -250,7 +318,11 @@ public class MyProfilePage extends TestBase {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		wait.until(ExpectedConditions.elementToBeClickable(securityPanel));
 
-		eleUtil.doClick(securityPanel);
+		try {
+			eleUtil.doClick(securityPanel);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", securityPanel);
+		}
 	}
 
 	public boolean isSecurityPanelDisplay() {
@@ -264,11 +336,17 @@ public class MyProfilePage extends TestBase {
 				cfr21SecurityPanel);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		wait.until(ExpectedConditions.elementToBeClickable(cfr21SecurityPanel));
-		eleUtil.doClick(cfr21SecurityPanel);
+
+		try {
+			eleUtil.doClick(cfr21SecurityPanel);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", cfr21SecurityPanel);
+		}
+
 	}
 
 	public boolean isCFR21SecurityPanelDisplay() {
-
+	
 		return eleUtil.isElementDisplayed(cfr21SecurityPanelShow);
 	}
 
@@ -277,8 +355,15 @@ public class MyProfilePage extends TestBase {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
 				timeZoneSettingsPanel);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+		wait.until(ExpectedConditions.visibilityOf(timeZoneSettingsPanel));
 		wait.until(ExpectedConditions.elementToBeClickable(timeZoneSettingsPanel));
-		eleUtil.doClick(timeZoneSettingsPanel);
+
+		try {
+			eleUtil.doClick(timeZoneSettingsPanel);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", timeZoneSettingsPanel);
+		}
+
 	}
 
 	public boolean isTimeZoneSettingsPanelDisplay() {
@@ -291,11 +376,16 @@ public class MyProfilePage extends TestBase {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", themePanel);
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		wait.until(ExpectedConditions.elementToBeClickable(themePanel));
-		eleUtil.doClick(themePanel);
+
+		try {
+			eleUtil.doClick(themePanel);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", themePanel);
+		}
+
 	}
 
 	public boolean isThemePanelDisplay() {
-
 		return eleUtil.isElementDisplayed(themePanelShow);
 	}
 
@@ -365,6 +455,11 @@ public class MyProfilePage extends TestBase {
 
 	public boolean isCfr21SecuritySaveButtonDisplay() {
 
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
+				btnCFR21SecuritySave);
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -150)");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+		wait.until(ExpectedConditions.visibilityOf(btnCFR21SecuritySave));
 		return eleUtil.isElementDisplayed(btnCFR21SecuritySave);
 	}
 
@@ -385,12 +480,12 @@ public class MyProfilePage extends TestBase {
 		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 200)");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		wait.until(ExpectedConditions.elementToBeClickable(btnResetPasswordSave));
+
 		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+			eleUtil.doClick(btnResetPasswordSave);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnResetPasswordSave);
 		}
-		eleUtil.doClick(btnResetPasswordSave);
 	}
 
 	public void doValidaCFR21CurrentPin(String currentPin1) {
@@ -408,10 +503,16 @@ public class MyProfilePage extends TestBase {
 
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
 				btnCFR21SecuritySave);
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 200)");
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -150)");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		wait.until(ExpectedConditions.elementToBeClickable(btnCFR21SecuritySave));
-		eleUtil.doClick(btnCFR21SecuritySave);
+
+		try {
+			eleUtil.doClick(btnCFR21SecuritySave);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnCFR21SecuritySave);
+		}
+
 	}
 
 	public boolean isUserTimeZoneDisplay() {
@@ -428,6 +529,7 @@ public class MyProfilePage extends TestBase {
 
 		return eleUtil.isElementDisplayed(txtSystemDateAndTime);
 	}
+
 	public boolean isUTCDateTimeDisplay() {
 
 		return eleUtil.isElementDisplayed(txtUTCDateTime);
@@ -437,49 +539,85 @@ public class MyProfilePage extends TestBase {
 
 		return eleUtil.isElementDisplayed(txtAllUsersUseSystemTimeZone);
 	}
+
 	public boolean isUserDateAndTimeDisplay() {
 
 		return eleUtil.isElementDisplayed(txtUserDateAndTime);
 	}
-	
+
 	public void selectUserTimeZone(String partialValue) {
-			
-		
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	    
-	    drpUserTimeZone.click();
-	    
-	    By option = By.xpath("//kendo-popup[contains(@class,'k-animation-container-shown')],'" + partialValue + "')]");
-	    
-	    wait.until(ExpectedConditions.elementToBeClickable(option)).click();  
-	    
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		drpUserTimeZone.click();
+
+		By option = By.xpath("//kendo-popup[contains(@class,'k-animation-container-shown')],'" + partialValue + "')]");
+
+		wait.until(ExpectedConditions.elementToBeClickable(option)).click();
+
 	}
-	
+
 	public void doValidTimezoneSettingSave() {
-		
+
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
 				btnTimezoneSettingSaveButton);
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 550)");
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -150)");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		wait.until(ExpectedConditions.elementToBeClickable(btnTimezoneSettingSaveButton));
-		eleUtil.doClick(btnTimezoneSettingSaveButton);
-		
+
+		try {
+			eleUtil.doClick(btnTimezoneSettingSaveButton);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnTimezoneSettingSaveButton);
+		}
+
 	}
-	
+
 	public void dovalidThemeSave() {
-		
+
 		RadiobuttonTheme8.click();
-		
-		
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
 				btnThemeSaveButton);
-		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 550)");
+		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -150)");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		wait.until(ExpectedConditions.elementToBeClickable(btnThemeSaveButton));
-		eleUtil.doClick(btnThemeSaveButton);
-		
+
+		try {
+			eleUtil.doClick(btnThemeSaveButton);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnThemeSaveButton);
+		}
 	}
-	
+
+	public String getToastMessage1() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+
+		return wait.until(driver -> {
+
+			List<WebElement> elements = driver.findElements(By.xpath("//*[@role='alert']//span"));
+
+			for (int i = elements.size() - 1; i >= 0; i--) {
+
+				WebElement el = elements.get(i);
+
+				if (el.isDisplayed()) {
+					String text = el.getText();
+
+					if (text != null && !text.trim().isEmpty() && !text.contains("Loading")) {
+						return text;
+					}
+				}
+			}
+			return null;
+		});
+
+	}
+
+	public void waitForToastDisappear() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		wait.until(ExpectedConditions.invisibilityOfAllElements(toastElements));
+	}
 
 	public String getToastMessage() {
 		return eleUtil.doGetToastMessage();

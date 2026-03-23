@@ -1,11 +1,8 @@
 package com.qa.gyruslearner.util;
 
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
-
 import com.qa.gyruslearner.base.TestBase;
 
 public class JavaScriptUtil extends TestBase {
@@ -143,9 +140,10 @@ public class JavaScriptUtil extends TestBase {
 			    System.out.println("Toast: " + toastMsg);
 			}
 		 return toastMsg;
-		 
+		 		 
 	}
-
+	
+	
 	public void drawBorder(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].style.border='3px solid red'", element);
