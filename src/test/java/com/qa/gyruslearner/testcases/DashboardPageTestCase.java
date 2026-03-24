@@ -37,23 +37,21 @@ public class DashboardPageTestCase extends TestBase {
 		dashboard = new DashboardPage();
 		calender = new CalendarPage();
 	}
-	
-	
+
 	@BeforeMethod
 	public void pageRefresh() {
-		
-		//driver.navigate().refresh();
+
+		// driver.navigate().refresh();
 
 		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
 			loginpage.getUserFirstTimeLogin("tteam01", "123");
 		}
 	}
-	
 
 	@Test(priority = 1)
 	public void dashBoardUrlTest() {
-		
-		//loginpage.getUserFirstTimeLogin("TTeam", "123");
+
+		// loginpage.getUserFirstTimeLogin("TTeam", "123");
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		try {
@@ -65,19 +63,21 @@ public class DashboardPageTestCase extends TestBase {
 			throw new SkipException("Skipping test because user could not login.");
 		}
 	}
+
 	@Test(priority = 2)
 	public void dashBoardPageTitleTest() {
 
 		String dashBoardPagetitle = dashboard.getDashBoardTitle();
 		Assert.assertEquals(dashBoardPagetitle, AppConstants.DASHBOARD_PAGE_TITLE);
 	}
-	
+
 	@Test(priority = 3)
 	public void VerifyCompanyLogoInDashBoardTest() {
 
 		Assert.assertTrue(dashboard.isCompnayLogoInDashBoardDisplayed(),
 				"Company logo is not displayed on the DashBoard page!");
 	}
+
 	@Test(priority = 4)
 	public void verifyWelcomeHeadertextTest() {
 
@@ -95,6 +95,181 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(slides.size() > 1, "Slider has less than 2 slides, cannot auto-slide!");
 
 	}
+
+	@Test(priority = 5)
+	public void verifyCalenderDisplayTest() {
+
+		// calender
+		Assert.assertTrue(dashboard.isCalenderIconDisplayed(), "Calender icon is not displayed!");
+		Assert.assertTrue(dashboard.isCalenderIconEnabled(), "Calender icon was not enabled");
+
+		dashboard.doClickOnCalender();
+
+		String CalenderUrl = calender.getCalenderPageUrl();
+		Assert.assertEquals(CalenderUrl, AppConstants.CALENDER_PAGE_URL);
+
+		calender.doClickOnBackToDashboard();
+
+	}
+
+	@Test(priority = 6)
+	public void verifyProfilePopUpTest() {
+		// Profile
+		Assert.assertTrue(dashboard.isProdfileMenuIconDisplayed(), "Profile icon is not displayed!");
+		Assert.assertTrue(dashboard.isProfileMenuIconEnabled(), "Profile icon was not enabled");
+		dashboard.doclickProfileIcon();
+		Assert.assertTrue(dashboard.isProfilePopUpDisplayed(), "Profile popup not displayed!");
+		dashboard.doPressKeyEscape();
+	}
+
+	@Test(priority = 7)
+	public void verifyQuickLinksTest() {
+
+		Assert.assertTrue(dashboard.isQuickLinkFirstPanelDisplay(), "QuickLink First Panel is not displayed!");
+		Assert.assertTrue(dashboard.isQuickLinkSecondPanelDisplay(), "QuickLink Second  Panel is not displayed!");
+		Assert.assertTrue(dashboard.isQuickLinkThirdPaneltDisplay(), "QuickLink Third Panel is not displayed!");
+
+		/*
+		 * dashboard.doClickOnFirstQuickLink(); String CurrentURL =
+		 * dashboard.getDashBoardPageUrl(); Assert.assertEquals(CurrentURL,
+		 * AppConstants.IDP_PAGE_URL); dashboard.doClickOnBrowserBackButton();
+		 * 
+		 * dashboard.doClickOnSecondQuickLink(); Assert.assertEquals(CurrentURL,
+		 * AppConstants.ACTIVITYFEED_PAGE_URL); dashboard.doClickOnBrowserBackButton();
+		 * 
+		 * dashboard.doClickOnThirdQuickLink(); Assert.assertEquals(CurrentURL,
+		 * AppConstants.MYENROLLMENT_PAGE_URL); dashboard.doClickOnBrowserBackButton();
+		 */
+	}
+
+	@Test(priority = 8)
+	public void verifyStatisticsDisplayed() {
+
+		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
+		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "In Progress Trainings not displayed!");
+
+		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
+		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "Completed Trainings not displayed!");
+
+		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
+		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "Earned Badges not displayed!");
+	}
+
+	@Test(priority = 9)
+	public void verifyStatisticsWithFilters() {
+
+		dashboard.doclickOnThisYear();
+		System.out.println("------------------Display Year Wise My Statistics Data-----------------------------");
+		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
+		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0,
+				"This Year filter not working for InProgress Trainings !");
+		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
+		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0,
+				"This Year filter not working for InProgress Trainings Completed Trainings!");
+		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
+		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Year filter not working for Earned Badges!");
+
+		dashboard.doclickOnThisMonth();
+		System.out.println("------------------Display Month Wise My Statistics Data-----------------------------");
+		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
+		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0,
+				"This Month filter not working for InProgress Trainings !");
+		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
+		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0,
+				"This Month filter not working for InProgress Trainings Completed Trainings!");
+		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
+		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Month filter not working for Earned Badges!");
+
+		dashboard.doclickOnThisWeek();
+		System.out.println("------------------Display Week Wise My Statistics Data-----------------------------");
+		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
+		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0,
+				"This Week filter not working for InProgress Trainings !");
+		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
+		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0,
+				"This Week filter not working for InProgress Trainings Completed Trainings!");
+		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
+		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Week filter not working for Earned Badges!");
+
+	}
+	
+	@Ignore
+	@Test(priority = 10)
+	public void verifyLearningStatusCardTest() {
+
+		System.out.println("------------------Display Number Cards Are Display of Learning Status In-Progress -------------------");
+		
+		String isCardsPresent = dashboard.isLearningCardsDisplayed();
+
+		switch (isCardsPresent) {
+
+		case "CARDS_PRESENT":
+		    System.out.println("Cards are available");
+		    dashboard.learningStatusGetCardCount();
+		    break;
+
+		case "NO_DATA":
+		    System.out.println("No Data found");
+		    break;
+
+		default:
+		    Assert.fail("Unexpected state");
+		    }
+		
+		/*
+		boolean isCardsPresent = dashboard.isLearningCardsDisplayed();
+
+		if (isCardsPresent) {
+
+			Assert.assertTrue(dashboard.isLearningCardsDisplayed(), "Cards should be displayed");
+			dashboard.learningStatusGetCardCount();
+
+		} else {
+
+			Assert.assertTrue(dashboard.isLearningCardsDisplayed(), "No Data message should be displayed");
+		}
+		*/
+
+	}
+	
+	
+	@Test(priority = 11)
+	public void verifyLearningStatusInProgressDataTest() {
+		
+		System.out.println("------------------Display Number Cards Are Display of Learning Status In-Progress -------------------");
+		dashboard.validateLearningInProgressCards();
+	}
+	
+	
+	@Test(priority = 12)
+	public void verifyLearningStatusNotStartedDataTest() {
+		
+		
+		Assert.assertTrue(dashboard.isLeanerNotStartedButtonDisplay(), "Leanrer Status Not started link button not visible");
+		dashboard.doclickLearnerStatusNotStarted();
+		System.out.println("------------------Display Number Cards Are Display of Learning Status Not-Started -------------------");
+		dashboard.validateLearningNotStartedCards();
+	}
+	
+	
+	@Test(priority = 13)
+	public void verifyMySheduleDataTest() {
+		
+		System.out.println("------------------Display Number My Schedule -------------------");
+		Assert.assertTrue(dashboard.isMySheduleViewDetailsDisplay(), "My Schedule View Details link button not visible");
+		Assert.assertTrue(dashboard.isMySheduleDatePickerDisplay(), "My Schedule Date Picker not visible");
+		Assert.assertTrue(dashboard.isMySheduleTodayDateDisplay(), "My Schedule Today Date not visible");
+		Assert.assertEquals(dashboard.getMyScheduleTodayDate(),dashboard.getCurrentdate(),"My Shedule Current Date mismatch!");
+		System.out.println("Today date: "+ dashboard.getCurrentdate());
+		dashboard.validateMySheduleTodayList();
+	
+	}
+	
+	
+	
+
+	// This Icon is hide So this Test Case is ignore
+	@Ignore
 	@Test(priority = 6)
 	public void verifyHeaderIconsFunctionality() {
 
@@ -106,6 +281,7 @@ public class DashboardPageTestCase extends TestBase {
 		dashboard.doClickQuickCloseIcon();
 
 	}
+
 	@Ignore
 	@Test(priority = 7)
 	public void verifyCartPopUpTest() {
@@ -117,22 +293,7 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(dashboard.isCartPopUpDisplayed(), "Cart icon popup not displayed!");
 		dashboard.doPressKeyEscape();
 	}
-	@Test(priority = 8)
-	public void verifyCalenderDisplayTest() {
 
-		// calender
-		Assert.assertTrue(dashboard.isCalenderIconDisplayed(), "Calender icon is not displayed!");
-		Assert.assertTrue(dashboard.isCalenderIconEnabled(), "Calender icon was not enabled");
-		
-		/*
-		dashboard.doClickOnCalender();
-		
-		String CalenderUrl = calender.getCalenderPageUrl();
-		Assert.assertEquals(CalenderUrl, AppConstants.CALENDER_PAGE_URL);
-		
-		calender.doClickOnBackToDashboard();
-		*/
-	}
 	@Ignore
 	@Test(priority = 9)
 	public void verifyNotificationPopUpTest() {
@@ -144,19 +305,9 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(dashboard.isNotificationPopUpDisplayed(), "Notification popup not displayed!");
 		dashboard.doPressKeyEscape();
 	}
-	
-	@Test(priority = 10)
-	public void verifyProfilePopUpTest() {
-		// Profile
-		Assert.assertTrue(dashboard.isProdfileMenuIconDisplayed(), "Profile icon is not displayed!");
-		Assert.assertTrue(dashboard.isProfileMenuIconEnabled(), "Profile icon was not enabled");
-		dashboard.doclickProfileIcon();
-		Assert.assertTrue(dashboard.isProfilePopUpDisplayed(), "Profile popup not displayed!");
-		dashboard.doPressKeyEscape();
-	}
-	
+
 	@Ignore
-	@Test(priority =11)
+	@Test(priority = 7)
 	public void verifyQuickLinksPopupTest() {
 
 		// Quick Links
@@ -166,67 +317,23 @@ public class DashboardPageTestCase extends TestBase {
 		// Step 2: Verify popup is displayed
 		dashboard.doClickOnQuicklinks();
 		Assert.assertTrue(dashboard.isQuicklinkPopUpDisplayed(), "Quick Links popup not displayed!");
-	
+
 		// Step 3: Verify items inside popup
-	    Assert.assertTrue(dashboard.isQuickLinkItemCourseCataLogDisplayed(), "Course Catalog link missing!");
-	    Assert.assertTrue(dashboard.isQuickLinkItemIDPDisplayed(), "IDP link missing!");
-	    Assert.assertTrue(dashboard.isQuickLinkItemTrainingTranscriptDisplayed(), "Training Transcript link missing!");
-		
-	    // Step 4: Close popup
-	    dashboard.doClickQuickCloseIcon();
-	    
+		Assert.assertTrue(dashboard.isQuickLinkItemCourseCataLogDisplayed(), "Course Catalog link missing!");
+		Assert.assertTrue(dashboard.isQuickLinkItemIDPDisplayed(), "IDP link missing!");
+		Assert.assertTrue(dashboard.isQuickLinkItemTrainingTranscriptDisplayed(), "Training Transcript link missing!");
+
+		// Step 4: Close popup
+		dashboard.doClickQuickCloseIcon();
+
 	}
-	@Test(priority = 12)
-	public void verifyStatisticsDisplayed() {
-		
-		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
-		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "In Progress Trainings not displayed!");
-		
-		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
-		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "Completed Trainings not displayed!");
-		
-		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
-		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "Earned Badges not displayed!");
-	}
-	@Test(priority = 13)
-	public void verifyStatisticsWithFilters() {
-		
-		dashboard.doclickOnThisYear();
-		System.out.println("------------------Display Year Wise My Statistics Data-----------------------------");
-		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
-		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "This Year filter not working for InProgress Trainings !");
-		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
-		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "This Year filter not working for InProgress Trainings Completed Trainings!");
-		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
-		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Year filter not working for Earned Badges!");
-		
-		dashboard.doclickOnThisMonth();
-		System.out.println("------------------Display Month Wise My Statistics Data-----------------------------");
-		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
-		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "This Month filter not working for InProgress Trainings !");
-		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
-		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "This Month filter not working for InProgress Trainings Completed Trainings!");
-		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
-		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Month filter not working for Earned Badges!");
-		
-		dashboard.doclickOnThisWeek();
-		System.out.println("------------------Display Week Wise My Statistics Data-----------------------------");
-		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
-		Assert.assertTrue(dashboard.getInProgressTrainingsCount() >= 0, "This Week filter not working for InProgress Trainings !");
-		System.out.println("Completed  Trainings: " + dashboard.getCompletedTrainingsCount());
-		Assert.assertTrue(dashboard.getCompletedTrainingsCount() >= 0, "This Week filter not working for InProgress Trainings Completed Trainings!");
-		System.out.println("Earned Badges: " + dashboard.getEarnedBadgesCount());
-		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "This Week filter not working for Earned Badges!");
-		
-		
-	}
-	
+
 	@AfterClass
 	public void tearDown() {
-		if(driver!=null) {
+		if (driver != null) {
 			driver.close();
 		}
-		
+
 	}
 
 }

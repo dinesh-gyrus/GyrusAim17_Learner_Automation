@@ -2,6 +2,7 @@ package com.qa.gyruslearner.pages;
 
 import java.time.Duration;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -44,7 +45,18 @@ public class CalendarPage extends TestBase {
 	
 	public void doClickOnBackToDashboard() {
 		
-		eleUtil.doClick(btnBackToDashboard);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'start'});",
+				btnBackToDashboard);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.elementToBeClickable(btnBackToDashboard));
+
+		try {
+			eleUtil.doClick(btnBackToDashboard);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnBackToDashboard);
+		}
+		
+		//eleUtil.doClick(btnBackToDashboard);
 	}
 
 }

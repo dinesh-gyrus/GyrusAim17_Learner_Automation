@@ -28,6 +28,10 @@ public class AppConstants extends TestBase {
 	public final static String SIGNUP_PAGE_URL =BaseUrl +"/Registration/UserSelfRegistration";
 	public final static String CALENDER_PAGE_URL=BaseUrl + "/v2/classcalendar";
 	public final static String MYPROFILE_PAGE_URL=BaseUrl +"/v2/profile";
+	public final static String IDP_PAGE_URL=BaseUrl +"/v2/idp";
+	public final static String ACTIVITYFEED_PAGE_URL=BaseUrl +"/v2/activityFeed";
+	public final static String MYENROLLMENT_PAGE_URL=BaseUrl +"/v2/myEnrollment";
+	
 	
 	
 	
