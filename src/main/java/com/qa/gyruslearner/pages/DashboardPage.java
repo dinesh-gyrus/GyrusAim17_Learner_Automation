@@ -18,10 +18,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.util.ElementUtil;
+import com.qa.gyruslearner.util.JavaScriptUtil;
 
 public class DashboardPage extends TestBase {
 
 	ElementUtil eleUtil;
+	JavaScriptUtil jsUtil;
 
 	@FindBy(xpath = "//*[@alt='Gyrus Logo']")
 	WebElement companyLogoDashBoard;
@@ -113,7 +115,6 @@ public class DashboardPage extends TestBase {
 
 	@FindBy(xpath = "//gyrusaim-my-schedule-widget//kendo-card")
 	List<WebElement> MyScheduleList;
-	
 
 	@FindBy(xpath = "(//*[@class='col-12 col-lg-4 col-md-4 ng-star-inserted'])[1]")
 	WebElement QuicklinkFirst;
@@ -136,9 +137,43 @@ public class DashboardPage extends TestBase {
 	@FindBy(xpath = "//p[normalize-space()='Not Started']")
 	WebElement lnkNotStartedbutton;
 
+	@FindBy(xpath = "//gyrusaim-assigned-learning-widget//div[@title='Card View']")
+	List<WebElement> assignedTrainingsCardViewList;
+
+	@FindBy(xpath = "//p[normalize-space()='Recently Assigned']")
+	WebElement lnkRecentlyAssignedButton;
+
+	@FindBy(xpath = "//p[normalize-space()='Due']")
+	WebElement lnkDueButton;
+
+	@FindBy(xpath = "//p[normalize-space()='Overdue']")
+	WebElement lnkOverDueButton;
+
+	@FindBy(xpath = "(//p[normalize-space()='View All'])[1]")
+	WebElement lnkBadgesViewAll;
+
+	@FindBy(xpath = "//gyrusaim-recent-badges-widget//div[contains(@class,'box')]")
+	List<WebElement> RecentBadgesCardViewList;
+
+	@FindBy(xpath = "//gyrusaim-leader-board-widget//div[contains(@class,'Leader_card_rank')]")
+	List<WebElement> LeaderboardRanklist;
+
+	@FindBy(xpath = "(//p[normalize-space()='View All'])[2]")
+	WebElement lnkActivityFeedsViewAll;
+
+	@FindBy(xpath = "//gyrusaim-activity-feeds-widget//div[contains(@class,'recent_feed_container')]")
+	List<WebElement> ActivityFeedslist;
+
+	@FindBy(xpath = "(//p[normalize-space()='View All'])[3]")
+	WebElement lnkCertificationsViewAll;
+
+	@FindBy(xpath = "//gyrusaim-certifications-widget//div[@title='Card View']")
+	List<WebElement> certificationslist;
+
 	public DashboardPage() {
 		PageFactory.initElements(driver, this);
 		eleUtil = new ElementUtil();
+		jsUtil = new JavaScriptUtil();
 	}
 
 	public String getDashBoardPageUrl() {
@@ -158,7 +193,8 @@ public class DashboardPage extends TestBase {
 
 	public boolean isCompnayLogoInDashBoardDisplayed() {
 
-		return eleUtil.isElementDisplayed(companyLogoDashBoard);
+		//return eleUtil.isElementDisplayed(companyLogoDashBoard);
+		return jsUtil.isImageLoaded(companyLogoDashBoard);
 	}
 
 	public boolean isWelcomeTextDisplayed() {
@@ -525,6 +561,14 @@ public class DashboardPage extends TestBase {
 				throw new RuntimeException("Progress is missing in card " + (i + 1));
 			}
 
+			if (status.contains("In progress")) {
+				if (!progress.contains("100%") && !progress.contains("0%")) {
+
+					throw new RuntimeException("Status In progress  but percentage Wrong Display " + title);
+				}
+
+			}
+
 		}
 	}
 
@@ -547,11 +591,6 @@ public class DashboardPage extends TestBase {
 
 		try {
 			eleUtil.doClick(lnkNotStartedbutton);
-			try {
-				Thread.sleep(2000);
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
 		} catch (Exception e) {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", lnkNotStartedbutton);
 		}
@@ -561,7 +600,7 @@ public class DashboardPage extends TestBase {
 	public void validateLearningNotStartedCards() {
 
 		if (LearnerStatusCardViewList.isEmpty()) {
-			System.out.println("No Cards Available");
+			System.out.println("No Learner Status Cards Available");
 			return;
 		}
 
@@ -573,10 +612,8 @@ public class DashboardPage extends TestBase {
 
 			// Training type
 			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
-
 			// Title
 			String title = card.findElement(By.xpath(".//h3")).getText();
-
 			// Status
 			String status = card.findElement(By.xpath(".//span[contains(text(),'Not Started')]")).getText();
 			// .findElement(By.xpath(".//span[contains(text(),'In progress') or
@@ -586,7 +623,6 @@ public class DashboardPage extends TestBase {
 			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
 
 			// Print
-
 			System.out.println("Not Started Card :" + (i + 1));
 			System.out.println("Training Type: " + Trainingtype);
 			System.out.println("Title: " + title);
@@ -610,6 +646,14 @@ public class DashboardPage extends TestBase {
 				throw new RuntimeException("Progress is missing in card " + (i + 1));
 			}
 
+			if (status.contains("Not Started")) {
+				if (!progress.contains("0%")) {
+
+					throw new RuntimeException("Status Not Started  but percentage Wrong Display " + title);
+				}
+
+			}
+
 		}
 	}
 
@@ -627,7 +671,7 @@ public class DashboardPage extends TestBase {
 
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
 				mySchedulesDatePicker);
-		//((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -150)");
+		// ((JavascriptExecutor) driver).executeScript("window.scrollBy(0, -150)");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 		wait.until(ExpectedConditions.visibilityOf(mySchedulesDatePicker));
 
@@ -660,11 +704,11 @@ public class DashboardPage extends TestBase {
 		return LocalDate.now().format(formatter);
 
 	}
-	
+
 	public void validateMySheduleTodayList() {
 
 		if (MyScheduleList.isEmpty()) {
-			System.out.println("No Cards Available");
+			System.out.println("No My Schedule Cards Available");
 			return;
 		}
 
@@ -676,42 +720,417 @@ public class DashboardPage extends TestBase {
 
 			// Training type
 			String Trainingtype = card.findElement(By.xpath(".//label")).getText();
-
 			// Title
-			 String title = card.findElement(By.xpath(".//span[contains(@class,'timeline_title')]")).getText();
-
-			// Button name 
-			 String ButtonText = card.findElement(By.xpath(".//button[contains(@title,'Dive In')]")).getText();
-			
-			// Time 
-			//String Time = card.findElement(By.xpath(".//span[contains(@class,'k-timeline-date')]")).getText();
+			String title = card.findElement(By.xpath(".//span[contains(@class,'timeline_title')]")).getText();
+			// Button name
+			String ButtonText = card.findElement(By.xpath(".//button[contains(@title,'Dive In')]")).getText();
+			// Time
+			// String Time =
+			// card.findElement(By.xpath(".//span[contains(@class,'k-timeline-date')]")).getText();
 
 			// Print
-
 			System.out.println("My Schedule Card :" + (i + 1));
 			System.out.println("Training Type: " + Trainingtype);
 			System.out.println("Title: " + title);
 			System.out.println("Button Name: " + ButtonText);
-			
+
+			// Assertions
+			if (Trainingtype.trim().isEmpty()) {
+				throw new RuntimeException("Training Type is missing in card " + (i + 1));
+			}
+
+			if (title.trim().isEmpty()) {
+				throw new RuntimeException("Title is missing in card " + (i + 1));
+			}
+
+			if (ButtonText.trim().isEmpty()) {
+				throw new RuntimeException("ButtonText is missing in card " + (i + 1));
+			}
+
+		}
+	}
+
+	public boolean isAssignedTrainingsRecentlyAssignedDisplay() {
+
+		jsUtil.scrollIntoViewCenter(lnkRecentlyAssignedButton);
+		return eleUtil.visibleElementWhenReady(lnkDueButton, 20);
+	}
+
+	public void validateAssignedTrainingsRecentlyAssignedCards() {
+
+		if (assignedTrainingsCardViewList.isEmpty()) {
+			System.out.println("No Learner Status Cards Available");
+			return;
+		}
+
+		System.out.println(
+				" Assigned Trainings  Recently Assigned  Total Cards: " + assignedTrainingsCardViewList.size());
+
+		for (int i = 0; i < assignedTrainingsCardViewList.size(); i++) {
+
+			WebElement card = assignedTrainingsCardViewList.get(i);
+
+			// Training type
+			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
+			// Title
+			String title = card.findElement(By.xpath(".//h3")).getText();
+			// Status
+			String status = card.findElement(By.xpath(".//span[contains(text(),'Not Started')]")).getText();
+			// .findElement(By.xpath(".//span[contains(text(),'In progress') or
+			// contains(text(),'Not Started')]"))
+
+			// Progress
+			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
+
+			// Print
+			System.out.println("Not Started Card :" + (i + 1));
+			System.out.println("Training Type: " + Trainingtype);
+			System.out.println("Title: " + title);
+			System.out.println("Status: " + status);
+			System.out.println("Progress: " + progress);
 
 			// Assertions
 
 			if (Trainingtype.trim().isEmpty()) {
 				throw new RuntimeException("Training Type is missing in card " + (i + 1));
 			}
-			
 			if (title.trim().isEmpty()) {
 				throw new RuntimeException("Title is missing in card " + (i + 1));
 			}
-			
-			
-			if (ButtonText.trim().isEmpty()) {
-				throw new RuntimeException("ButtonText is missing in card " + (i + 1));
+
+			if (status.trim().isEmpty()) {
+				throw new RuntimeException("Status is missing in card " + (i + 1));
 			}
-			
+
+			if (progress.trim().isEmpty()) {
+				throw new RuntimeException("Progress is missing in card " + (i + 1));
+			}
+
+			if (status.contains("Not Started")) {
+				if (!progress.contains("0%")) {
+
+					throw new RuntimeException("Status Not Started  but percentage Wrong Display " + title);
+				}
+
+			}
 
 		}
 	}
-	
+
+	public boolean isAssignedTrainingsDueButtonDisplay() {
+
+		jsUtil.scrollIntoViewCenter(lnkDueButton);
+		return eleUtil.visibleElementWhenReady(lnkDueButton, 20);
+	}
+
+	public void doclickAssignedTrainingsDueButton() {
+
+		jsUtil.scrollIntoViewCenter(lnkDueButton);
+		eleUtil.clickElementWhenReady(lnkDueButton, 20);
+
+	}
+
+	public void validateAssignedTrainingsDueAndOverDueCards() {
+
+		if (assignedTrainingsCardViewList.isEmpty()) {
+			System.out.println("No Assigned Trainings  Due and OverDue Cards Available");
+			return;
+		}
+
+		System.out
+				.println(" Assigned Trainings  Due and OverDue  Total Cards: " + assignedTrainingsCardViewList.size());
+
+		for (int i = 0; i < assignedTrainingsCardViewList.size(); i++) {
+
+			WebElement card = assignedTrainingsCardViewList.get(i);
+
+			// Training type
+			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
+			// Title
+			String title = card.findElement(By.xpath(".//h3")).getText();
+			// Status
+			String status = card
+					.findElement(By.xpath(".//span[contains(text(),'Not Started') or contains(text(),'In progress')]"))
+					.getText();
+
+			// Progress
+			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
+
+			// Print
+			System.out.println("Not Started Card :" + (i + 1));
+			System.out.println("Training Type: " + Trainingtype);
+			System.out.println("Title: " + title);
+			System.out.println("Status: " + status);
+			System.out.println("Progress: " + progress);
+
+			// Assertions
+
+			if (Trainingtype.trim().isEmpty()) {
+				throw new RuntimeException("Training Type is missing in card " + (i + 1));
+			}
+			if (title.trim().isEmpty()) {
+				throw new RuntimeException("Title is missing in card " + (i + 1));
+			}
+
+			if (status.trim().isEmpty()) {
+				throw new RuntimeException("Status is missing in card " + (i + 1));
+			}
+
+			if (progress.trim().isEmpty()) {
+				throw new RuntimeException("Progress is missing in card " + (i + 1));
+			}
+
+			if (status.contains("Not Started") || status.contains("In progress")) {
+
+				if (progress.contains("100%")) {
+					if (status.contains("Not Started")) {
+						throw new RuntimeException("Status Not Started  but percentage Wrong Display " + title);
+					} else {
+						throw new RuntimeException("Status In progress  but percentage Wrong Display " + title);
+					}
+				}
+
+			}
+
+		}
+	}
+
+	public boolean isAssignedTrainingsOverDueButtonDisplay() {
+
+		jsUtil.scrollIntoViewCenter(lnkOverDueButton);
+		return eleUtil.visibleElementWhenReady(lnkOverDueButton, 20);
+	}
+
+	public void doclickAssignedTrainingsOverDueButton() {
+
+		jsUtil.scrollIntoViewCenter(lnkOverDueButton);
+		eleUtil.clickElementWhenReady(lnkOverDueButton, 20);
+
+	}
+
+	public boolean isRecentBadgesViewAllButtonDisplay() {
+
+		jsUtil.scrollIntoViewCenter(lnkOverDueButton);
+		return eleUtil.visibleElementWhenReady(lnkOverDueButton, 20);
+	}
+
+	public void validateRecentBadgesCards() {
+
+		if (RecentBadgesCardViewList.isEmpty()) {
+			System.out.println("No Recent Badges Cards Available");
+			return;
+		}
+
+		System.out.println(" Recent Badges  Total Cards: " + RecentBadgesCardViewList.size());
+
+		for (int i = 0; i < RecentBadgesCardViewList.size(); i++) {
+
+			WebElement card = RecentBadgesCardViewList.get(i);
+
+			// Images
+			Boolean badgesImage = jsUtil.isImageLoaded(card.findElement(By.xpath(".//img")));
+			// Title
+			String badgesTitle = card.findElement(By.xpath(".//p")).getText();
+
+			// Print
+			System.out.println("Badges Card :" + (i + 1));
+			System.out.println("Badges Image Display : " + badgesImage);
+			System.out.println("Badges Title: " + badgesTitle);
+
+			// Assertions
+
+			if (badgesImage == false) {
+				throw new RuntimeException("Badges Image is missing in card " + (i + 1));
+			}
+			if (badgesTitle.trim().isEmpty()) {
+				throw new RuntimeException(" Badges Title is missing in card " + (i + 1));
+			}
+
+		}
+	}
+
+	public void validateLeaderboardRankCards() {
+
+		if (LeaderboardRanklist.isEmpty()) {
+			System.out.println("No Leaderboard Rank Cards Available");
+			return;
+		}
+
+		System.out.println("Leaderboard  Total Rank Cards: " + LeaderboardRanklist.size());
+
+		for (int i = 0; i < LeaderboardRanklist.size(); i++) {
+
+			WebElement card = LeaderboardRanklist.get(i);
+
+			// Images
+			Boolean image = card.findElement(By.xpath(".//img")).isDisplayed();
+			// Rank Image
+			Boolean rankImage = card.findElement(By.xpath(".//img")).isDisplayed();
+			// Title
+			String LeaderboardTitle = card.findElement(By.xpath(".//h3")).getText();
+
+			// Points Earned
+			String pointsEarned = card.findElement(By.xpath(".//p[contains(@class,'mainpoints')]"))
+					.getDomAttribute("title");
+
+			// Print
+			System.out.println("Leaderboard Card :" + (i + 1));
+			System.out.println("Leaderboard Image Display : " + image);
+			System.out.println("RankImage : " + image);
+			System.out.println("Leaderboard Name: " + LeaderboardTitle);
+			System.out.println("Points Earned : " + pointsEarned);
+			// Assertions
+
+			if (image == false) {
+				throw new RuntimeException("Leaderboard Image is missing in card " + (i + 1));
+			}
+			if (rankImage == false) {
+				throw new RuntimeException("Rank Image is missing in card " + (i + 1));
+			}
+			if (LeaderboardTitle.trim().isEmpty()) {
+				throw new RuntimeException(" Leaderboard Name is missing in card " + (i + 1));
+			}
+			if (pointsEarned.trim().isEmpty()) {
+				throw new RuntimeException(" Points Earned is missing in card " + (i + 1));
+			}
+
+		}
+	}
+
+	public boolean isActivityFeedsViewAllButtonDisplay() {
+
+		jsUtil.scrollIntoViewCenter(lnkActivityFeedsViewAll);
+		return eleUtil.visibleElementWhenReady(lnkActivityFeedsViewAll, 20);
+	}
+
+	public void validateActivityFeedsCards() {
+
+		if (ActivityFeedslist.isEmpty()) {
+			System.out.println("No Activity Feeds Cards Available");
+			return;
+		}
+
+		System.out.println("Activity Feeds  Total  Cards: " + ActivityFeedslist.size());
+
+		for (int i = 0; i < ActivityFeedslist.size(); i++) {
+
+			WebElement card = ActivityFeedslist.get(i);
+
+			// Images
+			// Boolean image =
+			// card.findElement(By.xpath(".//img[contains(@alt,'User')]")).isDisplayed();
+			Boolean image = jsUtil.isImageLoaded(card.findElement(By.xpath(".//img[contains(@alt,'User')]")));
+
+			// Title
+			String userName = card.findElement(By.xpath(".//h5")).getText();
+			// hours ago
+			String hoursago = card.findElement(By.xpath(".//p")).getText();
+			// Description
+			String Description = card.findElement(By.xpath(".//div[contains(@class,'activity_feed_msg_dashboard')]"))
+					.getText();
+
+			// Print
+			System.out.println("Activity Feeds Card :" + (i + 1));
+
+			System.out.println("User Image Display : " + image);
+			System.out.println("User Name : " + userName);
+			System.out.println("hours Ago : " + hoursago);
+			System.out.println("Description : " + Description);
+
+			// Assertions
+			if (image == false) {
+				throw new RuntimeException("User Image is missing in card " + (i + 1));
+			}
+			if (userName.trim().isEmpty()) {
+				throw new RuntimeException("User Name is missing in card " + (i + 1));
+			}
+			if (hoursago.trim().isEmpty()) {
+				throw new RuntimeException(" hours Ago Text  is missing in card " + (i + 1));
+			}
+			if (Description.trim().isEmpty()) {
+				throw new RuntimeException(" Description is missing in card " + (i + 1));
+			}
+
+		}
+	}
+
+	public boolean isCertificationsViewAllButtonDisplay() {
+
+		jsUtil.scrollIntoViewCenter(lnkCertificationsViewAll);
+		return eleUtil.visibleElementWhenReady(lnkCertificationsViewAll, 20);
+	}
+
+	public void validateCertificationsCards() {
+
+		if (certificationslist.isEmpty()) {
+			System.out.println("No Certifications Cards Available");
+			return;
+		}
+
+		System.out.println(" Certifications  Total Cards: " + certificationslist.size());
+
+		for (int i = 0; i < certificationslist.size(); i++) {
+
+			WebElement card = certificationslist.get(i);
+
+			// Certification Image
+			Boolean certificationImage = jsUtil
+					.isImageLoaded(card.findElement(By.xpath(".//img[contains(@alt,'training')]")));
+
+			// Certification Name
+			String certificationName = card.findElement(By.xpath(".//h3")).getText();
+
+			// Status
+			String status = card.findElement(By.xpath(
+					".//span[contains(text(),'Certified') or contains(text(),'Recertified') or contains(text(),'Expired') or contains(text(),'Not Certified')]"))
+					.getText();
+
+			// Progress
+			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
+
+			// Print
+			System.out.println("Certification Card No :" + (i + 1));
+			System.out.println("Certification Image: " + certificationImage);
+			System.out.println("certification Name: " + certificationName);
+			System.out.println("Status: " + status);
+			System.out.println("Progress: " + progress);
+
+			// Assertions
+
+			if (certificationImage == false) {
+				throw new RuntimeException("Certification Image is missing in card " + (i + 1));
+			}
+			if (certificationName.trim().isEmpty()) {
+				throw new RuntimeException("Title is missing in card " + (i + 1));
+			}
+
+			if (status.trim().isEmpty()) {
+				throw new RuntimeException("Status is missing in card " + (i + 1));
+			}
+
+			if (progress.trim().isEmpty()) {
+				throw new RuntimeException("Progress is missing in card " + (i + 1));
+			}
+
+			if (status.contains("Certified")) {
+				if (!progress.contains("100%")) {
+
+					throw new RuntimeException("Status Certified  but percentage Wrong Display " + (i + 1));
+				}
+
+			} else if (status.contains("Recertified")) {
+				if (!progress.contains("0%")) {
+
+					throw new RuntimeException("Status Recertified  but percentage Wrong Display " + (i + 1));
+				}
+			} else if (status.contains("Not Certified")) {
+				if (progress.contains("100%")) {
+
+					throw new RuntimeException("Status Recertified  but percentage Wrong Display " + (i + 1));
+				}
+			}
+
+		}
+	}
 
 }

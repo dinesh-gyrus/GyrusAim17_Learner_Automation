@@ -102,6 +102,19 @@ public class JavaScriptUtil extends TestBase {
 		js.executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 	
+	public void scrollIntoViewCenter(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
+	}
+	
+	public boolean isImageLoaded(WebElement image) {
+
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	    return (Boolean) js.executeScript(
+	        "return arguments[0].complete && arguments[0].naturalWidth > 0;",image);
+	}
+	
 	public String toastMessageHandle() {
 	
 		

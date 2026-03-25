@@ -139,8 +139,20 @@ public class ElementUtil extends TestBase {
 	}
 	
 	public void clickElementWhenReady(WebElement locator, long timeOut) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(timeOut));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+	}
+	
+	public boolean visibleElementWhenReady(WebElement locator,long timeOut){
+		
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+			return wait.until(ExpectedConditions.visibilityOf(locator)).isDisplayed();
+			 
+		} catch (NoSuchElementException e) {
+			System.out.println("element is not present on the page using : " + locator);
+			return false;
+		}
 	}
 	
 	public String doGetElementText(WebElement loginHeader) {

@@ -262,9 +262,62 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertEquals(dashboard.getMyScheduleTodayDate(),dashboard.getCurrentdate(),"My Shedule Current Date mismatch!");
 		System.out.println("Today date: "+ dashboard.getCurrentdate());
 		dashboard.validateMySheduleTodayList();
-	
 	}
 	
+	@Test(priority = 14)
+	public void verifyAssignedTrainingsRecentlyAssignedDataTest() {
+		
+		Assert.assertTrue(dashboard.isAssignedTrainingsRecentlyAssignedDisplay(), "Assigned Trainings  link button not visible");
+		System.out.println("------------------Display Number Cards Are Display of Assigned Trainings Recently Assigned -------------------");
+		dashboard.validateAssignedTrainingsRecentlyAssignedCards();
+	}
+	
+	@Test(priority = 15)
+	public void verifyAssignedTrainingsDueDataTest() {
+		
+		Assert.assertTrue(dashboard.isAssignedTrainingsDueButtonDisplay(), "Due link button not visible");
+		dashboard.doclickAssignedTrainingsDueButton();
+		System.out.println("------------------Display Number Cards Are Display of Assigned Trainings Due -------------------");
+		dashboard.validateAssignedTrainingsDueAndOverDueCards();
+	}
+	@Test(priority = 16)
+	public void verifyAssignedTrainingsOverDueDataTest() {
+		
+		Assert.assertTrue(dashboard.isAssignedTrainingsOverDueButtonDisplay(), "Over Due link button not visible");
+		dashboard.doclickAssignedTrainingsOverDueButton();
+		System.out.println("------------------Display Number Cards Are Display of Assigned Trainings Over Due -------------------");
+		dashboard.validateAssignedTrainingsDueAndOverDueCards();
+	}
+	
+	@Test(priority = 17)
+	public void verifyRecentBadgesDataTest() {
+		
+		Assert.assertTrue(dashboard.isRecentBadgesViewAllButtonDisplay(), "Badges View All link button not visible");
+		System.out.println("------------------Display Number Cards Are Display of Recent Badges -------------------");
+		dashboard.validateRecentBadgesCards();
+	}
+	
+	@Test(priority = 18)
+	public void verifyLeaderboardDataTest() {
+		
+		System.out.println("------------------Display Number Rank Cards Are Display of Leaderboard -------------------");
+		dashboard.validateLeaderboardRankCards();
+	}
+	
+	@Test(priority = 19)
+	public void verifyActivityFeedsDataTest() {
+		
+		Assert.assertTrue(dashboard.isActivityFeedsViewAllButtonDisplay(), "Activity Feeds View All link button not visible");
+		System.out.println("------------------Display Number Cards Are Display of Activity Feeds -------------------");
+		dashboard.validateActivityFeedsCards();
+	}
+	@Test(priority = 20)
+	public void verifyCertificationsDataTest() {
+		
+		Assert.assertTrue(dashboard.isCertificationsViewAllButtonDisplay(), "Certifications View All link button not visible");
+		System.out.println("------------------Display Number Cards Are Display of Certifications -------------------");
+		dashboard.validateCertificationsCards();
+	}
 	
 	
 
