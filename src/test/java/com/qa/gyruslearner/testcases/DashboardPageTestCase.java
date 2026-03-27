@@ -1,12 +1,10 @@
 package com.qa.gyruslearner.testcases;
 
-import java.time.Duration;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
@@ -52,13 +50,10 @@ public class DashboardPageTestCase extends TestBase {
 	public void dashBoardUrlTest() {
 
 		// loginpage.getUserFirstTimeLogin("TTeam", "123");
-
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		try {
-			wait.until(ExpectedConditions.urlToBe(AppConstants.DASHBOARD_PAGE_URL));
 			String dashBoardUrl = dashboard.getDashBoardPageUrl();
 			Assert.assertEquals(dashBoardUrl, AppConstants.DASHBOARD_PAGE_URL);
-			System.out.println("DashBoard URL" + AppConstants.DASHBOARD_PAGE_URL);
+			System.out.println("DashBoard URL : " + AppConstants.DASHBOARD_PAGE_URL);
 		} catch (Exception e) {
 			throw new SkipException("Skipping test because user could not login.");
 		}
@@ -316,11 +311,20 @@ public class DashboardPageTestCase extends TestBase {
 		
 		Assert.assertTrue(dashboard.isCertificationsViewAllButtonDisplay(), "Certifications View All link button not visible");
 		System.out.println("------------------Display Number Cards Are Display of Certifications -------------------");
+		
 		dashboard.validateCertificationsCards();
 	}
+	@Test(priority = 21)
+	public void verifymainMenuItemsDataTest() {
+		
+		Assert.assertTrue(dashboard.isSidebarMenuiconDisplay(), "sidebar Menu icon  not visible");
+		Assert.assertTrue(dashboard.isMyLearningMenuDisplay(), "MyLearning Menu icon  not visible");
+		Assert.assertTrue(dashboard.isMyLearningMenuEnable(), "MyLearning Submenu was not enabled");
+		dashboard.doclickMyLearningSubmenu();
+		System.out.println("------------------Display Number Menus Are Display -------------------");
+		dashboard.validatemainMenuItemsAndIcon();
+	}
 	
-	
-
 	// This Icon is hide So this Test Case is ignore
 	@Ignore
 	@Test(priority = 6)

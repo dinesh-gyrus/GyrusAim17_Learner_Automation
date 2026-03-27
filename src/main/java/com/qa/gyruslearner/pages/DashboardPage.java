@@ -24,6 +24,12 @@ public class DashboardPage extends TestBase {
 
 	ElementUtil eleUtil;
 	JavaScriptUtil jsUtil;
+	
+	public DashboardPage() {
+		PageFactory.initElements(driver, this);
+		eleUtil = new ElementUtil();
+		jsUtil = new JavaScriptUtil();
+	}
 
 	@FindBy(xpath = "//*[@alt='Gyrus Logo']")
 	WebElement companyLogoDashBoard;
@@ -170,14 +176,20 @@ public class DashboardPage extends TestBase {
 	@FindBy(xpath = "//gyrusaim-certifications-widget//div[@title='Card View']")
 	List<WebElement> certificationslist;
 
-	public DashboardPage() {
-		PageFactory.initElements(driver, this);
-		eleUtil = new ElementUtil();
-		jsUtil = new JavaScriptUtil();
-	}
+	@FindBy(xpath = "//*[@class='sidebar_menu_toggle_icon']")
+	WebElement sidebarMenuicon;
+
+	@FindBy(xpath = "//aside//li[contains(@class,'mainMenuItems')]")
+	List<WebElement> mainMenuItemsList;
+
+	@FindBy(xpath = "//span[contains(@data-key,'navMyLearning')]")
+	WebElement lnkMyLearning;
+
+	
 
 	public String getDashBoardPageUrl() {
-
+		
+		eleUtil.waitForUrlToBe(AppConstants.DASHBOARD_PAGE_URL, AppConstants.MAX_TIME_OUT);
 		String DashboardCurrentUrl = driver.getCurrentUrl();
 		return DashboardCurrentUrl;
 	}
@@ -193,8 +205,8 @@ public class DashboardPage extends TestBase {
 
 	public boolean isCompnayLogoInDashBoardDisplayed() {
 
-		//return eleUtil.isElementDisplayed(companyLogoDashBoard);
-		return jsUtil.isImageLoaded(companyLogoDashBoard);
+		return eleUtil.isElementDisplayed(companyLogoDashBoard);
+		// return jsUtil.isImageLoaded(companyLogoDashBoard);
 	}
 
 	public boolean isWelcomeTextDisplayed() {
@@ -614,11 +626,10 @@ public class DashboardPage extends TestBase {
 			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
 			// Title
 			String title = card.findElement(By.xpath(".//h3")).getText();
+			
 			// Status
 			String status = card.findElement(By.xpath(".//span[contains(text(),'Not Started')]")).getText();
-			// .findElement(By.xpath(".//span[contains(text(),'In progress') or
-			// contains(text(),'Not Started')]"))
-
+			
 			// Progress
 			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
 
@@ -1131,6 +1142,68 @@ public class DashboardPage extends TestBase {
 			}
 
 		}
+	}
+
+	public boolean isSidebarMenuiconDisplay() {
+
+		jsUtil.scrollIntoViewCenter(sidebarMenuicon);
+		return eleUtil.visibleElementWhenReady(sidebarMenuicon, 20);
+	}
+	
+	public boolean isMyLearningMenuDisplay() {
+
+		jsUtil.scrollIntoViewCenter(lnkMyLearning);
+		return eleUtil.visibleElementWhenReady(lnkMyLearning, 20);
+	}
+	public boolean isMyLearningMenuEnable() {
+	
+			jsUtil.scrollIntoViewCenter(lnkMyLearning);
+			return eleUtil.isElementEnable(lnkMyLearning);
+	}
+
+	public void doclickMyLearningSubmenu() {
+
+		jsUtil.scrollIntoViewCenter(lnkMyLearning);
+		eleUtil.clickElementWhenReady(lnkMyLearning, 20);
+	}
+	
+	
+
+	public void validatemainMenuItemsAndIcon() {
+
+		if (mainMenuItemsList.isEmpty()) {
+			System.out.println("Main Menu Available");
+			return;
+		}
+
+		System.out.println(" main Menu Items List  Total : " + mainMenuItemsList.size());
+
+		for (int i = 0; i < mainMenuItemsList.size(); i++) {
+
+			WebElement card = mainMenuItemsList.get(i);
+
+			// Main Menu icon
+			Boolean mainMenuicon = card.findElement(By.xpath(".//i")).isDisplayed();
+
+			// Menu Name
+			String menuName = card.findElement(By.xpath(".//span[contains(@class,'text-truncate')]")).getText();
+
+			// Print
+			System.out.println(" List of Menu No :" + (i + 1));
+			System.out.println("Main Menu icon: " + mainMenuicon);
+			System.out.println("Menu Name: " + menuName);
+
+			// Assertions
+
+			if (mainMenuicon == false) {
+				throw new RuntimeException("Main Menu icon  is missing in list " + (i + 1));
+			}
+			if (menuName.trim().isEmpty()) {
+				throw new RuntimeException("Menu Name is missing in list " + (i + 1));
+			}
+
+		}
+
 	}
 
 }

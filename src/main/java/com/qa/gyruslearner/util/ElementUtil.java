@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.gyruslearner.base.TestBase;
+import com.qa.gyruslearner.constants.AppConstants;
 
 public class ElementUtil extends TestBase {
 
@@ -87,7 +88,8 @@ public class ElementUtil extends TestBase {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 
 		WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
-		// WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated((By) locator));
+		// WebElement element =
+		// wait.until(ExpectedConditions.visibilityOfElementLocated((By) locator));
 		checkHighlight(element);
 		return element;
 	}
@@ -113,7 +115,7 @@ public class ElementUtil extends TestBase {
 		}
 		return driver.getTitle();
 	}
-	
+
 	public boolean isElementDisplayed(WebElement locator) {
 		try {
 			return getElement(locator).isDisplayed();
@@ -122,7 +124,7 @@ public class ElementUtil extends TestBase {
 			return false;
 		}
 	}
-	
+
 	public boolean isElementEnable(WebElement locator) {
 		try {
 			return getElement(locator).isEnabled();
@@ -131,47 +133,67 @@ public class ElementUtil extends TestBase {
 			return false;
 		}
 	}
-	
+
 	public WebElement getElement(By locator) {
 		WebElement element = driver.findElement(locator);
 		checkHighlight(element);
 		return element;
 	}
-	
+
 	public void clickElementWhenReady(WebElement locator, long timeOut) {
+
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
 	}
-	
-	public boolean visibleElementWhenReady(WebElement locator,long timeOut){
-		
+
+	public boolean visibleElementWhenReady(WebElement locator, long timeOut) {
+
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 			return wait.until(ExpectedConditions.visibilityOf(locator)).isDisplayed();
-			 
+
 		} catch (NoSuchElementException e) {
 			System.out.println("element is not present on the page using : " + locator);
 			return false;
 		}
 	}
-	
+
+	public boolean waitForUrlToBe(String expectedUrl, int timeout) {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+
+		return wait.until(ExpectedConditions.urlToBe(expectedUrl));
+	}
+
+	public void waitForLoaderToDisappear() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
+
+		By loader = By.xpath("//gyrusaim-loader | //*[@id='loader']");
+
+		try {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
+		} catch (Exception e) {
+			System.out.println("Loader not found or already disappeared");
+		}
+	}
+
 	public String doGetElementText(WebElement loginHeader) {
+
 		return getElement(loginHeader).getText();
 	}
-	
+
 	public String doElementGetAttribute(WebElement locator, String attrName) {
 		return getElement(locator).getDomAttribute(attrName);
 	}
-	
+
 	public boolean isElementPresent(By locator) {
-	    return driver.findElements(locator).size() > 0;
+		return driver.findElements(locator).size() > 0;
 	}
-	
+
 	public String doGetToastMessage() {
-		
+
 		return jsUtil.toastMessageHandle();
 	}
-	
-
 
 }
