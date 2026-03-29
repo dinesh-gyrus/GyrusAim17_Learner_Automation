@@ -1,19 +1,24 @@
 package com.qa.gyruslearner.testcases;
 
 import org.testng.Assert;
+
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
+import com.qa.gyruslearner.listeners.TestListeners;
 import com.qa.gyruslearner.pages.DashboardPage;
 import com.qa.gyruslearner.pages.IDPPage;
 import com.qa.gyruslearner.pages.LoginPage;
 import com.qa.gyruslearner.util.ElementUtil;
+import com.qa.gyruslearner.util.ExcelUtil;
+
 
 public class IDPPageTestCase extends TestBase {
 
@@ -21,6 +26,8 @@ public class IDPPageTestCase extends TestBase {
 	DashboardPage dashboard;
 	IDPPage idp;
 	ElementUtil eleUtil;
+	ExcelUtil excelUtil;
+	TestListeners  listener;
 
 	public IDPPageTestCase() {
 		super();
@@ -33,13 +40,26 @@ public class IDPPageTestCase extends TestBase {
 		dashboard = new DashboardPage();
 		idp = new IDPPage();
 		eleUtil = new ElementUtil();
+		excelUtil = new ExcelUtil();
+	}
+	
+	@DataProvider
+	public Object[][] getLoginSheetData() {
+		return ExcelUtil.getTestData(AppConstants.LOGIN_SHEET_NAME);
+	}
+	
+	@DataProvider
+	public Object[][] geSearchTestData() {
+		return new Object[][] {
+			{"Test20"},
+		};
 	}
 
-	@BeforeMethod
+	@BeforeMethod()
 	public void pageRefresh() {
 
 		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
-			loginpage.getUserFirstTimeLogin("TTeam01", "123");
+			loginpage.getUserFirstTimeLogin(prop.getProperty("username"), prop.getProperty("password"));
 
 		} else if (driver.getCurrentUrl().equals(AppConstants.DASHBOARD_PAGE_URL)) {
 
@@ -105,21 +125,14 @@ public class IDPPageTestCase extends TestBase {
 		System.out.println("IDP Page Header Title : " + IDPHeaderPageTitle);
 
 	}
+	@Ignore
 	@Test(priority = 6)
 	public void verifyAllCardLoadedAndCountTest() {
 
 		Assert.assertTrue(idp.isTrainingCountDisplay(), "Trainings Count  not visible");
 		System.out.println("------------------Display Number IDP Training Count -------------------");
-		int expectedCount = idp.getTotalTrainingCount();
-		System.out.println("Trainings Count : " + idp.getTotalTrainingCount());
-
-		idp.loadAllCards();
-		int actualCount = idp.getCardCount();
-
-		System.out.println("Expected: " + expectedCount);
-		System.out.println("Actual: " + actualCount);
-
-		Assert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
+		//Training Count update 
+		TrainingCountUpdate();
 
 	}
 	
@@ -135,9 +148,14 @@ public class IDPPageTestCase extends TestBase {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
+		TrainingCountUpdate();
+	}
+	
+	public void TrainingCountUpdate() {
+		
 		int expectedCount = idp.getTotalTrainingCount();
 		System.out.println("Trainings Count : " + idp.getTotalTrainingCount());
-
 		idp.loadAllCards();
 		int actualCount = idp.getCardCount();
 
@@ -145,7 +163,6 @@ public class IDPPageTestCase extends TestBase {
 		System.out.println("Actual: " + actualCount);
 
 		Assert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
-		
 	}
 
 	@AfterClass

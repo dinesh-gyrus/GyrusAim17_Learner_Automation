@@ -34,7 +34,9 @@ public class AppConstants extends TestBase {
 	public final static String MYENROLLMENT_PAGE_URL=BaseUrl +"/v2/myEnrollment";
 	
 	
-	
+	//************Sheet Name********/
+		
+		public static final String LOGIN_SHEET_NAME = "Login";
 	
 	/*
 	public final static String LOGIN_PAGE_URL = "https://nverma.gyrusaim.net/auth/login";

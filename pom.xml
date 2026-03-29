@@ -3,6 +3,7 @@
   <groupId>gyruspack</groupId>
   <artifactId>GyrusAim17_Learner_Automation</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
   <dependencies>
   	<!-- selenium-java  -->
   	<dependency>
@@ -17,5 +18,77 @@
 		<version>7.9.0</version>
 		<scope>compile</scope>
 	</dependency>
+	
+	<!--slf4j-api -->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>slf4j-api</artifactId>
+		<version>2.0.16</version>
+	</dependency>
+	
+	<!-- Apache POI API for reading and writing Excel files -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.16-beta2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>3.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>ooxml-schemas</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>openxml4j</artifactId>
+			<version>1.0-beta</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		<!-- FileUtils -->
+		<dependency>
+   			 <groupId>commons-io</groupId>
+    		<artifactId>commons-io</artifactId>
+    		<version>2.15.1</version>
+		</dependency>
+		
+		<!-- ReportNG -->
+		<dependency>
+			<groupId>org.uncommons</groupId>
+			<artifactId>reportng</artifactId>
+			<version>1.1.4</version> <!-- Latest version -->
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>5.1.2</version>
+		</dependency>
+		
+		
+	
+	
   </dependencies>
 </project>

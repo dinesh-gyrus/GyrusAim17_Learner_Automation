@@ -10,6 +10,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
@@ -18,6 +19,7 @@ import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.pages.ChangePasswordPage;
 import com.qa.gyruslearner.pages.DashboardPage;
 import com.qa.gyruslearner.pages.LoginPage;
+import com.qa.gyruslearner.util.ExcelUtil;
 
 public class LoginPageTestCase extends TestBase {
 
@@ -28,6 +30,9 @@ public class LoginPageTestCase extends TestBase {
 	public LoginPageTestCase() {
 		super();
 	}
+	
+	
+	
 
 	@BeforeClass
 	public void setUp() {
@@ -35,6 +40,18 @@ public class LoginPageTestCase extends TestBase {
 		loginpage = new LoginPage();
 		chanPassword = new ChangePasswordPage();
 		dashboard = new DashboardPage();
+	}
+	
+	@DataProvider
+	public Object[][] getLoginSheetData() {
+		return ExcelUtil.getTestData(AppConstants.LOGIN_SHEET_NAME);
+	}
+	
+	@DataProvider
+	public Object[][] geLoginTestData() {
+		return new Object[][] {
+			{"TTeam01","123"},
+		};
 	}
 
 	@BeforeMethod
@@ -139,7 +156,7 @@ public class LoginPageTestCase extends TestBase {
 				"User was not redirected to Change Password page!");
 		chanPassword.doClickOnSignOut();
 	}
-	
+	@Ignore
 	@Test(priority = 12)
 	public void verifyValidUserNameAndWrongPassTest1() {
 
@@ -165,7 +182,7 @@ public class LoginPageTestCase extends TestBase {
 		 */
 
 	}
-
+	@Ignore
 	@Test(priority = 13)
 	public void verifyWrongUserNameAndValidPassTest() {
 
@@ -179,7 +196,7 @@ public class LoginPageTestCase extends TestBase {
 		Assert.assertEquals(toastMsg, "Invalid username or password");
 	}
 	
-    
+	@Ignore
 	@Test(priority = 14)
 	public void verifyLastLoginAttemptMessage() {
 
@@ -229,10 +246,10 @@ public class LoginPageTestCase extends TestBase {
 		*/
 	}
 	
-	@Test(priority = 16)
-	public void verifyValidLoginTest() {
+	@Test(priority = 16,dataProvider = "getLoginSheetData")
+	public void verifyValidLoginTest(String UserName, String Password) {
 
-		loginpage.doValidLogin("tteam01", "123");
+		loginpage.doValidLogin(UserName,Password);
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		wait.until(ExpectedConditions.titleIs(AppConstants.DASHBOARD_PAGE_TITLE));

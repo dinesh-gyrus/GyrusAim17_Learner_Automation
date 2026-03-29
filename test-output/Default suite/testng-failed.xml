@@ -6,9 +6,12 @@
       <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
         <methods>
           <include name="setUp"/>
-          <include name="verifyAllElearningQuickFilterTest"/>
+          <include name="verifyMyLearnerLinkTest"/>
           <include name="tearDown"/>
+          <include name="verifyIDPHeaderPageTitleTest"/>
           <include name="pageRefresh"/>
+          <include name="verifyIDPPageTitileTest"/>
+          <include name="verifyidpUrlTest"/>
         </methods>
       </class> <!-- com.qa.gyruslearner.testcases.IDPPageTestCase -->
     </classes>

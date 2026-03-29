@@ -1,0 +1,17 @@
+<suite name="Automation Test Store">
+	<listeners>
+
+<listener class-name="com.qa.gyruslearner.listeners.TestListeners"></listener>
+</listeners>
+	
+	
+	<test name="Automation Smoke Testing">
+		
+		<classes>
+			<class name="com.qa.gyruslearner.testcases.IDPPageTestCase"/>
+			
+		</classes>
+		
+	</test>
+	
+</suite>
