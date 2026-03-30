@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Ignore;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.gyruslearner.base.TestBase;
@@ -15,6 +15,7 @@ import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.pages.ChangePasswordPage;
 import com.qa.gyruslearner.pages.DashboardPage;
 import com.qa.gyruslearner.pages.LoginPage;
+import com.qa.gyruslearner.util.ExcelUtil;
 
 public class ChangePasswordPageTestCase extends TestBase {
 
@@ -25,6 +26,30 @@ public class ChangePasswordPageTestCase extends TestBase {
 	public ChangePasswordPageTestCase() {
 		super();
 	}
+	
+	@DataProvider
+	public Object[][] getFirstTimeLoginSheetData() {
+		return ExcelUtil.getTestData(AppConstants.CHANGEPASSWORD_DATA_SHEET_PATH,AppConstants.FIRSTTIME_LOGIN_CHANGEPASSWORD_SHEET_NAME);
+	}
+	@DataProvider
+	public Object[][] getWrongCurentPasswordSheetData() {
+		return ExcelUtil.getTestData(AppConstants.CHANGEPASSWORD_DATA_SHEET_PATH,AppConstants.WRONGCURRENTPASSOWRD_CHANGEPASSWORD_SHEET_NAME);
+	}
+	@DataProvider
+	public Object[][] getErrorForMismatchedPasswordsSheetData() {
+		return ExcelUtil.getTestData(AppConstants.CHANGEPASSWORD_DATA_SHEET_PATH,AppConstants.MISMATCH_NEW_CONFIRM_CHANGEPASSWORD_SHEET_NAME);
+	}
+	@DataProvider
+	public Object[][] getCurrentAndNewPasswordAreSameSheetData() {
+		return ExcelUtil.getTestData(AppConstants.CHANGEPASSWORD_DATA_SHEET_PATH,AppConstants.CURRENTANDNEW_SAME_CHANGEPASSWORD_SHEET_NAME);
+	}
+	
+	@DataProvider
+	public Object[][] getSuccessfulPasswordResetSheetData() {
+		return ExcelUtil.getTestData(AppConstants.CHANGEPASSWORD_DATA_SHEET_PATH,AppConstants.SUCCESSFUL_PASSWORDRESET_CHANGEPASSWORD_SHEET_NAME);
+	}
+	
+	
 
 	@BeforeClass
 	public void setUp() {
@@ -33,13 +58,13 @@ public class ChangePasswordPageTestCase extends TestBase {
 		loginpage = new LoginPage();
 	}
 
-	@Test(priority = 1)
-	public void changePasswordUrlTest() {
+	@Test(priority = 1,dataProvider = "getFirstTimeLoginSheetData")
+	public void changePasswordUrlTest(String UserName, String Password) {
 
 		// Login with First Time User
-		loginpage.getUserFirstTimeLogin("TTeam4", "123");
+		loginpage.getUserFirstTimeLogin(UserName,Password);
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
 		
 		try {
 			wait.until(ExpectedConditions.or(ExpectedConditions.urlToBe(AppConstants.CHANGEPASSWORD_PAGE_URL),
@@ -68,11 +93,11 @@ public class ChangePasswordPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 2, enabled = false,dependsOnMethods="changePasswordUrlTest" )
+	@Test(priority = 2,dependsOnMethods="changePasswordUrlTest" )
 	public void ChangePasswordTitleTest() {
 
 		String changePasswordTitle = chanagepassword.getChangedPassPageTitle();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
 		wait.until(ExpectedConditions.titleIs(AppConstants.CHANGEPASSWORD_PAGE_TITLE));
 		Assert.assertEquals(changePasswordTitle, AppConstants.CHANGEPASSWORD_PAGE_TITLE);
 	}
@@ -97,44 +122,47 @@ public class ChangePasswordPageTestCase extends TestBase {
 
 	// Now Skip test Case no : 5
 
-	@Test(priority = 6,dependsOnMethods = "changePasswordUrlTest")
-	public void VerifyWrongCurrentPasswordTest() {
+	@Test(priority = 6,dependsOnMethods = "changePasswordUrlTest",dataProvider = "getWrongCurentPasswordSheetData")
+	public void VerifyWrongCurrentPasswordTest(String Currentpwd, String newPwd,String confirmPwd) {
 
-		chanagepassword.doChangePassword("1259", "123456", "123456");
-
+		chanagepassword.doChangePassword(Currentpwd, newPwd, confirmPwd);
+		/*
 		try {
 			Thread.sleep(2500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		*/
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
+		String toastMsg = wait.until(d -> loginpage.getToastMessage());
 
-		String toastMsg = loginpage.getToastMessage();
+		//String toastMsg = loginpage.getToastMessage();
 		System.out.println("Toast Message is :" + toastMsg);
-		Assert.assertEquals(toastMsg, "Current password does not match.");
+		Assert.assertEquals(toastMsg, "Current password does not match");
 	}
 
-	@Test(priority = 7,dependsOnMethods = "changePasswordUrlTest")
-	public void verifyErrorForMismatchedPasswordsTest() {
+	@Test(priority = 7,dependsOnMethods = "changePasswordUrlTest",dataProvider ="getErrorForMismatchedPasswordsSheetData")
+	public void verifyErrorForMismatchedPasswordsTest(String Currentpwd, String newPwd,String confirmPwd) {
 
-		chanagepassword.doChangePassword("123", "123456", "123654");
-
+		chanagepassword.doChangePassword(Currentpwd, newPwd, confirmPwd);
+		
 		try {
 			Thread.sleep(2500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		String toastMsg = loginpage.getToastMessage();
 		System.out.println("Toast Message is :" + toastMsg);
 		Assert.assertEquals(toastMsg, "Passwords must match.");
 	}
 
-	@Test(priority = 8,dependsOnMethods = "changePasswordUrlTest")
-	public void verifyCurrentAndNewPasswordAreSameTest() {
+	@Test(priority = 8,dependsOnMethods = "changePasswordUrlTest",dataProvider = "getCurrentAndNewPasswordAreSameSheetData")
+	public void verifyCurrentAndNewPasswordAreSameTest(String Currentpwd, String newPwd,String confirmPwd) {
 
-		chanagepassword.doChangePassword("123", "123", "123");
+		chanagepassword.doChangePassword(Currentpwd,newPwd, confirmPwd);
 		String actualError = chanagepassword.getSamepasswordErrormessage();
 		Assert.assertEquals(actualError, "New password must be different from your Current password.",
 				"Same password error message not displayed!");
@@ -148,26 +176,26 @@ public class ChangePasswordPageTestCase extends TestBase {
 		chanagepassword.doClickOnSignOut();
 
 		String loginUrl = loginpage.getLoginPageUrl();
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
 		wait.until(ExpectedConditions.urlToBe(AppConstants.LOGIN_PAGE_URL));
 		Assert.assertEquals(loginUrl, AppConstants.LOGIN_PAGE_URL);
 	}
 
-	@Ignore
-	@Test(priority = 10,dependsOnMethods = "changePasswordUrlTest")
-	public void verifySuccessfulPasswordResetTest() {
+	
+	@Test(priority = 10,dependsOnMethods = "changePasswordUrlTest",dataProvider ="getSuccessfulPasswordResetSheetData")
+	public void verifySuccessfulPasswordResetTest(String UerName,String Currentpwd, String newPwd,String confirmPwd) {
 
-		loginpage.getUserFirstTimeLogin("TTeam4", "123");
+		loginpage.getUserFirstTimeLogin(UerName,Currentpwd);
 
-		chanagepassword.doChangePassword("123", "123456", "123456");
-
+		chanagepassword.doChangePassword(Currentpwd, newPwd, confirmPwd);
+		
 		try {
 			Thread.sleep(2500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		String toastMsg = loginpage.getToastMessage();
 		System.out.println("Toast Message is :" + toastMsg);
 		Assert.assertEquals(toastMsg, "Password updated.");

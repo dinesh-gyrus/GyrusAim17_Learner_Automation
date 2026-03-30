@@ -18,18 +18,18 @@ public class ExcelUtil extends TestBase {
 	private static Workbook book;
 	private static Sheet sheet;
 
-	
-	public static String TESTDATA_SHEET_PATH = ".\\src\\test\\resources\\testdata\\LoginData.xlsx";
-
-	public static Object[][] getTestData(String sheetName) {
+	public static Object[][] getTestData(String filePath,String sheetName) {
 
 		Object data[][] = null;
-		try {
-			FileInputStream ip = new FileInputStream(TESTDATA_SHEET_PATH);
+		
+		try(FileInputStream ip = new FileInputStream(filePath)) {
+			
+			//FileInputStream ip = new FileInputStream(TESTDATA_SHEET_PATH);
 			book = WorkbookFactory.create(ip);
 			sheet = book.getSheet(sheetName);
 
 			data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
+			
 			for (int i = 0; i < sheet.getLastRowNum(); i++) {
 				for (int j = 0; j < sheet.getRow(0).getLastCellNum(); j++) {
 					Cell cell = sheet.getRow(i + 1).getCell(j); // new Added line
@@ -46,10 +46,13 @@ public class ExcelUtil extends TestBase {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return data;
 
 	}
+	
 
 }

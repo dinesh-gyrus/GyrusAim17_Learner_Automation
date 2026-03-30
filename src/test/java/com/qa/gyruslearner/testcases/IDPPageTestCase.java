@@ -42,7 +42,7 @@ public class IDPPageTestCase extends TestBase {
 
 	@DataProvider
 	public Object[][] getLoginSheetData() {
-		return ExcelUtil.getTestData(AppConstants.VALID_LOGIN_SHEET_NAME);
+		return ExcelUtil.getTestData(AppConstants.LOGIN_DATA_SHEET_PATH,AppConstants.VALID_LOGIN_SHEET_NAME);
 	}
 
 	@DataProvider

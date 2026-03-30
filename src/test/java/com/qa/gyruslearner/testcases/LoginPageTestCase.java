@@ -11,7 +11,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.qa.gyruslearner.base.TestBase;
@@ -41,31 +40,31 @@ public class LoginPageTestCase extends TestBase {
 
 	@DataProvider
 	public Object[][] getLoginSheetData() {
-		return ExcelUtil.getTestData(AppConstants.VALID_LOGIN_SHEET_NAME);
+		return ExcelUtil.getTestData(AppConstants.LOGIN_DATA_SHEET_PATH,AppConstants.VALID_LOGIN_SHEET_NAME);
 	}
 
 	@DataProvider
 	public Object[][] getFirstTimeLoginSheetData() {
-		return ExcelUtil.getTestData(AppConstants.FIRSTTIME_LOGIN_SHEET_NAME);
+		return ExcelUtil.getTestData(AppConstants.LOGIN_DATA_SHEET_PATH,AppConstants.FIRSTTIME_LOGIN_SHEET_NAME);
 	}
 	@DataProvider
 	public Object[][] getValidUserNameAndWrongPassSheetData() {
-		return ExcelUtil.getTestData(AppConstants.WRONGPASS_LOGIN_SHEET_NAME);
+		return ExcelUtil.getTestData(AppConstants.LOGIN_DATA_SHEET_PATH,AppConstants.WRONGPASS_LOGIN_SHEET_NAME);
 	}
 	
 	@DataProvider
 	public Object[][] getWrongUserNameAndValidPassSheetData() {
-		return ExcelUtil.getTestData(AppConstants.WRONGUSERNAME_LOGIN_SHEET_NAME);
+		return ExcelUtil.getTestData(AppConstants.LOGIN_DATA_SHEET_PATH,AppConstants.WRONGUSERNAME_LOGIN_SHEET_NAME);
 	}
 	@DataProvider
 	public Object[][] getLastLoginAttemptMessageSheetData() {
-		return ExcelUtil.getTestData(AppConstants.LOGINATTEMP_LOGIN_SHEET_NAME);
+		return ExcelUtil.getTestData(AppConstants.LOGIN_DATA_SHEET_PATH,AppConstants.LOGINATTEMP_LOGIN_SHEET_NAME);
 	}
 	
 	@DataProvider
 	public Object[][] getAccountLockAfterFailedAttemptSheetData() {
 		
-		return ExcelUtil.getTestData(AppConstants.FAILATTEMPT_LOGIN_SHEET_NAME);
+		return ExcelUtil.getTestData(AppConstants.LOGIN_DATA_SHEET_PATH,AppConstants.FAILATTEMPT_LOGIN_SHEET_NAME);
 	}
 
 	@DataProvider
@@ -233,7 +232,7 @@ public class LoginPageTestCase extends TestBase {
 	}
 
 	
-	@Test(priority = 14,dataProvider = "getLastLoginAttemptMessageSheetData",enabled = false)
+	@Test(priority = 14,dataProvider = "getLastLoginAttemptMessageSheetData")
 	public void verifyLastLoginAttemptMessageTest(String UserName, String Password) {
 
 		for (int i = 0; i <= 2; i++) {
@@ -260,7 +259,7 @@ public class LoginPageTestCase extends TestBase {
 	}
 
 	
-	@Test(priority = 15, dataProvider ="getAccountLockAfterFailedAttemptSheetData",dependsOnMethods = "verifyLastLoginAttemptMessageTest", enabled =false )
+	@Test(priority = 15, dataProvider ="getAccountLockAfterFailedAttemptSheetData",dependsOnMethods = "verifyLastLoginAttemptMessageTest" )
 	public void verifyAccountLockAfterFailedAttemptTest(String UserName, String Password) {
 
 		loginpage.doValidUserNameWrongPass(UserName,Password);

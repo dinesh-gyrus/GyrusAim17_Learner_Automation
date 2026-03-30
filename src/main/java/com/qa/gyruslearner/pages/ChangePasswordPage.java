@@ -1,8 +1,12 @@
 package com.qa.gyruslearner.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
@@ -104,7 +108,7 @@ public class ChangePasswordPage extends TestBase {
 
 	public void doClickOnSignOut() {
 
-		eleUtil.waitForElementVisible(btnSignOut, 15).click();
+		eleUtil.waitForElementVisible(btnSignOut, AppConstants.MAX_TIME_OUT).click();
 		// eleUtil.doClick(btnSignOut);
 	}
 
@@ -136,6 +140,8 @@ public class ChangePasswordPage extends TestBase {
 		eleUtil.doSendKeys(txtCurrentPassword, currentpwd);
 		eleUtil.doSendKeys(txtNewPassword, newpwd);
 		eleUtil.doSendKeys(txtConfirmPassword, confirmpwd);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		wait.until(ExpectedConditions.elementToBeClickable(btnResetpassword));
 		eleUtil.doClick(btnResetpassword);
 	
 	}
