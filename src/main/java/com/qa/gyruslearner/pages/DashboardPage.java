@@ -184,6 +184,9 @@ public class DashboardPage extends TestBase {
 
 	@FindBy(xpath = "//span[contains(@data-key,'navMyLearning')]")
 	WebElement lnkMyLearning;
+	
+	@FindBy(xpath = "//span[contains(text(),'Logout')]")
+	WebElement btnLogout;
 
 	
 
@@ -201,6 +204,12 @@ public class DashboardPage extends TestBase {
 		System.out.println("DashBoard page title==>" + DashBoardTitle);
 		return DashBoardTitle;
 
+	}
+	
+	public void doClickOnSignOut() {
+
+		eleUtil.waitForElementVisible(btnLogout, AppConstants.MAX_TIME_OUT).click();
+		
 	}
 
 	public boolean isCompnayLogoInDashBoardDisplayed() {
@@ -574,7 +583,7 @@ public class DashboardPage extends TestBase {
 			}
 
 			if (status.contains("In progress")) {
-				if (!progress.contains("100%") && !progress.contains("0%")) {
+				if (!progress.equals("100%") && !progress.equals("0%")) {
 
 					throw new RuntimeException("Status In progress  but percentage Wrong Display " + title);
 				}
@@ -658,7 +667,7 @@ public class DashboardPage extends TestBase {
 			}
 
 			if (status.contains("Not Started")) {
-				if (!progress.contains("0%")) {
+				if (!progress.equals("0%")) {
 
 					throw new RuntimeException("Status Not Started  but percentage Wrong Display " + title);
 				}
@@ -818,7 +827,7 @@ public class DashboardPage extends TestBase {
 			}
 
 			if (status.contains("Not Started")) {
-				if (!progress.contains("0%")) {
+				if (!progress.equals("0%")) {
 
 					throw new RuntimeException("Status Not Started  but percentage Wrong Display " + title);
 				}
@@ -893,7 +902,7 @@ public class DashboardPage extends TestBase {
 
 			if (status.contains("Not Started") || status.contains("In progress")) {
 
-				if (progress.contains("100%")) {
+				if (progress.equals("100%")) {
 					if (status.contains("Not Started")) {
 						throw new RuntimeException("Status Not Started  but percentage Wrong Display " + title);
 					} else {
@@ -1124,20 +1133,20 @@ public class DashboardPage extends TestBase {
 			}
 
 			if (status.contains("Certified")) {
-				if (!progress.contains("100%")) {
+				if (!progress.equals("100%")) {
 
 					throw new RuntimeException("Status Certified  but percentage Wrong Display " + (i + 1));
 				}
 
 			} else if (status.contains("Recertified")) {
-				if (!progress.contains("0%")) {
+				if (!progress.equals("0%")) {
 
 					throw new RuntimeException("Status Recertified  but percentage Wrong Display " + (i + 1));
 				}
 			} else if (status.contains("Not Certified")) {
-				if (progress.contains("100%")) {
+				if (progress.equals("100%")) {
 
-					throw new RuntimeException("Status Recertified  but percentage Wrong Display " + (i + 1));
+					throw new RuntimeException("Status Not Certified  but percentage Wrong Display " + (i + 1));
 				}
 			}
 

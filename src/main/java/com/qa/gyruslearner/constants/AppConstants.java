@@ -36,7 +36,15 @@ public class AppConstants extends TestBase {
 	
 	//************Sheet Name********/
 		
-		public static final String LOGIN_SHEET_NAME = "Login";
+		public static final String VALID_LOGIN_SHEET_NAME = "ValidLogin";
+		public static final String FIRSTTIME_LOGIN_SHEET_NAME = "FirstTimeLoginRedirectsToChange";
+		public static final String WRONGPASS_LOGIN_SHEET_NAME = "ValidUserNameAndWrongPass";
+		public static final String WRONGUSERNAME_LOGIN_SHEET_NAME = "ValidUserNameAndWrongPass";
+		public static final String LOGINATTEMP_LOGIN_SHEET_NAME = "LastLoginAttemptMessage";
+		public static final String FAILATTEMPT_LOGIN_SHEET_NAME = "AccountLockAfterFailedAttempt";
+		
+		
+		
 	
 	/*
 	public final static String LOGIN_PAGE_URL = "https://nverma.gyrusaim.net/auth/login";

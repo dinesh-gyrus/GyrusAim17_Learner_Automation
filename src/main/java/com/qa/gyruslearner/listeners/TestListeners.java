@@ -31,16 +31,17 @@ public class TestListeners extends TestBase implements ITestListener {
 		String timestamp=new SimpleDateFormat("dd.MM.yyyy.hh.mm.ss").format(new Date());
 		filePath="myreport"+timestamp+".html";
 		spark = new ExtentSparkReporter(System.getProperty("user.dir")+"\\reports\\"+ filePath);
-		spark.config().setDocumentTitle("QA report");
+		spark.config().setDocumentTitle("Gyrus Learner Automation QA Report");
 		spark.config().setReportName("functional test");
 		spark.config().setTheme(Theme.DARK);
 		
 		extent=new ExtentReports();
-
 		extent.attachReporter(spark);
+		
+		extent.setSystemInfo("sr.qa", "Dinesh");
 		extent.setSystemInfo("Env", "QA");
 		extent.setSystemInfo("browser", "chrome");
-		extent.setSystemInfo("OS", "win10");
+		extent.setSystemInfo("OS", "win11");
 	
 	}
 

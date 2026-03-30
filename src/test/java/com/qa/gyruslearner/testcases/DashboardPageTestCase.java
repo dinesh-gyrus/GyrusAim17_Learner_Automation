@@ -42,7 +42,7 @@ public class DashboardPageTestCase extends TestBase {
 		// driver.navigate().refresh();
 
 		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
-			loginpage.getUserFirstTimeLogin("tteam01", "123");
+			loginpage.getUserFirstTimeLogin(prop.getProperty("username"), prop.getProperty("password"));
 		}
 	}
 
@@ -388,7 +388,7 @@ public class DashboardPageTestCase extends TestBase {
 	@AfterClass
 	public void tearDown() {
 		if (driver != null) {
-			driver.close();
+			driver.quit();
 		}
 
 	}

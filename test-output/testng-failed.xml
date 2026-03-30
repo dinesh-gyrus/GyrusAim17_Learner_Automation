@@ -3,17 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
+      <class name="com.qa.gyruslearner.testcases.LoginPageTestCase">
         <methods>
           <include name="setUp"/>
-          <include name="verifyMyLearnerLinkTest"/>
           <include name="tearDown"/>
-          <include name="verifyIDPHeaderPageTitleTest"/>
-          <include name="pageRefresh"/>
-          <include name="verifyIDPPageTitileTest"/>
-          <include name="verifyidpUrlTest"/>
+          <include name="verifySignUplinkButtonTest"/>
+          <include name="goToLoginPage"/>
         </methods>
-      </class> <!-- com.qa.gyruslearner.testcases.IDPPageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.LoginPageTestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

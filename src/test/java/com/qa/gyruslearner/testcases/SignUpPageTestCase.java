@@ -228,6 +228,9 @@ public class SignUpPageTestCase extends TestBase {
 
 	@AfterClass
 	public void tearDown() {
-		driver.quit();
+		
+		if (driver != null) {
+			driver.quit();
+		}
 	}
 }

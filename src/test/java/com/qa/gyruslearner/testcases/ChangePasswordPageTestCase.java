@@ -176,7 +176,9 @@ public class ChangePasswordPageTestCase extends TestBase {
 
 	@AfterClass
 	public void tearDown() {
-		driver.close();
+		if (driver != null) {
+			driver.quit();
+		}	
 	}
 
 }

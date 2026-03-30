@@ -9,16 +9,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
-
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
-import com.qa.gyruslearner.listeners.TestListeners;
 import com.qa.gyruslearner.pages.DashboardPage;
 import com.qa.gyruslearner.pages.IDPPage;
 import com.qa.gyruslearner.pages.LoginPage;
 import com.qa.gyruslearner.util.ElementUtil;
 import com.qa.gyruslearner.util.ExcelUtil;
-
 
 public class IDPPageTestCase extends TestBase {
 
@@ -27,8 +24,8 @@ public class IDPPageTestCase extends TestBase {
 	IDPPage idp;
 	ElementUtil eleUtil;
 	ExcelUtil excelUtil;
-	TestListeners  listener;
 
+	
 	public IDPPageTestCase() {
 		super();
 	}
@@ -42,23 +39,22 @@ public class IDPPageTestCase extends TestBase {
 		eleUtil = new ElementUtil();
 		excelUtil = new ExcelUtil();
 	}
-	
+
 	@DataProvider
 	public Object[][] getLoginSheetData() {
-		return ExcelUtil.getTestData(AppConstants.LOGIN_SHEET_NAME);
+		return ExcelUtil.getTestData(AppConstants.VALID_LOGIN_SHEET_NAME);
 	}
-	
+
 	@DataProvider
 	public Object[][] geSearchTestData() {
-		return new Object[][] {
-			{"Test20"},
-		};
+		return new Object[][] { { "Test20" }, };
 	}
 
 	@BeforeMethod()
 	public void pageRefresh() {
 
-		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
+		if (driver.getCurrentUrl().contains("login")) {
+			// (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL))
 			loginpage.getUserFirstTimeLogin(prop.getProperty("username"), prop.getProperty("password"));
 
 		} else if (driver.getCurrentUrl().equals(AppConstants.DASHBOARD_PAGE_URL)) {
@@ -75,7 +71,7 @@ public class IDPPageTestCase extends TestBase {
 		idp.doclickMyLearningSubmenu();
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, dependsOnMethods = "verifyMyLearnerLinkTest")
 	public void verifyidpUrlTest() {
 
 		Assert.assertTrue(idp.isIDPMenuDisplay(), "IDP SubMenu not visible");
@@ -96,7 +92,6 @@ public class IDPPageTestCase extends TestBase {
 		String idpPagetitle = idp.getIDPPageTitle();
 		Assert.assertEquals(idpPagetitle, AppConstants.IDP_PAGE_TITLE);
 	}
-
 	@Ignore
 	@Test(priority = 4)
 	public void verifyBackToDashBoardTest() {
@@ -125,37 +120,46 @@ public class IDPPageTestCase extends TestBase {
 		System.out.println("IDP Page Header Title : " + IDPHeaderPageTitle);
 
 	}
-	@Ignore
+	
 	@Test(priority = 6)
 	public void verifyAllCardLoadedAndCountTest() {
 
 		Assert.assertTrue(idp.isTrainingCountDisplay(), "Trainings Count  not visible");
 		System.out.println("------------------Display Number IDP Training Count -------------------");
-		//Training Count update 
+		// Training Count update
 		TrainingCountUpdate();
 
 	}
 	
-	@Test(priority = 7)
+	@Test(priority = 7, dependsOnMethods ="verifyAllCardLoadedAndCountTest")
+	public void verifyAllCardsStatusAndpercentageTest() {
+		
+		System.out.println("------------------Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+
+	
+	@Test(priority = 8)
 	public void verifyAllElearningQuickFilterTest() {
 
 		Assert.assertTrue(idp.isAllELearningDisplay(), "All ELearning  Quick Filter was not visible");
 		Assert.assertTrue(idp.isAllELearningEnable(), " All ELearning  Quick Filter  was not enabled");
 		idp.doclickAllELearningQuickFilter();
-		//Training count not load thread sleep put
+		// Training count not load thread sleep put
 		try {
 			Thread.sleep(2000);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		TrainingCountUpdate();
 	}
-	
+
 	public void TrainingCountUpdate() {
-		
+
 		int expectedCount = idp.getTotalTrainingCount();
-		System.out.println("Trainings Count : " + idp.getTotalTrainingCount());
+		System.out.println("Trainings Count : " + expectedCount);
 		idp.loadAllCards();
 		int actualCount = idp.getCardCount();
 
@@ -168,9 +172,10 @@ public class IDPPageTestCase extends TestBase {
 	@AfterClass
 	public void tearDown() {
 		if (driver != null) {
-			driver.close();
+			driver.quit();
 		}
-
 	}
+	
+	
 
 }

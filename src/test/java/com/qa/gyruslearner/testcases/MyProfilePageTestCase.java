@@ -40,7 +40,7 @@ public class MyProfilePageTestCase extends TestBase {
 		// driver.navigate().refresh();
 
 		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
-			loginpage.getUserFirstTimeLogin("TTeam01", "123");
+			loginpage.getUserFirstTimeLogin(prop.getProperty("username"), prop.getProperty("password"));
 
 			myprofile.doClickProfileIcon();
 			myprofile.doClickProfilePage();
@@ -326,7 +326,7 @@ public class MyProfilePageTestCase extends TestBase {
 	@AfterClass
 	public void tearDown() {
 		if (driver != null) {
-			driver.close();
+			driver.quit();
 		}
 
 	}

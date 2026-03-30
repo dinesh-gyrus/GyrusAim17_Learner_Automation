@@ -3,7 +3,8 @@ package com.qa.gyruslearner.pages;
 import java.time.Duration;
 import java.util.List;
 
-
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -46,8 +47,23 @@ public class IDPPage extends TestBase {
 	@FindBy(id = "lbl_156")
 	WebElement btnQFAllELearning;
 
+	@FindBy(id = "lbl_58")
+	WebElement btnQFAssessments;
+
+	@FindBy(id = "lbl_111")
+	WebElement btnQFCertification;
+
+	@FindBy(id = "lbl_57")
+	WebElement btnQFDocument;
+
 	@FindBy(xpath = "//button[normalize-space()='See More']")
 	List<WebElement> btnSeeMore;
+
+	@FindBy(xpath = "(//kendo-badge[contains(@themecolor,'error')])[1]")
+	WebElement AdvanceFilterApplyIcon;
+
+	@FindBy(xpath = "(//kendo-badge[contains(@themecolor,'error')])[2]")
+	WebElement SortingFilterApplyIcon;
 
 	public boolean isMyLearningMenuDisplay() {
 
@@ -135,22 +151,11 @@ public class IDPPage extends TestBase {
 
 		eleUtil.waitForLoaderToDisappear();
 		eleUtil.visibleElementWhenReady(trainingcount, AppConstants.MAX_TIME_OUT);
-		
-		String text = eleUtil.doGetElementText(trainingcount);
-		
-		return Integer.parseInt(text.replaceAll("\\D+", ""));
-		
-		/*
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-	       
-		// Wait until text is updated (not empty / not old)
-	    wait.until(driver -> {
-	        String text = driver.findElement(By.xpath("//div[contains(@class,'IDE-header')]//p")).getText();
-	        return text != null && !text.trim().isEmpty();
-	    });
 
-	    String text = driver.findElement(By.xpath("//div[contains(@class,'IDE-header')]//p")).getText();
-		*/
+		String text = eleUtil.doGetElementText(trainingcount);
+
+		return Integer.parseInt(text.replaceAll("\\D+", ""));
+
 	}
 
 	public boolean isAllELearningDisplay() {
@@ -171,7 +176,12 @@ public class IDPPage extends TestBase {
 
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFAllELearning);
-		eleUtil.clickElementWhenReady(btnQFAllELearning, AppConstants.MEDIUM_TIME_OUT);
+		try {
+			eleUtil.clickElementWhenReady(btnQFAllELearning, AppConstants.MEDIUM_TIME_OUT);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFAllELearning);
+		}
+		
 		eleUtil.waitForLoaderToDisappear();
 	}
 
@@ -214,15 +224,22 @@ public class IDPPage extends TestBase {
 				break;
 
 			WebElement btn = btnSeeMore.get(0);
+			
 			try {
-				jsUtil.scrollIntoViewCenter(btn);
-				// ((JavascriptExecutor)
-				// driver).executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
-				eleUtil.waitForLoaderToDisappear();
-				btn.click();
+				 eleUtil.waitForLoaderToDisappear();
+				 // jsUtil.scrollIntoViewCenter(btn);
+				 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
+				 try {
+					    eleUtil.waitForLoaderToDisappear();
+						btn.click();
+					} catch (Exception e) {
+						((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+					}
+				
 				eleUtil.waitForLoaderToDisappear();
 
 				waitForCardsToLoad(previousCount);
+				
 				// Wait until new cards loaded
 				new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT))
 						.until(driver -> idpCardViewList.size() > currentCount);
@@ -233,6 +250,94 @@ public class IDPPage extends TestBase {
 				break;
 			}
 
+		}
+	}
+
+	public void validateStatusIDPAllCards() {
+		
+		eleUtil.waitForLoaderToDisappear();
+
+		if (idpCardViewList.isEmpty()) {
+			System.out.println("No IDP All Cards Available");
+			return;
+		}
+
+		System.out.println("IDP ALL Total  Cards: " + idpCardViewList.size());
+
+		for (int i = 0; i < idpCardViewList.size(); i++) {
+
+			WebElement card = idpCardViewList.get(i);
+
+			// CardsImage
+			Boolean cardsImage = jsUtil.isImageLoaded(card.findElement(By.xpath(".//img[contains(@alt,'training')]")));
+
+			// Training type
+			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
+
+			// Training Title
+			String TrainingName = card.findElement(By.xpath(".//h3")).getText();
+
+			// Status
+			String status = card
+					.findElement(By.xpath(".//span[contains(text(),'Not started') or contains(text(),'In progress') or contains(text(),'Completed') or contains(text(),'Not Certified')  or contains(text(),'Recertified') or  contains(text(),'Certified') or contains(text(),'Expired')]")).getText();
+
+			// Progress
+			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
+
+			// Print
+			System.out.println("IDP All Cards :" + (i + 1));
+			System.out.println("Training Image Display : " + cardsImage);
+			System.out.println("Training Type : " + Trainingtype);
+			System.out.println("Training Name : " + TrainingName);
+			System.out.println("status : " + status);
+			System.out.println("Progress: " + progress);
+
+			// Assertions
+			if (cardsImage == false) {
+				throw new RuntimeException("Training  Image is missing in card " + (i + 1) + ":" + TrainingName);
+			}
+			if (Trainingtype.trim().isEmpty()) {
+				throw new RuntimeException("Training Type is missing in card " + (i + 1) + ":" + TrainingName);
+			}
+			if (TrainingName.trim().isEmpty()) {
+				throw new RuntimeException(" Training Name  is missing in card " + (i + 1) + ":" + Trainingtype);
+			}
+			if (status.trim().isEmpty()) {
+				throw new RuntimeException(" status is missing in card " + (i + 1) + ":" + TrainingName);
+			}
+			if (progress.trim().isEmpty()) {
+				throw new RuntimeException(" progress is missing in card " + (i + 1) + ":" + TrainingName);
+			}
+
+			if (status.contains("Not Started")) {
+				if (progress.equals("100%")) {
+					throw new RuntimeException("Status Not Started  but percentage Wrong Display: " + TrainingName);
+				}
+			} else if (status.contains("In progress")) {
+				if (progress.equals("100%")|| (progress.equals("0%"))) {
+					throw new RuntimeException("Status In progress but percentage Wrong Display: " + TrainingName);
+				} 
+			} else if (status.contains("Completed")) {
+				if (!progress.equals("100%")) {
+					throw new RuntimeException("Status Completed  but percentage Wrong Display: " + TrainingName);
+				}
+			}else if(status.contains("Not Certified")) {
+				if (progress.equals("100%")) {
+
+					throw new RuntimeException("Status Not Certified  but percentage Wrong Display: " + TrainingName);
+				}
+			}else if(status.contains("Recertified")) {
+				if (!progress.equals("0%")) {
+
+					throw new RuntimeException("Status Recertified  but percentage Wrong Display :" + TrainingName);
+				}
+			} else if(status.contains("Certified")) {
+				if (!progress.equals("100%")) {
+
+					throw new RuntimeException("Status Certified  but percentage Wrong Display : " + TrainingName);
+				}
+
+			}
 		}
 	}
 
