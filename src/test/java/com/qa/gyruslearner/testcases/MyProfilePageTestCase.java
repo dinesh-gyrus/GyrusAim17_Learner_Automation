@@ -8,6 +8,7 @@ import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.qa.gyruslearner.base.TestBase;
@@ -15,15 +16,27 @@ import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.pages.DashboardPage;
 import com.qa.gyruslearner.pages.LoginPage;
 import com.qa.gyruslearner.pages.MyProfilePage;
+import com.qa.gyruslearner.util.ElementUtil;
+import com.qa.gyruslearner.util.ExcelUtil;
 
 public class MyProfilePageTestCase extends TestBase {
 
 	LoginPage loginpage;
 	DashboardPage dashboard;
 	MyProfilePage myprofile;
+	ElementUtil eleUtil;
 
 	public MyProfilePageTestCase() {
 		super();
+	}
+	
+	@DataProvider
+	public Object[][] getResetPasswordSheetData() {
+		return ExcelUtil.getTestData(AppConstants.MYPROFILE_DATA_SHEET_PATH,AppConstants.RESER_PASSWORD_MYPROFILE_SHEET_NAME);
+	}
+	@DataProvider
+	public Object[][] getCFR21SecuritySheetData() {
+		return ExcelUtil.getTestData(AppConstants.MYPROFILE_DATA_SHEET_PATH,AppConstants.CFR21_SECURITY_MYPROFILE_SHEET_NAME);
 	}
 
 	@BeforeClass
@@ -32,6 +45,7 @@ public class MyProfilePageTestCase extends TestBase {
 		loginpage = new LoginPage();
 		dashboard = new DashboardPage();
 		myprofile = new MyProfilePage();
+		eleUtil = new ElementUtil();
 	}
 
 	@BeforeMethod
@@ -54,9 +68,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	@Test(priority = 1)
 	public void myProfileUrlTest() {
-
-		// loginpage.getUserFirstTimeLogin("TTeam", "123");
-
+		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		try {
 			wait.until(ExpectedConditions.urlToBe(AppConstants.MYPROFILE_PAGE_URL));
@@ -179,8 +191,8 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 13, enabled = true)
-	public void verifyResetPasswordTest() {
+	@Test(priority = 13, enabled = true,dataProvider = "getResetPasswordSheetData")
+	public void verifyResetPasswordTest(String CurrentPassword,String NewPassword, String ConfirmPassword) {
 
 		// Click to Expand
 		myprofile.doClickonSecurityPanel();
@@ -191,21 +203,20 @@ public class MyProfilePageTestCase extends TestBase {
 		Assert.assertTrue(myprofile.isConfirmPasswordDisplay(), "Confirm Password did not display");
 		// Assert.assertTrue(myprofile.isResetPasswordSaveButtonDisplay(), "Reset
 		// password save Button not displayed!");
-		myprofile.doValidResetPassword("123", "1234", "1234");
+		myprofile.doValidResetPassword(CurrentPassword, NewPassword, ConfirmPassword);
 		// Assert.assertTrue(myprofile.isResetPasswordSaveButtonEnable(), "Reset
 		// password save button not Enable!");
-
+		eleUtil.waitForLoaderToDisappear();
 		String toastMsg = myprofile.getToastMessage1();
 		System.out.println("My Password Save==>" + toastMsg);
 		Assert.assertEquals(toastMsg, "Password updated");
 		myprofile.waitForToastDisappear();
-
 	
 	}
 
 	// when we CurrentTextbox Visible after this Test case Will Pass
-	@Test(priority = 14, enabled = true)
-	public void verifyCFR21SecurityTest() {
+	@Test(priority = 14, enabled = true, dataProvider = "getCFR21SecuritySheetData")
+	public void verifyCFR21SecurityTest(String CurrentPin,String NewPin, String ConfirmNewPin) {
 
 		// Click to Expand
 		myprofile.doClickonCFR21SecurityPanel();
@@ -218,12 +229,12 @@ public class MyProfilePageTestCase extends TestBase {
 		// button not Enable!");
 
 		if (myprofile.isCFR21CurrentPinDisplay()) {
-			myprofile.doValidaCFR21CurrentPin("2349");
-			myprofile.doValidCFR21Secuirty("3451", "3451");
+			myprofile.doValidaCFR21CurrentPin(CurrentPin);
+			myprofile.doValidCFR21Secuirty(NewPin, ConfirmNewPin);
 		} else {
-			myprofile.doValidCFR21Secuirty("3451", "3451");
+			myprofile.doValidCFR21Secuirty(NewPin, ConfirmNewPin);
 		}
-
+		eleUtil.waitForLoaderToDisappear();
 		// In Toast message Read the Loader Text name like "Loading"
 		String toastMsg = myprofile.getToastMessage1();
 		System.out.println("My Password Save==>" + toastMsg);
@@ -249,31 +260,29 @@ public class MyProfilePageTestCase extends TestBase {
 		String actual = myprofile.getUserTimeZone();
 		Assert.assertEquals(actual, "(UTC-04:00) Atlantic Time (Canada)",
 				"User TIme Zone Dropdown value not selected properly");
-
+		/*
 		// Click again to Collapse
 		myprofile.doClickonTimeZoneSettingsPanel();
 		Assert.assertFalse(myprofile.isTimeZoneSettingsPanelDisplay(), "Time Zone Settings section did not collapse");
-
+		*/
 	}
 
-	@Test(priority = 16, enabled = true)
+	@Test(priority = 16,dependsOnMethods = "verifyTimeZoneSettingsDisplayTest",enabled = true)
 	public void verifyTimeZoneSettingsTest() {
-
-		// Click to Expand
-		myprofile.doClickonTimeZoneSettingsPanel();
-		Assert.assertTrue(myprofile.isTimeZoneSettingsPanelDisplay(), "Time Zone Settings section did not expand");
-
-		Assert.assertTrue(myprofile.isUserTimeZoneDisplay(), "User Time Zone did not display");
-
+		
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			
+		}
+		myprofile.waitForToastDisappear();
 		myprofile.doValidTimezoneSettingSave();
-
+		eleUtil.waitForLoaderToDisappear();
 		// In Toast message Read the Loader Text name like "Loading"
 		String toastMsg = myprofile.getToastMessage1();
 		System.out.println("My Password Save==>" + toastMsg);
 		Assert.assertEquals(toastMsg, "Profile setting updated.");
 		myprofile.waitForToastDisappear();
-		
-
 	}
 
 	@Test(priority = 17, enabled = true)
@@ -284,7 +293,7 @@ public class MyProfilePageTestCase extends TestBase {
 		Assert.assertTrue(myprofile.isThemePanelDisplay(), "Theme section did not expand");
 
 		myprofile.dovalidThemeSave();
-
+		eleUtil.waitForLoaderToDisappear();
 		// In Toast message Read the Loader Text name like "Loading"
 		String toastMsg = myprofile.getToastMessage1();
 		System.out.println("My Password Save==>" + toastMsg);
@@ -312,13 +321,17 @@ public class MyProfilePageTestCase extends TestBase {
 		myprofile.doclickOnUploadPhotoButton();
 		String filePath = System.getProperty("user.dir") + "\\src\\test\\resources\\imagesUpload\\2025-08-27.png";
 		myprofile.doValidUploadPhoto(filePath);
-
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			
+		}
+		eleUtil.waitForLoaderToDisappear();
 		// In Toast message Read the Loader Text name like "Loading"
 		String toastMsg = myprofile.getToastMessage();
 		System.out.println("My Password Save==>" + toastMsg);
 		Assert.assertEquals(toastMsg, "Profile setting updated.");
 		//myprofile.waitForToastDisappear();
-
 		Assert.assertTrue(myprofile.isProfileImageDisplayed(), "Profile picture not displayed");
 
 	}

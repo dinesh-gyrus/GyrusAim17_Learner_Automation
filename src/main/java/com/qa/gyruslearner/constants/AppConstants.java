@@ -38,6 +38,7 @@ public class AppConstants extends TestBase {
 	          
 	public static String LOGIN_DATA_SHEET_PATH = ".\\src\\test\\resources\\testdata\\LoginData.xlsx";
 	public static String CHANGEPASSWORD_DATA_SHEET_PATH = ".\\src\\test\\resources\\testdata\\ChangePassword.xlsx";
+	public static String MYPROFILE_DATA_SHEET_PATH = ".\\src\\test\\resources\\testdata\\MyProfileData.xlsx";
 	
 					//************Sheet Name********/
 		
@@ -52,8 +53,9 @@ public class AppConstants extends TestBase {
 		public static final String MISMATCH_NEW_CONFIRM_CHANGEPASSWORD_SHEET_NAME = "MismatchedNewConfirmPasswords";
 		public static final String CURRENTANDNEW_SAME_CHANGEPASSWORD_SHEET_NAME = "CurrentAndNewPasswordAreSame";
 		public static final String SUCCESSFUL_PASSWORDRESET_CHANGEPASSWORD_SHEET_NAME = "SuccessfulPasswordReset";
+		public static final String RESER_PASSWORD_MYPROFILE_SHEET_NAME = "ResetPassword";
+		public static final String CFR21_SECURITY_MYPROFILE_SHEET_NAME = "CFR21Security";
 		
-	
 	/*
 	public final static String LOGIN_PAGE_URL = "https://nverma.gyrusaim.net/auth/login";
 	public final static String DASHBOARD_PAGE_URL="https://nverma.gyrusaim.net/v2/dashboard";

@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
 
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
@@ -64,6 +65,11 @@ public class IDPPage extends TestBase {
 
 	@FindBy(xpath = "(//kendo-badge[contains(@themecolor,'error')])[2]")
 	WebElement SortingFilterApplyIcon;
+	
+	@FindBy(xpath = "//button[normalize-space()='More']")
+	List<WebElement> btMore;
+	
+	
 
 	public boolean isMyLearningMenuDisplay() {
 
@@ -184,6 +190,33 @@ public class IDPPage extends TestBase {
 		
 		eleUtil.waitForLoaderToDisappear();
 	}
+	
+	public boolean isAssessmentsDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFAssessments);
+		return eleUtil.visibleElementWhenReady(btnQFAssessments, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isAssessmentsEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFAssessments);
+		return eleUtil.isElementEnable(btnQFAssessments);
+	}
+
+	public void doclickAssessmentsQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFAssessments);
+		try {
+			eleUtil.clickElementWhenReady(btnQFAssessments, AppConstants.MEDIUM_TIME_OUT);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFAssessments);
+		}
+		
+		eleUtil.waitForLoaderToDisappear();
+	}
 
 	public int getCardCount() {
 
@@ -261,7 +294,9 @@ public class IDPPage extends TestBase {
 			System.out.println("No IDP All Cards Available");
 			return;
 		}
-
+		
+		SoftAssert softAssert = new SoftAssert();
+		
 		System.out.println("IDP ALL Total  Cards: " + idpCardViewList.size());
 
 		for (int i = 0; i < idpCardViewList.size(); i++) {
@@ -294,51 +329,51 @@ public class IDPPage extends TestBase {
 
 			// Assertions
 			if (cardsImage == false) {
-				throw new RuntimeException("Training  Image is missing in card " + (i + 1) + ":" + TrainingName);
+				softAssert.fail("❌ Training  Image is missing in card  "+(i + 1)+" : " + TrainingName);
 			}
 			if (Trainingtype.trim().isEmpty()) {
-				throw new RuntimeException("Training Type is missing in card " + (i + 1) + ":" + TrainingName);
+				softAssert.fail("❌ Training Type is missing in card  "+(i + 1)+" : " + TrainingName);
 			}
 			if (TrainingName.trim().isEmpty()) {
-				throw new RuntimeException(" Training Name  is missing in card " + (i + 1) + ":" + Trainingtype);
+				softAssert.fail("❌ Training Name  is missing in card  "+(i + 1)+" : " + Trainingtype);
 			}
 			if (status.trim().isEmpty()) {
-				throw new RuntimeException(" status is missing in card " + (i + 1) + ":" + TrainingName);
+				softAssert.fail("❌ status is missing in card  "+(i + 1)+" : " + TrainingName);
 			}
 			if (progress.trim().isEmpty()) {
-				throw new RuntimeException(" progress is missing in card " + (i + 1) + ":" + TrainingName);
+				softAssert.fail("❌ progress is missing in card  "+(i + 1)+" : " + TrainingName);
 			}
-
-			if (status.contains("Not Started")) {
+			
+			
+			if (status.contains("Not started")) {
 				if (progress.equals("100%")) {
-					throw new RuntimeException("Status Not Started  but percentage Wrong Display: " + TrainingName);
+					softAssert.fail("❌ Not Started but "+progress+" : " + TrainingName);
 				}
-			} else if (status.contains("In progress")) {
+			}else if (status.contains("In progress")) {
 				if (progress.equals("100%")|| (progress.equals("0%"))) {
-					throw new RuntimeException("Status In progress but percentage Wrong Display: " + TrainingName);
+					softAssert.fail("❌ In progress but "+progress+" : " + TrainingName);
 				} 
 			} else if (status.contains("Completed")) {
 				if (!progress.equals("100%")) {
-					throw new RuntimeException("Status Completed  but percentage Wrong Display: " + TrainingName);
+					softAssert.fail("❌ Completed but "+progress+" : " + TrainingName);
 				}
 			}else if(status.contains("Not Certified")) {
 				if (progress.equals("100%")) {
-
-					throw new RuntimeException("Status Not Certified  but percentage Wrong Display: " + TrainingName);
+					softAssert.fail("❌ Not Certified but "+progress+" : " + TrainingName);
 				}
 			}else if(status.contains("Recertified")) {
 				if (!progress.equals("0%")) {
-
-					throw new RuntimeException("Status Recertified  but percentage Wrong Display :" + TrainingName);
+					softAssert.fail("❌ Recertified but "+progress+" : " + TrainingName);
 				}
 			} else if(status.contains("Certified")) {
 				if (!progress.equals("100%")) {
-
-					throw new RuntimeException("Status Certified  but percentage Wrong Display : " + TrainingName);
+					softAssert.fail("❌ Certified but "+progress+" : " + TrainingName);
 				}
 
 			}
+			
 		}
+		softAssert.assertAll();
 	}
 
 }

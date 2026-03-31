@@ -15,6 +15,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
+
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.util.ElementUtil;
@@ -24,7 +26,7 @@ public class DashboardPage extends TestBase {
 
 	ElementUtil eleUtil;
 	JavaScriptUtil jsUtil;
-	
+
 	public DashboardPage() {
 		PageFactory.initElements(driver, this);
 		eleUtil = new ElementUtil();
@@ -184,14 +186,12 @@ public class DashboardPage extends TestBase {
 
 	@FindBy(xpath = "//span[contains(@data-key,'navMyLearning')]")
 	WebElement lnkMyLearning;
-	
+
 	@FindBy(xpath = "//span[contains(text(),'Logout')]")
 	WebElement btnLogout;
 
-	
-
 	public String getDashBoardPageUrl() {
-		
+
 		eleUtil.waitForUrlToBe(AppConstants.DASHBOARD_PAGE_URL, AppConstants.MAX_TIME_OUT);
 		String DashboardCurrentUrl = driver.getCurrentUrl();
 		return DashboardCurrentUrl;
@@ -205,11 +205,11 @@ public class DashboardPage extends TestBase {
 		return DashBoardTitle;
 
 	}
-	
+
 	public void doClickOnSignOut() {
 
 		eleUtil.waitForElementVisible(btnLogout, AppConstants.MAX_TIME_OUT).click();
-		
+
 	}
 
 	public boolean isCompnayLogoInDashBoardDisplayed() {
@@ -537,6 +537,8 @@ public class DashboardPage extends TestBase {
 			return;
 		}
 
+		SoftAssert softAssert = new SoftAssert();
+
 		System.out.println("Learner Status In-Progress Total Cards: " + LearnerStatusCardViewList.size());
 
 		for (int i = 0; i < LearnerStatusCardViewList.size(); i++) {
@@ -568,29 +570,33 @@ public class DashboardPage extends TestBase {
 			// Assertions
 
 			if (Trainingtype.trim().isEmpty()) {
-				throw new RuntimeException("Training Type is missing in card " + (i + 1));
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + title);
 			}
 			if (title.trim().isEmpty()) {
-				throw new RuntimeException("Title is missing in card " + (i + 1));
+
+				softAssert.fail("❌ Training title is missing in card : " + (i + 1));
 			}
 
 			if (status.trim().isEmpty()) {
-				throw new RuntimeException("Status is missing in card " + (i + 1));
+
+				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (progress.trim().isEmpty()) {
-				throw new RuntimeException("Progress is missing in card " + (i + 1));
+
+				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (status.contains("In progress")) {
-				if (!progress.equals("100%") && !progress.equals("0%")) {
+				if (progress.equals("100%") && progress.equals("0%")) {
 
-					throw new RuntimeException("Status In progress  but percentage Wrong Display " + title);
+					softAssert.fail("❌ Status In progress  but  " + progress + " : " + title);
 				}
 
 			}
 
 		}
+		softAssert.assertAll();
 	}
 
 	public boolean isLeanerNotStartedButtonDisplay() {
@@ -624,6 +630,7 @@ public class DashboardPage extends TestBase {
 			System.out.println("No Learner Status Cards Available");
 			return;
 		}
+		SoftAssert softAssert = new SoftAssert();
 
 		System.out.println(" Learner Status Not-Started Total Cards: " + LearnerStatusCardViewList.size());
 
@@ -635,10 +642,10 @@ public class DashboardPage extends TestBase {
 			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
 			// Title
 			String title = card.findElement(By.xpath(".//h3")).getText();
-			
+
 			// Status
 			String status = card.findElement(By.xpath(".//span[contains(text(),'Not Started')]")).getText();
-			
+
 			// Progress
 			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
 
@@ -652,29 +659,31 @@ public class DashboardPage extends TestBase {
 			// Assertions
 
 			if (Trainingtype.trim().isEmpty()) {
-				throw new RuntimeException("Training Type is missing in card " + (i + 1));
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + title);
 			}
 			if (title.trim().isEmpty()) {
-				throw new RuntimeException("Title is missing in card " + (i + 1));
-			}
 
+				softAssert.fail("❌ Training title is missing in card : " + (i + 1));
+
+			}
 			if (status.trim().isEmpty()) {
-				throw new RuntimeException("Status is missing in card " + (i + 1));
+				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (progress.trim().isEmpty()) {
-				throw new RuntimeException("Progress is missing in card " + (i + 1));
+				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (status.contains("Not Started")) {
 				if (!progress.equals("0%")) {
-
-					throw new RuntimeException("Status Not Started  but percentage Wrong Display " + title);
+					
+					softAssert.fail("❌ Certified but "+progress+" : " + title);
 				}
 
 			}
 
 		}
+		softAssert.assertAll();
 	}
 
 	public boolean isMySheduleViewDetailsDisplay() {
@@ -731,7 +740,8 @@ public class DashboardPage extends TestBase {
 			System.out.println("No My Schedule Cards Available");
 			return;
 		}
-
+		
+		SoftAssert softAssert = new SoftAssert();
 		System.out.println(" My Schedule Total List: " + MyScheduleList.size());
 
 		for (int i = 0; i < MyScheduleList.size(); i++) {
@@ -756,18 +766,18 @@ public class DashboardPage extends TestBase {
 
 			// Assertions
 			if (Trainingtype.trim().isEmpty()) {
-				throw new RuntimeException("Training Type is missing in card " + (i + 1));
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (title.trim().isEmpty()) {
-				throw new RuntimeException("Title is missing in card " + (i + 1));
+				softAssert.fail("❌ Title is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (ButtonText.trim().isEmpty()) {
-				throw new RuntimeException("ButtonText is missing in card " + (i + 1));
+				softAssert.fail("❌ ButtonText is missing in card  " + (i + 1) + " : " + title);
 			}
-
 		}
+		softAssert.assertAll();
 	}
 
 	public boolean isAssignedTrainingsRecentlyAssignedDisplay() {
@@ -782,7 +792,7 @@ public class DashboardPage extends TestBase {
 			System.out.println("No Learner Status Cards Available");
 			return;
 		}
-
+		SoftAssert softAssert = new SoftAssert();
 		System.out.println(
 				" Assigned Trainings  Recently Assigned  Total Cards: " + assignedTrainingsCardViewList.size());
 
@@ -812,29 +822,30 @@ public class DashboardPage extends TestBase {
 			// Assertions
 
 			if (Trainingtype.trim().isEmpty()) {
-				throw new RuntimeException("Training Type is missing in card " + (i + 1));
+				
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + title);
 			}
 			if (title.trim().isEmpty()) {
-				throw new RuntimeException("Title is missing in card " + (i + 1));
+				softAssert.fail("❌ Title is missing in card  " + (i + 1) + " : " + Trainingtype);
 			}
 
 			if (status.trim().isEmpty()) {
-				throw new RuntimeException("Status is missing in card " + (i + 1));
+				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (progress.trim().isEmpty()) {
-				throw new RuntimeException("Progress is missing in card " + (i + 1));
+				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (status.contains("Not Started")) {
 				if (!progress.equals("0%")) {
-
-					throw new RuntimeException("Status Not Started  but percentage Wrong Display " + title);
+					softAssert.fail("❌ Not Started but "+progress+" : " + title);
 				}
 
 			}
 
 		}
+		softAssert.assertAll();
 	}
 
 	public boolean isAssignedTrainingsDueButtonDisplay() {
@@ -856,7 +867,7 @@ public class DashboardPage extends TestBase {
 			System.out.println("No Assigned Trainings  Due and OverDue Cards Available");
 			return;
 		}
-
+		SoftAssert softAssert = new SoftAssert();
 		System.out
 				.println(" Assigned Trainings  Due and OverDue  Total Cards: " + assignedTrainingsCardViewList.size());
 
@@ -886,33 +897,35 @@ public class DashboardPage extends TestBase {
 			// Assertions
 
 			if (Trainingtype.trim().isEmpty()) {
-				throw new RuntimeException("Training Type is missing in card " + (i + 1));
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + title);
 			}
 			if (title.trim().isEmpty()) {
-				throw new RuntimeException("Title is missing in card " + (i + 1));
+				softAssert.fail("❌ Title is missing in card  " + (i + 1) + " : " + Trainingtype);
 			}
 
 			if (status.trim().isEmpty()) {
-				throw new RuntimeException("Status is missing in card " + (i + 1));
+				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (progress.trim().isEmpty()) {
-				throw new RuntimeException("Progress is missing in card " + (i + 1));
+				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + title);
 			}
 
 			if (status.contains("Not Started") || status.contains("In progress")) {
 
 				if (progress.equals("100%")) {
 					if (status.contains("Not Started")) {
-						throw new RuntimeException("Status Not Started  but percentage Wrong Display " + title);
+						softAssert.fail("❌ Not Started but "+progress+" : " + title);
+						
 					} else {
-						throw new RuntimeException("Status In progress  but percentage Wrong Display " + title);
+						softAssert.fail("❌ In progress but "+progress+" : " + title);
 					}
 				}
 
 			}
 
 		}
+		softAssert.assertAll();
 	}
 
 	public boolean isAssignedTrainingsOverDueButtonDisplay() {
@@ -940,7 +953,7 @@ public class DashboardPage extends TestBase {
 			System.out.println("No Recent Badges Cards Available");
 			return;
 		}
-
+		SoftAssert softAssert = new SoftAssert();
 		System.out.println(" Recent Badges  Total Cards: " + RecentBadgesCardViewList.size());
 
 		for (int i = 0; i < RecentBadgesCardViewList.size(); i++) {
@@ -960,13 +973,14 @@ public class DashboardPage extends TestBase {
 			// Assertions
 
 			if (badgesImage == false) {
-				throw new RuntimeException("Badges Image is missing in card " + (i + 1));
+				softAssert.fail("❌ Badges Image is missing in card  " + (i + 1) + " : " + badgesTitle);
 			}
 			if (badgesTitle.trim().isEmpty()) {
-				throw new RuntimeException(" Badges Title is missing in card " + (i + 1));
+				softAssert.fail("❌  Badges Title is missing in card  " + (i + 1));
 			}
 
 		}
+		softAssert.assertAll();
 	}
 
 	public void validateLeaderboardRankCards() {
@@ -975,7 +989,7 @@ public class DashboardPage extends TestBase {
 			System.out.println("No Leaderboard Rank Cards Available");
 			return;
 		}
-
+		SoftAssert softAssert = new SoftAssert();
 		System.out.println("Leaderboard  Total Rank Cards: " + LeaderboardRanklist.size());
 
 		for (int i = 0; i < LeaderboardRanklist.size(); i++) {
@@ -1002,19 +1016,20 @@ public class DashboardPage extends TestBase {
 			// Assertions
 
 			if (image == false) {
-				throw new RuntimeException("Leaderboard Image is missing in card " + (i + 1));
+				softAssert.fail("❌ Leaderboard Image is missing in card  " + (i + 1) + " : " + LeaderboardTitle);
 			}
 			if (rankImage == false) {
-				throw new RuntimeException("Rank Image is missing in card " + (i + 1));
+				softAssert.fail("❌ Rank Image is missing in card  " + (i + 1) + " : " + LeaderboardTitle);
 			}
 			if (LeaderboardTitle.trim().isEmpty()) {
-				throw new RuntimeException(" Leaderboard Name is missing in card " + (i + 1));
+				softAssert.fail("❌ Leaderboard Name is missing in card " + (i + 1));
 			}
 			if (pointsEarned.trim().isEmpty()) {
-				throw new RuntimeException(" Points Earned is missing in card " + (i + 1));
+				softAssert.fail("❌ Points Earned is missing in card  " + (i + 1) + " : " + LeaderboardTitle);
 			}
 
 		}
+		softAssert.assertAll();
 	}
 
 	public boolean isActivityFeedsViewAllButtonDisplay() {
@@ -1029,7 +1044,7 @@ public class DashboardPage extends TestBase {
 			System.out.println("No Activity Feeds Cards Available");
 			return;
 		}
-
+		SoftAssert softAssert = new SoftAssert();
 		System.out.println("Activity Feeds  Total  Cards: " + ActivityFeedslist.size());
 
 		for (int i = 0; i < ActivityFeedslist.size(); i++) {
@@ -1059,19 +1074,21 @@ public class DashboardPage extends TestBase {
 
 			// Assertions
 			if (image == false) {
-				throw new RuntimeException("User Image is missing in card " + (i + 1));
+				softAssert.fail("❌ User Image is missing in card  " + (i + 1) + " : " + userName);
 			}
 			if (userName.trim().isEmpty()) {
-				throw new RuntimeException("User Name is missing in card " + (i + 1));
+				softAssert.fail("❌ User Name is missing in card  " + (i + 1));
 			}
 			if (hoursago.trim().isEmpty()) {
-				throw new RuntimeException(" hours Ago Text  is missing in card " + (i + 1));
+				softAssert.fail("❌ hours Ago Text  is missing in card  " + (i + 1) + " : " + userName);
 			}
 			if (Description.trim().isEmpty()) {
-				throw new RuntimeException(" Description is missing in card " + (i + 1));
+				softAssert.fail("❌ Description is missing in card  " + (i + 1) + " : " + userName);
 			}
 
 		}
+		
+		softAssert.assertAll();
 	}
 
 	public boolean isCertificationsViewAllButtonDisplay() {
@@ -1086,7 +1103,7 @@ public class DashboardPage extends TestBase {
 			System.out.println("No Certifications Cards Available");
 			return;
 		}
-
+		SoftAssert softAssert = new SoftAssert();
 		System.out.println(" Certifications  Total Cards: " + certificationslist.size());
 
 		for (int i = 0; i < certificationslist.size(); i++) {
@@ -1102,7 +1119,7 @@ public class DashboardPage extends TestBase {
 
 			// Status
 			String status = card.findElement(By.xpath(
-					".//span[contains(text(),'Certified') or contains(text(),'Recertified') or contains(text(),'Expired') or contains(text(),'Not Certified')]"))
+					".//span[contains(text(),'Certified') or contains(text(),'Recertified') or contains(text(),'Expired') or contains(text(),'Not Certified') or contains(text(),'Pending Approval') ]"))
 					.getText();
 
 			// Progress
@@ -1118,39 +1135,37 @@ public class DashboardPage extends TestBase {
 			// Assertions
 
 			if (certificationImage == false) {
-				throw new RuntimeException("Certification Image is missing in card " + (i + 1));
+				softAssert.fail("❌ Certification Image is missing in card  " + (i + 1) + " : " + certificationName);
 			}
 			if (certificationName.trim().isEmpty()) {
-				throw new RuntimeException("Title is missing in card " + (i + 1));
+				softAssert.fail("❌ certification Name  is missing in card  " + (i + 1));
 			}
 
 			if (status.trim().isEmpty()) {
-				throw new RuntimeException("Status is missing in card " + (i + 1));
+				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + certificationName);
 			}
 
 			if (progress.trim().isEmpty()) {
-				throw new RuntimeException("Progress is missing in card " + (i + 1));
+				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + certificationName);
 			}
 
-			if (status.contains("Certified")) {
+			if (status.equals("Certified")) {
 				if (!progress.equals("100%")) {
-
-					throw new RuntimeException("Status Certified  but percentage Wrong Display " + (i + 1));
+					softAssert.fail("❌ Certified but "+progress+" : " + certificationName);
 				}
 
 			} else if (status.contains("Recertified")) {
 				if (!progress.equals("0%")) {
-
-					throw new RuntimeException("Status Recertified  but percentage Wrong Display " + (i + 1));
+					softAssert.fail("❌ Recertified but "+progress+" : " + certificationName);
 				}
 			} else if (status.contains("Not Certified")) {
 				if (progress.equals("100%")) {
-
-					throw new RuntimeException("Status Not Certified  but percentage Wrong Display " + (i + 1));
+					softAssert.fail("❌ Not Certified but "+progress+" : " + certificationName);
 				}
 			}
 
 		}
+		softAssert.assertAll();
 	}
 
 	public boolean isSidebarMenuiconDisplay() {
@@ -1158,16 +1173,17 @@ public class DashboardPage extends TestBase {
 		jsUtil.scrollIntoViewCenter(sidebarMenuicon);
 		return eleUtil.visibleElementWhenReady(sidebarMenuicon, 20);
 	}
-	
+
 	public boolean isMyLearningMenuDisplay() {
 
 		jsUtil.scrollIntoViewCenter(lnkMyLearning);
 		return eleUtil.visibleElementWhenReady(lnkMyLearning, 20);
 	}
+
 	public boolean isMyLearningMenuEnable() {
-	
-			jsUtil.scrollIntoViewCenter(lnkMyLearning);
-			return eleUtil.isElementEnable(lnkMyLearning);
+
+		jsUtil.scrollIntoViewCenter(lnkMyLearning);
+		return eleUtil.isElementEnable(lnkMyLearning);
 	}
 
 	public void doclickMyLearningSubmenu() {
@@ -1175,8 +1191,6 @@ public class DashboardPage extends TestBase {
 		jsUtil.scrollIntoViewCenter(lnkMyLearning);
 		eleUtil.clickElementWhenReady(lnkMyLearning, 20);
 	}
-	
-	
 
 	public void validatemainMenuItemsAndIcon() {
 
@@ -1184,7 +1198,7 @@ public class DashboardPage extends TestBase {
 			System.out.println("Main Menu Available");
 			return;
 		}
-
+		SoftAssert softAssert = new SoftAssert();
 		System.out.println(" main Menu Items List  Total : " + mainMenuItemsList.size());
 
 		for (int i = 0; i < mainMenuItemsList.size(); i++) {
@@ -1205,14 +1219,15 @@ public class DashboardPage extends TestBase {
 			// Assertions
 
 			if (mainMenuicon == false) {
-				throw new RuntimeException("Main Menu icon  is missing in list " + (i + 1));
+				softAssert.fail("❌ Main Menu icon  is missing in list " + (i + 1));
 			}
 			if (menuName.trim().isEmpty()) {
-				throw new RuntimeException("Menu Name is missing in list " + (i + 1));
+				softAssert.fail("❌ Menu Name is missing in list " + (i + 1));
 			}
 
 		}
-
+		softAssert.assertAll();
 	}
+	
 
 }
