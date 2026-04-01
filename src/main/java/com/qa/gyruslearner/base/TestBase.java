@@ -45,6 +45,7 @@ public class TestBase {
 			  ChromeOptions options = new ChromeOptions(); 
 			  options.addArguments("--disable-autofill-keyboard-accessory-view");
 			  options.addArguments("--disable-save-password-bubble");
+			  options.addArguments("--window-size=1920,1080");
 			  Map<String, Object> prefs = new HashMap<>(); 
 			  prefs.put("credentials_enable_service", false);
 			  prefs.put("profile.password_manager_enabled", false);

@@ -3,16 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase">
+      <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
         <methods>
-          <include name="verifyTimeZoneSettingsDisplayTest"/>
-          <include name="pageRefresh"/>
-          <include name="verifyTimeZoneSettingsTest"/>
-          <include name="tearDown"/>
-          <include name="verifyThemeTest"/>
           <include name="setUp"/>
+          <include name="verifyCertificationQuickFilterTest"/>
+          <include name="tearDown"/>
+          <include name="verifyDocumentQuickFilterTest"/>
+          <include name="pageRefresh"/>
+          <include name="verifyMsTeamQuickFilterTest"/>
+          <include name="verifyAssessmentsQuickFilterTest"/>
         </methods>
-      </class> <!-- com.qa.gyruslearner.testcases.MyProfilePageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.IDPPageTestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

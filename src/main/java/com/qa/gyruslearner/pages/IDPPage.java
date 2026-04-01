@@ -56,6 +56,22 @@ public class IDPPage extends TestBase {
 
 	@FindBy(id = "lbl_57")
 	WebElement btnQFDocument;
+	
+	@FindBy(id = "lbl_52")
+	WebElement btnQFElearning;
+	
+	@FindBy(id = "lbl_56")
+	WebElement btnQFExteanalLink;
+	
+	@FindBy(id = "lbl_59")
+	WebElement btnQFILT;
+	
+	@FindBy(id = "lbl_117")
+	WebElement btnQFlearningPath;
+	
+	@FindBy(id = "lbl_122")
+	WebElement btnQFMSTeam;
+	
 
 	@FindBy(xpath = "//button[normalize-space()='See More']")
 	List<WebElement> btnSeeMore;
@@ -65,11 +81,12 @@ public class IDPPage extends TestBase {
 
 	@FindBy(xpath = "(//kendo-badge[contains(@themecolor,'error')])[2]")
 	WebElement SortingFilterApplyIcon;
-	
+
 	@FindBy(xpath = "//button[normalize-space()='More']")
-	List<WebElement> btMore;
-	
-	
+	WebElement btnMore;
+
+	@FindBy(xpath = "//button[@title='Apply']")
+	WebElement btnApply;
 
 	public boolean isMyLearningMenuDisplay() {
 
@@ -182,15 +199,23 @@ public class IDPPage extends TestBase {
 
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFAllELearning);
-		try {
-			eleUtil.clickElementWhenReady(btnQFAllELearning, AppConstants.MEDIUM_TIME_OUT);
-		} catch (Exception e) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFAllELearning);
+
+		String isChecked = btnQFAllELearning.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("AllELearning is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnQFAllELearning, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFAllELearning);
+			}
 		}
-		
+
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isAssessmentsDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -209,15 +234,23 @@ public class IDPPage extends TestBase {
 
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFAssessments);
-		try {
-			eleUtil.clickElementWhenReady(btnQFAssessments, AppConstants.MEDIUM_TIME_OUT);
-		} catch (Exception e) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFAssessments);
+
+		String isChecked = btnQFAssessments.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("Assessments is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnQFAssessments, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFAssessments);
+			}
 		}
-		
+
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isCertificationDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -236,12 +269,283 @@ public class IDPPage extends TestBase {
 
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFCertification);
-		try {
-			eleUtil.clickElementWhenReady(btnQFCertification, AppConstants.MEDIUM_TIME_OUT);
-		} catch (Exception e) {
-			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFCertification);
+
+		String isChecked = btnQFCertification.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("Certification is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnQFCertification, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFCertification);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+
+	public boolean isDocumentDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFDocument);
+		return eleUtil.visibleElementWhenReady(btnQFDocument, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isDocumentEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFDocument);
+		return eleUtil.isElementEnable(btnQFDocument);
+	}
+
+	public void doclickDocumentQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFDocument);
+
+		String isChecked = btnQFDocument.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("Document is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnQFDocument, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFDocument);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	public boolean isMoreButtonDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnMore);
+		return eleUtil.visibleElementWhenReady(btnMore, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isMoreButtonEnable() {
+
+		jsUtil.scrollIntoViewCenter(btnMore);
+		return eleUtil.isElementEnable(btnMore);
+	}
+
+	public void doclickMoreButtonQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnMore);
+
+		String isChecked = btnMore.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("More is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnMore, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnMore);
+			}
 		}
 		
+	}
+
+	public boolean isApplyButtonDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnApply);
+		return eleUtil.visibleElementWhenReady(btnApply, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isApplyButtonEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnApply);
+		return eleUtil.isElementEnable(btnApply);
+	}
+	public void doclickApplyButtonQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnApply);
+
+		try {
+			eleUtil.clickElementWhenReady(btnApply, AppConstants.MEDIUM_TIME_OUT);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnApply);
+		}
+
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	public boolean isElearningDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFElearning);
+		return eleUtil.visibleElementWhenReady(btnQFElearning, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isElearningEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFElearning);
+		return eleUtil.isElementEnable(btnQFElearning);
+	}
+
+	public void doclickElearningQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFElearning);
+
+		String isChecked = btnQFElearning.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("Elearnig is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnQFElearning, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFElearning);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	public boolean isExternalLinkDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFExteanalLink);
+		return eleUtil.visibleElementWhenReady(btnQFExteanalLink, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isExternalLinkEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFExteanalLink);
+		return eleUtil.isElementEnable(btnQFExteanalLink);
+	}
+
+	public void doclickExternalLinkQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFExteanalLink);
+
+		String isChecked = btnQFExteanalLink.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("ExteanalLink is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnQFExteanalLink, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFExteanalLink);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	public boolean isILTDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFILT);
+		return eleUtil.visibleElementWhenReady(btnQFILT, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isILTEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFILT);
+		return eleUtil.isElementEnable(btnQFILT);
+	}
+
+	public void doclickILTQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFILT);
+
+		String isChecked = btnQFILT.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("ExteanalLink is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnQFILT, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFILT);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	public boolean isLearningPathDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFlearningPath);
+		return eleUtil.visibleElementWhenReady(btnQFlearningPath, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isLearningPathEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFlearningPath);
+		return eleUtil.isElementEnable(btnQFlearningPath);
+	}
+
+	public void doclickLearningPathQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFlearningPath);
+
+		String isChecked = btnQFlearningPath.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("ExteanalLink is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnQFlearningPath, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFlearningPath);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	public boolean isMsTeamDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFMSTeam);
+		return eleUtil.visibleElementWhenReady(btnQFMSTeam, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isMsTeamEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFMSTeam);
+		return eleUtil.isElementEnable(btnQFMSTeam);
+	}
+
+	public void doclickMsTeamQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFMSTeam);
+
+		String isChecked = btnQFMSTeam.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("ExteanalLink is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(btnQFMSTeam, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFMSTeam);
+			}
+		}
 		eleUtil.waitForLoaderToDisappear();
 	}
 	
@@ -286,22 +590,22 @@ public class IDPPage extends TestBase {
 				break;
 
 			WebElement btn = btnSeeMore.get(0);
-			
+
 			try {
-				 eleUtil.waitForLoaderToDisappear();
-				 // jsUtil.scrollIntoViewCenter(btn);
-				 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
-				 try {
-					    eleUtil.waitForLoaderToDisappear();
-						btn.click();
-					} catch (Exception e) {
-						((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
-					}
-				
+				eleUtil.waitForLoaderToDisappear();
+				// jsUtil.scrollIntoViewCenter(btn);
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", btn);
+				try {
+					eleUtil.waitForLoaderToDisappear();
+					btn.click();
+				} catch (Exception e) {
+					((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+				}
+
 				eleUtil.waitForLoaderToDisappear();
 
 				waitForCardsToLoad(previousCount);
-				
+
 				// Wait until new cards loaded
 				new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT))
 						.until(driver -> idpCardViewList.size() > currentCount);
@@ -316,16 +620,16 @@ public class IDPPage extends TestBase {
 	}
 
 	public void validateStatusIDPAllCards() {
-		
+
 		eleUtil.waitForLoaderToDisappear();
 
 		if (idpCardViewList.isEmpty()) {
 			System.out.println("No IDP All Cards Available");
 			return;
 		}
-		
+
 		SoftAssert softAssert = new SoftAssert();
-		
+
 		System.out.println("IDP ALL Total  Cards: " + idpCardViewList.size());
 
 		for (int i = 0; i < idpCardViewList.size(); i++) {
@@ -342,8 +646,9 @@ public class IDPPage extends TestBase {
 			String TrainingName = card.findElement(By.xpath(".//h3")).getText();
 
 			// Status
-			String status = card
-					.findElement(By.xpath(".//span[contains(text(),'Not started') or contains(text(),'In progress') or contains(text(),'Completed') or contains(text(),'Not Certified')  or contains(text(),'Recertified') or  contains(text(),'Certified') or contains(text(),'Expired')]")).getText();
+			String status = card.findElement(By.xpath(
+					".//span[contains(text(),'Not started') or contains(text(),'In progress') or contains(text(),'Completed') or contains(text(),'Not Certified')  or contains(text(),'Recertified') or  contains(text(),'Certified') or contains(text(),'Expired')]"))
+					.getText();
 
 			// Progress
 			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
@@ -358,49 +663,48 @@ public class IDPPage extends TestBase {
 
 			// Assertions
 			if (cardsImage == false) {
-				softAssert.fail("❌ Training  Image is missing in card  "+(i + 1)+" : " + TrainingName);
+				softAssert.fail("❌ Training  Image is missing in card  " + (i + 1) + " : " + TrainingName);
 			}
 			if (Trainingtype.trim().isEmpty()) {
-				softAssert.fail("❌ Training Type is missing in card  "+(i + 1)+" : " + TrainingName);
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + TrainingName);
 			}
 			if (TrainingName.trim().isEmpty()) {
-				softAssert.fail("❌ Training Name  is missing in card  "+(i + 1)+" : " + Trainingtype);
+				softAssert.fail("❌ Training Name  is missing in card  " + (i + 1) + " : " + Trainingtype);
 			}
 			if (status.trim().isEmpty()) {
-				softAssert.fail("❌ status is missing in card  "+(i + 1)+" : " + TrainingName);
+				softAssert.fail("❌ status is missing in card  " + (i + 1) + " : " + TrainingName);
 			}
 			if (progress.trim().isEmpty()) {
-				softAssert.fail("❌ progress is missing in card  "+(i + 1)+" : " + TrainingName);
+				softAssert.fail("❌ progress is missing in card  " + (i + 1) + " : " + TrainingName);
 			}
-			
-			
+
 			if (status.contains("Not started")) {
 				if (progress.equals("100%")) {
-					softAssert.fail("❌ Not Started but "+progress+" : " + TrainingName);
+					softAssert.fail("❌ Not Started but " + progress + " : " + TrainingName);
 				}
-			}else if (status.contains("In progress")) {
-				if (progress.equals("100%")|| (progress.equals("0%"))) {
-					softAssert.fail("❌ In progress but "+progress+" : " + TrainingName);
-				} 
+			} else if (status.contains("In progress")) {
+				if (progress.equals("100%") || (progress.equals("0%"))) {
+					softAssert.fail("❌ In progress but " + progress + " : " + TrainingName);
+				}
 			} else if (status.contains("Completed")) {
 				if (!progress.equals("100%")) {
-					softAssert.fail("❌ Completed but "+progress+" : " + TrainingName);
+					softAssert.fail("❌ Completed but " + progress + " : " + TrainingName);
 				}
-			}else if(status.contains("Not Certified")) {
+			} else if (status.contains("Not Certified")) {
 				if (progress.equals("100%")) {
-					softAssert.fail("❌ Not Certified but "+progress+" : " + TrainingName);
+					softAssert.fail("❌ Not Certified but " + progress + " : " + TrainingName);
 				}
-			}else if(status.contains("Recertified")) {
+			} else if (status.contains("Recertified")) {
 				if (!progress.equals("0%")) {
-					softAssert.fail("❌ Recertified but "+progress+" : " + TrainingName);
+					softAssert.fail("❌ Recertified but " + progress + " : " + TrainingName);
 				}
-			} else if(status.contains("Certified")) {
+			} else if (status.contains("Certified")) {
 				if (!progress.equals("100%")) {
-					softAssert.fail("❌ Certified but "+progress+" : " + TrainingName);
+					softAssert.fail("❌ Certified but " + progress + " : " + TrainingName);
 				}
 
 			}
-			
+
 		}
 		softAssert.assertAll();
 	}

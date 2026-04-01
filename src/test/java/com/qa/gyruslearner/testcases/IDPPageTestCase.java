@@ -169,7 +169,7 @@ public class IDPPageTestCase extends TestBase {
 		Assert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
 	}
 	
-	@Test(priority = 9)
+	@Test(priority = 9,enabled = true)
 	public void verifyAssessmentsQuickFilterTest() {
 
 		Assert.assertTrue(idp.isAssessmentsDisplay(), "Assessments  Quick Filter was not visible");
@@ -190,7 +190,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 9)
+	@Test(priority = 10,enabled = true)
 	public void verifyCertificationQuickFilterTest() {
 
 		Assert.assertTrue(idp.isCertificationDisplay(), "Certification  Quick Filter was not visible");
@@ -210,6 +210,168 @@ public class IDPPageTestCase extends TestBase {
 		idp.validateStatusIDPAllCards();
 		
 	}
+	
+	@Test(priority = 11,enabled = true)
+	public void verifyDocumentQuickFilterTest() {
+
+		Assert.assertTrue(idp.isDocumentDisplay(), "Document  Quick Filter was not visible");
+		Assert.assertTrue(idp.isDocumentEnable(), " Document  Quick Filter  was not enabled");
+		
+		idp.doclickDocumentQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------Document Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 12,enabled = true)
+	public void verifyElearnigQuickFilterTest() {
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+
+		Assert.assertTrue(idp.isElearningDisplay(), "Elearning  Quick Filter was not visible");
+		Assert.assertTrue(idp.isElearningEnable(), " Elearning  Quick Filter  was not enabled");
+		
+		idp.doclickElearningQuickFilter();
+		
+		idp.doclickApplyButtonQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------Elearning Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 13)
+	public void verifyExternalLinkQuickFilterTest() {
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+
+		Assert.assertTrue(idp.isExternalLinkDisplay(), "ExternalLink  Quick Filter was not visible");
+		Assert.assertTrue(idp.isExternalLinkEnable(), " ExternalLink  Quick Filter  was not enabled");
+		
+		idp.doclickExternalLinkQuickFilter();
+		
+		idp.doclickApplyButtonQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 13)
+	public void verifyILTQuickFilterTest() {
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+
+		Assert.assertTrue(idp.isILTDisplay(), "ILT  Quick Filter was not visible");
+		Assert.assertTrue(idp.isILTEnable(), " ILT  Quick Filter  was not enabled");
+		
+		idp.doclickILTQuickFilter();
+		
+		idp.doclickApplyButtonQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 13)
+	public void verifyLearningPathQuickFilterTest() {
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+
+		Assert.assertTrue(idp.isLearningPathDisplay(), "LearningPath  Quick Filter was not visible");
+		Assert.assertTrue(idp.isLearningPathEnable(), " LearningPath  Quick Filter  was not enabled");
+		
+		idp.doclickLearningPathQuickFilter();
+		
+		idp.doclickApplyButtonQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 13)
+	public void verifyMsTeamQuickFilterTest() {
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+
+		Assert.assertTrue(idp.isMsTeamDisplay(), "ExternalLink  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMsTeamEnable(), " ExternalLink  Quick Filter  was not enabled");
+		
+		idp.doclickMsTeamQuickFilter();
+		
+		idp.doclickApplyButtonQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
 	
 
 	@AfterClass
