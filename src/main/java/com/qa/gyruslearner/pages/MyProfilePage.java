@@ -13,10 +13,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.util.ElementUtil;
+import com.qa.gyruslearner.util.JavaScriptUtil;
 
 public class MyProfilePage extends TestBase {
 
 	ElementUtil eleUtil;
+	JavaScriptUtil jsUtil;
+	
 
 	@FindBy(xpath = "//*[@title='Profile Menu']")
 	WebElement profileIcon;
@@ -111,7 +114,7 @@ public class MyProfilePage extends TestBase {
 	@FindBy(xpath = "//kendo-dropdownlist[contains(@class,'profile_account_edit_profile_accordion_input')]")
 	WebElement drpUserTimeZone;
 
-	@FindBy(xpath = "(//kendo-dropdownlist//span[contains(@class,'k-input')])[7]")
+	@FindBy(xpath = "//label[normalize-space()='User Time Zone']/parent::div//kendo-dropdownlist")
 	WebElement drpSelectedUserTimezone;
 
 	@FindBy(id = "ClientWorkingDateTime_RO")
@@ -164,12 +167,13 @@ public class MyProfilePage extends TestBase {
 	
 	List<WebElement> toastElements = driver.findElements(By.xpath("//*[@role='alert']//span"));
 	
-
 	public MyProfilePage() {
 
 		PageFactory.initElements(driver, this);
 		eleUtil = new ElementUtil();
+		jsUtil = new JavaScriptUtil();
 	}
+	
 
 	public void doClickProfileIcon() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -220,7 +224,7 @@ public class MyProfilePage extends TestBase {
 	public void doValidUploadPhoto(String Filepath) {
 
 		uploadImage(Filepath);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
 		wait.until(ExpectedConditions.elementToBeClickable(btnUpload));
 		btnUpload.click();
 
@@ -258,9 +262,11 @@ public class MyProfilePage extends TestBase {
 
 	public boolean isProfileImageDisplayed() {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MEDIUM_TIME_OUT));
 		wait.until(ExpectedConditions.visibilityOf(profileImage));
-		return eleUtil.isElementDisplayed(profileImage);
+		
+		
+		return  eleUtil.isElementDisplayed(profileImage);
 	}
 
 	public boolean isProfileQRDisplayed() {
@@ -354,9 +360,9 @@ public class MyProfilePage extends TestBase {
 
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});",
 				timeZoneSettingsPanel);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		wait.until(ExpectedConditions.visibilityOf(timeZoneSettingsPanel));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MEDIUM_TIME_OUT));
 		wait.until(ExpectedConditions.elementToBeClickable(timeZoneSettingsPanel));
+		wait.until(ExpectedConditions.visibilityOf(timeZoneSettingsPanel));
 
 		try {
 			eleUtil.doClick(timeZoneSettingsPanel);

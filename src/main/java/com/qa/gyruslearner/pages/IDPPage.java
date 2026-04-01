@@ -217,6 +217,35 @@ public class IDPPage extends TestBase {
 		
 		eleUtil.waitForLoaderToDisappear();
 	}
+	
+	public boolean isCertificationDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFCertification);
+		return eleUtil.visibleElementWhenReady(btnQFCertification, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isCertificationEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFCertification);
+		return eleUtil.isElementEnable(btnQFCertification);
+	}
+
+	public void doclickCertificationQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnQFCertification);
+		try {
+			eleUtil.clickElementWhenReady(btnQFCertification, AppConstants.MEDIUM_TIME_OUT);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnQFCertification);
+		}
+		
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	
 
 	public int getCardCount() {
 

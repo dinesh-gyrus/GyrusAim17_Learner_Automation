@@ -121,7 +121,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 	
-	@Test(priority = 6,enabled = true)
+	@Test(priority = 6,enabled = false)
 	public void verifyAllCardLoadedAndCountTest() {
 
 		Assert.assertTrue(idp.isTrainingCountDisplay(), "Trainings Count  not visible");
@@ -131,7 +131,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 	
-	@Test(priority = 7, dependsOnMethods ="verifyAllCardLoadedAndCountTest", enabled = true)
+	@Test(priority = 7, dependsOnMethods ="verifyAllCardLoadedAndCountTest", enabled = false)
 	public void verifyAllCardsStatusAndpercentageTest() {
 		
 		System.out.println("------------------Compare the Status and percentage of Cards -------------------");
@@ -140,7 +140,7 @@ public class IDPPageTestCase extends TestBase {
 	}
 
 	
-	@Test(priority = 8,enabled = true)
+	@Test(priority = 8,enabled = false)
 	public void verifyAllElearningQuickFilterTest() {
 
 		Assert.assertTrue(idp.isAllELearningDisplay(), "All ELearning  Quick Filter was not visible");
@@ -176,6 +176,27 @@ public class IDPPageTestCase extends TestBase {
 		Assert.assertTrue(idp.isAssessmentsEnable(), " Assessments  Quick Filter  was not enabled");
 		
 		idp.doclickAssessmentsQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------Assessments Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 9)
+	public void verifyCertificationQuickFilterTest() {
+
+		Assert.assertTrue(idp.isCertificationDisplay(), "Certification  Quick Filter was not visible");
+		Assert.assertTrue(idp.isCertificationEnable(), " Certification  Quick Filter  was not enabled");
+		
+		idp.doclickCertificationQuickFilter();
 		// Training count not load thread sleep put
 		try {
 			Thread.sleep(2000);

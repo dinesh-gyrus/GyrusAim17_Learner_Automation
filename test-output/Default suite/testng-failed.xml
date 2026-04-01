@@ -5,9 +5,11 @@
     <classes>
       <class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase">
         <methods>
-          <include name="VerifyUploadhphotoTest"/>
+          <include name="verifyTimeZoneSettingsDisplayTest"/>
           <include name="pageRefresh"/>
+          <include name="verifyTimeZoneSettingsTest"/>
           <include name="tearDown"/>
+          <include name="verifyThemeTest"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- com.qa.gyruslearner.testcases.MyProfilePageTestCase -->
