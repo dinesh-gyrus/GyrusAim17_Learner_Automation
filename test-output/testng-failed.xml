@@ -10,6 +10,7 @@
           <include name="tearDown"/>
           <include name="verifyDocumentQuickFilterTest"/>
           <include name="pageRefresh"/>
+          <include name="verifyQuickFilterDailgoBoxTest"/>
           <include name="verifyMsTeamQuickFilterTest"/>
           <include name="verifyAssessmentsQuickFilterTest"/>
         </methods>

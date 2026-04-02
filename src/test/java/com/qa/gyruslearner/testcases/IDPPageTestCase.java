@@ -243,10 +243,16 @@ public class IDPPageTestCase extends TestBase {
 		// Verify Open
 		Assert.assertTrue(idp.isQuickFilterDialogOpen(), "Quick Filter Dialog is not opened");
 		
+		Assert.assertTrue(idp.isCancelButtonDisplay(), "Cancel button  Quick Filter was not visible");
+		Assert.assertTrue(idp.isCancelButtonEnable(), " Cancel button  Quick Filter  was not enabled");
+		
+		idp.doclickCancelButtonQuickFilter();
+		
+		Assert.assertTrue(idp.isQuickFilterDialogClosed(), "Dialog is not closed");
 		
 	}
 	
-	@Test(priority = 12,enabled = true)
+	@Test(priority = 13,enabled = true ,dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyElearnigQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -274,7 +280,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 13)
+	@Test(priority = 14,dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyExternalLinkQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -302,7 +308,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 14)
+	@Test(priority = 15, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyILTQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -330,7 +336,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 15)
+	@Test(priority = 16, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyLearningPathQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -358,7 +364,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 16)
+	@Test(priority = 17, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyMsTeamQuickFilterTest() {
 		
 		//Verify More button and Click on button

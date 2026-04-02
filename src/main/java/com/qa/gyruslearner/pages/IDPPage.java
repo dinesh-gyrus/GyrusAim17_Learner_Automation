@@ -411,6 +411,33 @@ public class IDPPage extends TestBase {
 	    ));
 	}
 	
+	public boolean isCancelButtonDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnCancel);
+		return eleUtil.visibleElementWhenReady(btnCancel, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isCancelButtonEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnCancel);
+		return eleUtil.isElementEnable(btnCancel);
+	}
+	public void doclickCancelButtonQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnCancel);
+
+		try {
+			eleUtil.clickElementWhenReady(btnCancel, AppConstants.MEDIUM_TIME_OUT);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnCancel);
+		}
+
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
 	public boolean isElearningDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
