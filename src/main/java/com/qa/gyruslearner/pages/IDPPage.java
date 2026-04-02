@@ -8,6 +8,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
@@ -87,6 +88,15 @@ public class IDPPage extends TestBase {
 
 	@FindBy(xpath = "//button[@title='Apply']")
 	WebElement btnApply;
+	
+	@FindBy(xpath = "//div[contains(@class,'k-window k-dialog')]")
+	WebElement QuickFilterDiallog;
+	
+	@FindBy(xpath = "//button[contains(@title,'Cancel')]")
+	WebElement btnCancel;
+	
+	
+	
 
 	public boolean isMyLearningMenuDisplay() {
 
@@ -377,6 +387,28 @@ public class IDPPage extends TestBase {
 		}
 
 		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	
+	public boolean isQuickFilterDialogOpen() {
+		
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.SHORT_TIME_OUT));
+	    try {
+	        return wait.until(ExpectedConditions.visibilityOfElementLocated(
+	            By.xpath("//div[contains(@class,'k-window k-dialog')]")
+	        )).isDisplayed();
+	        
+	    } catch (Exception e) {
+	        return false;
+	    }
+	}
+	
+	public boolean isQuickFilterDialogClosed() {
+		
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.SHORT_TIME_OUT));
+	    return wait.until(ExpectedConditions.invisibilityOfElementLocated(
+	        By.xpath("//div[contains(@class,'k-window k-dialog')]")
+	    ));
 	}
 	
 	public boolean isElearningDisplay() {

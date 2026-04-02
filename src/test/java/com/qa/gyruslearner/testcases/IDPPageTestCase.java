@@ -233,6 +233,20 @@ public class IDPPageTestCase extends TestBase {
 	}
 	
 	@Test(priority = 12,enabled = true)
+	public void verifyQuickFilterDailgoBoxTest() {
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+		
+		// Verify Open
+		Assert.assertTrue(idp.isQuickFilterDialogOpen(), "Quick Filter Dialog is not opened");
+		
+		
+	}
+	
+	@Test(priority = 12,enabled = true)
 	public void verifyElearnigQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -288,7 +302,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 13)
+	@Test(priority = 14)
 	public void verifyILTQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -316,7 +330,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 13)
+	@Test(priority = 15)
 	public void verifyLearningPathQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -344,7 +358,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 13)
+	@Test(priority = 16)
 	public void verifyMsTeamQuickFilterTest() {
 		
 		//Verify More button and Click on button
