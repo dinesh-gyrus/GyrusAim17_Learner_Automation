@@ -12,7 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
+        with:
+          fetch-depth: 0
       - name: Push to Azure DevOps
         env:
           AZURE_PAT: ${{ secrets.AZURE_PAT }}
@@ -21,4 +22,5 @@ jobs:
           git config --global user.name "dinesh-gyrus"
           git remote remove azure || true
           git remote add azure https://$AZURE_PAT@dev.azure.com/GyrusSystems/Gyrus%20Aim%20QA%20Automation%20V17/_git/Gyrus%20Aim%20QA%20Automation%20V17          
-          git push azure HEAD:main --force
+          git remote -v
+          git push azure main --force
