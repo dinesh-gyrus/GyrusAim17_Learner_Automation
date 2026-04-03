@@ -17,5 +17,5 @@ jobs:
         run: |
           git config --global user.email "Dinesh.Patil@gyrus.com"
           git config --global user.name "dinesh-gyrus"
-          git remote add azure https://$(secrets.AZURE_PAT)@dev.azure.com/GyrusSystems/Gyrus%20Aim%20QA%20Automation%20V17/_git/Gyrus%20Aim%20QA%20Automation%20V17          
+          git remote add azure https://$(secrets.AZUREPAT)@dev.azure.com/GyrusSystems/Gyrus%20Aim%20QA%20Automation%20V17/_git/Gyrus%20Aim%20QA%20Automation%20V17          
           git push azure HEAD:main --force
