@@ -1,0 +1,19 @@
+name: Sync GitHub to Azure DevOps
+
+on:
+  push:
+    branches:
+      - main   # change if needed
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Push to Azure DevOps
+        run: |
+          git remote add azure https://$(AZURE_PAT)@dev.azure.com/GyrusSystems/Gyrus%20Aim%20QA%20Automation%20V17/_git/Gyrus%20Aim%20QA%20Automation%20V17          
+          git push azure HEAD:main --force
