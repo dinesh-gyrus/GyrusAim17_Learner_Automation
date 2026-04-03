@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import com.qa.gyruslearner.base.TestBase;
@@ -57,22 +58,24 @@ public class IDPPage extends TestBase {
 
 	@FindBy(id = "lbl_57")
 	WebElement btnQFDocument;
-	
+
 	@FindBy(id = "lbl_52")
 	WebElement btnQFElearning;
-	
+
 	@FindBy(id = "lbl_56")
 	WebElement btnQFExteanalLink;
-	
+
 	@FindBy(id = "lbl_59")
 	WebElement btnQFILT;
-	
+
 	@FindBy(id = "lbl_117")
 	WebElement btnQFlearningPath;
-	
+
 	@FindBy(id = "lbl_122")
 	WebElement btnQFMSTeam;
-	
+
+	@FindBy(id = "lbl_116")
+	WebElement chkcompleteStatus;
 
 	@FindBy(xpath = "//button[normalize-space()='See More']")
 	List<WebElement> btnSeeMore;
@@ -88,15 +91,45 @@ public class IDPPage extends TestBase {
 
 	@FindBy(xpath = "//button[@title='Apply']")
 	WebElement btnApply;
+
+	@FindBy(xpath = " //button[contains(@title,'Clear All')]")
+	WebElement btnClearAll;
 	
 	@FindBy(xpath = "//div[contains(@class,'k-window k-dialog')]")
 	WebElement QuickFilterDiallog;
-	
+
 	@FindBy(xpath = "//button[contains(@title,'Cancel')]")
 	WebElement btnCancel;
-	
-	
-	
+
+	@FindBy(xpath = "//button[@title='Advanced Filter']")
+	WebElement btnAdvancedFilter;
+
+	@FindBy(xpath = "//div[@title='Sorting']")
+	WebElement btnsorting;
+
+	@FindBy(xpath = "//div[@title='List View']")
+	WebElement btnListView;
+
+	@FindBy(xpath = "//div[@aria-label='Card View']")
+	WebElement btnCardView;
+
+	@FindBy(xpath = "//div[@id='left-toggle-btn']")
+	WebElement btnViewToggle;
+
+	@FindBy(xpath = "//*[@placeholder='Search Trainings']")
+	WebElement txtSearchTraining;
+
+	@FindBy(xpath = "//div[@title='Idea Couch']")
+	WebElement btnidealCouch;
+
+	@FindBy(xpath = "//button[contains(@class,'idea-hint-popup_got_it_button')]")
+	WebElement btnGotIt;
+
+	@FindBy(xpath = "//i[contains(@class,'k-i-l-idea-gi text-primary')]")
+	WebElement idealIcon;
+
+	@FindBy(xpath = "//div[contains(@class,'idea-hint-popup-box')]//p")
+	WebElement idealCoachMsg;
 
 	public boolean isMyLearningMenuDisplay() {
 
@@ -328,7 +361,7 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isMoreButtonDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -359,7 +392,7 @@ public class IDPPage extends TestBase {
 				((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnMore);
 			}
 		}
-		
+
 	}
 
 	public boolean isApplyButtonDisplay() {
@@ -375,6 +408,7 @@ public class IDPPage extends TestBase {
 		jsUtil.scrollIntoViewCenter(btnApply);
 		return eleUtil.isElementEnable(btnApply);
 	}
+
 	public void doclickApplyButtonQuickFilter() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -388,29 +422,28 @@ public class IDPPage extends TestBase {
 
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
-	
+
 	public boolean isQuickFilterDialogOpen() {
-		
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.SHORT_TIME_OUT));
-	    try {
-	        return wait.until(ExpectedConditions.visibilityOfElementLocated(
-	            By.xpath("//div[contains(@class,'k-window k-dialog')]")
-	        )).isDisplayed();
-	        
-	    } catch (Exception e) {
-	        return false;
-	    }
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.SHORT_TIME_OUT));
+		try {
+			return wait
+					.until(ExpectedConditions
+							.visibilityOfElementLocated(By.xpath("//div[contains(@class,'k-window k-dialog')]")))
+					.isDisplayed();
+
+		} catch (Exception e) {
+			return false;
+		}
 	}
-	
+
 	public boolean isQuickFilterDialogClosed() {
-		
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.SHORT_TIME_OUT));
-	    return wait.until(ExpectedConditions.invisibilityOfElementLocated(
-	        By.xpath("//div[contains(@class,'k-window k-dialog')]")
-	    ));
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.SHORT_TIME_OUT));
+		return wait.until(ExpectedConditions
+				.invisibilityOfElementLocated(By.xpath("//div[contains(@class,'k-window k-dialog')]")));
 	}
-	
+
 	public boolean isCancelButtonDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -424,6 +457,7 @@ public class IDPPage extends TestBase {
 		jsUtil.scrollIntoViewCenter(btnCancel);
 		return eleUtil.isElementEnable(btnCancel);
 	}
+
 	public void doclickCancelButtonQuickFilter() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -437,7 +471,7 @@ public class IDPPage extends TestBase {
 
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isElearningDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -471,7 +505,7 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isExternalLinkDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -505,7 +539,7 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isILTDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -528,7 +562,7 @@ public class IDPPage extends TestBase {
 		String isChecked = btnQFILT.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
-			System.out.println("ExteanalLink is Selected");
+			System.out.println("ILT is Selected");
 		} else {
 
 			try {
@@ -539,7 +573,7 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isLearningPathDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -562,7 +596,7 @@ public class IDPPage extends TestBase {
 		String isChecked = btnQFlearningPath.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
-			System.out.println("ExteanalLink is Selected");
+			System.out.println("Learning path is Selected");
 		} else {
 
 			try {
@@ -573,7 +607,7 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isMsTeamDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -596,7 +630,7 @@ public class IDPPage extends TestBase {
 		String isChecked = btnQFMSTeam.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
-			System.out.println("ExteanalLink is Selected");
+			System.out.println("MSTeam is Selected");
 		} else {
 
 			try {
@@ -607,8 +641,98 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
-	
+
+	public boolean isStatusCompleteDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
+		return eleUtil.visibleElementWhenReady(chkcompleteStatus, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isStatusCompleteEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
+		return eleUtil.isElementEnable(chkcompleteStatus);
+	}
+
+	public void doclickStatusCompleteInQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
+
+		String isChecked = chkcompleteStatus.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("Completed Status is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(chkcompleteStatus, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", chkcompleteStatus);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+
+	public boolean isAdvanceFilterBtnDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnAdvancedFilter);
+		return eleUtil.visibleElementWhenReady(btnAdvancedFilter, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isAdvanceFilterBtnEnable() {
+
+		jsUtil.scrollIntoViewCenter(btnAdvancedFilter);
+		return eleUtil.isElementEnable(btnAdvancedFilter);
+	}
+
+	public boolean isClearAllBtnDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnClearAll);
+		return eleUtil.visibleElementWhenReady(btnClearAll, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public void doclickClearAllbtnForAdvanceFiter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnClearAll);
+
+		try {
+			eleUtil.clickElementWhenReady(btnClearAll, AppConstants.MEDIUM_TIME_OUT);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnClearAll);
+		}
+	}
+
+	public void doclickAdvanceFilterBtnQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(btnAdvancedFilter);
+
+		try {
+			eleUtil.clickElementWhenReady(btnMore, AppConstants.MEDIUM_TIME_OUT);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnAdvancedFilter);
+		}
+	}
+
+	public void validatAdvancedFilterClear() {
+
+		Assert.assertTrue(isAdvanceFilterBtnDisplay(), "Advance Filter button  Advance Filter was not visible");
+		Assert.assertTrue(isAdvanceFilterBtnEnable(), " Advance Filter button  Advance Filter  was not enabled");
+
+		doclickAdvanceFilterBtnQuickFilter();
+		
+		Assert.assertTrue(isClearAllBtnDisplay(), "Clear All button  Advance Filter was not visible");
+		
+		doclickClearAllbtnForAdvanceFiter();
+		
+		doclickApplyButtonQuickFilter();
+	}
 
 	public int getCardCount() {
 

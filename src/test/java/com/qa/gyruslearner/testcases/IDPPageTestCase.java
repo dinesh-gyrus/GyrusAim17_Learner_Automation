@@ -331,7 +331,7 @@ public class IDPPageTestCase extends TestBase {
 
 		TrainingCountUpdate();
 		
-		System.out.println("------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
+		System.out.println("------------------ILT Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
 		
 	}
@@ -359,7 +359,7 @@ public class IDPPageTestCase extends TestBase {
 
 		TrainingCountUpdate();
 		
-		System.out.println("------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
+		System.out.println("------------------LearningPath Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
 		
 	}
@@ -372,8 +372,8 @@ public class IDPPageTestCase extends TestBase {
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isMsTeamDisplay(), "ExternalLink  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMsTeamEnable(), " ExternalLink  Quick Filter  was not enabled");
+		Assert.assertTrue(idp.isMsTeamDisplay(), "MsTeam  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMsTeamEnable(), " MsTeam  Quick Filter  was not enabled");
 		
 		idp.doclickMsTeamQuickFilter();
 		
@@ -387,7 +387,37 @@ public class IDPPageTestCase extends TestBase {
 
 		TrainingCountUpdate();
 		
-		System.out.println("------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
+		System.out.println("------------------MsTeam Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 18, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	public void verifyStatusCompleteQuickFilterTest() {
+		
+		idp.validatAdvancedFilterClear();
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+
+		Assert.assertTrue(idp.isStatusCompleteDisplay(), "Status Completed in  Quick Filter was not visible");
+		Assert.assertTrue(idp.isStatusCompleteEnable(), " Status Completed in  Quick Filter  was not enabled");
+		
+		idp.doclickStatusCompleteInQuickFilter();
+		
+		idp.doclickApplyButtonQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------Status Completed in Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
 		
 	}
