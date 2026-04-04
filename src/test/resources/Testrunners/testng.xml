@@ -8,7 +8,7 @@
 	<test name="Automation Smoke Testing">
 		
 		<classes>
-			<class name="com.qa.gyruslearner.testcases.IDPPageTestCase"/>
+			<class name="com.qa.gyruslearner.testcases.DashboardPageTestCase"/>
 			
 		</classes>
 		
