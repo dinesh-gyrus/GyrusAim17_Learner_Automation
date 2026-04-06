@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>10/4/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>5/1/1</td>
 </tr><tr>
-<td>Started on:</td><td>Fri Apr 03 17:41:12 IST 2026</td>
+<td>Started on:</td><td>Mon Apr 06 19:10:14 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>248 seconds (248526 ms)</td>
+<tr><td>Total time:</td><td>92 seconds (92093 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,14 +76,30 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyCertificationQuickFilterTest()'><b>verifyCertificationQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	❌ Recertified but 100% : Test10 Sequential Certifications-External link,
-	❌ Recertified but 100% : Test11 Sequential Certifications-External link
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyCertificationQuickFilterTest(IDPPageTestCase.java:210)
+<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyTrainingGroupInQuickFilterTest()'><b>verifyTrainingGroupInQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td><div><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;input kendosearchbar=&quot;&quot; class=&quot;k-input-inner&quot; aria-haspopup=&quot;listbox&quot; autocomplete=&quot;off&quot; aria-autocomplete=&quot;list&quot; size=&quot;6&quot; id=&quot;k-1a36fc2a-c74d-4d5f-99dd-4969e0620225&quot; tabindex=&quot;-1&quot; aria-expanded=&quot;false&quot; aria-invalid=&quot;false&quot; placeholder=&quot;Select&quot; role=&quot;combobox&quot; dir=&quot;ltr&quot; aria-describedby=&quot;k-776a9d84-bafa-416a-a70d-fa8619db7fd4&quot; data-tabindex=&quot;0&quot;&gt; is not clickable at point (766, 507). Other element would receive the click: &lt;div _ngcontent-ng-c1722179345=&quot;&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-busy=&quot;true&quot; id=&quot;loader&quot; class=&quot;loader ng-star-inserted&quot;&gt;...&lt;/div&gt;
+  (Session info: chrome=146.0.7680.165)
+Build info: version: &apos;4.27.0&apos;, revision: &apos;d6e718d134&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.8&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [f3dc3c5835dc4f63bfe0799706b2a905, clickElement {id=f.EEB78527F1B4382E3A05066A707331C1.d.6378D39D2ABBAF5DF653645BB5FB466F.e.897}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56470}, goog:processID: 3532, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56470/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (f3dc3c5835dc4f63bfe0799706b2a905)] -&gt; xpath: //kendo-multiselect[@name=&apos;trainingGroup&apos;]//input]
+Session ID: f3dc3c5835dc4f63bfe0799706b2a905
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at com.qa.gyruslearner.pages.IDPPage.selectMultipleValues(IDPPage.java:774)
+	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyTrainingGroupInQuickFilterTest(IDPPageTestCase.java:500)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -110,88 +126,30 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace155829656", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace155829656'><pre>java.lang.AssertionError: The following asserts failed:
-	❌ Recertified but 100% : Test10 Sequential Certifications-External link,
-	❌ Recertified but 100% : Test11 Sequential Certifications-External link
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyCertificationQuickFilterTest(IDPPageTestCase.java:210)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:819)
-	at org.testng.TestRunner.run(TestRunner.java:619)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-	at org.testng.TestNG.runSuites(TestNG.java:1134)
-	at org.testng.TestNG.run(TestNG.java:1101)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>16</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMsTeamQuickFilterTest()'><b>verifyMsTeamQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	❌ In progress but 0% : Test01 msteam-Webinar,
-	❌ In progress but 0% : Test07 Msteam-with Assessment Evaluation and Associate Homework,
-	❌ In progress but 0% : Test22 Msteam-Normal Check
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMsTeamQuickFilterTest(IDPPageTestCase.java:391)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:819)
-	at org.testng.TestRunner.run(TestRunner.java:619)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-	at org.testng.TestNG.runSuites(TestNG.java:1134)
-	at org.testng.TestNG.run(TestNG.java:1101)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1014614010", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1014614010'><pre>java.lang.AssertionError: The following asserts failed:
-	❌ In progress but 0% : Test01 msteam-Webinar,
-	❌ In progress but 0% : Test07 Msteam-with Assessment Evaluation and Associate Homework,
-	❌ In progress but 0% : Test22 Msteam-Normal Check
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMsTeamQuickFilterTest(IDPPageTestCase.java:391)
+</pre></div><a href='#' onClick='toggleBox("stack-trace312629339", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace312629339'><pre>org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element &lt;input kendosearchbar=&quot;&quot; class=&quot;k-input-inner&quot; aria-haspopup=&quot;listbox&quot; autocomplete=&quot;off&quot; aria-autocomplete=&quot;list&quot; size=&quot;6&quot; id=&quot;k-1a36fc2a-c74d-4d5f-99dd-4969e0620225&quot; tabindex=&quot;-1&quot; aria-expanded=&quot;false&quot; aria-invalid=&quot;false&quot; placeholder=&quot;Select&quot; role=&quot;combobox&quot; dir=&quot;ltr&quot; aria-describedby=&quot;k-776a9d84-bafa-416a-a70d-fa8619db7fd4&quot; data-tabindex=&quot;0&quot;&gt; is not clickable at point (766, 507). Other element would receive the click: &lt;div _ngcontent-ng-c1722179345=&quot;&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-busy=&quot;true&quot; id=&quot;loader&quot; class=&quot;loader ng-star-inserted&quot;&gt;...&lt;/div&gt;
+  (Session info: chrome=146.0.7680.165)
+Build info: version: &apos;4.27.0&apos;, revision: &apos;d6e718d134&apos;
+System info: os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.8&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [f3dc3c5835dc4f63bfe0799706b2a905, clickElement {id=f.EEB78527F1B4382E3A05066A707331C1.d.6378D39D2ABBAF5DF653645BB5FB466F.e.897}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56470}, goog:processID: 3532, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56470/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (f3dc3c5835dc4f63bfe0799706b2a905)] -&gt; xpath: //kendo-multiselect[@name=&apos;trainingGroup&apos;]//input]
+Session ID: f3dc3c5835dc4f63bfe0799706b2a905
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+	at com.qa.gyruslearner.pages.IDPPage.selectMultipleValues(IDPPage.java:774)
+	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyTrainingGroupInQuickFilterTest(IDPPageTestCase.java:500)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -219,150 +177,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>22</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyAssessmentsQuickFilterTest()'><b>verifyAssessmentsQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	❌ Not Started but 100% : Test02 Assessment-training Details page with pass,
-	❌ Not Started but 100% : Test02Assessment-With pass
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyAssessmentsQuickFilterTest(IDPPageTestCase.java:189)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:819)
-	at org.testng.TestRunner.run(TestRunner.java:619)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-	at org.testng.TestNG.runSuites(TestNG.java:1134)
-	at org.testng.TestNG.run(TestNG.java:1101)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace13001549", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace13001549'><pre>java.lang.AssertionError: The following asserts failed:
-	❌ Not Started but 100% : Test02 Assessment-training Details page with pass,
-	❌ Not Started but 100% : Test02Assessment-With pass
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyAssessmentsQuickFilterTest(IDPPageTestCase.java:189)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:819)
-	at org.testng.TestRunner.run(TestRunner.java:619)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-	at org.testng.TestNG.runSuites(TestNG.java:1134)
-	at org.testng.TestNG.run(TestNG.java:1101)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>19</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyDocumentQuickFilterTest()'><b>verifyDocumentQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	❌ Not Started but 100% : TEST01 Document T246-Navigation Control
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyDocumentQuickFilterTest(IDPPageTestCase.java:231)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:819)
-	at org.testng.TestRunner.run(TestRunner.java:619)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-	at org.testng.TestNG.runSuites(TestNG.java:1134)
-	at org.testng.TestNG.run(TestNG.java:1101)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1882240844", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1882240844'><pre>java.lang.AssertionError: The following asserts failed:
-	❌ Not Started but 100% : TEST01 Document T246-Navigation Control
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyDocumentQuickFilterTest(IDPPageTestCase.java:231)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:819)
-	at org.testng.TestRunner.run(TestRunner.java:619)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-	at org.testng.TestNG.runSuites(TestNG.java:1134)
-	at org.testng.TestNG.run(TestNG.java:1101)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div></td>
-<td>37</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
+<td>4</td>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -376,52 +192,98 @@ function toggleAllBoxes() {
 <td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyIDPPageTitileTest()'><b>verifyIDPPageTitileTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
 <td></td>
 <td>1</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b</td></tr>
 <tr>
 <td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest()'><b>verifyQuickFilterDailgoBoxTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
 <td></td>
-<td>11</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
+<td>12</td>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyDueDateInQuickFilterTest()'><b>verifyDueDateInQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td></td>
+<td>17</td>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b</td></tr>
 <tr>
 <td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyIDPHeaderPageTitleTest()'><b>verifyIDPHeaderPageTitleTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
 <td></td>
 <td>0</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyStatusCompleteQuickFilterTest()'><b>verifyStatusCompleteQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td></td>
-<td>15</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b</td></tr>
 <tr>
 <td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMyLearnerLinkTest()'><b>verifyMyLearnerLinkTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
 <td></td>
-<td>3</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
+<td>7</td>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-skipped'>
+<tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
 <tr>
 <td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyidpUrlTest()'><b>verifyidpUrlTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td></td>
-<td>1</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyElearnigQuickFilterTest()'><b>verifyElearnigQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td></td>
-<td>31</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyExternalLinkQuickFilterTest()'><b>verifyExternalLinkQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td></td>
-<td>27</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyLearningPathQuickFilterTest()'><b>verifyLearningPathQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td></td>
-<td>14</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyILTQuickFilterTest()'><b>verifyILTQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
-<td></td>
-<td>29</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79</td></tr>
+<td><div><pre>org.testng.SkipException: Skipping test because user could not login.
+	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyidpUrlTest(IDPPageTestCase.java:85)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:819)
+	at org.testng.TestRunner.run(TestRunner.java:619)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1563634025", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1563634025'><pre>org.testng.SkipException: Skipping test because user could not login.
+	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyidpUrlTest(IDPPageTestCase.java:85)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:819)
+	at org.testng.TestRunner.run(TestRunner.java:619)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>30</td>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b</td></tr>
 </table><p>
 </body>
 </html>

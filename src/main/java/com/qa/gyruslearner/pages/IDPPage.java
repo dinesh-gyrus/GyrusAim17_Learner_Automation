@@ -76,6 +76,13 @@ public class IDPPage extends TestBase {
 
 	@FindBy(id = "lbl_116")
 	WebElement chkcompleteStatus;
+	
+	@FindBy(id = "lbl_142")
+	WebElement chk5starsRating;
+	
+	@FindBy(id = "lbl_135")
+	WebElement chkOverdue;
+	
 
 	@FindBy(xpath = "//button[normalize-space()='See More']")
 	List<WebElement> btnSeeMore;
@@ -130,6 +137,16 @@ public class IDPPage extends TestBase {
 
 	@FindBy(xpath = "//div[contains(@class,'idea-hint-popup-box')]//p")
 	WebElement idealCoachMsg;
+	
+	@FindBy(xpath = "//kendo-multiselect[@name='trainingGroup']")
+	WebElement multitrainingGroup;
+	
+	@FindBy(xpath = "//kendo-multiselect[@name='trainingGroup']//input")
+	WebElement txtTraingGroupSelection;
+	
+	
+	
+	
 
 	public boolean isMyLearningMenuDisplay() {
 
@@ -370,7 +387,8 @@ public class IDPPage extends TestBase {
 	}
 
 	public boolean isMoreButtonEnable() {
-
+		
+		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnMore);
 		return eleUtil.isElementEnable(btnMore);
 	}
@@ -645,21 +663,21 @@ public class IDPPage extends TestBase {
 	public boolean isStatusCompleteDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
-		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
+		//jsUtil.scrollIntoViewCenter(chkcompleteStatus);
 		return eleUtil.visibleElementWhenReady(chkcompleteStatus, AppConstants.MEDIUM_TIME_OUT);
 	}
 
 	public boolean isStatusCompleteEnable() {
 
 		eleUtil.waitForLoaderToDisappear();
-		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
+		//jsUtil.scrollIntoViewCenter(chkcompleteStatus);
 		return eleUtil.isElementEnable(chkcompleteStatus);
 	}
 
 	public void doclickStatusCompleteInQuickFilter() {
 
 		eleUtil.waitForLoaderToDisappear();
-		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
+		//jsUtil.scrollIntoViewCenter(chkcompleteStatus);
 
 		String isChecked = chkcompleteStatus.getDomAttribute("aria-checked");
 
@@ -675,6 +693,99 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
+	
+	public boolean isRatingsDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		return eleUtil.visibleElementWhenReady(chk5starsRating, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isRatingsEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		return eleUtil.isElementEnable(chk5starsRating);
+	}
+
+	public void doclickRatingsInQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+
+		String isChecked = chk5starsRating.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("Rating  is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(chk5starsRating, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", chk5starsRating);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	public boolean isOverDueDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		return eleUtil.visibleElementWhenReady(chkOverdue, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isOverDueEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		return eleUtil.isElementEnable(chkOverdue);
+	}
+
+	public void doclickOverDueInQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+
+		String isChecked = chkOverdue.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("Over Due  is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(chkOverdue, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", chkOverdue);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	public void selectMultipleValues(String... values) {
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	    WebElement input = driver.findElement(By.xpath("//kendo-multiselect[@name='trainingGroup']//input"));
+
+	    for (String value : values) {
+
+	        // Click input
+	        input.click();
+
+	        // Clear & type
+	        input.clear();
+	        input.sendKeys(value);
+
+	        // Wait and select option
+	        By option = By.xpath("//kendo-popup//li[normalize-space()='" + value + "']");
+
+	        wait.until(ExpectedConditions.elementToBeClickable(option)).click();
+	    }
+	}
+	
+	
+	
 
 	public boolean isAdvanceFilterBtnDisplay() {
 
@@ -714,13 +825,14 @@ public class IDPPage extends TestBase {
 		jsUtil.scrollIntoViewCenter(btnAdvancedFilter);
 
 		try {
-			eleUtil.clickElementWhenReady(btnMore, AppConstants.MEDIUM_TIME_OUT);
+			eleUtil.clickElementWhenReady(btnAdvancedFilter, AppConstants.MEDIUM_TIME_OUT);
 		} catch (Exception e) {
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnAdvancedFilter);
 		}
 	}
 
 	public void validatAdvancedFilterClear() {
+		
 
 		Assert.assertTrue(isAdvanceFilterBtnDisplay(), "Advance Filter button  Advance Filter was not visible");
 		Assert.assertTrue(isAdvanceFilterBtnEnable(), " Advance Filter button  Advance Filter  was not enabled");
@@ -732,6 +844,7 @@ public class IDPPage extends TestBase {
 		doclickClearAllbtnForAdvanceFiter();
 		
 		doclickApplyButtonQuickFilter();
+		
 	}
 
 	public int getCardCount() {

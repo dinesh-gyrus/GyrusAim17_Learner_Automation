@@ -1,260 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="14" passed="10" failed="4" skipped="0">
+<testng-results ignored="0" total="7" passed="5" failed="1" skipped="1">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-03T17:41:12 IST" name="Default suite" finished-at="2026-04-03T17:45:21 IST" duration-ms="248526">
+  <suite started-at="2026-04-06T19:10:14 IST" name="Default suite" finished-at="2026-04-06T19:11:46 IST" duration-ms="92093">
     <groups>
     </groups>
-    <test started-at="2026-04-03T17:41:12 IST" name="Default test" finished-at="2026-04-03T17:45:21 IST" duration-ms="248526">
+    <test started-at="2026-04-06T19:10:14 IST" name="Default test" finished-at="2026-04-06T19:11:46 IST" duration-ms="92093">
       <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:12 IST" name="setUp" finished-at="2026-04-03T17:41:17 IST" duration-ms="5220" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:10:14 IST" name="setUp" finished-at="2026-04-06T19:10:19 IST" duration-ms="4998" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:17 IST" name="pageRefresh" finished-at="2026-04-03T17:41:24 IST" duration-ms="6652" status="PASS">
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:10:19 IST" name="pageRefresh" finished-at="2026-04-06T19:10:32 IST" duration-ms="12282" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyMyLearnerLinkTest()[pri:1, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:24 IST" name="verifyMyLearnerLinkTest" finished-at="2026-04-03T17:41:28 IST" duration-ms="3670" status="PASS">
+        <test-method signature="verifyMyLearnerLinkTest()[pri:1, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:10:32 IST" name="verifyMyLearnerLinkTest" finished-at="2026-04-06T19:10:39 IST" duration-ms="7039" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyMyLearnerLinkTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:28 IST" name="pageRefresh" finished-at="2026-04-03T17:41:28 IST" duration-ms="83" status="PASS">
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:10:39 IST" name="pageRefresh" finished-at="2026-04-06T19:10:39 IST" duration-ms="220" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyidpUrlTest()[pri:2, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:28 IST" name="verifyidpUrlTest" finished-at="2026-04-03T17:41:29 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMyLearnerLinkTest" duration-ms="1546" status="PASS">
+        <test-method signature="verifyidpUrlTest()[pri:2, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:10:39 IST" name="verifyidpUrlTest" finished-at="2026-04-06T19:11:09 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMyLearnerLinkTest" duration-ms="30386" status="SKIP">
+          <exception class="org.testng.SkipException">
+            <message>
+              <![CDATA[Skipping test because user could not login.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.testng.SkipException: Skipping test because user could not login.
+at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyidpUrlTest(IDPPageTestCase.java:85)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:819)
+at org.testng.TestRunner.run(TestRunner.java:619)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+at org.testng.TestNG.runSuites(TestNG.java:1134)
+at org.testng.TestNG.run(TestNG.java:1101)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.testng.SkipException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyidpUrlTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:29 IST" name="pageRefresh" finished-at="2026-04-03T17:41:29 IST" duration-ms="18" status="PASS">
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:09 IST" name="pageRefresh" finished-at="2026-04-06T19:11:10 IST" duration-ms="76" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyIDPPageTitileTest()[pri:3, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:29 IST" name="verifyIDPPageTitileTest" finished-at="2026-04-03T17:41:30 IST" duration-ms="1038" status="PASS">
+        <test-method signature="verifyIDPPageTitileTest()[pri:3, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:10 IST" name="verifyIDPPageTitileTest" finished-at="2026-04-06T19:11:11 IST" duration-ms="1097" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyIDPPageTitileTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:30 IST" name="pageRefresh" finished-at="2026-04-03T17:41:30 IST" duration-ms="25" status="PASS">
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:11 IST" name="pageRefresh" finished-at="2026-04-06T19:11:11 IST" duration-ms="24" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyIDPHeaderPageTitleTest()[pri:5, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:30 IST" name="verifyIDPHeaderPageTitleTest" finished-at="2026-04-03T17:41:31 IST" duration-ms="116" status="PASS">
+        <test-method signature="verifyIDPHeaderPageTitleTest()[pri:5, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:11 IST" name="verifyIDPHeaderPageTitleTest" finished-at="2026-04-06T19:11:11 IST" duration-ms="109" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyIDPHeaderPageTitleTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:31 IST" name="pageRefresh" finished-at="2026-04-03T17:41:31 IST" duration-ms="20" status="PASS">
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:11 IST" name="pageRefresh" finished-at="2026-04-06T19:11:11 IST" duration-ms="12" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyAssessmentsQuickFilterTest()[pri:9, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:31 IST" name="verifyAssessmentsQuickFilterTest" finished-at="2026-04-03T17:41:50 IST" duration-ms="19586" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[The following asserts failed:
-❌ Not Started but 100% : Test02 Assessment-training Details page with pass,
-❌ Not Started but 100% : Test02Assessment-With pass]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: The following asserts failed:
-❌ Not Started but 100% : Test02 Assessment-training Details page with pass,
-❌ Not Started but 100% : Test02Assessment-With pass
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyAssessmentsQuickFilterTest(IDPPageTestCase.java:189)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:819)
-at org.testng.TestRunner.run(TestRunner.java:619)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-at org.testng.TestNG.runSuites(TestNG.java:1134)
-at org.testng.TestNG.run(TestNG.java:1101)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyAssessmentsQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:50 IST" name="pageRefresh" finished-at="2026-04-03T17:41:50 IST" duration-ms="23" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyCertificationQuickFilterTest()[pri:10, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:41:50 IST" name="verifyCertificationQuickFilterTest" finished-at="2026-04-03T17:42:07 IST" duration-ms="16366" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[The following asserts failed:
-❌ Recertified but 100% : Test10 Sequential Certifications-External link,
-❌ Recertified but 100% : Test11 Sequential Certifications-External link]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: The following asserts failed:
-❌ Recertified but 100% : Test10 Sequential Certifications-External link,
-❌ Recertified but 100% : Test11 Sequential Certifications-External link
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyCertificationQuickFilterTest(IDPPageTestCase.java:210)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:819)
-at org.testng.TestRunner.run(TestRunner.java:619)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-at org.testng.TestNG.runSuites(TestNG.java:1134)
-at org.testng.TestNG.run(TestNG.java:1101)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyCertificationQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:42:07 IST" name="pageRefresh" finished-at="2026-04-03T17:42:07 IST" duration-ms="12" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyDocumentQuickFilterTest()[pri:11, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:42:07 IST" name="verifyDocumentQuickFilterTest" finished-at="2026-04-03T17:42:44 IST" duration-ms="37527" status="FAIL">
-          <exception class="java.lang.AssertionError">
-            <message>
-              <![CDATA[The following asserts failed:
-❌ Not Started but 100% : TEST01 Document T246-Navigation Control]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: The following asserts failed:
-❌ Not Started but 100% : TEST01 Document T246-Navigation Control
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyDocumentQuickFilterTest(IDPPageTestCase.java:231)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:819)
-at org.testng.TestRunner.run(TestRunner.java:619)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-at org.testng.TestNG.runSuites(TestNG.java:1134)
-at org.testng.TestNG.run(TestNG.java:1101)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyDocumentQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:42:44 IST" name="pageRefresh" finished-at="2026-04-03T17:42:44 IST" duration-ms="15" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyQuickFilterDailgoBoxTest()[pri:12, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:42:44 IST" name="verifyQuickFilterDailgoBoxTest" finished-at="2026-04-03T17:42:56 IST" duration-ms="11956" status="PASS">
+        <test-method signature="verifyQuickFilterDailgoBoxTest()[pri:12, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:11 IST" name="verifyQuickFilterDailgoBoxTest" finished-at="2026-04-06T19:11:23 IST" duration-ms="12628" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyQuickFilterDailgoBoxTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:42:56 IST" name="pageRefresh" finished-at="2026-04-03T17:42:56 IST" duration-ms="13" status="PASS">
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:23 IST" name="pageRefresh" finished-at="2026-04-06T19:11:23 IST" duration-ms="14" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyElearnigQuickFilterTest()[pri:13, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:42:56 IST" name="verifyElearnigQuickFilterTest" finished-at="2026-04-03T17:43:27 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="31063" status="PASS">
+        <test-method signature="verifyDueDateInQuickFilterTest()[pri:20, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:23 IST" name="verifyDueDateInQuickFilterTest" finished-at="2026-04-06T19:11:41 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="17272" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyElearnigQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:43:27 IST" name="pageRefresh" finished-at="2026-04-03T17:43:27 IST" duration-ms="10" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyExternalLinkQuickFilterTest()[pri:14, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:43:27 IST" name="verifyExternalLinkQuickFilterTest" finished-at="2026-04-03T17:43:55 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="27835" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyExternalLinkQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:43:55 IST" name="pageRefresh" finished-at="2026-04-03T17:43:55 IST" duration-ms="15" status="PASS">
+        </test-method> <!-- verifyDueDateInQuickFilterTest -->
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:41 IST" name="pageRefresh" finished-at="2026-04-06T19:11:41 IST" duration-ms="14" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyILTQuickFilterTest()[pri:15, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:43:55 IST" name="verifyILTQuickFilterTest" finished-at="2026-04-03T17:44:25 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="29599" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyILTQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:44:25 IST" name="pageRefresh" finished-at="2026-04-03T17:44:25 IST" duration-ms="13" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyLearningPathQuickFilterTest()[pri:16, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:44:25 IST" name="verifyLearningPathQuickFilterTest" finished-at="2026-04-03T17:44:39 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="14117" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyLearningPathQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:44:39 IST" name="pageRefresh" finished-at="2026-04-03T17:44:39 IST" duration-ms="11" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyMsTeamQuickFilterTest()[pri:17, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:44:39 IST" name="verifyMsTeamQuickFilterTest" finished-at="2026-04-03T17:45:02 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="22776" status="FAIL">
-          <exception class="java.lang.AssertionError">
+        <test-method signature="verifyTrainingGroupInQuickFilterTest()[pri:21, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:41 IST" name="verifyTrainingGroupInQuickFilterTest" finished-at="2026-04-06T19:11:45 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="4473" status="FAIL">
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
             <message>
-              <![CDATA[The following asserts failed:
-❌ In progress but 0% : Test01 msteam-Webinar,
-❌ In progress but 0% : Test07 Msteam-with Assessment Evaluation and Associate Homework,
-❌ In progress but 0% : Test22 Msteam-Normal Check]]>
+              <![CDATA[element click intercepted: Element <input kendosearchbar="" class="k-input-inner" aria-haspopup="listbox" autocomplete="off" aria-autocomplete="list" size="6" id="k-1a36fc2a-c74d-4d5f-99dd-4969e0620225" tabindex="-1" aria-expanded="false" aria-invalid="false" placeholder="Select" role="combobox" dir="ltr" aria-describedby="k-776a9d84-bafa-416a-a70d-fa8619db7fd4" data-tabindex="0"> is not clickable at point (766, 507). Other element would receive the click: <div _ngcontent-ng-c1722179345="" role="alert" aria-live="assertive" aria-busy="true" id="loader" class="loader ng-star-inserted">...</div>
+  (Session info: chrome=146.0.7680.165)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [f3dc3c5835dc4f63bfe0799706b2a905, clickElement {id=f.EEB78527F1B4382E3A05066A707331C1.d.6378D39D2ABBAF5DF653645BB5FB466F.e.897}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56470}, goog:processID: 3532, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56470/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (f3dc3c5835dc4f63bfe0799706b2a905)] -> xpath: //kendo-multiselect[@name='trainingGroup']//input]
+Session ID: f3dc3c5835dc4f63bfe0799706b2a905]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError: The following asserts failed:
-❌ In progress but 0% : Test01 msteam-Webinar,
-❌ In progress but 0% : Test07 Msteam-with Assessment Evaluation and Associate Homework,
-❌ In progress but 0% : Test22 Msteam-Normal Check
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-at com.qa.gyruslearner.pages.IDPPage.validateStatusIDPAllCards(IDPPage.java:846)
-at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMsTeamQuickFilterTest(IDPPageTestCase.java:391)
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <input kendosearchbar="" class="k-input-inner" aria-haspopup="listbox" autocomplete="off" aria-autocomplete="list" size="6" id="k-1a36fc2a-c74d-4d5f-99dd-4969e0620225" tabindex="-1" aria-expanded="false" aria-invalid="false" placeholder="Select" role="combobox" dir="ltr" aria-describedby="k-776a9d84-bafa-416a-a70d-fa8619db7fd4" data-tabindex="0"> is not clickable at point (766, 507). Other element would receive the click: <div _ngcontent-ng-c1722179345="" role="alert" aria-live="assertive" aria-busy="true" id="loader" class="loader ng-star-inserted">...</div>
+  (Session info: chrome=146.0.7680.165)
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [f3dc3c5835dc4f63bfe0799706b2a905, clickElement {id=f.EEB78527F1B4382E3A05066A707331C1.d.6378D39D2ABBAF5DF653645BB5FB466F.e.897}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56470}, goog:processID: 3532, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56470/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (f3dc3c5835dc4f63bfe0799706b2a905)] -> xpath: //kendo-multiselect[@name='trainingGroup']//input]
+Session ID: f3dc3c5835dc4f63bfe0799706b2a905
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+at com.qa.gyruslearner.pages.IDPPage.selectMultipleValues(IDPPage.java:774)
+at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyTrainingGroupInQuickFilterTest(IDPPageTestCase.java:500)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -283,19 +164,11 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyMsTeamQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:45:02 IST" name="pageRefresh" finished-at="2026-04-03T17:45:02 IST" duration-ms="13" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyStatusCompleteQuickFilterTest()[pri:18, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:45:02 IST" name="verifyStatusCompleteQuickFilterTest" finished-at="2026-04-03T17:45:17 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="15272" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyStatusCompleteQuickFilterTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@b62d79]" started-at="2026-04-03T17:45:17 IST" name="tearDown" finished-at="2026-04-03T17:45:21 IST" duration-ms="3710" status="PASS">
+        </test-method> <!-- verifyTrainingGroupInQuickFilterTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@1613674b]" started-at="2026-04-06T19:11:45 IST" name="tearDown" finished-at="2026-04-06T19:11:46 IST" duration-ms="1250" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

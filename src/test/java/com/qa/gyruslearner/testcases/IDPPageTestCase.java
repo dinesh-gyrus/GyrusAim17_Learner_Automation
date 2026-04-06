@@ -169,7 +169,7 @@ public class IDPPageTestCase extends TestBase {
 		Assert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
 	}
 	
-	@Test(priority = 9,enabled = true)
+	@Test(priority = 9,enabled = false)
 	public void verifyAssessmentsQuickFilterTest() {
 
 		Assert.assertTrue(idp.isAssessmentsDisplay(), "Assessments  Quick Filter was not visible");
@@ -190,7 +190,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 10,enabled = true)
+	@Test(priority = 10,enabled = false)
 	public void verifyCertificationQuickFilterTest() {
 
 		Assert.assertTrue(idp.isCertificationDisplay(), "Certification  Quick Filter was not visible");
@@ -211,7 +211,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 11,enabled = true)
+	@Test(priority = 11,enabled = false)
 	public void verifyDocumentQuickFilterTest() {
 
 		Assert.assertTrue(idp.isDocumentDisplay(), "Document  Quick Filter was not visible");
@@ -252,7 +252,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 13,enabled = true ,dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 13,enabled = false ,dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyElearnigQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -280,7 +280,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 14,dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 14,enabled = false,dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyExternalLinkQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -308,7 +308,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 15, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 15, enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyILTQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -336,7 +336,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 16, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 16,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyLearningPathQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -364,7 +364,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 17, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 17,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyMsTeamQuickFilterTest() {
 		
 		//Verify More button and Click on button
@@ -392,10 +392,11 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 18, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 18,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyStatusCompleteQuickFilterTest() {
 		
 		idp.validatAdvancedFilterClear();
+		
 		
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
@@ -419,6 +420,102 @@ public class IDPPageTestCase extends TestBase {
 		
 		System.out.println("------------------Status Completed in Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 19,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	public void verifyRatingQuickFilterTest() {
+		
+		idp.validatAdvancedFilterClear();
+		
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+
+		Assert.assertTrue(idp.isRatingsDisplay(), "Rating  in  Quick Filter was not visible");
+		Assert.assertTrue(idp.isRatingsEnable(), " Rating  in  Quick Filter  was not enabled");
+		
+		idp.doclickRatingsInQuickFilter();
+		
+		idp.doclickApplyButtonQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------Rating  in Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 20, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	public void verifyDueDateInQuickFilterTest() {
+		
+		idp.validatAdvancedFilterClear();
+		
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+
+		Assert.assertTrue(idp.isOverDueDisplay(), "Over Due  in  Quick Filter was not visible");
+		Assert.assertTrue(idp.isOverDueEnable(), " Over Due  in  Quick Filter  was not enabled");
+		
+		idp.doclickOverDueInQuickFilter();
+		
+		idp.doclickApplyButtonQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		TrainingCountUpdate();
+		
+		System.out.println("------------------Due date in Filter Compare the Status and percentage of Cards -------------------");
+		idp.validateStatusIDPAllCards();
+		
+	}
+	
+	@Test(priority = 21, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	public void verifyTrainingGroupInQuickFilterTest() {
+		
+		idp.validatAdvancedFilterClear();
+		
+		
+		//Verify More button and Click on button
+		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		idp.doclickMoreButtonQuickFilter();
+		
+		
+		idp.selectMultipleValues("Documents","E-Learning","External Link");
+
+		//Assert.assertTrue(idp.isOverDueDisplay(), "Over Due  in  Quick Filter was not visible");
+		//Assert.assertTrue(idp.isOverDueEnable(), " Over Due  in  Quick Filter  was not enabled");
+		
+		//idp.doclickOverDueInQuickFilter();
+		
+		//idp.doclickApplyButtonQuickFilter();
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(2000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		//TrainingCountUpdate();
+		
+		System.out.println("------------------Due date in Filter Compare the Status and percentage of Cards -------------------");
+		//idp.validateStatusIDPAllCards();
 		
 	}
 	

@@ -5,7 +5,7 @@ import com.qa.gyruslearner.base.TestBase;
 public class AppConstants extends TestBase {
 	
 	
-	public final static String BaseUrl=prop.getProperty("baseUrl");
+	public final static String BaseUrl=prop.getProperty("golivebaseUrl");
 
 	public final static int DEFAULT_TIME_OUT = 5;
 	public final static int SHORT_TIME_OUT = 10;
