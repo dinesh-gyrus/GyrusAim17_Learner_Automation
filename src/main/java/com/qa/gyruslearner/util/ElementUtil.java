@@ -186,6 +186,24 @@ public class ElementUtil extends TestBase {
 	public String doElementGetAttribute(WebElement locator, String attrName) {
 		return getElement(locator).getDomAttribute(attrName);
 	}
+	
+	public void selectKendoMultiSelect(WebElement inputLocator, String... values) {
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.DEFAULT_TIME_OUT));
+
+	    WebElement input = inputLocator;
+
+	    for (String val : values) {
+
+	        input.click();
+	        input.clear();
+	        input.sendKeys(val);
+
+	        By option = By.xpath("//kendo-popup//li[normalize-space()='" + val + "']");
+
+	        wait.until(ExpectedConditions.elementToBeClickable(option)).click();
+	    }
+	}
 
 	public boolean isElementPresent(By locator) {
 		return driver.findElements(locator).size() > 0;

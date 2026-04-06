@@ -83,6 +83,9 @@ public class IDPPage extends TestBase {
 	@FindBy(id = "lbl_135")
 	WebElement chkOverdue;
 	
+	@FindBy(id = "lbl_0")
+	WebElement chkFree;
+	
 
 	@FindBy(xpath = "//button[normalize-space()='See More']")
 	List<WebElement> btnSeeMore;
@@ -139,10 +142,17 @@ public class IDPPage extends TestBase {
 	WebElement idealCoachMsg;
 	
 	@FindBy(xpath = "//kendo-multiselect[@name='trainingGroup']")
-	WebElement multitrainingGroup;
+	WebElement multiSelectionTrainingGroup;
 	
 	@FindBy(xpath = "//kendo-multiselect[@name='trainingGroup']//input")
 	WebElement txtTraingGroupSelection;
+	
+	@FindBy(xpath = "//kendo-multiselect[@name='category']")
+	WebElement multiSelectionCategory;
+	
+	@FindBy(xpath = "//kendo-multiselect[@name='category']//input")
+	WebElement txtCategorySelection;
+	
 	
 	
 	
@@ -260,7 +270,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFAllELearning);
 
-		String isChecked = btnQFAllELearning.getDomAttribute("aria-checked");
+		String isChecked =eleUtil.doElementGetAttribute(btnQFAllELearning,"aria-checked");
+				//btnQFAllELearning.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("AllELearning is Selected");
@@ -295,7 +306,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFAssessments);
 
-		String isChecked = btnQFAssessments.getDomAttribute("aria-checked");
+		String isChecked =eleUtil.doElementGetAttribute(btnQFAssessments,"aria-checked");
+				//btnQFAssessments.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Assessments is Selected");
@@ -330,7 +342,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFCertification);
 
-		String isChecked = btnQFCertification.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFCertification,"aria-checked");
+				//btnQFCertification.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Certification is Selected");
@@ -364,7 +377,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFDocument);
 
-		String isChecked = btnQFDocument.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFDocument,"aria-checked");
+				//btnQFDocument.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Document is Selected");
@@ -398,7 +412,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnMore);
 
-		String isChecked = btnMore.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnMore,"aria-checked");
+				//btnMore.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("More is Selected");
@@ -509,7 +524,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFElearning);
 
-		String isChecked = btnQFElearning.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFElearning,"aria-checked");
+				//btnQFElearning.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Elearnig is Selected");
@@ -543,7 +559,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFExteanalLink);
 
-		String isChecked = btnQFExteanalLink.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFExteanalLink,"aria-checked");
+				//btnQFExteanalLink.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("ExteanalLink is Selected");
@@ -577,7 +594,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFILT);
 
-		String isChecked = btnQFILT.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFILT,"aria-checked");
+				//btnQFILT.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("ILT is Selected");
@@ -611,7 +629,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFlearningPath);
 
-		String isChecked = btnQFlearningPath.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFlearningPath,"aria-checked");
+				//btnQFlearningPath.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Learning path is Selected");
@@ -645,7 +664,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFMSTeam);
 
-		String isChecked = btnQFMSTeam.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFMSTeam,"aria-checked");
+				// btnQFMSTeam.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("MSTeam is Selected");
@@ -663,23 +683,24 @@ public class IDPPage extends TestBase {
 	public boolean isStatusCompleteDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
-		//jsUtil.scrollIntoViewCenter(chkcompleteStatus);
+		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
 		return eleUtil.visibleElementWhenReady(chkcompleteStatus, AppConstants.MEDIUM_TIME_OUT);
 	}
 
 	public boolean isStatusCompleteEnable() {
 
 		eleUtil.waitForLoaderToDisappear();
-		//jsUtil.scrollIntoViewCenter(chkcompleteStatus);
+		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
 		return eleUtil.isElementEnable(chkcompleteStatus);
 	}
 
 	public void doclickStatusCompleteInQuickFilter() {
 
 		eleUtil.waitForLoaderToDisappear();
-		//jsUtil.scrollIntoViewCenter(chkcompleteStatus);
+		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
 
-		String isChecked = chkcompleteStatus.getDomAttribute("aria-checked");
+		String isChecked =eleUtil.doElementGetAttribute(chkcompleteStatus, "aria-checked");
+				//chkcompleteStatus.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Completed Status is Selected");
@@ -697,14 +718,14 @@ public class IDPPage extends TestBase {
 	public boolean isRatingsDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
-		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		jsUtil.scrollIntoViewCenter(chk5starsRating);
 		return eleUtil.visibleElementWhenReady(chk5starsRating, AppConstants.MEDIUM_TIME_OUT);
 	}
 
 	public boolean isRatingsEnable() {
 
 		eleUtil.waitForLoaderToDisappear();
-		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		jsUtil.scrollIntoViewCenter(chk5starsRating);
 		return eleUtil.isElementEnable(chk5starsRating);
 	}
 
@@ -713,7 +734,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		//jsUtil.scrollIntoViewCenter(chk5starsRating);
 
-		String isChecked = chk5starsRating.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(chk5starsRating,"aria-checked");
+				//chk5starsRating.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Rating  is Selected");
@@ -731,23 +753,24 @@ public class IDPPage extends TestBase {
 	public boolean isOverDueDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
-		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		jsUtil.scrollIntoViewCenter(chkOverdue);
 		return eleUtil.visibleElementWhenReady(chkOverdue, AppConstants.MEDIUM_TIME_OUT);
 	}
 
 	public boolean isOverDueEnable() {
 
 		eleUtil.waitForLoaderToDisappear();
-		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		jsUtil.scrollIntoViewCenter(chkOverdue);
 		return eleUtil.isElementEnable(chkOverdue);
 	}
 
 	public void doclickOverDueInQuickFilter() {
 
 		eleUtil.waitForLoaderToDisappear();
-		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		jsUtil.scrollIntoViewCenter(chkOverdue);
 
-		String isChecked = chkOverdue.getDomAttribute("aria-checked");
+		String isChecked =eleUtil.doElementGetAttribute(chkOverdue,"aria-checked");
+				//chkOverdue.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Over Due  is Selected");
@@ -762,31 +785,84 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 	}
 	
-	public void selectMultipleValues(String... values) {
+	public boolean isTrainingGroupSelectionDisplay() {
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(multiSelectionTrainingGroup);
+		return eleUtil.visibleElementWhenReady(multiSelectionTrainingGroup, AppConstants.MEDIUM_TIME_OUT);
+	}
 
-	    WebElement input = driver.findElement(By.xpath("//kendo-multiselect[@name='trainingGroup']//input"));
+	public boolean isTrainingGroupSelectioEnable() {
 
-	    for (String value : values) {
-
-	        // Click input
-	        input.click();
-
-	        // Clear & type
-	        input.clear();
-	        input.sendKeys(value);
-
-	        // Wait and select option
-	        By option = By.xpath("//kendo-popup//li[normalize-space()='" + value + "']");
-
-	        wait.until(ExpectedConditions.elementToBeClickable(option)).click();
-	    }
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(multiSelectionTrainingGroup);
+		return eleUtil.isElementEnable(multiSelectionTrainingGroup);
 	}
 	
 	
+	public void getTrainingGroupMultiValue(String value1,String value2) {
+		
+		eleUtil.selectKendoMultiSelect(txtTraingGroupSelection, value1);
+		eleUtil.selectKendoMultiSelect(txtTraingGroupSelection, value2);
+		
+	}
 	
+	public boolean isCategorySelectionDisplay() {
 
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(multiSelectionCategory);
+		return eleUtil.visibleElementWhenReady(multiSelectionCategory, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isCategorySelectionEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(multiSelectionCategory);
+		return eleUtil.isElementEnable(multiSelectionCategory);
+	}
+	
+	
+	public void getCategoryMultiValue(String value1) {
+		
+		eleUtil.selectKendoMultiSelect(txtCategorySelection, value1);
+	}
+	
+	public boolean isFreeDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(chkFree);
+		return eleUtil.visibleElementWhenReady(chkFree, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isFreeEnable() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(chkFree);
+		return eleUtil.isElementEnable(chkOverdue);
+	}
+
+	public void doclickFreeInQuickFilter() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(chkFree);
+
+		String isChecked =eleUtil.doElementGetAttribute(chkFree,"aria-checked");
+				//chkOverdue.getDomAttribute("aria-checked");
+
+		if ("true".equals(isChecked)) {
+			System.out.println("Free  is Selected");
+		} else {
+
+			try {
+				eleUtil.clickElementWhenReady(chkFree, AppConstants.MEDIUM_TIME_OUT);
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", chkFree);
+			}
+		}
+		eleUtil.waitForLoaderToDisappear();
+	}
+	
+	
 	public boolean isAdvanceFilterBtnDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();

@@ -7,7 +7,7 @@
         <methods>
           <include name="setUp"/>
           <include name="verifyMyLearnerLinkTest"/>
-          <include name="verifyTrainingGroupInQuickFilterTest"/>
+          <include name="verifyFreeInQuickFilterTest"/>
           <include name="tearDown"/>
           <include name="pageRefresh"/>
           <include name="verifyQuickFilterDailgoBoxTest"/>
