@@ -7,10 +7,8 @@
         <methods>
           <include name="setUp"/>
           <include name="verifyMyLearnerLinkTest"/>
-          <include name="verifyFreeInQuickFilterTest"/>
           <include name="tearDown"/>
           <include name="pageRefresh"/>
-          <include name="verifyQuickFilterDailgoBoxTest"/>
           <include name="verifyidpUrlTest"/>
         </methods>
       </class> <!-- com.qa.gyruslearner.testcases.IDPPageTestCase -->

@@ -1,6 +1,7 @@
 package com.qa.gyruslearner.util;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
@@ -204,6 +205,24 @@ public class ElementUtil extends TestBase {
 	        wait.until(ExpectedConditions.elementToBeClickable(option)).click();
 	    }
 	}
+	
+	public String getFieldValue(WebElement card, String label) {
+
+	    List<WebElement> elements = card.findElements(
+	        By.xpath(".//*[contains(text(),'" + label + "')]"));
+
+	    if (elements.isEmpty()) return "MISSING";
+
+	    List<WebElement> valueEle = card.findElements(
+	            By.xpath(".//*[contains(text(),'" + label + "')]/following-sibling::p[1]"));
+	    
+	    if(valueEle.isEmpty()) return "EMPTY";
+	    
+	    String value = valueEle.get(0).getText().trim();
+	    
+	    return value.isEmpty() ? "EMPTY" : value;
+	}
+	
 
 	public boolean isElementPresent(By locator) {
 		return driver.findElements(locator).size() > 0;

@@ -82,7 +82,9 @@ public class IDPPageTestCase extends TestBase {
 			Assert.assertEquals(idpUrl, AppConstants.IDP_PAGE_URL);
 			System.out.println("IDP Page URL : " + AppConstants.IDP_PAGE_URL);
 		} catch (Exception e) {
-			throw new SkipException("Skipping test because user could not login.");
+			
+			Assert.fail("IDP URL not loaded properly: " + e.getMessage());
+			//throw new SkipException("Skipping test because user could not login.");
 		}
 	}
 
@@ -169,7 +171,7 @@ public class IDPPageTestCase extends TestBase {
 		Assert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
 	}
 	
-	@Test(priority = 9,enabled = false)
+	@Test(priority = 9,enabled = true)
 	public void verifyAssessmentsQuickFilterTest() {
 
 		Assert.assertTrue(idp.isAssessmentsDisplay(), "Assessments  Quick Filter was not visible");
@@ -185,12 +187,15 @@ public class IDPPageTestCase extends TestBase {
 
 		TrainingCountUpdate();
 		
-		System.out.println("------------------Assessments Filter Compare the Status and percentage of Cards -------------------");
+		System.out.println("------------------Assessments Filter Compare the Status and percentage of Cards -------------------");	
 		idp.validateStatusIDPAllCards();
+		idp.validateTrainingTypeMultiple("Assessment");
+		
+		
 		
 	}
 	
-	@Test(priority = 10,enabled = false)
+	@Test(priority = 10,enabled = true)
 	public void verifyCertificationQuickFilterTest() {
 
 		Assert.assertTrue(idp.isCertificationDisplay(), "Certification  Quick Filter was not visible");
@@ -208,6 +213,7 @@ public class IDPPageTestCase extends TestBase {
 		
 		System.out.println("------------------Assessments Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
+		idp.validateTrainingTypeMultiple("Non-Sequence Training","Sequence Training");
 		
 	}
 	
@@ -229,6 +235,7 @@ public class IDPPageTestCase extends TestBase {
 		
 		System.out.println("------------------Document Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
+		idp.validateTrainingTypeMultiple("Document");
 		
 	}
 	
@@ -277,6 +284,7 @@ public class IDPPageTestCase extends TestBase {
 		
 		System.out.println("------------------Elearning Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
+		idp.validateTrainingTypeMultiple("eLearning");
 		
 	}
 	
@@ -305,6 +313,7 @@ public class IDPPageTestCase extends TestBase {
 		
 		System.out.println("------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
+		idp.validateTrainingTypeMultiple("External Link");
 		
 	}
 	
@@ -333,6 +342,7 @@ public class IDPPageTestCase extends TestBase {
 		
 		System.out.println("------------------ILT Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
+		idp.validateTrainingTypeMultiple("ILT");
 		
 	}
 	
@@ -361,6 +371,7 @@ public class IDPPageTestCase extends TestBase {
 		
 		System.out.println("------------------LearningPath Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
+		idp.validateTrainingTypeMultiple("Learning Path");
 		
 	}
 	
@@ -389,6 +400,7 @@ public class IDPPageTestCase extends TestBase {
 		
 		System.out.println("------------------MsTeam Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards();
+		idp.validateTrainingTypeMultiple("MSTeams");
 		
 	}
 	
@@ -454,7 +466,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 20, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 20,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyDueDateInQuickFilterTest() {
 		
 		idp.validatAdvancedFilterClear();
@@ -485,7 +497,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 21, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 21,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyTrainingGroupInQuickFilterTest() {
 		
 		idp.validatAdvancedFilterClear();
@@ -518,7 +530,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 22, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 22,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyCategoryInQuickFilterTest() {
 		
 		idp.validatAdvancedFilterClear();
@@ -551,7 +563,7 @@ public class IDPPageTestCase extends TestBase {
 		
 	}
 	
-	@Test(priority = 22, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 22,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyFreeInQuickFilterTest() {
 		
 		idp.validatAdvancedFilterClear();

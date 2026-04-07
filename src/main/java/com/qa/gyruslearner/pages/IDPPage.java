@@ -1,7 +1,10 @@
 package com.qa.gyruslearner.pages;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -76,16 +79,30 @@ public class IDPPage extends TestBase {
 
 	@FindBy(id = "lbl_116")
 	WebElement chkcompleteStatus;
-	
+
 	@FindBy(id = "lbl_142")
 	WebElement chk5starsRating;
-	
+
 	@FindBy(id = "lbl_135")
 	WebElement chkOverdue;
-	
+
 	@FindBy(id = "lbl_0")
 	WebElement chkFree;
-	
+
+	@FindBy(xpath = "//div[contains(@title,'Add To Favorites')]")
+	WebElement favoritesicon;
+
+	@FindBy(xpath = "//div[contains(@title,'Add To Playlist')]")
+	WebElement addToPlaylistIcon;
+
+	@FindBy(xpath = "//div[contains(@title,'Like')]")
+	WebElement likeIcon;
+
+	@FindBy(xpath = "//div[contains(@title,'Dislike')]")
+	WebElement DislikeIcon;
+
+	@FindBy(xpath = "//span[@class='rating_count']")
+	WebElement RatingIncard;
 
 	@FindBy(xpath = "//button[normalize-space()='See More']")
 	List<WebElement> btnSeeMore;
@@ -104,7 +121,7 @@ public class IDPPage extends TestBase {
 
 	@FindBy(xpath = " //button[contains(@title,'Clear All')]")
 	WebElement btnClearAll;
-	
+
 	@FindBy(xpath = "//div[contains(@class,'k-window k-dialog')]")
 	WebElement QuickFilterDiallog;
 
@@ -140,23 +157,18 @@ public class IDPPage extends TestBase {
 
 	@FindBy(xpath = "//div[contains(@class,'idea-hint-popup-box')]//p")
 	WebElement idealCoachMsg;
-	
+
 	@FindBy(xpath = "//kendo-multiselect[@name='trainingGroup']")
 	WebElement multiSelectionTrainingGroup;
-	
+
 	@FindBy(xpath = "//kendo-multiselect[@name='trainingGroup']//input")
 	WebElement txtTraingGroupSelection;
-	
+
 	@FindBy(xpath = "//kendo-multiselect[@name='category']")
 	WebElement multiSelectionCategory;
-	
+
 	@FindBy(xpath = "//kendo-multiselect[@name='category']//input")
 	WebElement txtCategorySelection;
-	
-	
-	
-	
-	
 
 	public boolean isMyLearningMenuDisplay() {
 
@@ -270,8 +282,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFAllELearning);
 
-		String isChecked =eleUtil.doElementGetAttribute(btnQFAllELearning,"aria-checked");
-				//btnQFAllELearning.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFAllELearning, "aria-checked");
+		// btnQFAllELearning.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("AllELearning is Selected");
@@ -306,8 +318,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFAssessments);
 
-		String isChecked =eleUtil.doElementGetAttribute(btnQFAssessments,"aria-checked");
-				//btnQFAssessments.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFAssessments, "aria-checked");
+		// btnQFAssessments.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Assessments is Selected");
@@ -342,8 +354,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFCertification);
 
-		String isChecked = eleUtil.doElementGetAttribute(btnQFCertification,"aria-checked");
-				//btnQFCertification.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFCertification, "aria-checked");
+		// btnQFCertification.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Certification is Selected");
@@ -377,8 +389,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFDocument);
 
-		String isChecked = eleUtil.doElementGetAttribute(btnQFDocument,"aria-checked");
-				//btnQFDocument.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFDocument, "aria-checked");
+		// btnQFDocument.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Document is Selected");
@@ -401,7 +413,7 @@ public class IDPPage extends TestBase {
 	}
 
 	public boolean isMoreButtonEnable() {
-		
+
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnMore);
 		return eleUtil.isElementEnable(btnMore);
@@ -412,8 +424,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnMore);
 
-		String isChecked = eleUtil.doElementGetAttribute(btnMore,"aria-checked");
-				//btnMore.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnMore, "aria-checked");
+		// btnMore.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("More is Selected");
@@ -524,8 +536,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFElearning);
 
-		String isChecked = eleUtil.doElementGetAttribute(btnQFElearning,"aria-checked");
-				//btnQFElearning.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFElearning, "aria-checked");
+		// btnQFElearning.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Elearnig is Selected");
@@ -559,8 +571,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFExteanalLink);
 
-		String isChecked = eleUtil.doElementGetAttribute(btnQFExteanalLink,"aria-checked");
-				//btnQFExteanalLink.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFExteanalLink, "aria-checked");
+		// btnQFExteanalLink.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("ExteanalLink is Selected");
@@ -594,8 +606,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFILT);
 
-		String isChecked = eleUtil.doElementGetAttribute(btnQFILT,"aria-checked");
-				//btnQFILT.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFILT, "aria-checked");
+		// btnQFILT.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("ILT is Selected");
@@ -629,8 +641,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFlearningPath);
 
-		String isChecked = eleUtil.doElementGetAttribute(btnQFlearningPath,"aria-checked");
-				//btnQFlearningPath.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFlearningPath, "aria-checked");
+		// btnQFlearningPath.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Learning path is Selected");
@@ -664,8 +676,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(btnQFMSTeam);
 
-		String isChecked = eleUtil.doElementGetAttribute(btnQFMSTeam,"aria-checked");
-				// btnQFMSTeam.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(btnQFMSTeam, "aria-checked");
+		// btnQFMSTeam.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("MSTeam is Selected");
@@ -699,8 +711,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
 
-		String isChecked =eleUtil.doElementGetAttribute(chkcompleteStatus, "aria-checked");
-				//chkcompleteStatus.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(chkcompleteStatus, "aria-checked");
+		// chkcompleteStatus.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Completed Status is Selected");
@@ -714,7 +726,7 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isRatingsDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -732,10 +744,10 @@ public class IDPPage extends TestBase {
 	public void doclickRatingsInQuickFilter() {
 
 		eleUtil.waitForLoaderToDisappear();
-		//jsUtil.scrollIntoViewCenter(chk5starsRating);
+		jsUtil.scrollIntoViewCenter(chk5starsRating);
 
-		String isChecked = eleUtil.doElementGetAttribute(chk5starsRating,"aria-checked");
-				//chk5starsRating.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(chk5starsRating, "aria-checked");
+		// chk5starsRating.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Rating  is Selected");
@@ -749,7 +761,7 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isOverDueDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -769,8 +781,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(chkOverdue);
 
-		String isChecked =eleUtil.doElementGetAttribute(chkOverdue,"aria-checked");
-				//chkOverdue.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(chkOverdue, "aria-checked");
+		// chkOverdue.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Over Due  is Selected");
@@ -784,7 +796,7 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
+
 	public boolean isTrainingGroupSelectionDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -798,15 +810,14 @@ public class IDPPage extends TestBase {
 		jsUtil.scrollIntoViewCenter(multiSelectionTrainingGroup);
 		return eleUtil.isElementEnable(multiSelectionTrainingGroup);
 	}
-	
-	
-	public void getTrainingGroupMultiValue(String value1,String value2) {
-		
+
+	public void getTrainingGroupMultiValue(String value1, String value2) {
+
 		eleUtil.selectKendoMultiSelect(txtTraingGroupSelection, value1);
 		eleUtil.selectKendoMultiSelect(txtTraingGroupSelection, value2);
-		
+
 	}
-	
+
 	public boolean isCategorySelectionDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -820,13 +831,12 @@ public class IDPPage extends TestBase {
 		jsUtil.scrollIntoViewCenter(multiSelectionCategory);
 		return eleUtil.isElementEnable(multiSelectionCategory);
 	}
-	
-	
+
 	public void getCategoryMultiValue(String value1) {
-		
+
 		eleUtil.selectKendoMultiSelect(txtCategorySelection, value1);
 	}
-	
+
 	public boolean isFreeDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -846,8 +856,8 @@ public class IDPPage extends TestBase {
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(chkFree);
 
-		String isChecked =eleUtil.doElementGetAttribute(chkFree,"aria-checked");
-				//chkOverdue.getDomAttribute("aria-checked");
+		String isChecked = eleUtil.doElementGetAttribute(chkFree, "aria-checked");
+		// chkOverdue.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Free  is Selected");
@@ -861,8 +871,7 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
-	
-	
+
 	public boolean isAdvanceFilterBtnDisplay() {
 
 		eleUtil.waitForLoaderToDisappear();
@@ -908,19 +917,18 @@ public class IDPPage extends TestBase {
 	}
 
 	public void validatAdvancedFilterClear() {
-		
 
 		Assert.assertTrue(isAdvanceFilterBtnDisplay(), "Advance Filter button  Advance Filter was not visible");
 		Assert.assertTrue(isAdvanceFilterBtnEnable(), " Advance Filter button  Advance Filter  was not enabled");
 
 		doclickAdvanceFilterBtnQuickFilter();
-		
+
 		Assert.assertTrue(isClearAllBtnDisplay(), "Clear All button  Advance Filter was not visible");
-		
+
 		doclickClearAllbtnForAdvanceFiter();
-		
+
 		doclickApplyButtonQuickFilter();
-		
+
 	}
 
 	public int getCardCount() {
@@ -1024,6 +1032,8 @@ public class IDPPage extends TestBase {
 
 			// Progress
 			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
+			Boolean like = card.findElement(By.xpath(".//div[contains(@title,'Like')]")).isDisplayed();
+			Boolean dislike = card.findElement(By.xpath(".//div[contains(@title,'Dislike')]")).isDisplayed();
 
 			// Print
 			System.out.println("IDP All Cards :" + (i + 1));
@@ -1048,6 +1058,28 @@ public class IDPPage extends TestBase {
 			}
 			if (progress.trim().isEmpty()) {
 				softAssert.fail("❌ progress is missing in card  " + (i + 1) + " : " + TrainingName);
+			}
+
+			if (!Trainingtype.equals("Non-Sequence Training") && !Trainingtype.equals("Sequence Training")) {
+
+				Boolean addToFavorites = card.findElement(By.xpath(".//div[contains(@title,'Add To Favorites')]"))
+						.isDisplayed();
+				Boolean addToPlaylist = card.findElement(By.xpath(".//div[contains(@title,'Add To Playlist')]"))
+						.isDisplayed();
+
+				if (addToFavorites == false) {
+					softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
+				}
+				if (addToPlaylist == false) {
+					softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
+				}
+			}
+			
+			if (like == false) {
+				softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
+			}
+			if (dislike == false) {
+				softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
 			}
 
 			if (status.contains("Not started")) {
@@ -1079,6 +1111,73 @@ public class IDPPage extends TestBase {
 
 		}
 		softAssert.assertAll();
+	}
+
+	public void validateTrainingTypeMultiple(String... expectedTypes) {
+
+		eleUtil.waitForLoaderToDisappear();
+
+		SoftAssert softAssert = new SoftAssert();
+
+		for (WebElement card : idpCardViewList) {
+
+			String trainingType = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText()
+					.trim();
+
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
+
+			boolean match = false;
+
+			for (String type : expectedTypes) {
+				if (trainingType.equalsIgnoreCase(type)) {
+					match = true;
+					break;
+				}
+			}
+
+			if (!match) {
+				softAssert.fail("❌ Unexpected Type: " + trainingType + " | Training: " + trainingName);
+			}
+
+			validateFieldsByType(card, trainingType, trainingName, softAssert);
+
+		}
+
+		softAssert.assertAll();
+	}
+
+	public void validateFieldsByType(WebElement card, String trainingType, String trainingName, SoftAssert softAssert) {
+
+		Map<String, List<String>> map = new HashMap<>();
+
+		map.put("Assessment", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("Document", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("External Link", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("ILT", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("MSTeams", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("Learning Path", Arrays.asList("Training Code", "Required For", "Total Trainings", "Type"));
+		map.put("eLearning", Arrays.asList("Training Code", "Due Date", "Required For", "Group", "Category"));
+		map.put("Certification",
+				Arrays.asList("Completion Date", "Valid till", "Certification Window", "Total Trainings"));
+
+		for (String key : map.keySet()) {
+
+			if (trainingType.contains(key)) {
+
+				for (String field : map.get(key)) {
+
+					String value = eleUtil.getFieldValue(card, field);
+
+					if ("MISSING".equals(value)) {
+						softAssert.fail("❌ " + field + " Label missing: " + trainingName);
+
+					} else if ("EMPTY".equals(value)) {
+						softAssert.fail("❌ " + field + " value missing: " + trainingName);
+					}
+
+				}
+			}
+		}
 	}
 
 }
