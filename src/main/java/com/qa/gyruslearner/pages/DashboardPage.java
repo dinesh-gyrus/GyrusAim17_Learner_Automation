@@ -594,8 +594,9 @@ public class DashboardPage extends TestBase {
 				}
 
 			}
-
+			
 		}
+		
 		softAssert.assertAll();
 	}
 
@@ -681,7 +682,7 @@ public class DashboardPage extends TestBase {
 				}
 
 			}
-
+			
 		}
 		softAssert.assertAll();
 	}
@@ -843,7 +844,7 @@ public class DashboardPage extends TestBase {
 				}
 
 			}
-
+			
 		}
 		softAssert.assertAll();
 	}
@@ -923,7 +924,7 @@ public class DashboardPage extends TestBase {
 				}
 
 			}
-
+			
 		}
 		softAssert.assertAll();
 	}
@@ -1163,7 +1164,6 @@ public class DashboardPage extends TestBase {
 					softAssert.fail("❌ Not Certified but "+progress+" : " + certificationName);
 				}
 			}
-
 		}
 		softAssert.assertAll();
 	}

@@ -9,6 +9,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.pages.DashboardPage;
@@ -44,10 +46,15 @@ public class IDPPageTestCase extends TestBase {
 	public Object[][] getLoginSheetData() {
 		return ExcelUtil.getTestData(AppConstants.LOGIN_DATA_SHEET_PATH,AppConstants.VALID_LOGIN_SHEET_NAME);
 	}
+	
+	@DataProvider
+	public Object[][] getQuickFilterStatuSheetData() {
+		return new Object[][] { { "Completed","In Progress" } };
+	}
 
 	@DataProvider
 	public Object[][] geSearchTestData() {
-		return new Object[][] { { "Test20" }, };
+		return new Object[][] { { "Completed" } };
 	}
 
 	@BeforeMethod()
@@ -123,9 +130,10 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 	
-	@Test(priority = 6,enabled = false)
+	@Test(priority = 6,enabled = true)
 	public void verifyAllCardLoadedAndCountTest() {
-
+		
+		idp.validatAdvancedFilterClear();
 		Assert.assertTrue(idp.isTrainingCountDisplay(), "Trainings Count  not visible");
 		System.out.println("------------------Display Number IDP Training Count -------------------");
 		// Training Count update
@@ -133,11 +141,14 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 	
-	@Test(priority = 7, dependsOnMethods ="verifyAllCardLoadedAndCountTest", enabled = false)
+	@Test(priority = 7, dependsOnMethods ="verifyAllCardLoadedAndCountTest", enabled = true)
 	public void verifyAllCardsStatusAndpercentageTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		System.out.println("------------------Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
+		idp.validateStatusIDPAllCards(softAssert);
+		softAssert.assertAll();
+		
 		
 	}
 
@@ -171,9 +182,11 @@ public class IDPPageTestCase extends TestBase {
 		Assert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
 	}
 	
-	@Test(priority = 9,enabled = true)
+	@Test(priority = 9,enabled = false)
 	public void verifyAssessmentsQuickFilterTest() {
-
+		
+		SoftAssert softAssert = new SoftAssert();
+		
 		Assert.assertTrue(idp.isAssessmentsDisplay(), "Assessments  Quick Filter was not visible");
 		Assert.assertTrue(idp.isAssessmentsEnable(), " Assessments  Quick Filter  was not enabled");
 		
@@ -188,15 +201,17 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------Assessments Filter Compare the Status and percentage of Cards -------------------");	
-		idp.validateStatusIDPAllCards();
-		idp.validateTrainingTypeMultiple("Assessment");
+		idp.validateStatusIDPAllCards(softAssert);
+		idp.validateTrainingTypeMultiple(softAssert,"Assessment");
 		
-		
+		softAssert.assertAll();
 		
 	}
 	
-	@Test(priority = 10,enabled = true)
+	@Test(priority = 10,enabled = false)
 	public void verifyCertificationQuickFilterTest() {
+		
+		SoftAssert softAssert = new SoftAssert();
 
 		Assert.assertTrue(idp.isCertificationDisplay(), "Certification  Quick Filter was not visible");
 		Assert.assertTrue(idp.isCertificationEnable(), " Certification  Quick Filter  was not enabled");
@@ -212,14 +227,17 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------Assessments Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
-		idp.validateTrainingTypeMultiple("Non-Sequence Training","Sequence Training");
+		idp.validateStatusIDPAllCards(softAssert);
+		idp.validateTrainingTypeMultiple(softAssert,"Non-Sequence Training","Sequence Training");
+		
+		softAssert.assertAll();
 		
 	}
 	
 	@Test(priority = 11,enabled = false)
 	public void verifyDocumentQuickFilterTest() {
-
+		
+		SoftAssert softAssert = new SoftAssert();
 		Assert.assertTrue(idp.isDocumentDisplay(), "Document  Quick Filter was not visible");
 		Assert.assertTrue(idp.isDocumentEnable(), " Document  Quick Filter  was not enabled");
 		
@@ -234,8 +252,9 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------Document Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
-		idp.validateTrainingTypeMultiple("Document");
+		idp.validateStatusIDPAllCards(softAssert);
+		idp.validateTrainingTypeMultiple(softAssert,"Document");
+		softAssert.assertAll();
 		
 	}
 	
@@ -262,6 +281,7 @@ public class IDPPageTestCase extends TestBase {
 	@Test(priority = 13,enabled = false ,dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyElearnigQuickFilterTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
@@ -283,14 +303,16 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------Elearning Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
-		idp.validateTrainingTypeMultiple("eLearning");
+		idp.validateStatusIDPAllCards(softAssert);
+		idp.validateTrainingTypeMultiple(softAssert,"eLearning");
+		softAssert.assertAll();
 		
 	}
 	
 	@Test(priority = 14,enabled = false,dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyExternalLinkQuickFilterTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
@@ -312,14 +334,16 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
-		idp.validateTrainingTypeMultiple("External Link");
+		idp.validateStatusIDPAllCards(softAssert);
+		idp.validateTrainingTypeMultiple(softAssert,"External Link");
+		softAssert.assertAll();
 		
 	}
 	
 	@Test(priority = 15, enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyILTQuickFilterTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
@@ -341,14 +365,15 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------ILT Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
-		idp.validateTrainingTypeMultiple("ILT");
-		
+		idp.validateStatusIDPAllCards(softAssert);
+		idp.validateTrainingTypeMultiple(softAssert,"ILT");
+		softAssert.assertAll();
 	}
 	
 	@Test(priority = 16,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyLearningPathQuickFilterTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
@@ -370,14 +395,16 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------LearningPath Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
-		idp.validateTrainingTypeMultiple("Learning Path");
+		idp.validateStatusIDPAllCards(softAssert);
+		idp.validateTrainingTypeMultiple(softAssert,"Learning Path");
+		softAssert.assertAll();
 		
 	}
 	
 	@Test(priority = 17,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyMsTeamQuickFilterTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
@@ -399,17 +426,19 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------MsTeam Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
-		idp.validateTrainingTypeMultiple("MSTeams");
+		idp.validateStatusIDPAllCards(softAssert);
+		idp.validateTrainingTypeMultiple(softAssert,"MSTeams");
+		softAssert.assertAll();
 		
 	}
 	
-	@Test(priority = 18,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
-	public void verifyStatusCompleteQuickFilterTest() {
+	@Test(priority = 18,enabled = false,dataProvider ="getQuickFilterStatuSheetData", dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	public void verifyStatusCompleteQuickFilterTest(String statuse1,String statuse2) {
+		
+		SoftAssert softAssert = new SoftAssert();
 		
 		idp.validatAdvancedFilterClear();
-		
-		
+
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
@@ -418,12 +447,13 @@ public class IDPPageTestCase extends TestBase {
 		Assert.assertTrue(idp.isStatusCompleteDisplay(), "Status Completed in  Quick Filter was not visible");
 		Assert.assertTrue(idp.isStatusCompleteEnable(), " Status Completed in  Quick Filter  was not enabled");
 		
-		idp.doclickStatusCompleteInQuickFilter();
+		//idp.doclickStatusCompleteInQuickFilter();
+		idp.selectMultipleStatus(statuse1,statuse2);
 		
 		idp.doclickApplyButtonQuickFilter();
 		// Training count not load thread sleep put
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -431,16 +461,18 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------Status Completed in Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
+		idp.validateStatusIDPAllCards(softAssert);
+		idp.validateMultipleStatusCards(softAssert,statuse1,statuse2);
+		
+		softAssert.assertAll();
 		
 	}
 	
-	@Test(priority = 19,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 19,enabled = true, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyRatingQuickFilterTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		idp.validatAdvancedFilterClear();
-		
-		
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
@@ -462,15 +494,17 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------Rating  in Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
+		idp.validateStatusIDPAllCards(softAssert);
+		softAssert.assertAll();
 		
 	}
 	
 	@Test(priority = 20,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyDueDateInQuickFilterTest() {
 		
-		idp.validatAdvancedFilterClear();
+		SoftAssert softAssert = new SoftAssert();
 		
+		idp.validatAdvancedFilterClear();
 		
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
@@ -493,16 +527,17 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------Due date in Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
+		idp.validateStatusIDPAllCards(softAssert);
+		softAssert.assertAll();
 		
 	}
 	
 	@Test(priority = 21,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyTrainingGroupInQuickFilterTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		idp.validatAdvancedFilterClear();
-		
-		
+
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
@@ -526,16 +561,16 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------TrainingGroup in Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
+		idp.validateStatusIDPAllCards(softAssert);
+		softAssert.assertAll();
 		
 	}
 	
 	@Test(priority = 22,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyCategoryInQuickFilterTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		idp.validatAdvancedFilterClear();
-		
-		
 		//Verify More button and Click on button
 		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
 		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
@@ -559,13 +594,15 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------Category in Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
+		idp.validateStatusIDPAllCards(softAssert);
+		softAssert.assertAll();
 		
 	}
 	
 	@Test(priority = 22,enabled = false, dependsOnMethods ="verifyQuickFilterDailgoBoxTest")
 	public void verifyFreeInQuickFilterTest() {
 		
+		SoftAssert softAssert = new SoftAssert();
 		idp.validatAdvancedFilterClear();
 		
 		
@@ -592,7 +629,8 @@ public class IDPPageTestCase extends TestBase {
 		TrainingCountUpdate();
 		
 		System.out.println("------------------Free in Filter Compare the Status and percentage of Cards -------------------");
-		idp.validateStatusIDPAllCards();
+		idp.validateStatusIDPAllCards(softAssert);
+		softAssert.assertAll();
 		
 	}
 	

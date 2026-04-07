@@ -1,11 +1,7 @@
 package com.qa.gyruslearner.pages;
 
 import java.time.Duration;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -726,6 +722,24 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
+	
+	public void selectMultipleStatus(String... statuses) {
+
+	    for (String status : statuses) {
+
+	        WebElement label = driver.findElement(
+	            By.xpath("//label[normalize-space()='" + status + "']"));
+	        
+	        jsUtil.scrollIntoViewCenter(label);
+	        String forValue = eleUtil.doElementGetAttribute(label,"for");
+
+	        WebElement checkbox = driver.findElement(By.id(forValue));
+
+	        if (!checkbox.isSelected()) {
+	            label.click(); // click label instead of input
+	        }
+	    }
+	}
 
 	public boolean isRatingsDisplay() {
 
@@ -928,6 +942,8 @@ public class IDPPage extends TestBase {
 		doclickClearAllbtnForAdvanceFiter();
 
 		doclickApplyButtonQuickFilter();
+		
+		eleUtil.waitForLoaderToDisappear();
 
 	}
 
@@ -999,7 +1015,7 @@ public class IDPPage extends TestBase {
 		}
 	}
 
-	public void validateStatusIDPAllCards() {
+	public void validateStatusIDPAllCards(SoftAssert softAssert) {
 
 		eleUtil.waitForLoaderToDisappear();
 
@@ -1008,7 +1024,7 @@ public class IDPPage extends TestBase {
 			return;
 		}
 
-		SoftAssert softAssert = new SoftAssert();
+		//SoftAssert softAssert = new SoftAssert();
 
 		System.out.println("IDP ALL Total  Cards: " + idpCardViewList.size());
 
@@ -1110,14 +1126,48 @@ public class IDPPage extends TestBase {
 			}
 
 		}
-		softAssert.assertAll();
+		//softAssert.assertAll();
+	}
+	
+	public void validateMultipleStatusCards(SoftAssert softAssert,String... expectedStatuses) {
+
+	    eleUtil.waitForLoaderToDisappear();
+	    
+	    if (idpCardViewList.isEmpty()) {
+			System.out.println("No status wise IDP  Cards Available");
+			return;
+		}
+
+	    //SoftAssert softAssert = new SoftAssert();
+
+	    for (WebElement card : idpCardViewList) {
+
+	        String status = card.findElement(By.xpath(".//span[contains(@class,'index_in_progress_badge')]")).getText();
+	        String trainingName = card.findElement(By.xpath(".//h3")).getText();
+
+	        boolean match = false;
+
+	        for (String expected : expectedStatuses) {
+	            if (status.equalsIgnoreCase(expected)) {
+	                match = true;
+	                break;
+	            }
+	        }
+
+	        if (!match) {
+	            softAssert.fail("❌ Unexpected status: " + status +
+	                            " | Training: " + trainingName);
+	        }
+	    }
+
+	   // softAssert.assertAll();
 	}
 
-	public void validateTrainingTypeMultiple(String... expectedTypes) {
+	public void validateTrainingTypeMultiple(SoftAssert softAssert,String... expectedTypes) {
 
 		eleUtil.waitForLoaderToDisappear();
 
-		SoftAssert softAssert = new SoftAssert();
+		//SoftAssert softAssert = new SoftAssert();
 
 		for (WebElement card : idpCardViewList) {
 
@@ -1139,45 +1189,12 @@ public class IDPPage extends TestBase {
 				softAssert.fail("❌ Unexpected Type: " + trainingType + " | Training: " + trainingName);
 			}
 
-			validateFieldsByType(card, trainingType, trainingName, softAssert);
+			eleUtil.validateFieldsByType(card, trainingType, trainingName, softAssert);
 
 		}
 
-		softAssert.assertAll();
+		//softAssert.assertAll();
 	}
 
-	public void validateFieldsByType(WebElement card, String trainingType, String trainingName, SoftAssert softAssert) {
-
-		Map<String, List<String>> map = new HashMap<>();
-
-		map.put("Assessment", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
-		map.put("Document", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
-		map.put("External Link", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
-		map.put("ILT", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
-		map.put("MSTeams", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
-		map.put("Learning Path", Arrays.asList("Training Code", "Required For", "Total Trainings", "Type"));
-		map.put("eLearning", Arrays.asList("Training Code", "Due Date", "Required For", "Group", "Category"));
-		map.put("Certification",
-				Arrays.asList("Completion Date", "Valid till", "Certification Window", "Total Trainings"));
-
-		for (String key : map.keySet()) {
-
-			if (trainingType.contains(key)) {
-
-				for (String field : map.get(key)) {
-
-					String value = eleUtil.getFieldValue(card, field);
-
-					if ("MISSING".equals(value)) {
-						softAssert.fail("❌ " + field + " Label missing: " + trainingName);
-
-					} else if ("EMPTY".equals(value)) {
-						softAssert.fail("❌ " + field + " value missing: " + trainingName);
-					}
-
-				}
-			}
-		}
-	}
-
+	
 }

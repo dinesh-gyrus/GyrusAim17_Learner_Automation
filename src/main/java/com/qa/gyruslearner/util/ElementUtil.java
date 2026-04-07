@@ -1,7 +1,10 @@
 package com.qa.gyruslearner.util;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
@@ -9,6 +12,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
 
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
@@ -223,6 +227,39 @@ public class ElementUtil extends TestBase {
 	    return value.isEmpty() ? "EMPTY" : value;
 	}
 	
+	public void validateFieldsByType(WebElement card, String trainingType, String trainingName, SoftAssert softAssert) {
+
+		Map<String, List<String>> map = new HashMap<>();
+
+		map.put("Assessment", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("Document", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("External Link", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("ILT", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("MSTeams", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("Learning Path", Arrays.asList("Training Code", "Required For", "Total Trainings", "Type"));
+		map.put("eLearning", Arrays.asList("Training Code", "Due Date", "Required For", "Group", "Category"));
+		map.put("Certification",
+				Arrays.asList("Completion Date", "Valid till", "Certification Window", "Total Trainings"));
+
+		for (String key : map.keySet()) {
+
+			if (trainingType.contains(key)) {
+
+				for (String field : map.get(key)) {
+
+					String value =getFieldValue(card, field);
+
+					if ("MISSING".equals(value)) {
+						softAssert.fail("❌ " + field + " Label missing: " + trainingName);
+
+					} else if ("EMPTY".equals(value)) {
+						softAssert.fail("❌ " + field + " value missing: " + trainingName);
+					}
+
+				}
+			}
+		}
+	}
 
 	public boolean isElementPresent(By locator) {
 		return driver.findElements(locator).size() > 0;

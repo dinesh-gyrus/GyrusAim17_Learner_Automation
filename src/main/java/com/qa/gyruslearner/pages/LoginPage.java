@@ -55,7 +55,8 @@ public class LoginPage extends TestBase {
 	public void ensureAtLoginPage() {
 		
         if (!driver.getCurrentUrl().contains("Login")) {
-            driver.get(prop.getProperty("url"));   //("https://nverma.gyrusaim.net/auth/login"); // 🔹 fallback navigation
+        	driver.get(AppConstants.LOGIN_PAGE_URL);
+            //driver.get(prop.getProperty("goliveUrl"));   //("https://nverma.gyrusaim.net/auth/login"); // 🔹 fallback navigation
         }
     }
 

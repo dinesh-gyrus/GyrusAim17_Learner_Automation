@@ -210,21 +210,6 @@ public class DashboardPageTestCase extends TestBase {
 		default:
 		    Assert.fail("Unexpected state");
 		    }
-		
-		/*
-		boolean isCardsPresent = dashboard.isLearningCardsDisplayed();
-
-		if (isCardsPresent) {
-
-			Assert.assertTrue(dashboard.isLearningCardsDisplayed(), "Cards should be displayed");
-			dashboard.learningStatusGetCardCount();
-
-		} else {
-
-			Assert.assertTrue(dashboard.isLearningCardsDisplayed(), "No Data message should be displayed");
-		}
-		*/
-
 	}
 	
 	
@@ -233,6 +218,7 @@ public class DashboardPageTestCase extends TestBase {
 		
 		System.out.println("------------------Display Number Cards Are Display of Learning Status In-Progress -------------------");
 		dashboard.validateLearningInProgressCards();
+		
 	}
 	
 	

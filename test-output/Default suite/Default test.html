@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>7/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>19/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Apr 07 19:09:41 IST 2026</td>
+<td>Started on:</td><td>Wed Apr 08 02:11:16 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>89 seconds (89393 ms)</td>
+<tr><td>Total time:</td><td>144 seconds (144271 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -67,6 +67,91 @@ function toggleAllBoxes() {
 </tr>
 </table><p/>
 <small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsRecentlyAssignedDataTest()'><b>verifyAssignedTrainingsRecentlyAssignedDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	❌ Category Label missing: 2003 el mp4,
+	❌ Category Label missing: 2003 mp3,
+	❌ Category Label missing: 2003 el,
+	❌ Category Label missing: 0303
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at com.qa.gyruslearner.pages.DashboardPage.validateAssignedTrainingsRecentlyAssignedCards(DashboardPage.java:849)
+	at com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsRecentlyAssignedDataTest(DashboardPageTestCase.java:253)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:819)
+	at org.testng.TestRunner.run(TestRunner.java:619)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1184974266", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1184974266'><pre>java.lang.AssertionError: The following asserts failed:
+	❌ Category Label missing: 2003 el mp4,
+	❌ Category Label missing: 2003 mp3,
+	❌ Category Label missing: 2003 el,
+	❌ Category Label missing: 0303
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at com.qa.gyruslearner.pages.DashboardPage.validateAssignedTrainingsRecentlyAssignedCards(DashboardPage.java:849)
+	at com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsRecentlyAssignedDataTest(DashboardPageTestCase.java:253)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:819)
+	at org.testng.TestRunner.run(TestRunner.java:619)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
+	at org.testng.TestNG.runSuites(TestNG.java:1134)
+	at org.testng.TestNG.run(TestNG.java:1101)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+</pre></div></td>
+<td>42</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+</table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
@@ -76,40 +161,100 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyCertificationQuickFilterTest()'><b>verifyCertificationQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyLearningStatusNotStartedDataTest()'><b>verifyLearningStatusNotStartedDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
 <td></td>
-<td>13</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@4e096385</td></tr>
+<td>12</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyIDPHeaderPageTitleTest()'><b>verifyIDPHeaderPageTitleTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyLeaderboardDataTest()'><b>verifyLeaderboardDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
 <td></td>
 <td>0</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@4e096385</td></tr>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyIDPPageTitileTest()'><b>verifyIDPPageTitileTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyLearningStatusInProgressDataTest()'><b>verifyLearningStatusInProgressDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
 <td></td>
-<td>1</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@4e096385</td></tr>
+<td>10</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyidpUrlTest()'><b>verifyidpUrlTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyCalenderDisplayTest()'><b>verifyCalenderDisplayTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
 <td></td>
 <td>31</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@4e096385</td></tr>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyAssessmentsQuickFilterTest()'><b>verifyAssessmentsQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyProfilePopUpTest()'><b>verifyProfilePopUpTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
 <td></td>
-<td>15</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@4e096385</td></tr>
+<td>0</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMyLearnerLinkTest()'><b>verifyMyLearnerLinkTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyMySheduleDataTest()'><b>verifyMySheduleDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
 <td></td>
-<td>2</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@4e096385</td></tr>
+<td>1</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest()'><b>verifyQuickFilterDailgoBoxTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyActivityFeedsDataTest()'><b>verifyActivityFeedsDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
 <td></td>
-<td>11</td>
-<td>com.qa.gyruslearner.testcases.IDPPageTestCase@4e096385</td></tr>
+<td>9</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyStatisticsDisplayed()'><b>verifyStatisticsDisplayed</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>0</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyWelcomeHeadertextTest()'><b>verifyWelcomeHeadertextTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>0</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyQuickLinksTest()'><b>verifyQuickLinksTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>0</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.dashBoardPageTitleTest()'><b>dashBoardPageTitleTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>0</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifymainMenuItemsDataTest()'><b>verifymainMenuItemsDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>1</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsOverDueDataTest()'><b>verifyAssignedTrainingsOverDueDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>3</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.dashBoardUrlTest()'><b>dashBoardUrlTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>3</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsDueDataTest()'><b>verifyAssignedTrainingsDueDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>10</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyStatisticsWithFilters()'><b>verifyStatisticsWithFilters</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>4</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyCertificationsDataTest()'><b>verifyCertificationsDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>0</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.VerifyCompanyLogoInDashBoardTest()'><b>VerifyCompanyLogoInDashBoardTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>1</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyRecentBadgesDataTest()'><b>verifyRecentBadgesDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td></td>
+<td>0</td>
+<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
 </table><p>
 </body>
 </html>
