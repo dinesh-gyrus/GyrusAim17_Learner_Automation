@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>19/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>5/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Apr 08 02:11:16 IST 2026</td>
+<td>Started on:</td><td>Wed Apr 08 17:47:36 IST 2026</td>
 </tr>
-<tr><td>Total time:</td><td>144 seconds (144271 ms)</td>
+<tr><td>Total time:</td><td>64 seconds (64915 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,16 +76,15 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsRecentlyAssignedDataTest()'><b>verifyAssignedTrainingsRecentlyAssignedDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td><div><pre>java.lang.AssertionError: The following asserts failed:
-	❌ Category Label missing: 2003 el mp4,
-	❌ Category Label missing: 2003 mp3,
-	❌ Category Label missing: 2003 el,
-	❌ Category Label missing: 0303
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.DashboardPage.validateAssignedTrainingsRecentlyAssignedCards(DashboardPage.java:849)
-	at com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsRecentlyAssignedDataTest(DashboardPageTestCase.java:253)
+<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyIDPPageTitileTest()'><b>verifyIDPPageTitileTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td><div><pre>java.lang.AssertionError: expected [IDP] but found [Dashboard]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at org.testng.Assert.assertEquals(Assert.java:666)
+	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyIDPPageTitileTest(IDPPageTestCase.java:123)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -112,16 +111,15 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1184974266", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1184974266'><pre>java.lang.AssertionError: The following asserts failed:
-	❌ Category Label missing: 2003 el mp4,
-	❌ Category Label missing: 2003 mp3,
-	❌ Category Label missing: 2003 el,
-	❌ Category Label missing: 0303
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.DashboardPage.validateAssignedTrainingsRecentlyAssignedCards(DashboardPage.java:849)
-	at com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsRecentlyAssignedDataTest(DashboardPageTestCase.java:253)
+</pre></div><a href='#' onClick='toggleBox("stack-trace681158875", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace681158875'><pre>java.lang.AssertionError: expected [IDP] but found [Dashboard]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:150)
+	at org.testng.Assert.assertEquals(Assert.java:132)
+	at org.testng.Assert.assertEquals(Assert.java:656)
+	at org.testng.Assert.assertEquals(Assert.java:666)
+	at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyIDPPageTitileTest(IDPPageTestCase.java:123)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -149,8 +147,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>42</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<td>5</td>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@a2431d0</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-passed'>
 <tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
@@ -161,100 +159,30 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyLearningStatusNotStartedDataTest()'><b>verifyLearningStatusNotStartedDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>12</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyLeaderboardDataTest()'><b>verifyLeaderboardDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>0</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyLearningStatusInProgressDataTest()'><b>verifyLearningStatusInProgressDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>10</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyCalenderDisplayTest()'><b>verifyCalenderDisplayTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>31</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyProfilePopUpTest()'><b>verifyProfilePopUpTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>0</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyMySheduleDataTest()'><b>verifyMySheduleDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>1</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyActivityFeedsDataTest()'><b>verifyActivityFeedsDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>9</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyStatisticsDisplayed()'><b>verifyStatisticsDisplayed</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>0</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyWelcomeHeadertextTest()'><b>verifyWelcomeHeadertextTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>0</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyQuickLinksTest()'><b>verifyQuickLinksTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>0</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.dashBoardPageTitleTest()'><b>dashBoardPageTitleTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>0</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifymainMenuItemsDataTest()'><b>verifymainMenuItemsDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>1</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsOverDueDataTest()'><b>verifyAssignedTrainingsOverDueDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>3</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.dashBoardUrlTest()'><b>dashBoardUrlTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>3</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsDueDataTest()'><b>verifyAssignedTrainingsDueDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>10</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyStatisticsWithFilters()'><b>verifyStatisticsWithFilters</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyidpUrlTest()'><b>verifyidpUrlTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
 <td></td>
 <td>4</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@a2431d0</td></tr>
 <tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyCertificationsDataTest()'><b>verifyCertificationsDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
+<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest()'><b>verifyQuickFilterDailgoBoxTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td></td>
+<td>11</td>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@a2431d0</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyCategoryInQuickFilterTest()'><b>verifyCategoryInQuickFilterTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase<br>Parameters: Business Skills</td>
+<td></td>
+<td>15</td>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@a2431d0</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMyLearnerLinkTest()'><b>verifyMyLearnerLinkTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
+<td></td>
+<td>3</td>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@a2431d0</td></tr>
+<tr>
+<td title='com.qa.gyruslearner.testcases.IDPPageTestCase.verifyIDPHeaderPageTitleTest()'><b>verifyIDPHeaderPageTitleTest</b><br>Test class: com.qa.gyruslearner.testcases.IDPPageTestCase</td>
 <td></td>
 <td>0</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.VerifyCompanyLogoInDashBoardTest()'><b>VerifyCompanyLogoInDashBoardTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>1</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
-<tr>
-<td title='com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyRecentBadgesDataTest()'><b>verifyRecentBadgesDataTest</b><br>Test class: com.qa.gyruslearner.testcases.DashboardPageTestCase</td>
-<td></td>
-<td>0</td>
-<td>com.qa.gyruslearner.testcases.DashboardPageTestCase@67080771</td></tr>
+<td>com.qa.gyruslearner.testcases.IDPPageTestCase@a2431d0</td></tr>
 </table><p>
 </body>
 </html>

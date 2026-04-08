@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -191,42 +192,90 @@ public class ElementUtil extends TestBase {
 	public String doElementGetAttribute(WebElement locator, String attrName) {
 		return getElement(locator).getDomAttribute(attrName);
 	}
-	
+
 	public void selectKendoMultiSelect(WebElement inputLocator, String... values) {
+		
 
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.DEFAULT_TIME_OUT));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.DEFAULT_TIME_OUT));
 
-	    WebElement input = inputLocator;
+		WebElement input = inputLocator;
 
-	    for (String val : values) {
+		for (String val : values) {
 
-	        input.click();
-	        input.clear();
-	        input.sendKeys(val);
+			input.click();
+			input.clear();
+			input.sendKeys(val);
 
-	        By option = By.xpath("//kendo-popup//li[normalize-space()='" + val + "']");
+			By option = By.xpath("//kendo-popup//li[normalize-space()='" + val + "']");
 
-	        wait.until(ExpectedConditions.elementToBeClickable(option)).click();
-	    }
+			wait.until(ExpectedConditions.elementToBeClickable(option)).click();
+		}
 	}
-	
+
+	public void selectMultipleStatusCheckedBox(String... statuses) {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.DEFAULT_TIME_OUT));
+
+		for (String status : statuses) {
+
+			WebElement label = driver.findElement(By.xpath("//label[normalize-space()='" + status + "']"));
+
+			jsUtil.scrollIntoViewCenter(label);
+			String forValue = doElementGetAttribute(label, "for");
+
+			WebElement checkbox = driver.findElement(By.id(forValue));
+
+			if (!checkbox.isSelected()) {
+				try {
+					wait.until(ExpectedConditions.elementToBeClickable(label)).click();
+					//label.click(); // click label instead of input
+				} catch (Exception e) {
+					((JavascriptExecutor) driver).executeScript("arguments[0].click();", label);
+				}
+			}
+		}
+	}
+
+	public void selectSingleCheckedBox(String SingleChk) {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MEDIUM_TIME_OUT));
+
+		WebElement label = driver.findElement(By.xpath("//label[normalize-space()='" + SingleChk + "']"));
+
+		jsUtil.scrollIntoViewCenter(label);
+		String forValue = doElementGetAttribute(label, "for");
+
+		WebElement checkbox = driver.findElement(By.id(forValue));
+
+		if (!checkbox.isSelected()) {
+			try {
+				wait.until(ExpectedConditions.elementToBeClickable(label)).click();
+				//label.click(); // click label instead of input
+			} catch (Exception e) {
+				((JavascriptExecutor) driver).executeScript("arguments[0].click();", label);
+			}
+
+		}
+	}
+
 	public String getFieldValue(WebElement card, String label) {
 
-	    List<WebElement> elements = card.findElements(
-	        By.xpath(".//*[contains(text(),'" + label + "')]"));
+		List<WebElement> elements = card.findElements(By.xpath(".//*[contains(text(),'" + label + "')]"));
 
-	    if (elements.isEmpty()) return "MISSING";
+		if (elements.isEmpty())
+			return "MISSING";
 
-	    List<WebElement> valueEle = card.findElements(
-	            By.xpath(".//*[contains(text(),'" + label + "')]/following-sibling::p[1]"));
-	    
-	    if(valueEle.isEmpty()) return "EMPTY";
-	    
-	    String value = valueEle.get(0).getText().trim();
-	    
-	    return value.isEmpty() ? "EMPTY" : value;
+		List<WebElement> valueEle = card
+				.findElements(By.xpath(".//*[contains(text(),'" + label + "')]/following-sibling::p[1]"));
+
+		if (valueEle.isEmpty())
+			return "EMPTY";
+
+		String value = valueEle.get(0).getText().trim();
+
+		return value.isEmpty() ? "EMPTY" : value;
 	}
-	
+
 	public void validateFieldsByType(WebElement card, String trainingType, String trainingName, SoftAssert softAssert) {
 
 		Map<String, List<String>> map = new HashMap<>();
@@ -247,7 +296,7 @@ public class ElementUtil extends TestBase {
 
 				for (String field : map.get(key)) {
 
-					String value =getFieldValue(card, field);
+					String value = getFieldValue(card, field);
 
 					if ("MISSING".equals(value)) {
 						softAssert.fail("❌ " + field + " Label missing: " + trainingName);

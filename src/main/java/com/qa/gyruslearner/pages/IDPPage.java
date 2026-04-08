@@ -1,7 +1,11 @@
 package com.qa.gyruslearner.pages;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -21,11 +25,13 @@ public class IDPPage extends TestBase {
 
 	ElementUtil eleUtil;
 	JavaScriptUtil jsUtil;
+	MyProfilePage myprofile;
 
 	public IDPPage() {
 		PageFactory.initElements(driver, this);
 		eleUtil = new ElementUtil();
 		jsUtil = new JavaScriptUtil();
+		myprofile = new MyProfilePage();
 	}
 
 	@FindBy(xpath = "//span[contains(@data-key,'navMyLearning')]")
@@ -241,7 +247,46 @@ public class IDPPage extends TestBase {
 
 		return eleUtil.doGetElementText(idpHeaderPageTitle);
 	}
+	
+	public boolean isIdeaCouchButtonDisplay() {
 
+		jsUtil.scrollIntoViewCenter(btnidealCouch);
+		return eleUtil.visibleElementWhenReady(btnidealCouch, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isIdeaCouchButtonEnable() {
+
+		jsUtil.scrollIntoViewCenter(btnidealCouch);
+		return eleUtil.isElementEnable(btnidealCouch);
+	}
+	public boolean isIdeaCouchIconDisplay() {
+		
+		return eleUtil.visibleElementWhenReady(idealIcon, AppConstants.MEDIUM_TIME_OUT);
+	}
+	public boolean isIdeaGotItbuttonDisplay() {
+		return eleUtil.visibleElementWhenReady(btnidealCouch, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isIdeaGotItbuttonEnable() {
+		return eleUtil.isElementEnable(btnidealCouch);
+	}
+	
+
+	public void doclickIdeaCouchButton() {
+
+		jsUtil.scrollIntoViewCenter(btnidealCouch);
+		eleUtil.clickElementWhenReady(btnidealCouch, AppConstants.MAX_TIME_OUT);
+	}
+	
+
+	public String getIdeaCoachText() {
+		eleUtil.visibleElementWhenReady(idealCoachMsg, AppConstants.MAX_TIME_OUT);
+		String text = eleUtil.doGetElementText(idealCoachMsg);
+		return text;
+	}
+	
+	
+	
 	public boolean isTrainingCountDisplay() {
 
 		jsUtil.scrollIntoViewCenter(trainingcount);
@@ -702,43 +747,15 @@ public class IDPPage extends TestBase {
 		return eleUtil.isElementEnable(chkcompleteStatus);
 	}
 
-	public void doclickStatusCompleteInQuickFilter() {
 
-		eleUtil.waitForLoaderToDisappear();
-		jsUtil.scrollIntoViewCenter(chkcompleteStatus);
-
-		String isChecked = eleUtil.doElementGetAttribute(chkcompleteStatus, "aria-checked");
-		// chkcompleteStatus.getDomAttribute("aria-checked");
-
-		if ("true".equals(isChecked)) {
-			System.out.println("Completed Status is Selected");
-		} else {
-
-			try {
-				eleUtil.clickElementWhenReady(chkcompleteStatus, AppConstants.MEDIUM_TIME_OUT);
-			} catch (Exception e) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].click();", chkcompleteStatus);
-			}
-		}
-		eleUtil.waitForLoaderToDisappear();
-	}
-	
 	public void selectMultipleStatus(String... statuses) {
 
-	    for (String status : statuses) {
+		eleUtil.selectMultipleStatusCheckedBox(statuses);
+	}
 
-	        WebElement label = driver.findElement(
-	            By.xpath("//label[normalize-space()='" + status + "']"));
-	        
-	        jsUtil.scrollIntoViewCenter(label);
-	        String forValue = eleUtil.doElementGetAttribute(label,"for");
+	public void selectRating(String Rating) {
 
-	        WebElement checkbox = driver.findElement(By.id(forValue));
-
-	        if (!checkbox.isSelected()) {
-	            label.click(); // click label instead of input
-	        }
-	    }
+		eleUtil.selectSingleCheckedBox(Rating);
 	}
 
 	public boolean isRatingsDisplay() {
@@ -755,26 +772,6 @@ public class IDPPage extends TestBase {
 		return eleUtil.isElementEnable(chk5starsRating);
 	}
 
-	public void doclickRatingsInQuickFilter() {
-
-		eleUtil.waitForLoaderToDisappear();
-		jsUtil.scrollIntoViewCenter(chk5starsRating);
-
-		String isChecked = eleUtil.doElementGetAttribute(chk5starsRating, "aria-checked");
-		// chk5starsRating.getDomAttribute("aria-checked");
-
-		if ("true".equals(isChecked)) {
-			System.out.println("Rating  is Selected");
-		} else {
-
-			try {
-				eleUtil.clickElementWhenReady(chk5starsRating, AppConstants.MEDIUM_TIME_OUT);
-			} catch (Exception e) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].click();", chk5starsRating);
-			}
-		}
-		eleUtil.waitForLoaderToDisappear();
-	}
 
 	public boolean isOverDueDisplay() {
 
@@ -790,25 +787,9 @@ public class IDPPage extends TestBase {
 		return eleUtil.isElementEnable(chkOverdue);
 	}
 
-	public void doclickOverDueInQuickFilter() {
-
-		eleUtil.waitForLoaderToDisappear();
-		jsUtil.scrollIntoViewCenter(chkOverdue);
-
-		String isChecked = eleUtil.doElementGetAttribute(chkOverdue, "aria-checked");
-		// chkOverdue.getDomAttribute("aria-checked");
-
-		if ("true".equals(isChecked)) {
-			System.out.println("Over Due  is Selected");
-		} else {
-
-			try {
-				eleUtil.clickElementWhenReady(chkOverdue, AppConstants.MEDIUM_TIME_OUT);
-			} catch (Exception e) {
-				((JavascriptExecutor) driver).executeScript("arguments[0].click();", chkOverdue);
-			}
-		}
-		eleUtil.waitForLoaderToDisappear();
+	
+	public void selectDueAndOverDueDate(String Duedate) {
+		eleUtil.selectSingleCheckedBox(Duedate);
 	}
 
 	public boolean isTrainingGroupSelectionDisplay() {
@@ -825,11 +806,8 @@ public class IDPPage extends TestBase {
 		return eleUtil.isElementEnable(multiSelectionTrainingGroup);
 	}
 
-	public void getTrainingGroupMultiValue(String value1, String value2) {
-
-		eleUtil.selectKendoMultiSelect(txtTraingGroupSelection, value1);
-		eleUtil.selectKendoMultiSelect(txtTraingGroupSelection, value2);
-
+	public void selectTrainingGroupMultiValue(String... values) {
+		eleUtil.selectKendoMultiSelect(txtTraingGroupSelection, values);
 	}
 
 	public boolean isCategorySelectionDisplay() {
@@ -846,9 +824,9 @@ public class IDPPage extends TestBase {
 		return eleUtil.isElementEnable(multiSelectionCategory);
 	}
 
-	public void getCategoryMultiValue(String value1) {
+	public void selectCategoryValue(String values) {
 
-		eleUtil.selectKendoMultiSelect(txtCategorySelection, value1);
+		eleUtil.selectKendoMultiSelect(txtCategorySelection, values);
 	}
 
 	public boolean isFreeDisplay() {
@@ -864,14 +842,20 @@ public class IDPPage extends TestBase {
 		jsUtil.scrollIntoViewCenter(chkFree);
 		return eleUtil.isElementEnable(chkOverdue);
 	}
+	
+	public void selecPricingChk(String Pricing ) {
+		
+		eleUtil.selectSingleCheckedBox(Pricing);
+	}
 
+	// Sample DoClick Event for this
 	public void doclickFreeInQuickFilter() {
 
 		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(chkFree);
 
 		String isChecked = eleUtil.doElementGetAttribute(chkFree, "aria-checked");
-		// chkOverdue.getDomAttribute("aria-checked");
+		// chkFree.getDomAttribute("aria-checked");
 
 		if ("true".equals(isChecked)) {
 			System.out.println("Free  is Selected");
@@ -942,7 +926,7 @@ public class IDPPage extends TestBase {
 		doclickClearAllbtnForAdvanceFiter();
 
 		doclickApplyButtonQuickFilter();
-		
+
 		eleUtil.waitForLoaderToDisappear();
 
 	}
@@ -1024,7 +1008,7 @@ public class IDPPage extends TestBase {
 			return;
 		}
 
-		//SoftAssert softAssert = new SoftAssert();
+		// SoftAssert softAssert = new SoftAssert();
 
 		System.out.println("IDP ALL Total  Cards: " + idpCardViewList.size());
 
@@ -1050,6 +1034,8 @@ public class IDPPage extends TestBase {
 			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
 			Boolean like = card.findElement(By.xpath(".//div[contains(@title,'Like')]")).isDisplayed();
 			Boolean dislike = card.findElement(By.xpath(".//div[contains(@title,'Dislike')]")).isDisplayed();
+			//Boolean viewTrainingbutton=card.findElement(By.xpath(".//button[@title='View Training Details']")).isDisplayed();
+					
 
 			// Print
 			System.out.println("IDP All Cards :" + (i + 1));
@@ -1090,7 +1076,7 @@ public class IDPPage extends TestBase {
 					softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
 				}
 			}
-			
+
 			if (like == false) {
 				softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
 			}
@@ -1126,49 +1112,218 @@ public class IDPPage extends TestBase {
 			}
 
 		}
-		//softAssert.assertAll();
+		// softAssert.assertAll();
 	}
-	
-	public void validateMultipleStatusCards(SoftAssert softAssert,String... expectedStatuses) {
 
-	    eleUtil.waitForLoaderToDisappear();
-	    
-	    if (idpCardViewList.isEmpty()) {
+	public void validateMultipleStatusCards(SoftAssert softAssert, String... expectedStatuses) {
+
+		eleUtil.waitForLoaderToDisappear();
+
+		if (idpCardViewList.isEmpty()) {
 			System.out.println("No status wise IDP  Cards Available");
 			return;
 		}
 
-	    //SoftAssert softAssert = new SoftAssert();
+		// SoftAssert softAssert = new SoftAssert();
 
-	    for (WebElement card : idpCardViewList) {
+		for (WebElement card : idpCardViewList) {
 
-	        String status = card.findElement(By.xpath(".//span[contains(@class,'index_in_progress_badge')]")).getText();
-	        String trainingName = card.findElement(By.xpath(".//h3")).getText();
+			String status = card.findElement(By.xpath(".//span[contains(@class,'index_in_progress_badge')]")).getText();
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
 
-	        boolean match = false;
+			boolean match = false;
 
-	        for (String expected : expectedStatuses) {
-	            if (status.equalsIgnoreCase(expected)) {
-	                match = true;
-	                break;
-	            }
-	        }
+			for (String expected : expectedStatuses) {
+				if (status.equalsIgnoreCase(expected)) {
+					match = true;
+					break;
+				}
+			}
 
-	        if (!match) {
-	            softAssert.fail("❌ Unexpected status: " + status +
-	                            " | Training: " + trainingName);
-	        }
-	    }
+			if (!match) {
+				softAssert.fail("❌ Unexpected status: " + status + " | Training: " + trainingName);
+			}
+		}
 
-	   // softAssert.assertAll();
+		// softAssert.assertAll();
 	}
 
-	public void validateTrainingTypeMultiple(SoftAssert softAssert,String... expectedTypes) {
+	public void validateRatingOfCards(SoftAssert softAssert, String expectedRatingText) {
 
 		eleUtil.waitForLoaderToDisappear();
 
-		//SoftAssert softAssert = new SoftAssert();
+		if (idpCardViewList.isEmpty()) {
+			System.out.println("No Rating wise IDP  Cards Available");
+			return;
+		}
 
+		expectedRatingText = expectedRatingText.replaceAll("[^0-9.]", "");
+		double expectedRating = Double.parseDouble(expectedRatingText);
+
+		for (WebElement card : idpCardViewList) {
+
+			String ratingText = card.findElement(By.xpath(".//span[@class='rating_count']")).getText();
+			ratingText = ratingText.replaceAll("[^0-9.]", "");
+			double rating = Double.parseDouble(ratingText);
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
+
+			if (rating > expectedRating) {
+				softAssert.fail("❌ Unexpected status: " + rating + " | Training: " + trainingName);
+			}
+			System.out.println("Current Cards Rating: " + rating);
+		}
+	}
+
+	public LocalDate convertToDate(String dateText) {
+
+		// String DateFormate = myprofile.getDataFormateName();
+
+		try {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy", Locale.ENGLISH);
+			// "MM/dd/yyyy"
+			return LocalDate.parse(dateText, formatter);
+
+		} catch (Exception e) {
+			return null; // invalid format
+		}
+	}
+
+	public void validateDueAndOverdueFilter(SoftAssert softAssert, String filterType) {
+
+		eleUtil.waitForLoaderToDisappear();
+
+		if (idpCardViewList.isEmpty()) {
+			System.out.println("No Due date wise IDP  Cards Available");
+			return;
+		}
+
+		LocalDate today = LocalDate.now();
+
+		for (WebElement card : idpCardViewList) {
+
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
+			String dueDateText = eleUtil.getFieldValue(card, "Due Date");
+			// getDueDate(card);
+
+			if ("MISSING".equals(dueDateText)) {
+				softAssert.fail("❌ Due Date Label missing: " + trainingName);
+				continue;
+
+			} else if ("EMPTY".equals(dueDateText)) {
+				softAssert.fail("❌ Due date  value missing: " + trainingName);
+				continue;
+			}
+
+			LocalDate dueDate = convertToDate(dueDateText);
+
+			if (dueDate == null) {
+				softAssert.fail("❌ Invalid date format: " + trainingName);
+				continue;
+			}
+
+			// Due Filter Logic
+			if (filterType.equalsIgnoreCase("DUE")) {
+
+				if (dueDate.isBefore(today)) {
+					softAssert.fail("❌ Overdue card found in Due filter: " + trainingName + " | " + dueDateText);
+				}
+			}
+
+			// Overdue Filter Logic
+			else if (filterType.equalsIgnoreCase("OVERDUE")) {
+
+				if (!dueDate.isBefore(today)) {
+					softAssert.fail("❌ Non-overdue card found: " + trainingName + " | " + dueDateText);
+				}
+			}
+		}
+	}
+
+	public void validateTrainingGroupFilter(SoftAssert softAssert, String... filterType) {
+
+		eleUtil.waitForLoaderToDisappear();
+
+		if (idpCardViewList.isEmpty()) {
+			System.out.println("No Training Group Filter wise IDP  Cards Available");
+			return;
+		}
+
+		for (WebElement card : idpCardViewList) {
+
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
+			String groupText = eleUtil.getFieldValue(card, "Group");
+			// getDueDate(card);
+
+			if ("MISSING".equals(groupText)) {
+				softAssert.fail("❌ Group Label missing: " + trainingName);
+				continue;
+
+			} else if ("EMPTY".equals(groupText)) {
+				softAssert.fail("❌ Group  value missing: " + trainingName);
+				continue;
+			}
+			
+			boolean match = false;
+
+			for (String expected : filterType) {
+				if (groupText.equalsIgnoreCase(expected)) {
+					match = true;
+					break;
+				}
+			}
+
+			if (!match) {
+	            softAssert.fail("❌ Group mismatch in filter. Expected: " 
+	                + filterType + " but found: " + groupText 
+	                + " | Training: " + trainingName);
+	        }	
+		}
+	}
+	public void validateCategoryFilter(SoftAssert softAssert, String... filterType) {
+
+		eleUtil.waitForLoaderToDisappear();
+
+		if (idpCardViewList.isEmpty()) {
+			System.out.println("No Category Filter wise IDP  Cards Available");
+			return;
+		}
+
+		for (WebElement card : idpCardViewList) {
+
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
+			String CategoryText = eleUtil.getFieldValue(card, "Category");
+			// getDueDate(card);
+
+			if ("MISSING".equals(CategoryText)) {
+				softAssert.fail("❌ Category Label missing: " + trainingName);
+				continue;
+
+			} else if ("EMPTY".equals(CategoryText)) {
+				softAssert.fail("❌ Category  value missing: " + trainingName);
+				continue;
+			}
+			
+			boolean match = false;
+
+			for (String expected : filterType) {
+				if (CategoryText.equalsIgnoreCase(expected)) {
+					match = true;
+					break;
+				}
+			}
+
+			if (!match) {
+	            softAssert.fail("❌ Category mismatch in filter. Expected: " 
+	                + filterType + " but found: " + CategoryText 
+	                + " | Training: " + trainingName);
+	        }	
+		}
+	}
+
+	public void validateTrainingTypeMultiple(SoftAssert softAssert, String... expectedTypes) {
+
+		eleUtil.waitForLoaderToDisappear();
+		
 		for (WebElement card : idpCardViewList) {
 
 			String trainingType = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText()
@@ -1192,9 +1347,9 @@ public class IDPPage extends TestBase {
 			eleUtil.validateFieldsByType(card, trainingType, trainingName, softAssert);
 
 		}
-
-		//softAssert.assertAll();
 	}
-
 	
+	
+	
+
 }
