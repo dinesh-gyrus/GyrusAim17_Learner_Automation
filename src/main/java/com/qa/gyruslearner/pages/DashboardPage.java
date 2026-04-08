@@ -42,6 +42,15 @@ public class DashboardPage extends TestBase {
 	@FindBy(css = "div.k-scrollview")
 	WebElement SliderBanner;
 
+	@FindBy(tagName = "kendo-scrollview")
+	private WebElement slider;
+
+	@FindBy(css = "kendo-scrollview .k-scrollview-wrap .k-scrollview-view")
+	private List<WebElement> slides;
+
+	@FindBy(css = "kendo-scrollview .k-scrollview-wrap")
+	private WebElement scrollWrapper;
+
 	@FindBy(xpath = "//*[@title='Quick Links  ']")
 	WebElement btnQuickLinks;
 
@@ -232,12 +241,22 @@ public class DashboardPage extends TestBase {
 
 		// WebElement slider = driver.findElement(By.cssSelector("div.k-scrollview"));
 
-		WebElement slider = driver.findElement(By.tagName("kendo-scrollview"));
+		// WebElement slider = driver.findElement(By.tagName("kendo-scrollview"));
 
 		return eleUtil.isElementDisplayed(slider);
 
 	}
 
+	public int getSlideCount() {
+		return slides.size();
+	}
+
+	public String getSliderPosition() {
+		
+		String style = scrollWrapper.getDomAttribute("style");
+		return (style == null) ? "" : style;
+	}
+	
 	public boolean isQuickLinksDisplayed() {
 
 		return eleUtil.isElementDisplayed(btnQuickLinks);
@@ -549,7 +568,7 @@ public class DashboardPage extends TestBase {
 			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
 
 			// Title
-			String title = card.findElement(By.xpath(".//h3")).getText();
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
 
 			// Status
 			String status = card.findElement(By.xpath(".//span[contains(text(),'In progress')]")).getText();
@@ -557,46 +576,73 @@ public class DashboardPage extends TestBase {
 			// contains(text(),'Not Started')]"))
 
 			// Progress
-			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
+			String progress = card.findElement(By.xpath(".//p[contains(@class,'percentage')]")).getText();
+
+			// CardsImage
+			Boolean cardsImage = jsUtil.isImageLoaded(card.findElement(By.xpath(".//img[contains(@alt,'training')]")));
+			Boolean like = card.findElement(By.xpath(".//div[contains(@title,'Like')]")).isDisplayed();
+			Boolean dislike = card.findElement(By.xpath(".//div[contains(@title,'Dislike')]")).isDisplayed();
+			Boolean viewTrainingbutton = card.findElement(By.xpath(".//button[@title='View Training Details']"))
+					.isDisplayed();
+			Boolean addToFavorites = card.findElement(By.xpath(".//div[contains(@title,'Favorites')]")).isDisplayed();
+			Boolean addToPlaylist = card.findElement(By.xpath(".//div[contains(@title,'Add To Playlist')]"))
+					.isDisplayed();
 
 			// Print
-
 			System.out.println("In-Progress Card: " + (i + 1));
 			System.out.println("Training Type: " + Trainingtype);
-			System.out.println("Title: " + title);
+			System.out.println("Title: " + trainingName);
 			System.out.println("Status: " + status);
 			System.out.println("Progress: " + progress);
 
 			// Assertions
+			if (cardsImage == false) {
+				softAssert.fail("❌ Training  Image is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (like == false) {
+				softAssert.fail("❌ like icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (dislike == false) {
+				softAssert.fail("❌ Dislike icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (addToFavorites == false) {
+				softAssert.fail("❌ Add To Favorites icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (addToPlaylist == false) {
+				softAssert.fail("❌ add To Playlist icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (viewTrainingbutton == false) {
+				softAssert.fail("❌ view Training Button is missing in card  " + (i + 1) + " : " + trainingName);
+			}
 
 			if (Trainingtype.trim().isEmpty()) {
-				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + trainingName);
 			}
-			if (title.trim().isEmpty()) {
+			if (trainingName.trim().isEmpty()) {
 
 				softAssert.fail("❌ Training title is missing in card : " + (i + 1));
 			}
 
 			if (status.trim().isEmpty()) {
 
-				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
 			if (progress.trim().isEmpty()) {
 
-				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
 			if (status.contains("In progress")) {
-				if (progress.equals("100%") && progress.equals("0%")) {
+				if (progress.equals("100%") || progress.equals("0%")) {
 
-					softAssert.fail("❌ Status In progress  but  " + progress + " : " + title);
+					softAssert.fail("❌ Status In progress  but  " + progress + " : " + trainingName);
 				}
 
 			}
-			
+			eleUtil.validateCardsFieldsByTrainingType(card, Trainingtype, trainingName, softAssert);
 		}
-		
+
 		softAssert.assertAll();
 	}
 
@@ -642,47 +688,76 @@ public class DashboardPage extends TestBase {
 			// Training type
 			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
 			// Title
-			String title = card.findElement(By.xpath(".//h3")).getText();
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
 
 			// Status
 			String status = card.findElement(By.xpath(".//span[contains(text(),'Not Started')]")).getText();
 
 			// Progress
-			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
+			// xpath Fail Because Title name Start from % .//p[contains(text(),'%')]
+			String progress = card.findElement(By.xpath(".//p[contains(@class,'percentage')]")).getText();
+
+			// CardsImage
+			Boolean cardsImage = jsUtil.isImageLoaded(card.findElement(By.xpath(".//img[contains(@alt,'training')]")));
+			Boolean like = card.findElement(By.xpath(".//div[contains(@title,'Like')]")).isDisplayed();
+			Boolean dislike = card.findElement(By.xpath(".//div[contains(@title,'Dislike')]")).isDisplayed();
+			Boolean viewTrainingbutton = card.findElement(By.xpath(".//button[@title='View Training Details']"))
+					.isDisplayed();
+			Boolean addToFavorites = card.findElement(By.xpath(".//div[contains(@title,'Favorites')]")).isDisplayed();
+			Boolean addToPlaylist = card.findElement(By.xpath(".//div[contains(@title,'Add To Playlist')]"))
+					.isDisplayed();
 
 			// Print
 			System.out.println("Not Started Card :" + (i + 1));
 			System.out.println("Training Type: " + Trainingtype);
-			System.out.println("Title: " + title);
+			System.out.println("Title: " + trainingName);
 			System.out.println("Status: " + status);
 			System.out.println("Progress: " + progress);
 
 			// Assertions
+			if (cardsImage == false) {
+				softAssert.fail("❌ Training  Image is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (like == false) {
+				softAssert.fail("❌ like icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (dislike == false) {
+				softAssert.fail("❌ Dislike icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (addToFavorites == false) {
+				softAssert.fail("❌ Add To Favorites icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (addToPlaylist == false) {
+				softAssert.fail("❌ add To Playlist icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (viewTrainingbutton == false) {
+				softAssert.fail("❌ view Training Button is missing in card  " + (i + 1) + " : " + trainingName);
+			}
 
 			if (Trainingtype.trim().isEmpty()) {
-				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + trainingName);
 			}
-			if (title.trim().isEmpty()) {
+			if (trainingName.trim().isEmpty()) {
 
 				softAssert.fail("❌ Training title is missing in card : " + (i + 1));
 
 			}
 			if (status.trim().isEmpty()) {
-				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
 			if (progress.trim().isEmpty()) {
-				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
 			if (status.contains("Not Started")) {
 				if (!progress.equals("0%")) {
-					
-					softAssert.fail("❌ Certified but "+progress+" : " + title);
+
+					softAssert.fail("❌ Not Started  but " + progress + " : " + trainingName);
 				}
 
 			}
-			
+			eleUtil.validateCardsFieldsByTrainingType(card, Trainingtype, trainingName, softAssert);
 		}
 		softAssert.assertAll();
 	}
@@ -741,7 +816,7 @@ public class DashboardPage extends TestBase {
 			System.out.println("No My Schedule Cards Available");
 			return;
 		}
-		
+
 		SoftAssert softAssert = new SoftAssert();
 		System.out.println(" My Schedule Total List: " + MyScheduleList.size());
 
@@ -804,47 +879,76 @@ public class DashboardPage extends TestBase {
 			// Training type
 			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
 			// Title
-			String title = card.findElement(By.xpath(".//h3")).getText();
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
 			// Status
 			String status = card.findElement(By.xpath(".//span[contains(text(),'Not Started')]")).getText();
 			// .findElement(By.xpath(".//span[contains(text(),'In progress') or
 			// contains(text(),'Not Started')]"))
 
 			// Progress
-			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
+			// xpath Fail Titile Name Start from % .//p[contains(text(),'%')]
+			String progress = card.findElement(By.xpath(".//p[contains(@class,'percentage')]")).getText();
+
+			// CardsImage
+			Boolean cardsImage = jsUtil.isImageLoaded(card.findElement(By.xpath(".//img[contains(@alt,'training')]")));
+			Boolean like = card.findElement(By.xpath(".//div[contains(@title,'Like')]")).isDisplayed();
+			Boolean dislike = card.findElement(By.xpath(".//div[contains(@title,'Dislike')]")).isDisplayed();
+			Boolean viewTrainingbutton = card.findElement(By.xpath(".//button[@title='View Training Details']"))
+					.isDisplayed();
+			Boolean addToFavorites = card.findElement(By.xpath(".//div[contains(@title,'Favorites')]")).isDisplayed();
+			Boolean addToPlaylist = card.findElement(By.xpath(".//div[contains(@title,'Add To Playlist')]"))
+					.isDisplayed();
 
 			// Print
 			System.out.println("Not Started Card :" + (i + 1));
 			System.out.println("Training Type: " + Trainingtype);
-			System.out.println("Title: " + title);
+			System.out.println("Title: " + trainingName);
 			System.out.println("Status: " + status);
 			System.out.println("Progress: " + progress);
 
 			// Assertions
+			if (cardsImage == false) {
+				softAssert.fail("❌ Training  Image is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (like == false) {
+				softAssert.fail("❌ like icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (dislike == false) {
+				softAssert.fail("❌ Dislike icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (addToFavorites == false) {
+				softAssert.fail("❌ Add To Favorites icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (addToPlaylist == false) {
+				softAssert.fail("❌ add To Playlist icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (viewTrainingbutton == false) {
+				softAssert.fail("❌ view Training Button is missing in card  " + (i + 1) + " : " + trainingName);
+			}
 
 			if (Trainingtype.trim().isEmpty()) {
-				
-				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + title);
+
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + trainingName);
 			}
-			if (title.trim().isEmpty()) {
+			if (trainingName.trim().isEmpty()) {
 				softAssert.fail("❌ Title is missing in card  " + (i + 1) + " : " + Trainingtype);
 			}
 
 			if (status.trim().isEmpty()) {
-				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
 			if (progress.trim().isEmpty()) {
-				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
 			if (status.contains("Not Started")) {
 				if (!progress.equals("0%")) {
-					softAssert.fail("❌ Not Started but "+progress+" : " + title);
+					softAssert.fail("❌ Not Started but " + progress + " : " + trainingName);
 				}
 
 			}
-			
+			eleUtil.validateCardsFieldsByTrainingType(card, Trainingtype, Trainingtype, softAssert);
 		}
 		softAssert.assertAll();
 	}
@@ -879,52 +983,78 @@ public class DashboardPage extends TestBase {
 			// Training type
 			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
 			// Title
-			String title = card.findElement(By.xpath(".//h3")).getText();
+			String trainingName = card.findElement(By.xpath(".//h3")).getText();
 			// Status
 			String status = card
 					.findElement(By.xpath(".//span[contains(text(),'Not Started') or contains(text(),'In progress')]"))
 					.getText();
-
 			// Progress
-			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
+			String progress = card.findElement(By.xpath(".//p[contains(@class,'percentage')]")).getText();
+			// CardsImage
+			Boolean cardsImage = jsUtil.isImageLoaded(card.findElement(By.xpath(".//img[contains(@alt,'training')]")));
+			Boolean like = card.findElement(By.xpath(".//div[contains(@title,'Like')]")).isDisplayed();
+			Boolean dislike = card.findElement(By.xpath(".//div[contains(@title,'Dislike')]")).isDisplayed();
+			Boolean viewTrainingbutton = card.findElement(By.xpath(".//button[@title='View Training Details']"))
+					.isDisplayed();
+			Boolean addToFavorites = card.findElement(By.xpath(".//div[contains(@title,'Favorites')]")).isDisplayed();
+			Boolean addToPlaylist = card.findElement(By.xpath(".//div[contains(@title,'Add To Playlist')]"))
+					.isDisplayed();
 
 			// Print
 			System.out.println("Not Started Card :" + (i + 1));
 			System.out.println("Training Type: " + Trainingtype);
-			System.out.println("Title: " + title);
+			System.out.println("Title: " + trainingName);
 			System.out.println("Status: " + status);
 			System.out.println("Progress: " + progress);
 
 			// Assertions
+			if (cardsImage == false) {
+				softAssert.fail("❌ Training  Image is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (like == false) {
+				softAssert.fail("❌ like icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (dislike == false) {
+				softAssert.fail("❌ Dislike icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (addToFavorites == false) {
+				softAssert.fail("❌ Add To Favorites icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (addToPlaylist == false) {
+				softAssert.fail("❌ add To Playlist icon is missing in card  " + (i + 1) + " : " + trainingName);
+			}
+			if (viewTrainingbutton == false) {
+				softAssert.fail("❌ view Training Button is missing in card  " + (i + 1) + " : " + trainingName);
+			}
 
 			if (Trainingtype.trim().isEmpty()) {
-				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + trainingName);
 			}
-			if (title.trim().isEmpty()) {
+			if (trainingName.trim().isEmpty()) {
 				softAssert.fail("❌ Title is missing in card  " + (i + 1) + " : " + Trainingtype);
 			}
 
 			if (status.trim().isEmpty()) {
-				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Status is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
 			if (progress.trim().isEmpty()) {
-				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + title);
+				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
 			if (status.contains("Not Started") || status.contains("In progress")) {
 
 				if (progress.equals("100%")) {
 					if (status.contains("Not Started")) {
-						softAssert.fail("❌ Not Started but "+progress+" : " + title);
-						
+						softAssert.fail("❌ Not Started but " + progress + " : " + trainingName);
+
 					} else {
-						softAssert.fail("❌ In progress but "+progress+" : " + title);
+						softAssert.fail("❌ In progress but " + progress + " : " + trainingName);
 					}
 				}
 
 			}
-			
+			eleUtil.validateCardsFieldsByTrainingType(card, Trainingtype, trainingName, softAssert);
 		}
 		softAssert.assertAll();
 	}
@@ -1088,7 +1218,7 @@ public class DashboardPage extends TestBase {
 			}
 
 		}
-		
+
 		softAssert.assertAll();
 	}
 
@@ -1126,6 +1256,8 @@ public class DashboardPage extends TestBase {
 			// Progress
 			String progress = card.findElement(By.xpath(".//p[contains(text(),'%')]")).getText();
 
+			Boolean viewDetailbutton = card.findElement(By.xpath(".//button[@title='View Details']")).isDisplayed();
+
 			// Print
 			System.out.println("Certification Card No :" + (i + 1));
 			System.out.println("Certification Image: " + certificationImage);
@@ -1137,6 +1269,9 @@ public class DashboardPage extends TestBase {
 
 			if (certificationImage == false) {
 				softAssert.fail("❌ Certification Image is missing in card  " + (i + 1) + " : " + certificationName);
+			}
+			if (viewDetailbutton == false) {
+				softAssert.fail("❌ view Training Button is missing in card  " + (i + 1) + " : " + certificationName);
 			}
 			if (certificationName.trim().isEmpty()) {
 				softAssert.fail("❌ certification Name  is missing in card  " + (i + 1));
@@ -1152,16 +1287,16 @@ public class DashboardPage extends TestBase {
 
 			if (status.equals("Certified")) {
 				if (!progress.equals("100%")) {
-					softAssert.fail("❌ Certified but "+progress+" : " + certificationName);
+					softAssert.fail("❌ Certified but " + progress + " : " + certificationName);
 				}
 
 			} else if (status.contains("Recertified")) {
 				if (!progress.equals("0%")) {
-					softAssert.fail("❌ Recertified but "+progress+" : " + certificationName);
+					softAssert.fail("❌ Recertified but " + progress + " : " + certificationName);
 				}
 			} else if (status.contains("Not Certified")) {
 				if (progress.equals("100%")) {
-					softAssert.fail("❌ Not Certified but "+progress+" : " + certificationName);
+					softAssert.fail("❌ Not Certified but " + progress + " : " + certificationName);
 				}
 			}
 		}
@@ -1228,6 +1363,5 @@ public class DashboardPage extends TestBase {
 		}
 		softAssert.assertAll();
 	}
-	
 
 }

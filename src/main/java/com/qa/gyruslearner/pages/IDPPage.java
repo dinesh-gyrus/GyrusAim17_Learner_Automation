@@ -1064,7 +1064,7 @@ public class IDPPage extends TestBase {
 
 			if (!Trainingtype.equals("Non-Sequence Training") && !Trainingtype.equals("Sequence Training")) {
 
-				Boolean addToFavorites = card.findElement(By.xpath(".//div[contains(@title,'Add To Favorites')]"))
+				Boolean addToFavorites = card.findElement(By.xpath(".//div[contains(@title,'Favorites')]"))
 						.isDisplayed();
 				Boolean addToPlaylist = card.findElement(By.xpath(".//div[contains(@title,'Add To Playlist')]"))
 						.isDisplayed();
@@ -1073,15 +1073,15 @@ public class IDPPage extends TestBase {
 					softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
 				}
 				if (addToPlaylist == false) {
-					softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
+					softAssert.fail("❌ add To Playlist is missing in card  " + (i + 1) + " : " + TrainingName);
 				}
 			}
 
 			if (like == false) {
-				softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
+				softAssert.fail("❌ like icon is missing in card  " + (i + 1) + " : " + TrainingName);
 			}
 			if (dislike == false) {
-				softAssert.fail("❌ Add To Favorites is missing in card  " + (i + 1) + " : " + TrainingName);
+				softAssert.fail("❌ Dislike icon is missing in card  " + (i + 1) + " : " + TrainingName);
 			}
 
 			if (status.contains("Not started")) {

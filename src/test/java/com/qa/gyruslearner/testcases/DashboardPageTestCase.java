@@ -1,10 +1,10 @@
 package com.qa.gyruslearner.testcases;
 
 
-import java.util.List;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import java.time.Duration;
+
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
@@ -74,21 +74,38 @@ public class DashboardPageTestCase extends TestBase {
 	}
 
 	@Test(priority = 4)
-	public void verifyWelcomeHeadertextTest() {
+	public void verifyWelcomeHeadertextAndSlidersTest() {
 
 		String welcomeBannerText = "Welcome To Gyrus Systems!";
-
+				
 		Assert.assertTrue(dashboard.isWelcomeTextDisplayed(), "Welcome Banner text not displayed!");
+		
 		Assert.assertEquals(dashboard.getWelcomeText().trim(), welcomeBannerText, "welcome Banner text mismatch!");
 
-		Assert.assertTrue(dashboard.isSliderImageDisplay(), "Slider is not displayed!");
+		Assert.assertTrue(dashboard.isSliderImageDisplay(), "❌ Slider is not displayed!");
+		
+		Assert.assertTrue(dashboard.getSlideCount() > 1,"❌ Less than 2 slides!");
+		
+		System.out.println("Slide count: " + dashboard.getSlideCount());
+		
+		String before = dashboard.getSliderPosition();
+		System.out.println("Before: " + before);
 
-		List<WebElement> slides = driver.findElements(By.cssSelector("kendo-scrollview .k-scrollview-wrap > div"));
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MEDIUM_TIME_OUT));
 
-		System.out.println(slides.size());
+		boolean isMoving = wait.until(d -> {
+		    String after = dashboard.getSliderPosition();
+		    System.out.println("After: " + after);
+		    return !after.equals(before);
+		});
 
-		Assert.assertTrue(slides.size() > 1, "Slider has less than 2 slides, cannot auto-slide!");
+		Assert.assertTrue(isMoving, "❌ Slider is NOT auto-sliding!");
 
+		//List<WebElement> slides = driver.findElements(By.cssSelector("kendo-scrollview .k-scrollview-wrap > div"));
+
+		//System.out.println("Slider image count:" +slides.size());
+
+		//Assert.assertTrue(slides.size() > 1, "Slider has less than 2 slides, cannot auto-slide!");
 	}
 
 	@Test(priority = 5)

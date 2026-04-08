@@ -309,6 +309,40 @@ public class ElementUtil extends TestBase {
 			}
 		}
 	}
+	
+	public void validateCardsFieldsByTrainingType(WebElement card, String trainingType, String trainingName, SoftAssert softAssert) {
+
+		Map<String, List<String>> map = new HashMap<>();
+
+		map.put("Assessment", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("Document", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("External Link", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("ILT", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("MSTeams", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("Learning Path", Arrays.asList("Training Code", "Required For", "Total Trainings", "Type"));
+		map.put("eLearning", Arrays.asList("Training Code", "Due Date", "Required For", "Group"));
+		map.put("Certification",
+				Arrays.asList("Completion Date", "Valid till", "Certification Window", "Total Trainings"));
+
+		for (String key : map.keySet()) {
+
+			if (trainingType.contains(key)) {
+
+				for (String field : map.get(key)) {
+
+					String value = getFieldValue(card, field);
+
+					if ("MISSING".equals(value)) {
+						softAssert.fail("❌ " + field + " Label missing: " + trainingName);
+
+					} else if ("EMPTY".equals(value)) {
+						softAssert.fail("❌ " + field + " value missing: " + trainingName);
+					}
+
+				}
+			}
+		}
+	}
 
 	public boolean isElementPresent(By locator) {
 		return driver.findElements(locator).size() > 0;

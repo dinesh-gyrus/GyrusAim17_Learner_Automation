@@ -677,7 +677,7 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 23, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 23, enabled = true)
 	public void validateIdealCoachTextTest() {
 
 		
