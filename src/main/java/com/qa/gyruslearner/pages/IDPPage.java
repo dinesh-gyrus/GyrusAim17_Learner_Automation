@@ -90,6 +90,7 @@ public class IDPPage extends TestBase {
 
 	@FindBy(id = "lbl_0")
 	WebElement chkFree;
+	
 
 	@FindBy(xpath = "//div[contains(@title,'Add To Favorites')]")
 	WebElement favoritesicon;
@@ -171,6 +172,12 @@ public class IDPPage extends TestBase {
 
 	@FindBy(xpath = "//kendo-multiselect[@name='category']//input")
 	WebElement txtCategorySelection;
+	
+	@FindBy(xpath = "//kendo-icon[contains(@class,'k-i-close')]")
+	WebElement advanceFilterCloseicon;
+	
+	@FindBy(xpath = "//span[contains(text(),'Applied Filters')]")
+	WebElement appliedFiltersCount;
 
 	public boolean isMyLearningMenuDisplay() {
 
@@ -274,8 +281,12 @@ public class IDPPage extends TestBase {
 
 	public void doclickIdeaCouchButton() {
 
-		jsUtil.scrollIntoViewCenter(btnidealCouch);
-		eleUtil.clickElementWhenReady(btnidealCouch, AppConstants.MAX_TIME_OUT);
+		try {
+			eleUtil.clickElementWhenReady(btnidealCouch, AppConstants.MAX_TIME_OUT);
+		} catch (Exception e) {
+			((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnidealCouch);
+		}
+		
 	}
 	
 
@@ -869,6 +880,26 @@ public class IDPPage extends TestBase {
 		}
 		eleUtil.waitForLoaderToDisappear();
 	}
+	
+	public boolean isSearchFieldDisplay() {
+
+		eleUtil.waitForLoaderToDisappear();
+		jsUtil.scrollIntoViewCenter(txtSearchTraining);
+		return eleUtil.visibleElementWhenReady(txtSearchTraining, AppConstants.MEDIUM_TIME_OUT);
+	}
+
+	public boolean isSearchFieldEnable() {
+
+		jsUtil.scrollIntoViewCenter(txtSearchTraining);
+		return eleUtil.isElementEnable(txtSearchTraining);
+	}
+	
+	public void doSearch(String Search) {
+		
+		jsUtil.scrollIntoViewCenter(txtSearchTraining);
+		eleUtil.doSendKeys(txtSearchTraining, Search);
+	}
+	
 
 	public boolean isAdvanceFilterBtnDisplay() {
 
@@ -915,19 +946,32 @@ public class IDPPage extends TestBase {
 	}
 
 	public void validatAdvancedFilterClear() {
-
+		
 		Assert.assertTrue(isAdvanceFilterBtnDisplay(), "Advance Filter button  Advance Filter was not visible");
 		Assert.assertTrue(isAdvanceFilterBtnEnable(), " Advance Filter button  Advance Filter  was not enabled");
 
 		doclickAdvanceFilterBtnQuickFilter();
+		
+		// Phase-2 New Funcationlity  added Cover Scanarios 
+		
+		//String filtersCount = appliedFiltersCount.getText();
+		//filtersCount = filtersCount.replaceAll("[^0-9.]", "");
+		//int count = Integer.parseInt(filtersCount);
+		
+		//if(count>0) {
+			
+			Assert.assertTrue(isClearAllBtnDisplay(), "Clear All button  Advance Filter was not visible");
 
-		Assert.assertTrue(isClearAllBtnDisplay(), "Clear All button  Advance Filter was not visible");
+			doclickClearAllbtnForAdvanceFiter();
 
-		doclickClearAllbtnForAdvanceFiter();
+			doclickApplyButtonQuickFilter();
 
-		doclickApplyButtonQuickFilter();
-
-		eleUtil.waitForLoaderToDisappear();
+			eleUtil.waitForLoaderToDisappear();
+			
+		//}else {
+			
+		//	eleUtil.doClick(advanceFilterCloseicon);
+		//}
 
 	}
 

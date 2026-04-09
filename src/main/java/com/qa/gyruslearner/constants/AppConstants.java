@@ -5,7 +5,7 @@ import com.qa.gyruslearner.base.TestBase;
 public class AppConstants extends TestBase {
 	
 	
-	public final static String BaseUrl=prop.getProperty("golivebaseUrl");
+	public final static String BaseUrl=prop.getProperty("prelivebaseUrl");
 
 	public final static int DEFAULT_TIME_OUT = 5;
 	public final static int SHORT_TIME_OUT = 10;
@@ -58,6 +58,8 @@ public class AppConstants extends TestBase {
 		public static final String CFR21_SECURITY_MYPROFILE_SHEET_NAME = "CFR21Security";
 		public static final String RATING_QUICKFILTER_IDPPAGE_SHEET_NAME ="FilterRating";
 		public static final String DUEDATE_QUICKFILTER_IDPPAGE_SHEET_NAME ="FilterDueDate";
+		public static final String SEARCH_IDPPAGE_SHEET_NAME ="SearchData";
+		
 		
 		
 		

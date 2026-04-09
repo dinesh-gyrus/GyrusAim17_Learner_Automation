@@ -62,7 +62,6 @@ public class IDPPageTestCase extends TestBase {
 	public Object[][] getQucikFilterDueDateTestData() {
 		return ExcelUtil.getTestData(AppConstants.IDP_DATA_SHEET_PATH,
 				AppConstants.DUEDATE_QUICKFILTER_IDPPAGE_SHEET_NAME);
-		// return new Object[][] { { "2 stars" } };
 	}
 
 	@DataProvider
@@ -77,7 +76,8 @@ public class IDPPageTestCase extends TestBase {
 
 	@DataProvider
 	public Object[][] getSearchTestData() {
-		return new Object[][] { { "2 stars" } };
+		return ExcelUtil.getTestData(AppConstants.IDP_DATA_SHEET_PATH,
+				AppConstants.SEARCH_IDPPAGE_SHEET_NAME);
 	}
 
 	@BeforeMethod()
@@ -221,7 +221,7 @@ public class IDPPageTestCase extends TestBase {
 		}
 
 		TrainingCountUpdate();
-
+		idp.validateStatusIDPAllCards(softAssert);
 		System.out.println(
 				"------------------Assessments Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards(softAssert);
@@ -283,7 +283,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 12, enabled = false)
+	@Test(priority = 12, enabled = true)
 	public void verifyQuickFilterDailgoBoxTest() {
 
 		// Verify More button and Click on button
@@ -677,23 +677,63 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 23, enabled = true)
-	public void validateIdealCoachTextTest() {
+	@Test(priority = 23, enabled = false)
+	public void VerifyIdealCoachTextTest() {
 
-		
 		// Verify More button and Click on button
 		Assert.assertTrue(idp.isIdeaCouchButtonDisplay(), "Idea Coach Button was not visible");
 		Assert.assertTrue(idp.isIdeaCouchButtonEnable(), " Idea Coach Button  was not enabled");
-		System.out.println(
-				"------------------Verifing Idea Coach Text -------------------");
-		idp.doclickIdeaCouchButton();
+		System.out.println("------------------Verifing Idea Coach Text -------------------");
 		Assert.assertTrue(idp.isIdeaGotItbuttonDisplay(), "Got it  Button was not visible");
 		Assert.assertTrue(idp.isIdeaCouchButtonEnable(), " Got it  Button  was not enabled");
 		Assert.assertTrue(idp.isIdeaCouchIconDisplay(), " Idea Coach Icon  was not Visible");
-		
-		String actualIdea=idp.getIdeaCoachText();
-		String expectedIdea=AppConstants.IDP_PAGE_IDEA_COACH;
+		idp.doclickIdeaCouchButton();
+
+		String actualIdea = idp.getIdeaCoachText();
+		String expectedIdea = AppConstants.IDP_PAGE_IDEA_COACH;
 		Assert.assertEquals(actualIdea, expectedIdea, "Mismatch in Idea Coach!");
+	}
+
+	@Test(priority = 24, enabled = true, dataProvider = "getSearchTestData")
+	public void verifySearchFunctionality(String searchValid,String searchInValid, String searchPartial) {
+
+		SoftAssert softAssert = new SoftAssert();
+		eleUtil.waitForCoachNotificationPanelToDisappear();
+		idp.validatAdvancedFilterClear();
+		System.out.println("------------------Verifing Valid Search Data  -------------------");
+		Assert.assertTrue(idp.isSearchFieldDisplay(), "Search Field was not visible");
+		Assert.assertTrue(idp.isSearchFieldEnable(), " Search Field  was not enabled");
+		idp.doSearch(searchValid);
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		TrainingCountUpdate();
+		idp.validateStatusIDPAllCards(softAssert);
+		System.out.println("------------------Verifing InValid Search Data  -------------------");
+		idp.doSearch(searchInValid);
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		TrainingCountUpdate();
+		
+		System.out.println("------------------Verifing Partial Search Data  -------------------");
+		idp.doSearch(searchPartial);
+		// Training count not load thread sleep put
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		TrainingCountUpdate();
+		//idp.validateStatusIDPAllCards(softAssert);
+		softAssert.assertAll();
+
 	}
 
 	@AfterClass

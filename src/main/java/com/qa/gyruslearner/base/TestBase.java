@@ -65,7 +65,7 @@ public class TestBase {
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TestUtil.PAGE_LOAD_TIMEOUT));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TestUtil.IMPLICIT_WAIT));
 
-		driver.get(prop.getProperty("goliveUrl"));
+		driver.get(prop.getProperty("preLiveUrl"));
 	}
 	
 }

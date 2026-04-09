@@ -183,6 +183,20 @@ public class ElementUtil extends TestBase {
 			System.out.println("Loader not found or already disappeared");
 		}
 	}
+	public void waitForCoachNotificationPanelToDisappear() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
+
+		By coachNotificationPanel = By.id("coachNotification");
+
+		try {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(coachNotificationPanel));
+		} catch (Exception e) {
+			System.out.println("coach Notification Panel not found or already disappeared");
+		}
+	}
+	
+	
 
 	public String doGetElementText(WebElement loginHeader) {
 
