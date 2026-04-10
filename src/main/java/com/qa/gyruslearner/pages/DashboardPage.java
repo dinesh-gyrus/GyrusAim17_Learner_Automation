@@ -33,7 +33,7 @@ public class DashboardPage extends TestBase {
 		jsUtil = new JavaScriptUtil();
 	}
 
-	@FindBy(xpath = "//*[@alt='Gyrus Logo']")
+	@FindBy(xpath = "//img[@alt='Gyrus Logo']")
 	WebElement companyLogoDashBoard;
 
 	@FindBy(xpath = "//*[text()='Welcome To Gyrus Systems!']")
@@ -223,8 +223,8 @@ public class DashboardPage extends TestBase {
 
 	public boolean isCompnayLogoInDashBoardDisplayed() {
 
-		return eleUtil.isElementDisplayed(companyLogoDashBoard);
-		// return jsUtil.isImageLoaded(companyLogoDashBoard);
+		//return eleUtil.isElementDisplayed(companyLogoDashBoard);
+		return jsUtil.isImageLoaded(companyLogoDashBoard);
 	}
 
 	public boolean isWelcomeTextDisplayed() {

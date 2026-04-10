@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Gyrus Automation Suite]">
+  <listeners>
+    <listener class-name="com.qa.gyruslearner.listeners.TestListeners"/>
+  </listeners>
+  <test thread-count="5" name="Automation Smoke Testing(failed)">
     <classes>
       <class name="com.qa.gyruslearner.testcases.DashboardPageTestCase">
         <methods>
           <include name="tearDown"/>
           <include name="verifyAssignedTrainingsRecentlyAssignedDataTest"/>
           <include name="setUp"/>
-          <include name="verifyLearningStatusInProgressDataTest"/>
-          <include name="VerifyCompanyLogoInDashBoardTest"/>
+          <include name="verifyLearningStatusNotStartedDataTest"/>
           <include name="pageRefresh"/>
         </methods>
       </class> <!-- com.qa.gyruslearner.testcases.DashboardPageTestCase -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Automation Smoke Testing(failed) -->
+</suite> <!-- Failed suite [Gyrus Automation Suite] -->
