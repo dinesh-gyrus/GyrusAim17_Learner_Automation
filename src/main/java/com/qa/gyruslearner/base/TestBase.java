@@ -25,6 +25,7 @@ public class TestBase {
 		try {
 			prop = new Properties();
 			String currentDir = System.getProperty("user.dir");
+			System.out.println("Project Dir = " + currentDir );
 			FileInputStream ip = new FileInputStream(currentDir+"\\src\\test\\resources\\config\\config.properties");
 			prop.load(ip);
 
@@ -40,6 +41,8 @@ public class TestBase {
 	public static void initialazation() {
 
 		String browserName = prop.getProperty("browser");
+		System.out.println("Browser = " + browserName);
+		
 		if (browserName.equalsIgnoreCase("chrome")) {
 			
 			  ChromeOptions options = new ChromeOptions(); 
