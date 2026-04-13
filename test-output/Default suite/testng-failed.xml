@@ -8,7 +8,6 @@
           <include name="tearDown"/>
           <include name="verifyAssignedTrainingsRecentlyAssignedDataTest"/>
           <include name="setUp"/>
-          <include name="verifyLearningStatusInProgressDataTest"/>
           <include name="VerifyCompanyLogoInDashBoardTest"/>
           <include name="pageRefresh"/>
         </methods>

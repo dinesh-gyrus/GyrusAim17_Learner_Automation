@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\Dinesh Patil\AppData\Local\Temp\testng-eclipse-810962847\testng-customsuite.xml</span>
+                    <span>C:\Users\Dinesh Patil\AppData\Local\Temp\testng-eclipse-1798268443\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">20 methods, 3 failed,   17 passed</span>
+                    <span class="method-stats">20 methods, 2 failed,   18 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -109,11 +109,6 @@
                       <span>
                         <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="com.qa.gyruslearner.testcases.DashboardPageTestCase" class="method navigator-link" hash-for-method="verifyAssignedTrainingsRecentlyAssignedDataTest">verifyAssignedTrainingsRecentlyAssignedDataTest</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="com.qa.gyruslearner.testcases.DashboardPageTestCase" class="method navigator-link" hash-for-method="verifyLearningStatusInProgressDataTest">verifyLearningStatusInProgressDataTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -163,6 +158,11 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Default_suite" title="com.qa.gyruslearner.testcases.DashboardPageTestCase" class="method navigator-link" hash-for-method="verifyLeaderboardDataTest">verifyLeaderboardDataTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="com.qa.gyruslearner.testcases.DashboardPageTestCase" class="method navigator-link" hash-for-method="verifyLearningStatusInProgressDataTest">verifyLearningStatusInProgressDataTest</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -233,11 +233,11 @@
                   <a name="VerifyCompanyLogoInDashBoardTest">
                   </a> <!-- VerifyCompanyLogoInDashBoardTest -->
                   <span class="method-name">VerifyCompanyLogoInDashBoardTest</span>
-                  <div class="stack-trace">java.lang.AssertionError: Company logo is not displayed on the DashBoard page! expected [true] but found [false]
+                  <div class="stack-trace">java.lang.AssertionError: Company logo Images is not Loaded  on the DashBoard page! expected [true] but found [false]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1578)
 	at org.testng.Assert.assertTrue(Assert.java:57)
-	at com.qa.gyruslearner.testcases.DashboardPageTestCase.VerifyCompanyLogoInDashBoardTest(DashboardPageTestCase.java:72)
+	at com.qa.gyruslearner.testcases.DashboardPageTestCase.VerifyCompanyLogoInDashBoardTest(DashboardPageTestCase.java:74)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -277,51 +277,8 @@
 	❌ Not Started but 100% : Test05Assessment
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.DashboardPage.validateAssignedTrainingsRecentlyAssignedCards(DashboardPage.java:953)
-	at com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsRecentlyAssignedDataTest(DashboardPageTestCase.java:270)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-	at org.testng.TestRunner.privateRun(TestRunner.java:819)
-	at org.testng.TestRunner.run(TestRunner.java:619)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-	at org.testng.TestNG.runSuites(TestNG.java:1134)
-	at org.testng.TestNG.run(TestNG.java:1101)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="verifyLearningStatusInProgressDataTest">
-                  </a> <!-- verifyLearningStatusInProgressDataTest -->
-                  <span class="method-name">verifyLearningStatusInProgressDataTest</span>
-                  <div class="stack-trace">java.lang.AssertionError: The following asserts failed:
-	❌ Status In progress  but  0% : 001_ILT,
-	❌ Status In progress  but  0% : 09022023 MS Teams,
-	❌ Status In progress  but  0% : 10425_ILT
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at com.qa.gyruslearner.pages.DashboardPage.validateLearningInProgressCards(DashboardPage.java:646)
-	at com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyLearningStatusInProgressDataTest(DashboardPageTestCase.java:237)
+	at com.qa.gyruslearner.pages.DashboardPage.validateAssignedTrainingsRecentlyAssignedCards(DashboardPage.java:970)
+	at com.qa.gyruslearner.testcases.DashboardPageTestCase.verifyAssignedTrainingsRecentlyAssignedDataTest(DashboardPageTestCase.java:272)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -418,6 +375,13 @@
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
+                  <a name="verifyLearningStatusInProgressDataTest">
+                  </a> <!-- verifyLearningStatusInProgressDataTest -->
+                  <span class="method-name">verifyLearningStatusInProgressDataTest</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="verifyLearningStatusNotStartedDataTest">
                   </a> <!-- verifyLearningStatusNotStartedDataTest -->
                   <span class="method-name">verifyLearningStatusNotStartedDataTest</span>
@@ -484,7 +448,7 @@
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\Dinesh Patil\AppData\Local\Temp\testng-eclipse-810962847\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\Dinesh Patil\AppData\Local\Temp\testng-eclipse-1798268443\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -535,85 +499,85 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(20);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'verifyLearningStatusInProgressDataTest')
+data.setCell(0, 1, 'verifyCalenderDisplayTest')
 data.setCell(0, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(0, 3, 28254);
+data.setCell(0, 3, 31374);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'verifyActivityFeedsDataTest')
+data.setCell(1, 1, 'verifyLearningStatusInProgressDataTest')
 data.setCell(1, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(1, 3, 10411);
+data.setCell(1, 3, 21228);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'verifyAssignedTrainingsDueDataTest')
 data.setCell(2, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(2, 3, 10293);
+data.setCell(2, 3, 10265);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'verifyStatisticsWithFilters')
+data.setCell(3, 1, 'verifyActivityFeedsDataTest')
 data.setCell(3, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(3, 3, 8803);
+data.setCell(3, 3, 9340);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'verifyAssignedTrainingsOverDueDataTest')
+data.setCell(4, 1, 'verifyStatisticsWithFilters')
 data.setCell(4, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(4, 3, 5937);
+data.setCell(4, 3, 8524);
 data.setCell(5, 0, 5)
 data.setCell(5, 1, 'verifyLearningStatusNotStartedDataTest')
 data.setCell(5, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(5, 3, 5268);
+data.setCell(5, 3, 4821);
 data.setCell(6, 0, 6)
-data.setCell(6, 1, 'verifyStatisticsDisplayed')
+data.setCell(6, 1, 'verifyAssignedTrainingsOverDueDataTest')
 data.setCell(6, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(6, 3, 3118);
+data.setCell(6, 3, 4339);
 data.setCell(7, 0, 7)
-data.setCell(7, 1, 'verifyWelcomeHeadertextAndSlidersTest')
+data.setCell(7, 1, 'verifyStatisticsDisplayed')
 data.setCell(7, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(7, 3, 3028);
+data.setCell(7, 3, 3910);
 data.setCell(8, 0, 8)
-data.setCell(8, 1, 'verifyCalenderDisplayTest')
+data.setCell(8, 1, 'verifyWelcomeHeadertextAndSlidersTest')
 data.setCell(8, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(8, 3, 2363);
+data.setCell(8, 3, 2535);
 data.setCell(9, 0, 9)
 data.setCell(9, 1, 'VerifyCompanyLogoInDashBoardTest')
 data.setCell(9, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(9, 3, 2270);
+data.setCell(9, 3, 2309);
 data.setCell(10, 0, 10)
 data.setCell(10, 1, 'verifyAssignedTrainingsRecentlyAssignedDataTest')
 data.setCell(10, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(10, 3, 2151);
+data.setCell(10, 3, 2123);
 data.setCell(11, 0, 11)
 data.setCell(11, 1, 'verifyCertificationsDataTest')
 data.setCell(11, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(11, 3, 1463);
+data.setCell(11, 3, 1267);
 data.setCell(12, 0, 12)
 data.setCell(12, 1, 'verifymainMenuItemsDataTest')
 data.setCell(12, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(12, 3, 1348);
+data.setCell(12, 3, 1159);
 data.setCell(13, 0, 13)
-data.setCell(13, 1, 'verifyProfilePopUpTest')
+data.setCell(13, 1, 'verifyQuickLinksTest')
 data.setCell(13, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(13, 3, 612);
+data.setCell(13, 3, 850);
 data.setCell(14, 0, 14)
 data.setCell(14, 1, 'verifyMySheduleDataTest')
 data.setCell(14, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(14, 3, 592);
+data.setCell(14, 3, 582);
 data.setCell(15, 0, 15)
-data.setCell(15, 1, 'verifyQuickLinksTest')
+data.setCell(15, 1, 'verifyProfilePopUpTest')
 data.setCell(15, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(15, 3, 564);
+data.setCell(15, 3, 501);
 data.setCell(16, 0, 16)
 data.setCell(16, 1, 'verifyRecentBadgesDataTest')
 data.setCell(16, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(16, 3, 205);
+data.setCell(16, 3, 201);
 data.setCell(17, 0, 17)
 data.setCell(17, 1, 'verifyLeaderboardDataTest')
 data.setCell(17, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(17, 3, 130);
+data.setCell(17, 3, 121);
 data.setCell(18, 0, 18)
 data.setCell(18, 1, 'dashBoardUrlTest')
 data.setCell(18, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(18, 3, 82);
+data.setCell(18, 3, 73);
 data.setCell(19, 0, 19)
 data.setCell(19, 1, 'dashBoardPageTitleTest')
 data.setCell(19, 2, 'com.qa.gyruslearner.testcases.DashboardPageTestCase')
-data.setCell(19, 3, 27);
+data.setCell(19, 3, 44);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
@@ -666,173 +630,171 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">7871 ms</span>
+                <span class="method-start">6901 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">dashBoardUrlTest</span>
-                <span class="method-start">14457 ms</span>
+                <span class="method-start">11926 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">14556 ms</span>
+                <span class="method-start">12006 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">dashBoardPageTitleTest</span>
-                <span class="method-start">14566 ms</span>
+                <span class="method-start">12021 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">14601 ms</span>
+                <span class="method-start">12074 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">VerifyCompanyLogoInDashBoardTest</span>
-                <span class="method-start">14626 ms</span>
+                <span class="method-start">12127 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">16904 ms</span>
+                <span class="method-start">14480 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyWelcomeHeadertextAndSlidersTest</span>
-                <span class="method-start">16924 ms</span>
+                <span class="method-start">14676 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">19954 ms</span>
+                <span class="method-start">17215 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyCalenderDisplayTest</span>
-                <span class="method-start">19961 ms</span>
+                <span class="method-start">17305 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">22328 ms</span>
+                <span class="method-start">48683 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyProfilePopUpTest</span>
-                <span class="method-start">22361 ms</span>
+                <span class="method-start">49144 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">22977 ms</span>
+                <span class="method-start">49647 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyQuickLinksTest</span>
-                <span class="method-start">22989 ms</span>
+                <span class="method-start">49661 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">23555 ms</span>
+                <span class="method-start">50512 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyStatisticsDisplayed</span>
-                <span class="method-start">23565 ms</span>
+                <span class="method-start">50525 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">26686 ms</span>
+                <span class="method-start">54437 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyStatisticsWithFilters</span>
-                <span class="method-start">26712 ms</span>
+                <span class="method-start">54465 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">35517 ms</span>
+                <span class="method-start">62992 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">verifyLearningStatusInProgressDataTest</span>
-                <span class="method-start">35547 ms</span>
+                <span class="method-start">63021 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">63810 ms</span>
+                <span class="method-start">84252 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyLearningStatusNotStartedDataTest</span>
-                <span class="method-start">63827 ms</span>
+                <span class="method-start">84256 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">69097 ms</span>
+                <span class="method-start">89079 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyMySheduleDataTest</span>
-                <span class="method-start">69110 ms</span>
+                <span class="method-start">89090 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">69703 ms</span>
+                <span class="method-start">89673 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">verifyAssignedTrainingsRecentlyAssignedDataTest</span>
-                <span class="method-start">69714 ms</span>
+                <span class="method-start">89683 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">71869 ms</span>
+                <span class="method-start">91810 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyAssignedTrainingsDueDataTest</span>
-                <span class="method-start">71881 ms</span>
+                <span class="method-start">91814 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">82176 ms</span>
+                <span class="method-start">102094 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyAssignedTrainingsOverDueDataTest</span>
-                <span class="method-start">82222 ms</span>
+                <span class="method-start">102111 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">88160 ms</span>
+                <span class="method-start">106451 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyRecentBadgesDataTest</span>
-                <span class="method-start">88171 ms</span>
+                <span class="method-start">106462 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">88379 ms</span>
+                <span class="method-start">106665 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyLeaderboardDataTest</span>
-                <span class="method-start">88390 ms</span>
+                <span class="method-start">106697 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">88521 ms</span>
+                <span class="method-start">106819 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyActivityFeedsDataTest</span>
-                <span class="method-start">88536 ms</span>
+                <span class="method-start">106831 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">98954 ms</span>
+                <span class="method-start">116172 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifyCertificationsDataTest</span>
-                <span class="method-start">98976 ms</span>
+                <span class="method-start">116180 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method before">
                 <span class="method-name">pageRefresh</span>
-                <span class="method-start">100440 ms</span>
+                <span class="method-start">117448 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">verifymainMenuItemsDataTest</span>
-                <span class="method-start">100449 ms</span>
+                <span class="method-start">117458 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">101800 ms</span>
+                <span class="method-start">118619 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

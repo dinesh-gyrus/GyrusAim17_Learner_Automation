@@ -71,6 +71,8 @@ public class DashboardPageTestCase extends TestBase {
 
 		Assert.assertTrue(dashboard.isCompnayLogoInDashBoardDisplayed(),
 				"Company logo is not displayed on the DashBoard page!");
+		Assert.assertTrue(dashboard.isCompnayLogoImageLoadedInDashBoard(),
+				"Company logo Images is not Loaded  on the DashBoard page!");
 	}
 
 	@Test(priority = 4)

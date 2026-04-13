@@ -223,9 +223,15 @@ public class DashboardPage extends TestBase {
 
 	public boolean isCompnayLogoInDashBoardDisplayed() {
 
+		 return eleUtil.isElementDisplayed(companyLogoDashBoard);
+		//return jsUtil.isImageLoaded(companyLogoDashBoard);
+	}
+	public boolean isCompnayLogoImageLoadedInDashBoard() {
+
 		// return eleUtil.isElementDisplayed(companyLogoDashBoard);
 		return jsUtil.isImageLoaded(companyLogoDashBoard);
 	}
+	
 
 	public boolean isWelcomeTextDisplayed() {
 
