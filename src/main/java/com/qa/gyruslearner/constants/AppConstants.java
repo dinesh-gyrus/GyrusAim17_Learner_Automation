@@ -1,5 +1,8 @@
 package com.qa.gyruslearner.constants;
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.qa.gyruslearner.base.TestBase;
 
 public class AppConstants extends TestBase {
@@ -46,7 +49,7 @@ public class AppConstants extends TestBase {
 		public static final String VALID_LOGIN_SHEET_NAME = "ValidLogin";
 		public static final String FIRSTTIME_LOGIN_SHEET_NAME = "FirstTimeLoginRedirectsToChange";
 		public static final String WRONGPASS_LOGIN_SHEET_NAME = "ValidUserNameAndWrongPass";
-		public static final String WRONGUSERNAME_LOGIN_SHEET_NAME = "ValidUserNameAndWrongPass";
+		public static final String WRONGUSERNAME_LOGIN_SHEET_NAME = "WrongUserNameAndValidPass";
 		public static final String LOGINATTEMP_LOGIN_SHEET_NAME = "LastLoginAttemptMessage";
 		public static final String FAILATTEMPT_LOGIN_SHEET_NAME = "AccountLockAfterFailedAttempt";
 		public static final String FIRSTTIME_LOGIN_CHANGEPASSWORD_SHEET_NAME = "FirstTimeLoginUser";
@@ -77,5 +80,17 @@ public class AppConstants extends TestBase {
 		
 		
 		public static final String IDP_PAGE_IDEA_COACH ="IDP - Individual Development Plan - Shows training assignments and their status. And provides quick access to locate the training to meet individuals needs.";
+		
+		
+		//************************************Error and Toast message *************************************
+		
+		public static final List<String> LOGIN_ERROR_MESSAGES = Arrays.asList(
+			    "Invalid username or password",
+			    "Invalid username or password. You have one Attempt remaining. Click on forgot password to get your username or password.",
+			    "Your Account has been blocked. Please contact system administrator or try after 24 hours."
+			);
+		
+		
+		
 	
 }

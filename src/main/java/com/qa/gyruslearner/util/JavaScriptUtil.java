@@ -1,9 +1,16 @@
 package com.qa.gyruslearner.util;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import com.qa.gyruslearner.base.TestBase;
+import com.qa.gyruslearner.constants.AppConstants;
 
 public class JavaScriptUtil extends TestBase {
 	
@@ -113,6 +120,29 @@ public class JavaScriptUtil extends TestBase {
 
 	    return (Boolean) js.executeScript(
 	        "return arguments[0].complete && arguments[0].naturalWidth > 0;",image);
+	}
+	
+	public  boolean isLoginBackgroundImageLoaded(WebElement element) {
+		
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	    return (Boolean) js.executeScript(
+	            "var style = window.getComputedStyle(arguments[0]);" +
+	            "return style.backgroundImage !== 'none';",
+	            element);
+	}
+	
+	public void waitForLoaderToDisappear() {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
+
+		By loader = By.xpath("//gyrusaim-loader | //*[@id='loader']");
+
+		try {
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(loader));
+		} catch (Exception e) {
+			System.out.println("Loader not found or already disappeared");
+		}
 	}
 	
 	public String toastMessageHandle() {

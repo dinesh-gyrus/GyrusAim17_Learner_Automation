@@ -62,7 +62,8 @@ public class ChangePasswordPageTestCase extends TestBase {
 	public void changePasswordUrlTest(String UserName, String Password) {
 
 		// Login with First Time User
-		loginpage.getUserFirstTimeLogin(UserName,Password);
+		//loginpage.getUserFirstTimeLogin(UserName,Password);
+		loginpage.login(UserName, Password);
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
 		
@@ -185,7 +186,8 @@ public class ChangePasswordPageTestCase extends TestBase {
 	@Test(priority = 10,dependsOnMethods = "changePasswordUrlTest",dataProvider ="getSuccessfulPasswordResetSheetData")
 	public void verifySuccessfulPasswordResetTest(String UerName,String Currentpwd, String newPwd,String confirmPwd) {
 
-		loginpage.getUserFirstTimeLogin(UerName,Currentpwd);
+		//loginpage.getUserFirstTimeLogin(UerName,Currentpwd);
+		loginpage.login(UerName, Currentpwd);
 
 		chanagepassword.doChangePassword(Currentpwd, newPwd, confirmPwd);
 		

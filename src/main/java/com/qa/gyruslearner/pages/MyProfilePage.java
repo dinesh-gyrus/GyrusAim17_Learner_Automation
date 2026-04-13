@@ -270,8 +270,9 @@ public class MyProfilePage extends TestBase {
 	}
 
 	public boolean isProfileQRDisplayed() {
-
-		return eleUtil.isElementDisplayed(profileQR);
+		
+		//return eleUtil.isElementDisplayed(profileQR);
+		return eleUtil.visibleElementWhenReady(profileQR,AppConstants.SHORT_TIME_OUT);
 	}
 
 	public boolean isBackToDashBoardDisplayed() {

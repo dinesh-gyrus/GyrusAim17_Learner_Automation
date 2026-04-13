@@ -48,13 +48,14 @@ public class MyProfilePageTestCase extends TestBase {
 		eleUtil = new ElementUtil();
 	}
 
-	@BeforeMethod
+	@BeforeMethod()
 	public void pageRefresh() {
 
 		// driver.navigate().refresh();
 
 		if (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL)) {
-			loginpage.getUserFirstTimeLogin(prop.getProperty("username"), prop.getProperty("password"));
+			//loginpage.getUserFirstTimeLogin(prop.getProperty("username"), prop.getProperty("password"));
+			loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
 
 			myprofile.doClickProfileIcon();
 			myprofile.doClickProfilePage();
@@ -258,7 +259,7 @@ public class MyProfilePageTestCase extends TestBase {
 		Assert.assertTrue(myprofile.isUserDateAndTimeDisplay(), "User Date And Time did not display");
 
 		String actual = myprofile.getUserTimeZone();
-		Assert.assertEquals(actual, "(UTC-04:00) Atlantic Time (Canada)",
+		Assert.assertEquals(actual, "(UTC+05:30) Chennai, Kolkata, Mumbai, New Delhi",
 				"User TIme Zone Dropdown value not selected properly");
 		/*
 		// Click again to Collapse

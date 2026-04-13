@@ -85,7 +85,8 @@ public class IDPPageTestCase extends TestBase {
 
 		if (driver.getCurrentUrl().contains("login")) {
 			// (driver.getCurrentUrl().equals(AppConstants.LOGIN_PAGE_URL))
-			loginpage.getUserFirstTimeLogin(prop.getProperty("username"), prop.getProperty("password"));
+			//loginpage.getUserFirstTimeLogin(prop.getProperty("username"), prop.getProperty("password"));
+			loginpage.login(prop.getProperty("username"), prop.getProperty("password"));
 
 		} else if (driver.getCurrentUrl().equals(AppConstants.DASHBOARD_PAGE_URL)) {
 

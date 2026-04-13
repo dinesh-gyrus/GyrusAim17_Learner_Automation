@@ -91,6 +91,7 @@ public class ElementUtil extends TestBase {
 	}
 
 	public WebElement waitForElementVisible(WebElement locator, int timeOut) {
+		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 
 		WebElement element = wait.until(ExpectedConditions.visibilityOf(locator));
@@ -172,7 +173,9 @@ public class ElementUtil extends TestBase {
 	}
 
 	public void waitForLoaderToDisappear() {
-
+		
+		jsUtil.waitForLoaderToDisappear();
+		/*
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
 
 		By loader = By.xpath("//gyrusaim-loader | //*[@id='loader']");
@@ -182,6 +185,7 @@ public class ElementUtil extends TestBase {
 		} catch (Exception e) {
 			System.out.println("Loader not found or already disappeared");
 		}
+		*/
 	}
 	public void waitForCoachNotificationPanelToDisappear() {
 

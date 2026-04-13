@@ -1,21 +1,26 @@
 package com.qa.gyruslearner.pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
 import com.qa.gyruslearner.util.ElementUtil;
+import com.qa.gyruslearner.util.JavaScriptUtil;
 
 public class LoginPage extends TestBase {
 
 	ElementUtil eleUtil;
+	JavaScriptUtil jsUtil;
 
 	@FindBy(xpath = "//*[@alt='Gyrus Company Logo']")
 	WebElement companyLogo;
 
-	@FindBy(xpath = "//*[@class='login-container login-bg login-1']")
+	@FindBy(xpath = "//div[contains(@style,'background-image')]")
 	WebElement backGroundImage;
 
 	@FindBy(xpath = "(//*[text()='Login'])[2]")
@@ -35,14 +40,14 @@ public class LoginPage extends TestBase {
 
 	@FindBy(xpath = "//*[text()='Sign Up']")
 	WebElement singUplink;
-	
+
 	@FindBy(xpath = "//*[text()='Invalid username or password']")
 	WebElement InvalidUserNamePasswordToastmsg;
-	
 
 	public LoginPage() {
 		PageFactory.initElements(driver, this);
 		eleUtil = new ElementUtil();
+		jsUtil = new JavaScriptUtil();
 	}
 
 	public String getLoginPageTitle() {
@@ -51,14 +56,15 @@ public class LoginPage extends TestBase {
 		System.out.println("Login page title==>" + loginPageTitle);
 		return loginPageTitle;
 	}
-	
+
 	public void ensureAtLoginPage() {
-		
-        if (!driver.getCurrentUrl().contains("Login")) {
-        	driver.get(AppConstants.LOGIN_PAGE_URL);
-            //driver.get(prop.getProperty("goliveUrl"));   //("https://nverma.gyrusaim.net/auth/login"); // 🔹 fallback navigation
-        }
-    }
+
+		if (!driver.getCurrentUrl().contains("Login")) {
+			driver.get(AppConstants.LOGIN_PAGE_URL);
+			// driver.get(prop.getProperty("goliveUrl"));
+			// //("https://nverma.gyrusaim.net/auth/login"); // 🔹 fallback navigation
+		}
+	}
 
 	public String getLoginPageUrl() {
 		String loginCurrentUrl = driver.getCurrentUrl();
@@ -73,6 +79,15 @@ public class LoginPage extends TestBase {
 		return eleUtil.isElementDisplayed(backGroundImage);
 	}
 
+	public boolean isBackgroundImageLoadedInLogin() {
+		return jsUtil.isLoginBackgroundImageLoaded(backGroundImage);
+	}
+
+	public void waitForLoaderToDisappear() {
+
+		eleUtil.waitForLoaderToDisappear();
+	}
+
 	public Boolean isLoginHederTextExits() {
 		return eleUtil.isElementDisplayed(loginHeader);
 	}
@@ -81,25 +96,25 @@ public class LoginPage extends TestBase {
 
 		return eleUtil.doGetElementText(loginHeader);
 	}
-	
+
 	public boolean isUsernameDisplayed() {
-		
+
 		return eleUtil.isElementDisplayed(txtUserName);
 	}
-	
+
 	public boolean isUsernameEnabled() {
 		return eleUtil.isElementEnable(txtUserName);
 	}
-	
+
 	public boolean isPasswordDisplayed() {
 		return eleUtil.isElementDisplayed(txtPassword);
 	}
-	
+
 	public boolean isPasswordEnabled() {
-		
+
 		return eleUtil.isElementEnable(txtPassword);
 	}
-	
+
 	public boolean isSignInButtonExits() {
 		return eleUtil.isElementDisplayed(btnSignIn);
 	}
@@ -111,12 +126,11 @@ public class LoginPage extends TestBase {
 	public boolean isForgotPasswordExits() {
 		return eleUtil.isElementDisplayed(forgotPasswordlink);
 	}
-	
 
 	public boolean isForgotPasswordEnable() {
 		return eleUtil.isElementEnable(forgotPasswordlink);
 	}
-	
+
 	public void doclickOnForgotPasswordLinkButton() {
 		eleUtil.doClick(forgotPasswordlink);
 	}
@@ -128,11 +142,10 @@ public class LoginPage extends TestBase {
 	public boolean isSignUpEnable() {
 		return eleUtil.isElementEnable(singUplink);
 	}
-	
+
 	public void doclickOnSignUpLinkButton() {
 		eleUtil.doClick(singUplink);
 	}
-	
 
 	public String getPasswordFieldEncrypted() {
 
@@ -140,32 +153,19 @@ public class LoginPage extends TestBase {
 		return eleUtil.doElementGetAttribute(txtPassword, "type");
 	}
 
-	public ChangePasswordPage getUserFirstTimeLogin(String username, String pwd) {
+	public void login(String username, String password) {
 
 		eleUtil.doSendKeys(txtUserName, username);
-		eleUtil.doSendKeys(txtPassword, pwd);
+		eleUtil.doSendKeys(txtPassword, password);
 		eleUtil.doClick(btnSignIn);
-		
-		return new ChangePasswordPage();
 	}
 
-	public DashboardPage doValidLogin(String username, String pwd) {
-		
-		eleUtil.doSendKeys(txtUserName, username);
-		eleUtil.doSendKeys(txtPassword, pwd);
-		eleUtil.doClick(btnSignIn);
-		return new DashboardPage();
-	}
-	
-	public void doValidUserNameWrongPass(String username, String pwd) {
-		
-		eleUtil.doSendKeys(txtUserName, username);
-		eleUtil.doSendKeys(txtPassword, pwd);
-		eleUtil.doClick(btnSignIn);
-	}
-	
 	public String getToastMessage() {
-		return eleUtil.doGetToastMessage();
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
+		return wait.until(d -> eleUtil.doGetToastMessage());
+
+		// return eleUtil.doGetToastMessage();
 	}
 
 }

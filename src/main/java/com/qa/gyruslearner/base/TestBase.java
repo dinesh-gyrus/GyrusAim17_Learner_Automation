@@ -25,7 +25,7 @@ public class TestBase {
 		try {
 			prop = new Properties();
 			String currentDir = System.getProperty("user.dir");
-			System.out.println("Project Dir = " + currentDir );
+			//System.out.println("Project Dir = " + currentDir );
 			FileInputStream ip = new FileInputStream(currentDir+"\\src\\test\\resources\\config\\config.properties");
 			prop.load(ip);
 
