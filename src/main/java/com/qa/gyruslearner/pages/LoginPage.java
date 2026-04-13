@@ -74,6 +74,10 @@ public class LoginPage extends TestBase {
 	public boolean isCompanyLogoExits() {
 		return eleUtil.isElementDisplayed(companyLogo);
 	}
+	public boolean isCompanyLogoImageLoaded() {
+		
+		return jsUtil.isImageLoaded(companyLogo);
+	}
 
 	public boolean isBackgroundImageExits() {
 		return eleUtil.isElementDisplayed(backGroundImage);

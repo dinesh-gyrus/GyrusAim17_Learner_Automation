@@ -97,8 +97,12 @@ public class LoginPageTestCase extends TestBase {
 
 	@Test(priority = 3, description = "TC_LOGIN_003 : Verify company  logo presence")
 	public void isCompanyLogoExitsTest() {
-
+		
+		SoftAssert softAssert = new SoftAssert();
 		Assert.assertTrue(loginpage.isCompanyLogoExits(), "Company logo is not displayed on the login page!");
+		softAssert.assertTrue(loginpage.isCompanyLogoImageLoaded(),
+				"CompanyLogo Images is not Loaded  on the Login page!");
+		softAssert.assertAll();
 	}
 
 	@Test(priority = 4, description = "TC_LOGIN_004 : Verify BackGround Image presence")
