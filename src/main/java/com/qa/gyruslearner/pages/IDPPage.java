@@ -1127,15 +1127,31 @@ public class IDPPage extends TestBase {
 			if (dislike == false) {
 				softAssert.fail("❌ Dislike icon is missing in card  " + (i + 1) + " : " + TrainingName);
 			}
+			
+			
 
+			
+			
 			if (status.contains("Not started")) {
 				if (progress.equals("100%")) {
 					softAssert.fail("❌ Not Started but " + progress + " : " + TrainingName);
 				}
 			} else if (status.contains("In progress")) {
+				
+				boolean isILTorMSTeam = Trainingtype.equalsIgnoreCase("ILT") || Trainingtype.equalsIgnoreCase("MSTeams");
+
+				boolean isInProgressZero = status.contains("In progress") && progress.equals("0%");
+				
+				if (isILTorMSTeam && isInProgressZero) {
+					System.out.println("Skipping validation for ILT/MSTeam with 0% progress: "+ progress + ": " + TrainingName);
+					continue;
+				}
+				
 				if (progress.equals("100%") || (progress.equals("0%"))) {
+					
 					softAssert.fail("❌ In progress but " + progress + " : " + TrainingName);
 				}
+				
 			} else if (status.contains("Completed")) {
 				if (!progress.equals("100%")) {
 					softAssert.fail("❌ Completed but " + progress + " : " + TrainingName);

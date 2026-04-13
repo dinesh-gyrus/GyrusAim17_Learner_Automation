@@ -367,7 +367,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 15, enabled = false, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 15, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyILTQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -430,7 +430,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 17, enabled = false, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 17, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyMsTeamQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();

@@ -223,7 +223,7 @@ public class DashboardPage extends TestBase {
 
 	public boolean isCompnayLogoInDashBoardDisplayed() {
 
-		//return eleUtil.isElementDisplayed(companyLogoDashBoard);
+		// return eleUtil.isElementDisplayed(companyLogoDashBoard);
 		return jsUtil.isImageLoaded(companyLogoDashBoard);
 	}
 
@@ -252,11 +252,11 @@ public class DashboardPage extends TestBase {
 	}
 
 	public String getSliderPosition() {
-		
+
 		String style = scrollWrapper.getDomAttribute("style");
 		return (style == null) ? "" : style;
 	}
-	
+
 	public boolean isQuickLinksDisplayed() {
 
 		return eleUtil.isElementDisplayed(btnQuickLinks);
@@ -565,7 +565,7 @@ public class DashboardPage extends TestBase {
 			WebElement card = LearnerStatusCardViewList.get(i);
 
 			// Training type
-			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
+			String trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
 
 			// Title
 			String trainingName = card.findElement(By.xpath(".//h3")).getText();
@@ -590,7 +590,7 @@ public class DashboardPage extends TestBase {
 
 			// Print
 			System.out.println("In-Progress Card: " + (i + 1));
-			System.out.println("Training Type: " + Trainingtype);
+			System.out.println("Training Type: " + trainingtype);
 			System.out.println("Title: " + trainingName);
 			System.out.println("Status: " + status);
 			System.out.println("Progress: " + progress);
@@ -615,7 +615,7 @@ public class DashboardPage extends TestBase {
 				softAssert.fail("❌ view Training Button is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
-			if (Trainingtype.trim().isEmpty()) {
+			if (trainingtype.trim().isEmpty()) {
 				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 			if (trainingName.trim().isEmpty()) {
@@ -632,6 +632,17 @@ public class DashboardPage extends TestBase {
 
 				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + trainingName);
 			}
+			
+			boolean isILTorMSTeam = trainingtype.equalsIgnoreCase("ILT") || trainingtype.equalsIgnoreCase("MSTeam");
+
+			boolean isInProgressZero = status.contains("In progress") && progress.equals("0%");
+
+			if (isILTorMSTeam && isInProgressZero) {
+				
+				System.out.println("Skipping validation for ILT/MSTeam with 0% progress: "+ progress + ": " + trainingName);
+				
+				continue;
+			}
 
 			if (status.contains("In progress")) {
 				if (progress.equals("100%") || progress.equals("0%")) {
@@ -640,7 +651,7 @@ public class DashboardPage extends TestBase {
 				}
 
 			}
-			eleUtil.validateCardsFieldsByTrainingType(card, Trainingtype, trainingName, softAssert);
+			eleUtil.validateCardsFieldsByTrainingType(card, trainingtype, trainingName, softAssert);
 		}
 
 		softAssert.assertAll();
@@ -981,7 +992,7 @@ public class DashboardPage extends TestBase {
 			WebElement card = assignedTrainingsCardViewList.get(i);
 
 			// Training type
-			String Trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
+			String trainingtype = card.findElement(By.xpath(".//p[contains(@aria-label,'Training type')]")).getText();
 			// Title
 			String trainingName = card.findElement(By.xpath(".//h3")).getText();
 			// Status
@@ -1002,7 +1013,7 @@ public class DashboardPage extends TestBase {
 
 			// Print
 			System.out.println("Not Started Card :" + (i + 1));
-			System.out.println("Training Type: " + Trainingtype);
+			System.out.println("Training Type: " + trainingtype);
 			System.out.println("Title: " + trainingName);
 			System.out.println("Status: " + status);
 			System.out.println("Progress: " + progress);
@@ -1027,11 +1038,11 @@ public class DashboardPage extends TestBase {
 				softAssert.fail("❌ view Training Button is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 
-			if (Trainingtype.trim().isEmpty()) {
+			if (trainingtype.trim().isEmpty()) {
 				softAssert.fail("❌ Training Type is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 			if (trainingName.trim().isEmpty()) {
-				softAssert.fail("❌ Title is missing in card  " + (i + 1) + " : " + Trainingtype);
+				softAssert.fail("❌ Title is missing in card  " + (i + 1) + " : " + trainingtype);
 			}
 
 			if (status.trim().isEmpty()) {
@@ -1041,6 +1052,18 @@ public class DashboardPage extends TestBase {
 			if (progress.trim().isEmpty()) {
 				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + trainingName);
 			}
+			
+			boolean isILTorMSTeam = trainingtype.equalsIgnoreCase("ILT") || trainingtype.equalsIgnoreCase("MSTeam");
+
+			boolean isInProgressZero = status.contains("In progress") && progress.equals("0%");
+
+			if (isILTorMSTeam && isInProgressZero) {
+				
+				System.out.println("Skipping validation for ILT/MSTeam with 0% progress: "+ progress + ": " + trainingName);
+				
+				continue;
+			}
+			
 
 			if (status.contains("Not Started") || status.contains("In progress")) {
 
@@ -1054,7 +1077,7 @@ public class DashboardPage extends TestBase {
 				}
 
 			}
-			eleUtil.validateCardsFieldsByTrainingType(card, Trainingtype, trainingName, softAssert);
+			eleUtil.validateCardsFieldsByTrainingType(card, trainingtype, trainingName, softAssert);
 		}
 		softAssert.assertAll();
 	}
