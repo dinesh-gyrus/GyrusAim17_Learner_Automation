@@ -633,7 +633,7 @@ public class DashboardPage extends TestBase {
 				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 			
-			boolean isILTorMSTeam = trainingtype.equalsIgnoreCase("ILT") || trainingtype.equalsIgnoreCase("MSTeam");
+			boolean isILTorMSTeam = trainingtype.equalsIgnoreCase("ILT") || trainingtype.equalsIgnoreCase("MSTeams");
 
 			boolean isInProgressZero = status.contains("In progress") && progress.equals("0%");
 
@@ -1053,7 +1053,7 @@ public class DashboardPage extends TestBase {
 				softAssert.fail("❌ Progress is missing in card  " + (i + 1) + " : " + trainingName);
 			}
 			
-			boolean isILTorMSTeam = trainingtype.equalsIgnoreCase("ILT") || trainingtype.equalsIgnoreCase("MSTeam");
+			boolean isILTorMSTeam = trainingtype.equalsIgnoreCase("ILT") || trainingtype.equalsIgnoreCase("MSTeams");
 
 			boolean isInProgressZero = status.contains("In progress") && progress.equals("0%");
 
