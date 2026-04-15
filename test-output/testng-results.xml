@@ -1,83 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="8" passed="5" failed="1" skipped="2">
+<testng-results ignored="0" total="12" passed="10" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-14T01:33:31 IST" name="Default suite" finished-at="2026-04-14T01:34:36 IST" duration-ms="65420">
+  <suite started-at="2026-04-15T22:37:38 IST" name="Gyrus Automation Suite" finished-at="2026-04-15T22:38:59 IST" duration-ms="80220">
     <groups>
+      <group name="regression">
+        <method signature="DashboardPageTestCase.VerifyCompanyLogoInDashBoardTest()[pri:3, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@223aa2f7]" name="VerifyCompanyLogoInDashBoardTest" class="com.qa.gyruslearner.testcases.DashboardPageTestCase"/>
+        <method signature="LoginPageTestCase.verifyLoginHeadertextTest()[pri:5, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="verifyLoginHeadertextTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.verifyLastLoginAttemptMessageTest(java.lang.String,java.lang.String)[pri:14, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="verifyLastLoginAttemptMessageTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.verifyAccountLockAfterFailedAttemptTest(java.lang.String,java.lang.String)[pri:15, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="verifyAccountLockAfterFailedAttemptTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.isCompanyLogoExitsTest()[pri:3, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="isCompanyLogoExitsTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.isBackGroundImageExitsTest()[pri:4, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="isBackGroundImageExitsTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.verifyForgotPasswordTest()[pri:8, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="verifyForgotPasswordTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.verifySignUplinkButtonTest()[pri:9, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="verifySignUplinkButtonTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.verifyPasswordFieldEncryptedTest()[pri:10, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="verifyPasswordFieldEncryptedTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.verifyFirstTimeLoginRedirectsToChangePasswordTest(java.lang.String,java.lang.String)[pri:11, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="verifyFirstTimeLoginRedirectsToChangePasswordTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.verifyValidUserNameAndWrongPassTest(java.lang.String,java.lang.String)[pri:12, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="verifyValidUserNameAndWrongPassTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+        <method signature="LoginPageTestCase.verifyWrongUserNameAndValidPassTest(java.lang.String,java.lang.String)[pri:13, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" name="verifyWrongUserNameAndValidPassTest" class="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
+      </group> <!-- regression -->
     </groups>
-    <test started-at="2026-04-14T01:33:31 IST" name="Default test" finished-at="2026-04-14T01:34:36 IST" duration-ms="65420">
-      <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:33:31 IST" name="setUp" finished-at="2026-04-14T01:33:51 IST" duration-ms="19537" status="PASS">
+    <test started-at="2026-04-15T22:37:38 IST" name="Automation Smoke Testing" finished-at="2026-04-15T22:38:59 IST" duration-ms="80220">
+      <class name="com.qa.gyruslearner.testcases.LoginPageTestCase">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:39 IST" name="setUp" finished-at="2026-04-15T22:37:45 IST" duration-ms="6655" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:33:51 IST" name="pageRefresh" finished-at="2026-04-14T01:34:08 IST" duration-ms="17421" status="PASS">
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:45 IST" name="goToLoginPage" finished-at="2026-04-15T22:37:46 IST" duration-ms="920" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyMyLearnerLinkTest()[pri:1, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:08 IST" name="verifyMyLearnerLinkTest" finished-at="2026-04-14T01:34:12 IST" duration-ms="4194" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="isCompanyLogoExitsTest()[pri:3, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:46 IST" name="isCompanyLogoExitsTest" description="TC_LOGIN_003 : Verify company  logo presence" finished-at="2026-04-15T22:37:46 IST" duration-ms="95" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyMyLearnerLinkTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:12 IST" name="pageRefresh" finished-at="2026-04-14T01:34:12 IST" duration-ms="23" status="PASS">
+        </test-method> <!-- isCompanyLogoExitsTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:46 IST" name="goToLoginPage" finished-at="2026-04-15T22:37:47 IST" duration-ms="457" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyidpUrlTest()[pri:2, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:12 IST" name="verifyidpUrlTest" finished-at="2026-04-14T01:34:15 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyMyLearnerLinkTest" duration-ms="2886" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="isBackGroundImageExitsTest()[pri:4, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:47 IST" name="isBackGroundImageExitsTest" description="TC_LOGIN_004 : Verify BackGround Image presence" finished-at="2026-04-15T22:37:47 IST" duration-ms="57" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyidpUrlTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:15 IST" name="pageRefresh" finished-at="2026-04-14T01:34:16 IST" duration-ms="310" status="PASS">
+        </test-method> <!-- isBackGroundImageExitsTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:47 IST" name="goToLoginPage" finished-at="2026-04-15T22:37:47 IST" duration-ms="419" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyIDPPageTitileTest()[pri:3, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:16 IST" name="verifyIDPPageTitileTest" finished-at="2026-04-14T01:34:16 IST" duration-ms="548" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyLoginHeadertextTest()[pri:5, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:47 IST" name="verifyLoginHeadertextTest" description="TC_LOGIN_005 : Verify that the Login header is displayed on the login page." finished-at="2026-04-15T22:37:47 IST" duration-ms="71" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyIDPPageTitileTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:16 IST" name="pageRefresh" finished-at="2026-04-14T01:34:16 IST" duration-ms="29" status="PASS">
+        </test-method> <!-- verifyLoginHeadertextTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:47 IST" name="goToLoginPage" finished-at="2026-04-15T22:37:48 IST" duration-ms="444" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyIDPHeaderPageTitleTest()[pri:5, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:16 IST" name="verifyIDPHeaderPageTitleTest" finished-at="2026-04-14T01:34:16 IST" duration-ms="168" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyForgotPasswordTest()[pri:8, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:48 IST" name="verifyForgotPasswordTest" finished-at="2026-04-15T22:37:48 IST" duration-ms="71" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyIDPHeaderPageTitleTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:16 IST" name="pageRefresh" finished-at="2026-04-14T01:34:16 IST" duration-ms="36" status="PASS">
+        </test-method> <!-- verifyForgotPasswordTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:48 IST" name="goToLoginPage" finished-at="2026-04-15T22:37:48 IST" duration-ms="440" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyQuickFilterDailgoBoxTest()[pri:12, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:16 IST" name="verifyQuickFilterDailgoBoxTest" finished-at="2026-04-14T01:34:28 IST" duration-ms="11226" status="PASS">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifySignUplinkButtonTest()[pri:9, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:48 IST" name="verifySignUplinkButtonTest" finished-at="2026-04-15T22:37:48 IST" duration-ms="58" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyQuickFilterDailgoBoxTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:28 IST" name="pageRefresh" finished-at="2026-04-14T01:34:28 IST" duration-ms="20" status="PASS">
+        </test-method> <!-- verifySignUplinkButtonTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:48 IST" name="goToLoginPage" finished-at="2026-04-15T22:37:49 IST" duration-ms="502" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyILTQuickFilterTest()[pri:15, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:28 IST" name="verifyILTQuickFilterTest" finished-at="2026-04-14T01:34:35 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="7671" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchSessionException">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyPasswordFieldEncryptedTest()[pri:10, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:49 IST" name="verifyPasswordFieldEncryptedTest" finished-at="2026-04-15T22:37:49 IST" duration-ms="265" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyPasswordFieldEncryptedTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:50 IST" name="goToLoginPage" finished-at="2026-04-15T22:37:50 IST" duration-ms="434" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyFirstTimeLoginRedirectsToChangePasswordTest(java.lang.String,java.lang.String)[pri:11, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:37:50 IST" name="verifyFirstTimeLoginRedirectsToChangePasswordTest" data-provider="getFirstTimeLoginSheetData" finished-at="2026-04-15T22:38:07 IST" duration-ms="17170" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[p17 student 02]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyFirstTimeLoginRedirectsToChangePasswordTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:38:08 IST" name="goToLoginPage" finished-at="2026-04-15T22:38:08 IST" duration-ms="566" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyValidUserNameAndWrongPassTest(java.lang.String,java.lang.String)[pri:12, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:38:08 IST" name="verifyValidUserNameAndWrongPassTest" data-provider="getValidUserNameAndWrongPassSheetData" finished-at="2026-04-15T22:38:30 IST" duration-ms="21343" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[p17 student 06]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123456]]>
+              </value>
+            </param>
+          </params>
+          <exception class="org.openqa.selenium.TimeoutException">
             <message>
-              <![CDATA[invalid session id: session deleted as the browser has closed the connection
-from disconnected: unable to send message to renderer
+              <![CDATA[timeout: Timed out receiving message from renderer: 20.000
   (Session info: chrome=146.0.7680.165)
 Build info: version: '4.27.0', revision: 'd6e718d134'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bc8bdc89b955277c114797b196424dce, findElements {value=//gyrusaim-cardview//div[@title='Card View'], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58536}, goog:processID: 7432, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58536/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bc8bdc89b955277c114797b196424dce]]>
+Command: [bbb81e95a62b17a667b9b8d628f14289, executeScript {args=[], script=var el = document.querySelector('.toast, [role="alert"]');return el ? el.innerText : null;}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63358}, goog:processID: 2544, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63358/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: bbb81e95a62b17a667b9b8d628f14289]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id: session deleted as the browser has closed the connection
-from disconnected: unable to send message to renderer
+              <![CDATA[org.openqa.selenium.TimeoutException: timeout: Timed out receiving message from renderer: 20.000
   (Session info: chrome=146.0.7680.165)
 Build info: version: '4.27.0', revision: 'd6e718d134'
 System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bc8bdc89b955277c114797b196424dce, findElements {value=//gyrusaim-cardview//div[@title='Card View'], using=xpath}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58536}, goog:processID: 7432, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58536/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bc8bdc89b955277c114797b196424dce
+Command: [bbb81e95a62b17a667b9b8d628f14289, executeScript {args=[], script=var el = document.querySelector('.toast, [role="alert"]');return el ? el.innerText : null;}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:63358}, goog:processID: 2544, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:63358/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: bbb81e95a62b17a667b9b8d628f14289
 at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
 at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
 at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
@@ -88,16 +140,13 @@ at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.ja
 at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
 at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
 at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElements(ElementLocation.java:182)
-at org.openqa.selenium.remote.ElementLocation.findElements(ElementLocation.java:103)
-at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:381)
-at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:375)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElements(DefaultElementLocator.java:83)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler.invoke(LocatingElementListHandler.java:36)
-at jdk.proxy2/jdk.proxy2.$Proxy16.size(Unknown Source)
-at com.qa.gyruslearner.pages.IDPPage.loadAllCards(IDPPage.java:1005)
-at com.qa.gyruslearner.testcases.IDPPageTestCase.TrainingCountUpdate(IDPPageTestCase.java:199)
-at com.qa.gyruslearner.testcases.IDPPageTestCase.verifyILTQuickFilterTest(IDPPageTestCase.java:393)
+at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:476)
+at com.qa.gyruslearner.util.JavaScriptUtil.toastMessageHandle(JavaScriptUtil.java:175)
+at com.qa.gyruslearner.util.ElementUtil.doGetToastMessage(ElementUtil.java:371)
+at com.qa.gyruslearner.pages.LoginPage.lambda$0(LoginPage.java:170)
+at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
+at com.qa.gyruslearner.pages.LoginPage.getToastMessage(LoginPage.java:170)
+at com.qa.gyruslearner.testcases.LoginPageTestCase.verifyValidUserNameAndWrongPassTest(LoginPageTestCase.java:235)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -126,210 +175,99 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchSessionException -->
+          </exception> <!-- org.openqa.selenium.TimeoutException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyILTQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:35 IST" name="pageRefresh" finished-at="2026-04-14T01:34:36 IST" duration-ms="312" status="FAIL">
-          <exception class="org.openqa.selenium.NoSuchSessionException">
-            <message>
-              <![CDATA[invalid session id
-Build info: version: '4.27.0', revision: 'd6e718d134'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bc8bdc89b955277c114797b196424dce, getCurrentUrl {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58536}, goog:processID: 7432, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58536/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bc8bdc89b955277c114797b196424dce]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
-Build info: version: '4.27.0', revision: 'd6e718d134'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bc8bdc89b955277c114797b196424dce, getCurrentUrl {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58536}, goog:processID: 7432, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58536/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bc8bdc89b955277c114797b196424dce
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:618)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:622)
-at org.openqa.selenium.remote.RemoteWebDriver.getCurrentUrl(RemoteWebDriver.java:325)
-at com.qa.gyruslearner.testcases.IDPPageTestCase.pageRefresh(IDPPageTestCase.java:86)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:393)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:326)
-at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:578)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:819)
-at org.testng.TestRunner.run(TestRunner.java:619)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-at org.testng.TestNG.runSuites(TestNG.java:1134)
-at org.testng.TestNG.run(TestNG.java:1101)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchSessionException -->
+        </test-method> <!-- verifyValidUserNameAndWrongPassTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:38:30 IST" name="goToLoginPage" finished-at="2026-04-15T22:38:36 IST" duration-ms="5810" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyMsTeamQuickFilterTest()[pri:17, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:36 IST" name="verifyMsTeamQuickFilterTest" finished-at="2026-04-14T01:34:36 IST" depends-on-methods="com.qa.gyruslearner.testcases.IDPPageTestCase.verifyQuickFilterDailgoBoxTest" duration-ms="0" status="SKIP">
-          <exception class="org.openqa.selenium.NoSuchSessionException">
-            <message>
-              <![CDATA[invalid session id
-Build info: version: '4.27.0', revision: 'd6e718d134'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bc8bdc89b955277c114797b196424dce, getCurrentUrl {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58536}, goog:processID: 7432, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58536/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bc8bdc89b955277c114797b196424dce]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
-Build info: version: '4.27.0', revision: 'd6e718d134'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bc8bdc89b955277c114797b196424dce, getCurrentUrl {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58536}, goog:processID: 7432, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58536/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bc8bdc89b955277c114797b196424dce
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:618)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:622)
-at org.openqa.selenium.remote.RemoteWebDriver.getCurrentUrl(RemoteWebDriver.java:325)
-at com.qa.gyruslearner.testcases.IDPPageTestCase.pageRefresh(IDPPageTestCase.java:86)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:393)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:326)
-at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:578)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:819)
-at org.testng.TestRunner.run(TestRunner.java:619)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-at org.testng.TestNG.runSuites(TestNG.java:1134)
-at org.testng.TestNG.run(TestNG.java:1101)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchSessionException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyMsTeamQuickFilterTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:36 IST" name="pageRefresh" finished-at="2026-04-14T01:34:36 IST" duration-ms="0" status="SKIP">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- pageRefresh -->
-        <test-method signature="verifySearchFunctionality(java.lang.String,java.lang.String,java.lang.String)[pri:24, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:36 IST" name="verifySearchFunctionality" data-provider="getSearchTestData" finished-at="2026-04-14T01:34:36 IST" duration-ms="0" status="SKIP">
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyWrongUserNameAndValidPassTest(java.lang.String,java.lang.String)[pri:13, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:38:36 IST" name="verifyWrongUserNameAndValidPassTest" data-provider="getWrongUserNameAndValidPassSheetData" finished-at="2026-04-15T22:38:37 IST" duration-ms="969" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[TEST01 Document by org -SU1-T354]]>
+                <![CDATA[tteam071555]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[jhjghfjhgjfhgj]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Test]]>
+                <![CDATA[123]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.NoSuchSessionException">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyWrongUserNameAndValidPassTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:38:37 IST" name="goToLoginPage" finished-at="2026-04-15T22:38:37 IST" duration-ms="440" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyLastLoginAttemptMessageTest(java.lang.String,java.lang.String)[pri:14, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:38:37 IST" name="verifyLastLoginAttemptMessageTest" data-provider="getLastLoginAttemptMessageSheetData" finished-at="2026-04-15T22:38:40 IST" duration-ms="2790" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[p17 student 10]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123555]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyLastLoginAttemptMessageTest -->
+        <test-method is-config="true" signature="goToLoginPage()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:38:40 IST" name="goToLoginPage" finished-at="2026-04-15T22:38:41 IST" duration-ms="523" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goToLoginPage -->
+        <test-method signature="verifyAccountLockAfterFailedAttemptTest(java.lang.String,java.lang.String)[pri:15, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:38:41 IST" name="verifyAccountLockAfterFailedAttemptTest" data-provider="getAccountLockAfterFailedAttemptSheetData" finished-at="2026-04-15T22:38:42 IST" depends-on-methods="com.qa.gyruslearner.testcases.LoginPageTestCase.verifyLastLoginAttemptMessageTest" duration-ms="1341" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[p17 student 10]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[123444]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAccountLockAfterFailedAttemptTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.LoginPageTestCase@2dde1bff]" started-at="2026-04-15T22:38:42 IST" name="tearDown" finished-at="2026-04-15T22:38:44 IST" duration-ms="1961" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.qa.gyruslearner.testcases.LoginPageTestCase -->
+      <class name="com.qa.gyruslearner.testcases.DashboardPageTestCase">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@223aa2f7]" started-at="2026-04-15T22:38:44 IST" name="setUp" finished-at="2026-04-15T22:38:50 IST" duration-ms="5607" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@223aa2f7]" started-at="2026-04-15T22:38:50 IST" name="pageRefresh" finished-at="2026-04-15T22:38:50 IST" duration-ms="321" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- pageRefresh -->
+        <test-method signature="VerifyCompanyLogoInDashBoardTest()[pri:3, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@223aa2f7]" started-at="2026-04-15T22:38:50 IST" name="VerifyCompanyLogoInDashBoardTest" finished-at="2026-04-15T22:38:58 IST" duration-ms="7970" status="FAIL">
+          <exception class="java.lang.AssertionError">
             <message>
-              <![CDATA[invalid session id
-Build info: version: '4.27.0', revision: 'd6e718d134'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bc8bdc89b955277c114797b196424dce, getCurrentUrl {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58536}, goog:processID: 7432, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58536/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bc8bdc89b955277c114797b196424dce]]>
+              <![CDATA[Company logo Images is not Loaded  on the DashBoard page! expected [true] but found [false]]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchSessionException: invalid session id
-Build info: version: '4.27.0', revision: 'd6e718d134'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.8'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [bc8bdc89b955277c114797b196424dce, getCurrentUrl {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 146.0.7680.165, chrome: {chromedriverVersion: 146.0.7680.165 (4b989da09e1..., userDataDir: C:\Users\DINESH~1\AppData\L...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58536}, goog:processID: 7432, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58536/devtoo..., se:cdpVersion: 146.0.7680.165, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: bc8bdc89b955277c114797b196424dce
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:618)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:622)
-at org.openqa.selenium.remote.RemoteWebDriver.getCurrentUrl(RemoteWebDriver.java:325)
-at com.qa.gyruslearner.testcases.IDPPageTestCase.pageRefresh(IDPPageTestCase.java:86)
+              <![CDATA[java.lang.AssertionError: Company logo Images is not Loaded  on the DashBoard page! expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:111)
+at org.testng.Assert.failNotEquals(Assert.java:1578)
+at org.testng.Assert.assertTrue(Assert.java:57)
+at com.qa.gyruslearner.testcases.DashboardPageTestCase.VerifyCompanyLogoInDashBoardTest(DashboardPageTestCase.java:75)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:393)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:326)
-at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:578)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
 at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
 at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
@@ -354,15 +292,15 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchSessionException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifySearchFunctionality -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.IDPPageTestCase@22e357dc]" started-at="2026-04-14T01:34:36 IST" name="tearDown" finished-at="2026-04-14T01:34:36 IST" duration-ms="0" status="SKIP">
+        </test-method> <!-- VerifyCompanyLogoInDashBoardTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.DashboardPageTestCase@223aa2f7]" started-at="2026-04-15T22:38:58 IST" name="tearDown" finished-at="2026-04-15T22:38:59 IST" duration-ms="365" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.gyruslearner.testcases.IDPPageTestCase -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- com.qa.gyruslearner.testcases.DashboardPageTestCase -->
+    </test> <!-- Automation Smoke Testing -->
+  </suite> <!-- Gyrus Automation Suite -->
 </testng-results>

@@ -17,8 +17,14 @@ import com.qa.gyruslearner.util.TestUtil;
 
 public class TestBase {
 	
-	public static WebDriver driver;
+	//public static WebDriver driver;
 	public static Properties prop;
+	
+	public static WebDriver driver;
+
+	public WebDriver getDriver() {
+	    return driver;
+	}
 	
 	
 	public TestBase() {

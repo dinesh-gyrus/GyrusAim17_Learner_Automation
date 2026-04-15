@@ -28,7 +28,7 @@ public class DashboardPageTestCase extends TestBase {
 		super();
 	}
 
-	@BeforeClass
+	@BeforeClass(alwaysRun = true)
 	public void setUp() {
 		initialazation();
 		loginpage = new LoginPage();
@@ -36,7 +36,7 @@ public class DashboardPageTestCase extends TestBase {
 		calender = new CalendarPage();
 	}
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void pageRefresh() {
 
 		// driver.navigate().refresh();
@@ -67,7 +67,7 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertEquals(dashBoardPagetitle, AppConstants.DASHBOARD_PAGE_TITLE);
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3,groups = {"regression"})
 	public void VerifyCompanyLogoInDashBoardTest() {
 
 		Assert.assertTrue(dashboard.isCompnayLogoInDashBoardDisplayed(),
@@ -391,7 +391,7 @@ public class DashboardPageTestCase extends TestBase {
 
 	}
 
-	@AfterClass
+	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		if (driver != null) {
 			driver.quit();

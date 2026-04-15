@@ -28,7 +28,7 @@ public class LoginPageTestCase extends TestBase {
 		super();
 	}
 
-	@BeforeClass
+	@BeforeClass(alwaysRun = true)
 	public void setUp() {
 		initialazation();
 		loginpage = new LoginPage();
@@ -72,20 +72,20 @@ public class LoginPageTestCase extends TestBase {
 		return new Object[][] { { "TTeam01", "123" }, };
 	}
 
-	@BeforeMethod
+	@BeforeMethod(alwaysRun = true)
 	public void goToLoginPage() {
 		// Always return to login page before each test
 		loginpage.ensureAtLoginPage();
 	}
 
-	@Test(priority = 1, description = "TC_LOGIN_001 : Verify the page title matches expected.")
+	@Test(priority = 1,groups = {"smoke"}, description = "TC_LOGIN_001 : Verify the page title matches expected.")
 	public void LoginPageTitleTest() {
 		
 		String loginPagetitle = loginpage.getLoginPageTitle();
 		Assert.assertEquals(loginPagetitle, AppConstants.LOGIN_PAGE_TITLE);
 	}
 
-	@Test(priority = 2, description = "TC_LOGIN_002 :Verify the Login Page URL matches the expected.")
+	@Test(priority = 2,groups = {"smoke"}, description = "TC_LOGIN_002 :Verify the Login Page URL matches the expected.")
 	public void LoginPageUrlTest() {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MAX_TIME_OUT));
@@ -95,7 +95,7 @@ public class LoginPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 3, description = "TC_LOGIN_003 : Verify company  logo presence")
+	@Test(priority = 3,groups = {"regression"}, description = "TC_LOGIN_003 : Verify company  logo presence")
 	public void isCompanyLogoExitsTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
@@ -105,7 +105,7 @@ public class LoginPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 4, description = "TC_LOGIN_004 : Verify BackGround Image presence")
+	@Test(priority = 4,groups = {"regression"}, description = "TC_LOGIN_004 : Verify BackGround Image presence")
 	public void isBackGroundImageExitsTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
@@ -117,7 +117,7 @@ public class LoginPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 5, description = "TC_LOGIN_005 : Verify that the Login header is displayed on the login page.")
+	@Test(priority = 5,groups = {"regression"}, description = "TC_LOGIN_005 : Verify that the Login header is displayed on the login page.")
 	public void verifyLoginHeadertextTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
@@ -128,7 +128,7 @@ public class LoginPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 6, description = "TC_LOGIN_006: Verify Username and Password fields is display and Enable. ")
+	@Test(priority = 6,groups = {"smoke"}, description = "TC_LOGIN_006: Verify Username and Password fields is display and Enable. ")
 	public void verifyUsernameAndPasswordFieldsTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
@@ -145,7 +145,7 @@ public class LoginPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 7,groups = {"smoke"})
 	public void isSingInbuttonExitsAndEnableTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
@@ -156,7 +156,7 @@ public class LoginPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 8,groups = {"regression"})
 	public void verifyForgotPasswordTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
@@ -165,7 +165,7 @@ public class LoginPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 9,groups = {"regression"})
 	public void verifySignUplinkButtonTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
@@ -174,14 +174,14 @@ public class LoginPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 10)
+	@Test(priority = 10,groups = {"regression"})
 	public void verifyPasswordFieldEncryptedTest() {
 
 		Assert.assertEquals(loginpage.getPasswordFieldEncrypted(), "password",
 				"Password field is not masked properly!");
 	}
 
-	@Test(priority = 11,enabled = true, dataProvider = "getFirstTimeLoginSheetData")
+	@Test(priority = 11,enabled = true,groups = {"regression"}, dataProvider = "getFirstTimeLoginSheetData")
 	public void verifyFirstTimeLoginRedirectsToChangePasswordTest(String UserName, String Password) {
 
 		// This Login First Time Login User
@@ -226,7 +226,7 @@ public class LoginPageTestCase extends TestBase {
 		
 	}
 
-	@Test(priority = 12,enabled = true, dataProvider = "getValidUserNameAndWrongPassSheetData")
+	@Test(priority = 12,enabled = true,groups = {"regression"}, dataProvider = "getValidUserNameAndWrongPassSheetData")
 	public void verifyValidUserNameAndWrongPassTest(String UserName, String Password) {
 
 		//loginpage.doValidUserNameWrongPass(UserName, Password);
@@ -238,7 +238,7 @@ public class LoginPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 13,enabled = true, dataProvider = "getWrongUserNameAndValidPassSheetData")
+	@Test(priority = 13,enabled = true,groups = {"regression"}, dataProvider = "getWrongUserNameAndValidPassSheetData")
 	public void verifyWrongUserNameAndValidPassTest(String UserName, String Password) {
 
 		loginpage.login(UserName, Password);
@@ -246,7 +246,7 @@ public class LoginPageTestCase extends TestBase {
 		Assert.assertEquals(toastMsg, "Invalid username or password");
 	}
 
-	@Test(priority = 14,enabled = true, dataProvider = "getLastLoginAttemptMessageSheetData")
+	@Test(priority = 14,enabled = true,groups = {"regression"}, dataProvider = "getLastLoginAttemptMessageSheetData")
 	public void verifyLastLoginAttemptMessageTest(String UserName, String Password) {
 
 		for (int i = 0; i <= 2; i++) {
@@ -262,7 +262,7 @@ public class LoginPageTestCase extends TestBase {
 		Assert.assertTrue(AppConstants.LOGIN_ERROR_MESSAGES.contains(finalToastMsg), "Unexpected toast message: " + finalToastMsg);
 	}
 
-	@Test(priority = 15,enabled = true, dataProvider = "getAccountLockAfterFailedAttemptSheetData", dependsOnMethods = "verifyLastLoginAttemptMessageTest")
+	@Test(priority = 15,enabled = true,groups = {"regression"}, dataProvider = "getAccountLockAfterFailedAttemptSheetData", dependsOnMethods = "verifyLastLoginAttemptMessageTest")
 	public void verifyAccountLockAfterFailedAttemptTest(String UserName, String Password) {
 
 		
@@ -273,7 +273,7 @@ public class LoginPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 16,enabled = true, dataProvider = "getLoginSheetData")
+	@Test(priority = 16,enabled = true,groups = {"smoke"}, dataProvider = "getLoginSheetData")
 	public void verifyValidLoginTest(String UserName, String Password) {
 
 		loginpage.login(UserName, Password);
@@ -284,7 +284,7 @@ public class LoginPageTestCase extends TestBase {
 		Assert.assertEquals(dashboard.getDashBoardTitle(), AppConstants.DASHBOARD_PAGE_TITLE);
 	}
 
-	@AfterClass
+	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 
 		if (driver != null) {

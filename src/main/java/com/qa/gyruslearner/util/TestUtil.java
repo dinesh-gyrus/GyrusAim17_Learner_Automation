@@ -9,30 +9,38 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+
 import com.qa.gyruslearner.base.TestBase;
 
 public class TestUtil extends TestBase {
-	
+
 	public static long PAGE_LOAD_TIMEOUT = 20;
 	public static long IMPLICIT_WAIT = 10;
-	
-	
-public String takeScreenshotAtEndOfTest(String ss) throws IOException {
+
+	public String takeScreenshotAtEndOfTest(String ss) throws IOException {
 		
+		String timestamp = new SimpleDateFormat("dd.MM.yyyy.hh.mm.ss").format(new Date());
+		if (driver == null) {
+			System.out.println(" Driver is NULL - Screenshot skipped");
+			return null;
+		}
+		try {
+			TakesScreenshot ts = (TakesScreenshot) driver;
+
+			File src = ts.getScreenshotAs(OutputType.FILE);
+
+			String fileDrop = System.getProperty("user.dir") + ".\\screenshots\\" + "ss" + timestamp + ".png";
+			File trg = new File(fileDrop);
+
+			FileUtils.copyFile(src, trg);
+			return (fileDrop);
+
+	    } catch (Exception e) {
+	        System.out.println("Screenshot failed: " + e.getMessage());
+	        return null;
+	    }
 		
-		String timestamp=new SimpleDateFormat("dd.MM.yyyy.hh.mm.ss").format(new Date());
-		
-		TakesScreenshot ts= (TakesScreenshot)driver;
-		
-		File src=ts.getScreenshotAs(OutputType.FILE);
-		
-		String fileDrop=System.getProperty("user.dir")+".\\screenshots\\"+"ss"+timestamp+".png";
-		File trg=new File(fileDrop);
-		
-		FileUtils.copyFile(src, trg);
-		return (fileDrop);
-		
+
 	}
-	
 
 }
