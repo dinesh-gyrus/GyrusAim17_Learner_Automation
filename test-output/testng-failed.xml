@@ -5,36 +5,40 @@
     <listener class-name="com.qa.gyruslearner.listeners.TestListeners"/>
   </listeners>
   <test thread-count="5" name="Automation Smoke Testing(failed)">
-    <groups>
-      <run>
-        <include name="regression"/>
-      </run>
-    </groups>
     <classes>
+      <class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase">
+        <methods>
+          <include name="verifyQRCodeDisplayed"/>
+          <include name="pageRefresh"/>
+          <include name="tearDown"/>
+          <include name="verifyThemeTest"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.qa.gyruslearner.testcases.MyProfilePageTestCase -->
       <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
         <methods>
+          <include name="verifyAllCardLoadedAndCountTest"/>
           <include name="setUp"/>
-          <include name="verifyAllElearningQuickFilterTest"/>
-          <include name="verifyCertificationQuickFilterTest"/>
           <include name="verifyFreeInQuickFilterTest"/>
-          <include name="verifyStatusCompleteQuickFilterTest"/>
-          <include name="verifyElearnigQuickFilterTest"/>
-          <include name="verifyRatingQuickFilterTest"/>
-          <include name="VerifyIdealCoachTextTest"/>
-          <include name="verifyDueDateInQuickFilterTest"/>
-          <include name="verifyExternalLinkQuickFilterTest"/>
-          <include name="verifyMsTeamQuickFilterTest"/>
-          <include name="verifyLearningPathQuickFilterTest"/>
-          <include name="verifyILTQuickFilterTest"/>
-          <include name="verifyTrainingGroupInQuickFilterTest"/>
-          <include name="verifyCategoryInQuickFilterTest"/>
           <include name="tearDown"/>
-          <include name="verifyDocumentQuickFilterTest"/>
+          <include name="verifyStatusCompleteQuickFilterTest" invocation-numbers="0"/>
           <include name="pageRefresh"/>
+          <include name="VerifyIdealCoachTextTest"/>
+          <include name="verifyDueDateInQuickFilterTest" invocation-numbers="0"/>
           <include name="verifyQuickFilterDailgoBoxTest"/>
+          <include name="verifyAllCardsStatusAndpercentageTest"/>
           <include name="verifyAssessmentsQuickFilterTest"/>
         </methods>
       </class> <!-- com.qa.gyruslearner.testcases.IDPPageTestCase -->
+      <class name="com.qa.gyruslearner.testcases.DashboardPageTestCase">
+        <methods>
+          <include name="tearDown"/>
+          <include name="verifyAssignedTrainingsRecentlyAssignedDataTest"/>
+          <include name="setUp"/>
+          <include name="VerifyCompanyLogoInDashBoardTest"/>
+          <include name="pageRefresh"/>
+        </methods>
+      </class> <!-- com.qa.gyruslearner.testcases.DashboardPageTestCase -->
     </classes>
   </test> <!-- Automation Smoke Testing(failed) -->
 </suite> <!-- Failed suite [Gyrus Automation Suite] -->

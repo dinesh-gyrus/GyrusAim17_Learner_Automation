@@ -8,14 +8,7 @@
 	</listeners>
 	
 	
-	<test name="Automation Smoke Testing">
-	<groups>
-            <run>
-            	<include name="smoke"/>
-                <include name="regression"/>
-            </run>
-        </groups>
-		
+	<test name="Automation Smoke Testing">	
 		<classes>
 			<class name="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
 			<class name="com.qa.gyruslearner.testcases.DashboardPageTestCase"/>
