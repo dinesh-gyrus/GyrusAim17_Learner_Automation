@@ -47,7 +47,7 @@ public class DashboardPageTestCase extends TestBase {
 		}
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1,groups = {"smoke"})
 	public void dashBoardUrlTest() {
 
 		// loginpage.getUserFirstTimeLogin("TTeam", "123");
@@ -60,7 +60,7 @@ public class DashboardPageTestCase extends TestBase {
 		}
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2,groups = {"smoke"})
 	public void dashBoardPageTitleTest() {
 
 		String dashBoardPagetitle = dashboard.getDashBoardTitle();
@@ -76,7 +76,7 @@ public class DashboardPageTestCase extends TestBase {
 				"Company logo Images is not Loaded  on the DashBoard page!");
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4,groups = {"smoke"})
 	public void verifyWelcomeHeadertextAndSlidersTest() {
 
 		String welcomeBannerText = "Welcome To Gyrus Systems!";
@@ -111,7 +111,7 @@ public class DashboardPageTestCase extends TestBase {
 		//Assert.assertTrue(slides.size() > 1, "Slider has less than 2 slides, cannot auto-slide!");
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 5,groups = {"smoke"})
 	public void verifyCalenderDisplayTest() {
 
 		// calender
@@ -127,7 +127,7 @@ public class DashboardPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 6)
+	@Test(priority = 6,groups = {"smoke"})
 	public void verifyProfilePopUpTest() {
 		// Profile
 		Assert.assertTrue(dashboard.isProdfileMenuIconDisplayed(), "Profile icon is not displayed!");
@@ -137,7 +137,7 @@ public class DashboardPageTestCase extends TestBase {
 		dashboard.doPressKeyEscape();
 	}
 
-	@Test(priority = 7)
+	@Test(priority = 7,groups = {"smoke"})
 	public void verifyQuickLinksTest() {
 
 		Assert.assertTrue(dashboard.isQuickLinkFirstPanelDisplay(), "QuickLink First Panel is not displayed!");
@@ -157,7 +157,7 @@ public class DashboardPageTestCase extends TestBase {
 		 */
 	}
 
-	@Test(priority = 8)
+	@Test(priority = 8,groups = {"regression"})
 	public void verifyStatisticsDisplayed() {
 
 		System.out.println("In Progress Trainings: " + dashboard.getInProgressTrainingsCount());
@@ -170,7 +170,7 @@ public class DashboardPageTestCase extends TestBase {
 		Assert.assertTrue(dashboard.getEarnedBadgesCount() >= 0, "Earned Badges not displayed!");
 	}
 
-	@Test(priority = 9)
+	@Test(priority = 9,groups = {"regression"})
 	public void verifyStatisticsWithFilters() {
 
 		dashboard.doclickOnThisYear();
@@ -233,7 +233,7 @@ public class DashboardPageTestCase extends TestBase {
 	}
 	
 	
-	@Test(priority = 11)
+	@Test(priority = 11,groups = {"regression"})
 	public void verifyLearningStatusInProgressDataTest() {
 		
 		System.out.println("------------------Display Number Cards Are Display of Learning Status In-Progress -------------------");
@@ -242,7 +242,7 @@ public class DashboardPageTestCase extends TestBase {
 	}
 	
 	
-	@Test(priority = 12)
+	@Test(priority = 12,groups = {"regression"})
 	public void verifyLearningStatusNotStartedDataTest() {
 		
 		
@@ -253,7 +253,7 @@ public class DashboardPageTestCase extends TestBase {
 	}
 	
 	
-	@Test(priority = 13)
+	@Test(priority = 13,groups = {"regression"})
 	public void verifyMySheduleDataTest() {
 		
 		System.out.println("------------------Display Number My Schedule -------------------");
@@ -265,7 +265,7 @@ public class DashboardPageTestCase extends TestBase {
 		dashboard.validateMySheduleTodayList();
 	}
 	
-	@Test(priority = 14)
+	@Test(priority = 14,groups = {"regression"})
 	public void verifyAssignedTrainingsRecentlyAssignedDataTest() {
 		
 		Assert.assertTrue(dashboard.isAssignedTrainingsRecentlyAssignedDisplay(), "Assigned Trainings  link button not visible");
@@ -273,7 +273,7 @@ public class DashboardPageTestCase extends TestBase {
 		dashboard.validateAssignedTrainingsRecentlyAssignedCards();
 	}
 	
-	@Test(priority = 15)
+	@Test(priority = 15,groups = {"regression"})
 	public void verifyAssignedTrainingsDueDataTest() {
 		
 		Assert.assertTrue(dashboard.isAssignedTrainingsDueButtonDisplay(), "Due link button not visible");
@@ -281,7 +281,7 @@ public class DashboardPageTestCase extends TestBase {
 		System.out.println("------------------Display Number Cards Are Display of Assigned Trainings Due -------------------");
 		dashboard.validateAssignedTrainingsDueAndOverDueCards();
 	}
-	@Test(priority = 16)
+	@Test(priority = 16,groups = {"regression"})
 	public void verifyAssignedTrainingsOverDueDataTest() {
 		
 		Assert.assertTrue(dashboard.isAssignedTrainingsOverDueButtonDisplay(), "Over Due link button not visible");
@@ -290,7 +290,7 @@ public class DashboardPageTestCase extends TestBase {
 		dashboard.validateAssignedTrainingsDueAndOverDueCards();
 	}
 	
-	@Test(priority = 17)
+	@Test(priority = 17,groups = {"regression"})
 	public void verifyRecentBadgesDataTest() {
 		
 		Assert.assertTrue(dashboard.isRecentBadgesViewAllButtonDisplay(), "Badges View All link button not visible");
@@ -298,21 +298,21 @@ public class DashboardPageTestCase extends TestBase {
 		dashboard.validateRecentBadgesCards();
 	}
 	
-	@Test(priority = 18)
+	@Test(priority = 18,groups = {"regression"})
 	public void verifyLeaderboardDataTest() {
 		
 		System.out.println("------------------Display Number Rank Cards Are Display of Leaderboard -------------------");
 		dashboard.validateLeaderboardRankCards();
 	}
 	
-	@Test(priority = 19)
+	@Test(priority = 19,groups = {"regression"})
 	public void verifyActivityFeedsDataTest() {
 		
 		Assert.assertTrue(dashboard.isActivityFeedsViewAllButtonDisplay(), "Activity Feeds View All link button not visible");
 		System.out.println("------------------Display Number Cards Are Display of Activity Feeds -------------------");
 		dashboard.validateActivityFeedsCards();
 	}
-	@Test(priority = 20)
+	@Test(priority = 20,groups = {"regression"})
 	public void verifyCertificationsDataTest() {
 		
 		Assert.assertTrue(dashboard.isCertificationsViewAllButtonDisplay(), "Certifications View All link button not visible");
@@ -320,7 +320,7 @@ public class DashboardPageTestCase extends TestBase {
 		
 		dashboard.validateCertificationsCards();
 	}
-	@Test(priority = 21)
+	@Test(priority = 21,groups = {"regression"})
 	public void verifymainMenuItemsDataTest() {
 		
 		Assert.assertTrue(dashboard.isSidebarMenuiconDisplay(), "sidebar Menu icon  not visible");

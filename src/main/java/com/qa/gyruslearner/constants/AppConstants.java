@@ -59,9 +59,12 @@ public class AppConstants extends TestBase {
 		public static final String SUCCESSFUL_PASSWORDRESET_CHANGEPASSWORD_SHEET_NAME = "SuccessfulPasswordReset";
 		public static final String RESER_PASSWORD_MYPROFILE_SHEET_NAME = "ResetPassword";
 		public static final String CFR21_SECURITY_MYPROFILE_SHEET_NAME = "CFR21Security";
+		public static final String LOGIN_MYPROFILE_SHEET_NAME ="ValidLogin";
 		public static final String RATING_QUICKFILTER_IDPPAGE_SHEET_NAME ="FilterRating";
 		public static final String DUEDATE_QUICKFILTER_IDPPAGE_SHEET_NAME ="FilterDueDate";
 		public static final String SEARCH_IDPPAGE_SHEET_NAME ="SearchData";
+		
+		
 		
 		
 		

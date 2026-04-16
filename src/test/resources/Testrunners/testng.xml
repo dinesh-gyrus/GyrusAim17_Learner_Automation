@@ -11,6 +11,7 @@
 	<test name="Automation Smoke Testing">
 	<groups>
             <run>
+            	<include name="smoke"/>
                 <include name="regression"/>
             </run>
         </groups>
@@ -18,7 +19,8 @@
 		<classes>
 			<class name="com.qa.gyruslearner.testcases.LoginPageTestCase"/>
 			<class name="com.qa.gyruslearner.testcases.DashboardPageTestCase"/>
-			
+			<class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase"/>
+			<class name="com.qa.gyruslearner.testcases.IDPPageTestCase"/>
 		</classes>
 		
 	</test>

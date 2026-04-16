@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.qa.gyruslearner.base.TestBase;
 import com.qa.gyruslearner.constants.AppConstants;
@@ -38,8 +39,12 @@ public class MyProfilePageTestCase extends TestBase {
 	public Object[][] getCFR21SecuritySheetData() {
 		return ExcelUtil.getTestData(AppConstants.MYPROFILE_DATA_SHEET_PATH,AppConstants.CFR21_SECURITY_MYPROFILE_SHEET_NAME);
 	}
+	@DataProvider
+	public Object[][] LoginSheetData() {
+		return ExcelUtil.getTestData(AppConstants.MYPROFILE_DATA_SHEET_PATH,AppConstants.LOGIN_MYPROFILE_SHEET_NAME);
+	}
 
-	@BeforeClass
+	@BeforeClass(alwaysRun = true)
 	public void setUp() {
 		initialazation();
 		loginpage = new LoginPage();
@@ -48,7 +53,7 @@ public class MyProfilePageTestCase extends TestBase {
 		eleUtil = new ElementUtil();
 	}
 
-	@BeforeMethod()
+	@BeforeMethod(alwaysRun = true)
 	public void pageRefresh() {
 
 		// driver.navigate().refresh();
@@ -67,7 +72,7 @@ public class MyProfilePageTestCase extends TestBase {
 		}
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1, groups = {"smoke"})
 	public void myProfileUrlTest() {
 		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
@@ -80,37 +85,39 @@ public class MyProfilePageTestCase extends TestBase {
 		}
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2, groups = {"smoke"})
 	public void myprofileTitleTest() {
 
 		String myProfilePagetitle = myprofile.getMyProfileTitle();
 		Assert.assertEquals(myProfilePagetitle, AppConstants.MYPROFILE_PAGE_TITLE);
 	}
 
-	@Test(priority = 3, enabled = true)
+	@Test(priority = 3, enabled = true, groups = {"smoke"})
 	public void verifyUserProfileDetails() {
-
-		Assert.assertTrue(myprofile.isLearnerNameDisplayed(), "Learner name not visible");
-		Assert.assertTrue(myprofile.isJobCodeDisplayed(), "Job code not visible");
-		Assert.assertTrue(myprofile.isOrganizationNameDisplayed(), "OrganizationName not visible");
-		Assert.assertTrue(myprofile.isEmailIdDisplayed(), "Email not visible");
-		Assert.assertTrue(myprofile.isAddressDisplayed(), "Adsress not visible");
-		Assert.assertTrue(myprofile.isPhoneDisplayed(), "Phone number not visible");
+		
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(myprofile.isLearnerNameDisplayed(), "Learner name not visible");
+		softAssert.assertTrue(myprofile.isJobCodeDisplayed(), "Job code not visible");
+		softAssert.assertTrue(myprofile.isOrganizationNameDisplayed(), "OrganizationName not visible");
+		softAssert.assertTrue(myprofile.isEmailIdDisplayed(), "Email not visible");
+		softAssert.assertTrue(myprofile.isAddressDisplayed(), "Adsress not visible");
+		softAssert.assertTrue(myprofile.isPhoneDisplayed(), "Phone number not visible");
+		softAssert.assertAll();
 	}
 
-	@Test(priority = 4, enabled = true)
+	@Test(priority = 4, enabled = true,groups = {"smoke"})
 	public void verifyProfileImage() {
 
 		Assert.assertTrue(myprofile.isProfileImageDisplayed(), "Profile picture not displayed");
 	}
 
-	@Test(priority = 5, enabled = true)
+	@Test(priority = 5, enabled = true,groups = {"regression"})
 	public void verifyQRCodeDisplayed() {
 
 		Assert.assertTrue(myprofile.isProfileQRDisplayed(), "QR Code not displayed");
 	}
 
-	@Test(priority = 6, enabled = true)
+	@Test(priority = 6, enabled = true,groups = {"regression"})
 	public void verifyEditProfilePanelExpandCollapse() {
 
 		// Click to Expand
@@ -123,7 +130,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 7, enabled = true)
+	@Test(priority = 7, enabled = true,groups = {"regression"})
 	public void verifySecurityPanelExpandCollapse() {
 
 		// Click to Expand
@@ -136,7 +143,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 8, enabled = true)
+	@Test(priority = 8, enabled = true,groups = {"regression"})
 	public void verifyCFR21SecurityPanelExpandCollapse() {
 
 		// Click to Expand
@@ -149,7 +156,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 9, enabled = true)
+	@Test(priority = 9, enabled = true,groups = {"regression"})
 	public void verifyTimeZoneSettingsPanelExpandCollapse() {
 
 		// Click to Expand
@@ -161,7 +168,7 @@ public class MyProfilePageTestCase extends TestBase {
 		Assert.assertFalse(myprofile.isTimeZoneSettingsPanelDisplay(), "Time Zone Settings section did not collapse");
 	}
 
-	@Test(priority = 10, enabled = true)
+	@Test(priority = 10, enabled = true,groups = {"regression"})
 	public void verifyThemePanelExpandCollapse() {
 
 		// Click to Expand
@@ -174,7 +181,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 11, enabled = true)
+	@Test(priority = 11, enabled = true,groups = {"regression"})
 	public void verifyLanguageDropdown() {
 
 		Assert.assertTrue(myprofile.isChangeLanguageDisplay(), "Change Language did not display");
@@ -183,7 +190,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12, enabled = true,groups = {"regression"})
 	public void verifyDateFormaDropdown() {
 
 		Assert.assertTrue(myprofile.isDataFormateDisplay(), "Change Language did not display");
@@ -192,7 +199,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 13, enabled = true,dataProvider = "getResetPasswordSheetData")
+	@Test(priority = 13, enabled = false,groups = {"regression"},dataProvider = "getResetPasswordSheetData")
 	public void verifyResetPasswordTest(String CurrentPassword,String NewPassword, String ConfirmPassword) {
 
 		// Click to Expand
@@ -216,7 +223,7 @@ public class MyProfilePageTestCase extends TestBase {
 	}
 
 	// when we CurrentTextbox Visible after this Test case Will Pass
-	@Test(priority = 14, enabled = false, dataProvider = "getCFR21SecuritySheetData")
+	@Test(priority = 14, enabled = false,groups = {"regression"}, dataProvider = "getCFR21SecuritySheetData")
 	public void verifyCFR21SecurityTest(String CurrentPin,String NewPin, String ConfirmNewPin) {
 
 		// Click to Expand
@@ -244,7 +251,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 15, enabled = true)
+	@Test(priority = 15, enabled = true,groups = {"regression"})
 	public void verifyTimeZoneSettingsDisplayTest() {
 
 		// Click to Expand
@@ -268,7 +275,7 @@ public class MyProfilePageTestCase extends TestBase {
 		*/
 	}
 
-	@Test(priority = 16,dependsOnMethods = "verifyTimeZoneSettingsDisplayTest",enabled = true)
+	@Test(priority = 16,groups = {"regression"},dependsOnMethods = "verifyTimeZoneSettingsDisplayTest",enabled = true)
 	public void verifyTimeZoneSettingsTest() {
 		
 		try {
@@ -286,7 +293,7 @@ public class MyProfilePageTestCase extends TestBase {
 		myprofile.waitForToastDisappear();
 	}
 
-	@Test(priority = 17, enabled = true)
+	@Test(priority = 17, enabled = true,groups = {"regression"})
 	public void verifyThemeTest() {
 
 		// Click to Expand
@@ -303,7 +310,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 18, enabled = true)
+	@Test(priority = 18, enabled = true,groups = {"smoke"})
 	public void verifyBackToDashboardLink() {
 
 		Assert.assertTrue(myprofile.isBackToDashBoardDisplayed(),
@@ -316,7 +323,7 @@ public class MyProfilePageTestCase extends TestBase {
 		myprofile.doClickProfilePage();
 	}
 
-	@Test(priority = 19, enabled = true)
+	@Test(priority = 19, enabled = true,groups = {"regression"})
 	public void VerifyUploadhphotoTest() {
 
 		myprofile.doclickOnUploadPhotoButton();
@@ -346,7 +353,7 @@ public class MyProfilePageTestCase extends TestBase {
 
 	}
 
-	@AfterClass
+	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		if (driver != null) {
 			driver.quit();

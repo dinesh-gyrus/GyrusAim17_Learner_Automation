@@ -31,16 +31,6 @@ public class IDPPageTestCase extends TestBase {
 		super();
 	}
 
-	@BeforeClass
-	public void setUp() {
-		initialazation();
-		loginpage = new LoginPage();
-		dashboard = new DashboardPage();
-		idp = new IDPPage();
-		eleUtil = new ElementUtil();
-		excelUtil = new ExcelUtil();
-	}
-
 	@DataProvider
 	public Object[][] getLoginSheetData() {
 		return ExcelUtil.getTestData(AppConstants.LOGIN_DATA_SHEET_PATH, AppConstants.VALID_LOGIN_SHEET_NAME);
@@ -79,8 +69,18 @@ public class IDPPageTestCase extends TestBase {
 		return ExcelUtil.getTestData(AppConstants.IDP_DATA_SHEET_PATH,
 				AppConstants.SEARCH_IDPPAGE_SHEET_NAME);
 	}
+	
+	@BeforeClass(alwaysRun = true)
+	public void setUp() {
+		initialazation();
+		loginpage = new LoginPage();
+		dashboard = new DashboardPage();
+		idp = new IDPPage();
+		eleUtil = new ElementUtil();
+		excelUtil = new ExcelUtil();
+	}
 
-	@BeforeMethod()
+	@BeforeMethod(alwaysRun = true)
 	public void pageRefresh() {
 
 		if (driver.getCurrentUrl().contains("login")) {
@@ -94,79 +94,90 @@ public class IDPPageTestCase extends TestBase {
 		}
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1,groups = {"regression"})
 	public void verifyMyLearnerLinkTest() {
-
-		Assert.assertTrue(idp.isMyLearningMenuDisplay(), "MyLearning Menu icon  not visible");
-		Assert.assertTrue(idp.isMyLearningMenuEnable(), "MyLearning Submenu was not enabled");
+		
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(idp.isMyLearningMenuDisplay(), "MyLearning Menu icon  not visible");
+		softAssert.assertTrue(idp.isMyLearningMenuEnable(), "MyLearning Submenu was not enabled");
 		idp.doclickMyLearningSubmenu();
+		softAssert.assertAll();
 	}
 
-	@Test(priority = 2, dependsOnMethods = "verifyMyLearnerLinkTest")
+	@Test(priority = 2,groups = {"smoke"}, dependsOnMethods = "verifyMyLearnerLinkTest")
 	public void verifyidpUrlTest() {
-
-		Assert.assertTrue(idp.isIDPMenuDisplay(), "IDP SubMenu not visible");
-		Assert.assertTrue(idp.isIDPMenuEnable(), " IDP Submenu was not enabled");
+		
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(idp.isIDPMenuDisplay(), "IDP SubMenu not visible");
+		softAssert.assertTrue(idp.isIDPMenuEnable(), " IDP Submenu was not enabled");
 		idp.doclickIDPSubMenu();
 		try {
 			String idpUrl = idp.getIDPPageUrl();
-			Assert.assertEquals(idpUrl, AppConstants.IDP_PAGE_URL);
+			softAssert.assertEquals(idpUrl, AppConstants.IDP_PAGE_URL);
 			System.out.println("IDP Page URL : " + AppConstants.IDP_PAGE_URL);
 		} catch (Exception e) {
 
-			Assert.fail("IDP URL not loaded properly: " + e.getMessage());
+			softAssert.fail("IDP URL not loaded properly: " + e.getMessage());
 			// throw new SkipException("Skipping test because user could not login.");
 		}
+		softAssert.assertAll();
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3,groups = {"smoke"})
 	public void verifyIDPPageTitileTest() {
-
+		
+		SoftAssert softAssert = new SoftAssert();
 		String idpPagetitle = idp.getIDPPageTitle();
-		Assert.assertEquals(idpPagetitle, AppConstants.IDP_PAGE_TITLE);
+		softAssert.assertEquals(idpPagetitle, AppConstants.IDP_PAGE_TITLE);
+		softAssert.assertAll();
 	}
 
 	@Ignore
-	@Test(priority = 4)
+	@Test(priority = 4,groups = {"smoke"})
 	public void verifyBackToDashBoardTest() {
 
-		Assert.assertTrue(idp.isBackToDashboardDisplay(), "Back to Dashboard button not visible");
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(idp.isBackToDashboardDisplay(), "Back to Dashboard button not visible");
 		idp.doclickBackToDashboard();
 		try {
 			String DashBaordURL = dashboard.getDashBoardPageUrl();
-			Assert.assertEquals(DashBaordURL, AppConstants.DASHBOARD_PAGE_URL);
+			softAssert.assertEquals(DashBaordURL, AppConstants.DASHBOARD_PAGE_URL);
 			System.out.println("DashBaord Page URL : " + AppConstants.DASHBOARD_PAGE_URL);
 		} catch (Exception e) {
 			throw new SkipException("Skipping test because user could not login.");
 		}
 		verifyMyLearnerLinkTest();
-		Assert.assertTrue(idp.isIDPMenuDisplay(), "IDP SubMenu not visible");
-		Assert.assertTrue(idp.isIDPMenuEnable(), " IDP Submenu was not enabled");
+		softAssert.assertTrue(idp.isIDPMenuDisplay(), "IDP SubMenu not visible");
+		softAssert.assertTrue(idp.isIDPMenuEnable(), " IDP Submenu was not enabled");
 		idp.doclickIDPSubMenu();
+		softAssert.assertAll();
 	}
 
-	@Test(priority = 5)
+	@Test(priority = 5,groups = {"smoke"})
 	public void verifyIDPHeaderPageTitleTest() {
 
-		Assert.assertTrue(idp.isIDPHeaderPageTitleDisplay(), "IDP Header Title  not visible");
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(idp.isIDPHeaderPageTitleDisplay(), "IDP Header Title  not visible");
 		String IDPHeaderPageTitle = idp.getIDPHeaderPageTitle();
-		Assert.assertEquals(IDPHeaderPageTitle, "Individual Development Plan");
+		softAssert.assertEquals(IDPHeaderPageTitle, "Individual Development Plan");
 		System.out.println("IDP Page Header Title : " + IDPHeaderPageTitle);
-
+		softAssert.assertAll();
 	}
 
-	@Test(priority = 6, enabled = false)
+	@Test(priority = 6,groups = {"smoke"}, enabled = true)
 	public void verifyAllCardLoadedAndCountTest() {
-
+		
+		SoftAssert softAssert = new SoftAssert();
 		// idp.validatAdvancedFilterClear();
-		Assert.assertTrue(idp.isTrainingCountDisplay(), "Trainings Count  not visible");
+		softAssert.assertTrue(idp.isTrainingCountDisplay(), "Trainings Count  not visible");
 		System.out.println("------------------Display Number IDP Training Count -------------------");
 		// Training Count update
 		TrainingCountUpdate();
+		softAssert.assertAll();
 
 	}
 
-	@Test(priority = 7, dependsOnMethods = "verifyAllCardLoadedAndCountTest", enabled = false)
+	@Test(priority = 7,groups = {"smoke"}, dependsOnMethods = "verifyAllCardLoadedAndCountTest", enabled = true)
 	public void verifyAllCardsStatusAndpercentageTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -176,11 +187,12 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 8, enabled = false)
+	@Test(priority = 8,groups = {"regression"},enabled = true)
 	public void verifyAllElearningQuickFilterTest() {
 
-		Assert.assertTrue(idp.isAllELearningDisplay(), "All ELearning  Quick Filter was not visible");
-		Assert.assertTrue(idp.isAllELearningEnable(), " All ELearning  Quick Filter  was not enabled");
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(idp.isAllELearningDisplay(), "All ELearning  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isAllELearningEnable(), " All ELearning  Quick Filter  was not enabled");
 		idp.doclickAllELearningQuickFilter();
 		// Training count not load thread sleep put
 		try {
@@ -190,10 +202,12 @@ public class IDPPageTestCase extends TestBase {
 		}
 
 		TrainingCountUpdate();
+		softAssert.assertAll();
 	}
 
 	public void TrainingCountUpdate() {
 
+		SoftAssert softAssert = new SoftAssert();
 		int expectedCount = idp.getTotalTrainingCount();
 		System.out.println("Trainings Count : " + expectedCount);
 		idp.loadAllCards();
@@ -202,16 +216,18 @@ public class IDPPageTestCase extends TestBase {
 		System.out.println("Expected: " + expectedCount);
 		System.out.println("Actual: " + actualCount);
 
-		Assert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
+		softAssert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
+		
+		softAssert.assertAll();
 	}
 
-	@Test(priority = 9, enabled = false)
+	@Test(priority = 9,groups = {"regression"}, enabled = true)
 	public void verifyAssessmentsQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 
-		Assert.assertTrue(idp.isAssessmentsDisplay(), "Assessments  Quick Filter was not visible");
-		Assert.assertTrue(idp.isAssessmentsEnable(), " Assessments  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isAssessmentsDisplay(), "Assessments  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isAssessmentsEnable(), " Assessments  Quick Filter  was not enabled");
 
 		idp.doclickAssessmentsQuickFilter();
 		// Training count not load thread sleep put
@@ -232,13 +248,13 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 10, enabled = false)
+	@Test(priority = 10,groups = {"regression"}, enabled = true)
 	public void verifyCertificationQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 
-		Assert.assertTrue(idp.isCertificationDisplay(), "Certification  Quick Filter was not visible");
-		Assert.assertTrue(idp.isCertificationEnable(), " Certification  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isCertificationDisplay(), "Certification  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isCertificationEnable(), " Certification  Quick Filter  was not enabled");
 
 		idp.doclickCertificationQuickFilter();
 		// Training count not load thread sleep put
@@ -259,12 +275,12 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 11, enabled = false)
+	@Test(priority = 11,groups = {"regression"}, enabled = true)
 	public void verifyDocumentQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
-		Assert.assertTrue(idp.isDocumentDisplay(), "Document  Quick Filter was not visible");
-		Assert.assertTrue(idp.isDocumentEnable(), " Document  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isDocumentDisplay(), "Document  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isDocumentEnable(), " Document  Quick Filter  was not enabled");
 
 		idp.doclickDocumentQuickFilter();
 		// Training count not load thread sleep put
@@ -284,37 +300,40 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 12, enabled = true)
+	@Test(priority = 12,groups = {"regression"}, enabled = true)
 	public void verifyQuickFilterDailgoBoxTest() {
 
+		SoftAssert softAssert = new SoftAssert();
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
 		// Verify Open
-		Assert.assertTrue(idp.isQuickFilterDialogOpen(), "Quick Filter Dialog is not opened");
+		softAssert.assertTrue(idp.isQuickFilterDialogOpen(), "Quick Filter Dialog is not opened");
 
-		Assert.assertTrue(idp.isCancelButtonDisplay(), "Cancel button  Quick Filter was not visible");
-		Assert.assertTrue(idp.isCancelButtonEnable(), " Cancel button  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isCancelButtonDisplay(), "Cancel button  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isCancelButtonEnable(), " Cancel button  Quick Filter  was not enabled");
 
 		idp.doclickCancelButtonQuickFilter();
 
-		Assert.assertTrue(idp.isQuickFilterDialogClosed(), "Dialog is not closed");
+		softAssert.assertTrue(idp.isQuickFilterDialogClosed(), "Dialog is not closed");
+		
+		softAssert.assertAll();
 
 	}
 
-	@Test(priority = 13, enabled = false, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 13,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyElearnigQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isElearningDisplay(), "Elearning  Quick Filter was not visible");
-		Assert.assertTrue(idp.isElearningEnable(), " Elearning  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isElearningDisplay(), "Elearning  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isElearningEnable(), " Elearning  Quick Filter  was not enabled");
 
 		idp.doclickElearningQuickFilter();
 
@@ -336,17 +355,17 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 14, enabled = false, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 14,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyExternalLinkQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isExternalLinkDisplay(), "ExternalLink  Quick Filter was not visible");
-		Assert.assertTrue(idp.isExternalLinkEnable(), " ExternalLink  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isExternalLinkDisplay(), "ExternalLink  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isExternalLinkEnable(), " ExternalLink  Quick Filter  was not enabled");
 
 		idp.doclickExternalLinkQuickFilter();
 
@@ -368,17 +387,17 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 15, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 15,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyILTQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isILTDisplay(), "ILT  Quick Filter was not visible");
-		Assert.assertTrue(idp.isILTEnable(), " ILT  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isILTDisplay(), "ILT  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isILTEnable(), " ILT  Quick Filter  was not enabled");
 
 		idp.doclickILTQuickFilter();
 
@@ -399,17 +418,17 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 16, enabled = false, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 16,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyLearningPathQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isLearningPathDisplay(), "LearningPath  Quick Filter was not visible");
-		Assert.assertTrue(idp.isLearningPathEnable(), " LearningPath  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isLearningPathDisplay(), "LearningPath  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isLearningPathEnable(), " LearningPath  Quick Filter  was not enabled");
 
 		idp.doclickLearningPathQuickFilter();
 
@@ -431,17 +450,17 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 17, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 17,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyMsTeamQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isMsTeamDisplay(), "MsTeam  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMsTeamEnable(), " MsTeam  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMsTeamDisplay(), "MsTeam  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMsTeamEnable(), " MsTeam  Quick Filter  was not enabled");
 
 		idp.doclickMsTeamQuickFilter();
 
@@ -463,7 +482,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 18, enabled = false, dataProvider = "getQuickFilterStatuSheetData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 18,groups = {"regression"}, enabled = true, dataProvider = "getQuickFilterStatuSheetData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyStatusCompleteQuickFilterTest(String statuse1, String statuse2) {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -471,12 +490,12 @@ public class IDPPageTestCase extends TestBase {
 		idp.validatAdvancedFilterClear();
 
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isStatusCompleteDisplay(), "Status Completed in  Quick Filter was not visible");
-		Assert.assertTrue(idp.isStatusCompleteEnable(), " Status Completed in  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isStatusCompleteDisplay(), "Status Completed in  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isStatusCompleteEnable(), " Status Completed in  Quick Filter  was not enabled");
 
 		// idp.doclickStatusCompleteInQuickFilter();
 		idp.selectMultipleStatus(statuse1, statuse2);
@@ -500,18 +519,18 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 19, enabled = false, dataProvider = "getQucikFilterRatingTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 19,groups = {"regression"}, enabled = true, dataProvider = "getQucikFilterRatingTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyRatingQuickFilterTest(String Rating) {
 
 		SoftAssert softAssert = new SoftAssert();
 		idp.validatAdvancedFilterClear();
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isRatingsDisplay(), "Rating  in  Quick Filter was not visible");
-		Assert.assertTrue(idp.isRatingsEnable(), " Rating  in  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isRatingsDisplay(), "Rating  in  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isRatingsEnable(), " Rating  in  Quick Filter  was not enabled");
 
 		// idp.doclickRatingsInQuickFilter();
 		idp.selectRating(Rating);
@@ -536,7 +555,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 20, enabled = false, dataProvider = "getQucikFilterDueDateTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 20,groups = {"regression"}, enabled = true, dataProvider = "getQucikFilterDueDateTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyDueDateInQuickFilterTest(String dueDateSelect) {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -544,12 +563,12 @@ public class IDPPageTestCase extends TestBase {
 		idp.validatAdvancedFilterClear();
 
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isOverDueDisplay(), "Over Due  in  Quick Filter was not visible");
-		Assert.assertTrue(idp.isOverDueEnable(), " Over Due  in  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isOverDueDisplay(), "Over Due  in  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isOverDueEnable(), " Over Due  in  Quick Filter  was not enabled");
 
 		// idp.doclickOverDueInQuickFilter();
 		idp.selectDueAndOverDueDate(dueDateSelect);
@@ -573,19 +592,19 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 21, enabled = false, dataProvider = "getQuickFilterGroupTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 21,groups = {"regression"}, enabled = true, dataProvider = "getQuickFilterGroupTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyTrainingGroupInQuickFilterTest(String tnGroup1, String tnGroup2) {
 
 		SoftAssert softAssert = new SoftAssert();
 		idp.validatAdvancedFilterClear();
 
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isTrainingGroupSelectionDisplay(), "Training Group  in  Quick Filter was not visible");
-		Assert.assertTrue(idp.isTrainingGroupSelectioEnable(), " Training Group  in  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isTrainingGroupSelectionDisplay(), "Training Group  in  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isTrainingGroupSelectioEnable(), " Training Group  in  Quick Filter  was not enabled");
 
 		idp.selectTrainingGroupMultiValue(tnGroup1, tnGroup2);
 
@@ -609,18 +628,18 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 22, enabled = false, dataProvider = "getQuickFilterCetegoryTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 22,groups = {"regression"}, enabled = true, dataProvider = "getQuickFilterCetegoryTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyCategoryInQuickFilterTest(String category) {
 
 		SoftAssert softAssert = new SoftAssert();
 		idp.validatAdvancedFilterClear();
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isCategorySelectionDisplay(), "Category Selection  in  Quick Filter was not visible");
-		Assert.assertTrue(idp.isCategorySelectionEnable(), " Category Selection  in  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isCategorySelectionDisplay(), "Category Selection  in  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isCategorySelectionEnable(), " Category Selection  in  Quick Filter  was not enabled");
 
 		idp.selectCategoryValue(category);
 
@@ -645,19 +664,19 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 22, enabled = false, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 23,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyFreeInQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
 		idp.validatAdvancedFilterClear();
 
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
-		Assert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isMoreButtonDisplay(), "More  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isMoreButtonEnable(), " More  Quick Filter  was not enabled");
 		idp.doclickMoreButtonQuickFilter();
 
-		Assert.assertTrue(idp.isFreeDisplay(), "Free  in  Quick Filter was not visible");
-		Assert.assertTrue(idp.isFreeEnable(), " Free   in  Quick Filter  was not enabled");
+		softAssert.assertTrue(idp.isFreeDisplay(), "Free  in  Quick Filter was not visible");
+		softAssert.assertTrue(idp.isFreeEnable(), " Free   in  Quick Filter  was not enabled");
 
 		idp.selecPricingChk("Free");
 
@@ -678,24 +697,26 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 23, enabled = false)
+	@Test(priority = 24,groups = {"regression"}, enabled = true)
 	public void VerifyIdealCoachTextTest() {
-
+		
+		SoftAssert softAssert = new SoftAssert();
 		// Verify More button and Click on button
-		Assert.assertTrue(idp.isIdeaCouchButtonDisplay(), "Idea Coach Button was not visible");
-		Assert.assertTrue(idp.isIdeaCouchButtonEnable(), " Idea Coach Button  was not enabled");
+		softAssert.assertTrue(idp.isIdeaCouchButtonDisplay(), "Idea Coach Button was not visible");
+		softAssert.assertTrue(idp.isIdeaCouchButtonEnable(), " Idea Coach Button  was not enabled");
 		System.out.println("------------------Verifing Idea Coach Text -------------------");
-		Assert.assertTrue(idp.isIdeaGotItbuttonDisplay(), "Got it  Button was not visible");
-		Assert.assertTrue(idp.isIdeaCouchButtonEnable(), " Got it  Button  was not enabled");
-		Assert.assertTrue(idp.isIdeaCouchIconDisplay(), " Idea Coach Icon  was not Visible");
+		softAssert.assertTrue(idp.isIdeaGotItbuttonDisplay(), "Got it  Button was not visible");
+		softAssert.assertTrue(idp.isIdeaCouchButtonEnable(), " Got it  Button  was not enabled");
+		softAssert.assertTrue(idp.isIdeaCouchIconDisplay(), " Idea Coach Icon  was not Visible");
 		idp.doclickIdeaCouchButton();
 
 		String actualIdea = idp.getIdeaCoachText();
 		String expectedIdea = AppConstants.IDP_PAGE_IDEA_COACH;
-		Assert.assertEquals(actualIdea, expectedIdea, "Mismatch in Idea Coach!");
+		softAssert.assertEquals(actualIdea, expectedIdea, "Mismatch in Idea Coach!");
+		softAssert.assertAll();
 	}
 
-	@Test(priority = 24, enabled = true, dataProvider = "getSearchTestData")
+	@Test(priority = 25,groups = {"smoke"}, enabled = true, dataProvider = "getSearchTestData")
 	public void verifySearchFunctionality(String searchValid,String searchInValid, String searchPartial) {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -737,7 +758,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@AfterClass
+	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		if (driver != null) {
 			driver.quit();
