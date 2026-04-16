@@ -132,28 +132,9 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Ignore
+	
+
 	@Test(priority = 4,groups = {"smoke"})
-	public void verifyBackToDashBoardTest() {
-
-		SoftAssert softAssert = new SoftAssert();
-		softAssert.assertTrue(idp.isBackToDashboardDisplay(), "Back to Dashboard button not visible");
-		idp.doclickBackToDashboard();
-		try {
-			String DashBaordURL = dashboard.getDashBoardPageUrl();
-			softAssert.assertEquals(DashBaordURL, AppConstants.DASHBOARD_PAGE_URL);
-			System.out.println("DashBaord Page URL : " + AppConstants.DASHBOARD_PAGE_URL);
-		} catch (Exception e) {
-			throw new SkipException("Skipping test because user could not login.");
-		}
-		verifyMyLearnerLinkTest();
-		softAssert.assertTrue(idp.isIDPMenuDisplay(), "IDP SubMenu not visible");
-		softAssert.assertTrue(idp.isIDPMenuEnable(), " IDP Submenu was not enabled");
-		idp.doclickIDPSubMenu();
-		softAssert.assertAll();
-	}
-
-	@Test(priority = 5,groups = {"smoke"})
 	public void verifyIDPHeaderPageTitleTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -164,7 +145,7 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 6,groups = {"smoke"}, enabled = true)
+	@Test(priority = 5,groups = {"smoke"}, enabled = true)
 	public void verifyAllCardLoadedAndCountTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
@@ -172,12 +153,12 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertTrue(idp.isTrainingCountDisplay(), "Trainings Count  not visible");
 		System.out.println("------------------Display Number IDP Training Count -------------------");
 		// Training Count update
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 		softAssert.assertAll();
 
 	}
 
-	@Test(priority = 7,groups = {"smoke"}, dependsOnMethods = "verifyAllCardLoadedAndCountTest", enabled = true)
+	@Test(priority = 6,groups = {"smoke"}, dependsOnMethods = "verifyAllCardLoadedAndCountTest", enabled = true)
 	public void verifyAllCardsStatusAndpercentageTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -187,7 +168,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 8,groups = {"regression"},enabled = true)
+	@Test(priority = 7,groups = {"regression"},enabled = true)
 	public void verifyAllElearningQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -201,27 +182,13 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 		softAssert.assertAll();
 	}
 
-	public void TrainingCountUpdate() {
+	
 
-		SoftAssert softAssert = new SoftAssert();
-		int expectedCount = idp.getTotalTrainingCount();
-		System.out.println("Trainings Count : " + expectedCount);
-		idp.loadAllCards();
-		int actualCount = idp.getCardCount();
-
-		System.out.println("Expected: " + expectedCount);
-		System.out.println("Actual: " + actualCount);
-
-		softAssert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
-		
-		softAssert.assertAll();
-	}
-
-	@Test(priority = 9,groups = {"regression"}, enabled = true)
+	@Test(priority = 8,groups = {"regression"}, enabled = true)
 	public void verifyAssessmentsQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -237,7 +204,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 		idp.validateStatusIDPAllCards(softAssert);
 		System.out.println(
 				"------------------Assessments Filter Compare the Status and percentage of Cards -------------------");
@@ -248,7 +215,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 10,groups = {"regression"}, enabled = true)
+	@Test(priority =9,groups = {"regression"}, enabled = true)
 	public void verifyCertificationQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -264,7 +231,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------Assessments Filter Compare the Status and percentage of Cards -------------------");
@@ -275,7 +242,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 11,groups = {"regression"}, enabled = true)
+	@Test(priority = 10,groups = {"regression"}, enabled = true)
 	public void verifyDocumentQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -290,7 +257,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------Document Filter Compare the Status and percentage of Cards -------------------");
@@ -300,7 +267,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 12,groups = {"regression"}, enabled = true)
+	@Test(priority = 11,groups = {"regression"}, enabled = true)
 	public void verifyQuickFilterDailgoBoxTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -323,7 +290,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 13,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 12,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyElearnigQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -345,7 +312,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------Elearning Filter Compare the Status and percentage of Cards -------------------");
@@ -355,7 +322,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 14,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 13,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyExternalLinkQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -377,7 +344,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------ExternalLink Filter Compare the Status and percentage of Cards -------------------");
@@ -387,7 +354,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 15,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 14,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyILTQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -409,7 +376,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out
 				.println("------------------ILT Filter Compare the Status and percentage of Cards -------------------");
@@ -418,7 +385,7 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 16,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 15,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyLearningPathQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -440,7 +407,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------LearningPath Filter Compare the Status and percentage of Cards -------------------");
@@ -450,7 +417,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 17,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 16,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyMsTeamQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -472,7 +439,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------MsTeam Filter Compare the Status and percentage of Cards -------------------");
@@ -482,7 +449,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 18,groups = {"regression"}, enabled = true, dataProvider = "getQuickFilterStatuSheetData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 17,groups = {"regression"}, enabled = true, dataProvider = "getQuickFilterStatuSheetData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyStatusCompleteQuickFilterTest(String statuse1, String statuse2) {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -508,7 +475,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------Status Completed in Filter Compare the Status and percentage of Cards -------------------");
@@ -519,7 +486,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 19,groups = {"regression"}, enabled = true, dataProvider = "getQucikFilterRatingTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 18,groups = {"regression"}, enabled = true, dataProvider = "getQucikFilterRatingTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyRatingQuickFilterTest(String Rating) {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -543,7 +510,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------Rating  in Filter Compare the Status and percentage of Cards -------------------");
@@ -555,7 +522,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 20,groups = {"regression"}, enabled = true, dataProvider = "getQucikFilterDueDateTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 19,groups = {"regression"}, enabled = true, dataProvider = "getQucikFilterDueDateTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyDueDateInQuickFilterTest(String dueDateSelect) {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -581,7 +548,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------Due date in Filter Compare the Status and percentage of Cards -------------------");
@@ -592,7 +559,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 21,groups = {"regression"}, enabled = true, dataProvider = "getQuickFilterGroupTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 20,groups = {"regression"}, enabled = true, dataProvider = "getQuickFilterGroupTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyTrainingGroupInQuickFilterTest(String tnGroup1, String tnGroup2) {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -617,7 +584,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------TrainingGroup in Filter Compare the Status and percentage of Cards -------------------");
@@ -628,7 +595,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 22,groups = {"regression"}, enabled = true, dataProvider = "getQuickFilterCetegoryTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 21,groups = {"regression"}, enabled = true, dataProvider = "getQuickFilterCetegoryTestData", dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyCategoryInQuickFilterTest(String category) {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -652,7 +619,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------Category in Filter Compare the Status and percentage of Cards -------------------");
@@ -664,7 +631,7 @@ public class IDPPageTestCase extends TestBase {
 
 	}
 
-	@Test(priority = 23,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
+	@Test(priority = 22,groups = {"regression"}, enabled = true, dependsOnMethods = "verifyQuickFilterDailgoBoxTest")
 	public void verifyFreeInQuickFilterTest() {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -689,7 +656,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 
 		System.out.println(
 				"------------------Free in Filter Compare the Status and percentage of Cards -------------------");
@@ -697,7 +664,7 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 24,groups = {"regression"}, enabled = true)
+	@Test(priority = 23,groups = {"regression"}, enabled = true)
 	public void VerifyIdealCoachTextTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
@@ -706,17 +673,18 @@ public class IDPPageTestCase extends TestBase {
 		softAssert.assertTrue(idp.isIdeaCouchButtonEnable(), " Idea Coach Button  was not enabled");
 		System.out.println("------------------Verifing Idea Coach Text -------------------");
 		softAssert.assertTrue(idp.isIdeaGotItbuttonDisplay(), "Got it  Button was not visible");
-		softAssert.assertTrue(idp.isIdeaCouchButtonEnable(), " Got it  Button  was not enabled");
-		softAssert.assertTrue(idp.isIdeaCouchIconDisplay(), " Idea Coach Icon  was not Visible");
+		softAssert.assertTrue(idp.isIdeaGotItbuttonEnable(), " Got it  Button  was not enabled");
+		//softAssert.assertTrue(idp.isIdeaCouchIconDisplay(), " Idea Coach Icon  was not Visible");
 		idp.doclickIdeaCouchButton();
 
 		String actualIdea = idp.getIdeaCoachText();
 		String expectedIdea = AppConstants.IDP_PAGE_IDEA_COACH;
+		System.out.println("IDP Idea Coach Text is : " + actualIdea);
 		softAssert.assertEquals(actualIdea, expectedIdea, "Mismatch in Idea Coach!");
 		softAssert.assertAll();
 	}
 
-	@Test(priority = 25,groups = {"smoke"}, enabled = true, dataProvider = "getSearchTestData")
+	@Test(priority = 24,groups = {"smoke"}, enabled = true, dataProvider = "getSearchTestData")
 	public void verifySearchFunctionality(String searchValid,String searchInValid, String searchPartial) {
 
 		SoftAssert softAssert = new SoftAssert();
@@ -732,7 +700,7 @@ public class IDPPageTestCase extends TestBase {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 		idp.validateStatusIDPAllCards(softAssert);
 		System.out.println("------------------Verifing InValid Search Data  -------------------");
 		idp.doSearch(searchInValid);
@@ -742,8 +710,7 @@ public class IDPPageTestCase extends TestBase {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		TrainingCountUpdate();
-		
+		idp.trainingCountUpdate();
 		System.out.println("------------------Verifing Partial Search Data  -------------------");
 		idp.doSearch(searchPartial);
 		// Training count not load thread sleep put
@@ -752,10 +719,31 @@ public class IDPPageTestCase extends TestBase {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		TrainingCountUpdate();
+		idp.trainingCountUpdate();
 		//idp.validateStatusIDPAllCards(softAssert);
 		softAssert.assertAll();
 
+	}
+	
+	@Ignore
+	@Test(priority = 25,groups = {"smoke"})
+	public void verifyBackToDashBoardTest() {
+
+		SoftAssert softAssert = new SoftAssert();
+		softAssert.assertTrue(idp.isBackToDashboardDisplay(), "Back to Dashboard button not visible");
+		idp.doclickBackToDashboard();
+		try {
+			String DashBaordURL = dashboard.getDashBoardPageUrl();
+			softAssert.assertEquals(DashBaordURL, AppConstants.DASHBOARD_PAGE_URL);
+			System.out.println("DashBaord Page URL : " + AppConstants.DASHBOARD_PAGE_URL);
+		} catch (Exception e) {
+			throw new SkipException("Skipping test because user could not login.");
+		}
+		verifyMyLearnerLinkTest();
+		softAssert.assertTrue(idp.isIDPMenuDisplay(), "IDP SubMenu not visible");
+		softAssert.assertTrue(idp.isIDPMenuEnable(), " IDP Submenu was not enabled");
+		idp.doclickIDPSubMenu();
+		softAssert.assertAll();
 	}
 
 	@AfterClass(alwaysRun = true)

@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Gyrus Automation Suite]" guice-stage="DEVELOPMENT">
-  <listeners>
-    <listener class-name="com.qa.gyruslearner.listeners.TestListeners"/>
-  </listeners>
-  <test thread-count="5" name="Automation Smoke Testing(failed)">
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase">
-        <methods>
-          <include name="verifyQRCodeDisplayed"/>
-          <include name="pageRefresh"/>
-          <include name="tearDown"/>
-          <include name="verifyThemeTest"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- com.qa.gyruslearner.testcases.MyProfilePageTestCase -->
       <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
         <methods>
+          <include name="verifySearchFunctionality" invocation-numbers="0"/>
           <include name="verifyAllCardLoadedAndCountTest"/>
           <include name="setUp"/>
           <include name="verifyFreeInQuickFilterTest"/>
@@ -30,15 +19,6 @@
           <include name="verifyAssessmentsQuickFilterTest"/>
         </methods>
       </class> <!-- com.qa.gyruslearner.testcases.IDPPageTestCase -->
-      <class name="com.qa.gyruslearner.testcases.DashboardPageTestCase">
-        <methods>
-          <include name="tearDown"/>
-          <include name="verifyAssignedTrainingsRecentlyAssignedDataTest"/>
-          <include name="setUp"/>
-          <include name="VerifyCompanyLogoInDashBoardTest"/>
-          <include name="pageRefresh"/>
-        </methods>
-      </class> <!-- com.qa.gyruslearner.testcases.DashboardPageTestCase -->
     </classes>
-  </test> <!-- Automation Smoke Testing(failed) -->
-</suite> <!-- Failed suite [Gyrus Automation Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

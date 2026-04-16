@@ -5,26 +5,15 @@
     <classes>
       <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
         <methods>
-          <include name="verifySearchFunctionality"/>
-          <include name="setUp"/>
-          <include name="verifyAllElearningQuickFilterTest"/>
-          <include name="verifyCertificationQuickFilterTest"/>
-          <include name="verifyFreeInQuickFilterTest"/>
-          <include name="verifyStatusCompleteQuickFilterTest"/>
-          <include name="verifyElearnigQuickFilterTest"/>
-          <include name="verifyRatingQuickFilterTest"/>
-          <include name="VerifyIdealCoachTextTest"/>
-          <include name="verifyDueDateInQuickFilterTest"/>
-          <include name="verifyMsTeamQuickFilterTest"/>
-          <include name="verifyExternalLinkQuickFilterTest"/>
+          <include name="verifySearchFunctionality" invocation-numbers="0"/>
           <include name="verifyAllCardLoadedAndCountTest"/>
-          <include name="verifyLearningPathQuickFilterTest"/>
-          <include name="verifyILTQuickFilterTest"/>
-          <include name="verifyTrainingGroupInQuickFilterTest"/>
-          <include name="verifyCategoryInQuickFilterTest"/>
+          <include name="setUp"/>
+          <include name="verifyFreeInQuickFilterTest"/>
           <include name="tearDown"/>
-          <include name="verifyDocumentQuickFilterTest"/>
+          <include name="verifyStatusCompleteQuickFilterTest" invocation-numbers="0"/>
           <include name="pageRefresh"/>
+          <include name="VerifyIdealCoachTextTest"/>
+          <include name="verifyDueDateInQuickFilterTest" invocation-numbers="0"/>
           <include name="verifyQuickFilterDailgoBoxTest"/>
           <include name="verifyAllCardsStatusAndpercentageTest"/>
           <include name="verifyAssessmentsQuickFilterTest"/>

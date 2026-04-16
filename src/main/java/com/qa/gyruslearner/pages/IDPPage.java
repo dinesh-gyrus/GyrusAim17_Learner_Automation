@@ -268,13 +268,16 @@ public class IDPPage extends TestBase {
 	}
 	public boolean isIdeaCouchIconDisplay() {
 		
-		return eleUtil.visibleElementWhenReady(idealIcon, AppConstants.MEDIUM_TIME_OUT);
+		jsUtil.scrollIntoViewCenter(idealIcon);
+		return eleUtil.visibleElementWhenReady(idealIcon, AppConstants.MAX_TIME_OUT);
 	}
 	public boolean isIdeaGotItbuttonDisplay() {
+		jsUtil.scrollIntoViewCenter(btnidealCouch);
 		return eleUtil.visibleElementWhenReady(btnidealCouch, AppConstants.MEDIUM_TIME_OUT);
 	}
 
 	public boolean isIdeaGotItbuttonEnable() {
+		jsUtil.scrollIntoViewCenter(btnidealCouch);
 		return eleUtil.isElementEnable(btnidealCouch);
 	}
 	
@@ -313,6 +316,22 @@ public class IDPPage extends TestBase {
 
 		return Integer.parseInt(text.replaceAll("\\D+", ""));
 
+	}
+	
+	public void trainingCountUpdate() {
+
+		SoftAssert softAssert = new SoftAssert();
+		int expectedCount = getTotalTrainingCount();
+		System.out.println("Trainings Count : " + expectedCount);
+		loadAllCards();
+		int actualCount =getCardCount();
+
+		System.out.println("Expected: " + expectedCount);
+		System.out.println("Actual: " + actualCount);
+
+		softAssert.assertEquals(actualCount, expectedCount, "Mismatch in training cards!");
+		
+		softAssert.assertAll();
 	}
 
 	public boolean isAllELearningDisplay() {
