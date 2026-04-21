@@ -5,18 +5,12 @@
     <classes>
       <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
         <methods>
-          <include name="verifySearchFunctionality" invocation-numbers="0"/>
           <include name="verifyAllCardLoadedAndCountTest"/>
           <include name="setUp"/>
-          <include name="verifyFreeInQuickFilterTest"/>
           <include name="tearDown"/>
-          <include name="verifyStatusCompleteQuickFilterTest" invocation-numbers="0"/>
           <include name="pageRefresh"/>
           <include name="VerifyIdealCoachTextTest"/>
-          <include name="verifyDueDateInQuickFilterTest" invocation-numbers="0"/>
-          <include name="verifyQuickFilterDailgoBoxTest"/>
           <include name="verifyAllCardsStatusAndpercentageTest"/>
-          <include name="verifyAssessmentsQuickFilterTest"/>
         </methods>
       </class> <!-- com.qa.gyruslearner.testcases.IDPPageTestCase -->
     </classes>

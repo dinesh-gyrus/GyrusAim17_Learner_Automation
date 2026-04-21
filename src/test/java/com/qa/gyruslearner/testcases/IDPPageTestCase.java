@@ -149,7 +149,7 @@ public class IDPPageTestCase extends TestBase {
 	public void verifyAllCardLoadedAndCountTest() {
 		
 		SoftAssert softAssert = new SoftAssert();
-		// idp.validatAdvancedFilterClear();
+		//idp.validatAdvancedFilterClear();
 		softAssert.assertTrue(idp.isTrainingCountDisplay(), "Trainings Count  not visible");
 		System.out.println("------------------Display Number IDP Training Count -------------------");
 		// Training Count update
@@ -204,8 +204,7 @@ public class IDPPageTestCase extends TestBase {
 			// TODO: handle exception
 		}
 
-		idp.trainingCountUpdate();
-		idp.validateStatusIDPAllCards(softAssert);
+		idp.trainingCountUpdate();	
 		System.out.println(
 				"------------------Assessments Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards(softAssert);
@@ -232,7 +231,6 @@ public class IDPPageTestCase extends TestBase {
 		}
 
 		idp.trainingCountUpdate();
-
 		System.out.println(
 				"------------------Assessments Filter Compare the Status and percentage of Cards -------------------");
 		idp.validateStatusIDPAllCards(softAssert);

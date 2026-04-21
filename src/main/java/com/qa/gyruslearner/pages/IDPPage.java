@@ -321,9 +321,11 @@ public class IDPPage extends TestBase {
 	public void trainingCountUpdate() {
 
 		SoftAssert softAssert = new SoftAssert();
+		eleUtil.waitForLoaderToDisappear();
 		int expectedCount = getTotalTrainingCount();
 		System.out.println("Trainings Count : " + expectedCount);
 		loadAllCards();
+		eleUtil.waitForLoaderToDisappear();
 		int actualCount =getCardCount();
 
 		System.out.println("Expected: " + expectedCount);
@@ -915,6 +917,7 @@ public class IDPPage extends TestBase {
 	
 	public void doSearch(String Search) {
 		
+		eleUtil.waitForLoaderToDisappear();
 		jsUtil.scrollIntoViewCenter(txtSearchTraining);
 		eleUtil.doSendKeys(txtSearchTraining, Search);
 	}
