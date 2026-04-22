@@ -24,6 +24,7 @@ public class AppConstants extends TestBase {
 	public final static String SIGNUP_PAGE_TITLE ="User Registration";
 	public final static String MYPROFILE_PAGE_TITLE ="My Profile";
 	public final static String IDP_PAGE_TITLE ="IDP";
+	public final static String MYENROLLMENT_PAGE_TITLE ="My Enrollments";
 	
 	
 	public final static String LOGIN_PAGE_URL = BaseUrl + "/auth/login";
