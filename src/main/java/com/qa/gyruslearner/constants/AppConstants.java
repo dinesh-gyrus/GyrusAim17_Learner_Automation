@@ -26,6 +26,10 @@ public class AppConstants extends TestBase {
 	public final static String IDP_PAGE_TITLE ="IDP";
 	public final static String MYENROLLMENT_PAGE_TITLE ="My Enrollments";
 	public final static String TRAINING_TRANSCRIPT_PAGE_TITLE ="Training Transcript";
+	public final static String GAP_ANALYSIS_PAGE_TITLE ="Gap Analysis";
+	public final static String MYASSESSMENTS_PAGE_TITLE ="My Assessments";
+	public final static String MYEVALUATIONS_PAGE_TITLE ="My Evaluations";
+	
 	public final static String COURSE_CATALOG_PAGE_TITLE ="Course Catalog";
 	
 	
@@ -40,7 +44,14 @@ public class AppConstants extends TestBase {
 	public final static String ACTIVITYFEED_PAGE_URL=BaseUrl +"/v2/activityFeed";
 	public final static String MYENROLLMENT_PAGE_URL=BaseUrl +"/v2/myenrollment";
 	public final static String TRAINING_TRANSCRIPT_PAGE_URL=BaseUrl +"/v2/trainingtranscript";
+	public final static String GAP_ANALYSIS_PAGE_URL=BaseUrl +"/v2/gap";
+	public final static String MYASSESSMENTS_PAGE_URL=BaseUrl +"/v2/assessment";
+	public final static String MYEVALUATIONS_PAGE_URL=BaseUrl +"/v2/evaluation";
+	
 	public final static String COURSE_CATALOG_PAGE_URL=BaseUrl +"/v2/coursecatalog";
+	
+	
+	
 	
 						//************Sheet path********/
 	          
