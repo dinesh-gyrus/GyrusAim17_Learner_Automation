@@ -116,10 +116,18 @@ public class JavaScriptUtil extends TestBase {
 	
 	public boolean isImageLoaded(WebElement image) {
 
-	    JavascriptExecutor js = (JavascriptExecutor) driver;
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(AppConstants.MEDIUM_TIME_OUT));
 
-	    return (Boolean) js.executeScript(
-	        "return arguments[0].complete && arguments[0].naturalWidth > 0;",image);
+	    return wait.until(driver -> {
+	        JavascriptExecutor js = (JavascriptExecutor) driver;
+	        return (Boolean) js.executeScript(
+	                "return arguments[0].complete && arguments[0].naturalWidth > 0;", image);
+	    });
+		
+	    //JavascriptExecutor js = (JavascriptExecutor) driver;
+	    
+	  //  return (Boolean) js.executeScript(
+		      //  "return arguments[0].complete && arguments[0].naturalWidth > 0;",image);
 	}
 	
 	public  boolean isLoginBackgroundImageLoaded(WebElement element) {

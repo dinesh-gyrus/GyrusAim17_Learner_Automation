@@ -49,14 +49,14 @@ public class MyEnrollmentPage extends TestBase {
 		eleUtil.clickElementWhenReady(lnkMyLearning, AppConstants.MEDIUM_TIME_OUT);
 	}
 
-	public String getIDPPageUrl() {
+	public String getMyEndrolmentPageUrl() {
 
 		eleUtil.waitForUrlToBe(AppConstants.MYENROLLMENT_PAGE_URL, AppConstants.MAX_TIME_OUT);
 		String myEnrollmentsCurrentUrl = driver.getCurrentUrl();
 		return myEnrollmentsCurrentUrl;
 	}
 
-	public String getIDPPageTitle() {
+	public String getMyEndrolmentPageTitle() {
 
 		String myEnrollmentsPageTitle = eleUtil.waitForTitleIs(AppConstants.MYENROLLMENT_PAGE_TITLE, AppConstants.DEFAULT_TIME_OUT);
 		System.out.println("My Enrollments page title==>" + myEnrollmentsPageTitle);

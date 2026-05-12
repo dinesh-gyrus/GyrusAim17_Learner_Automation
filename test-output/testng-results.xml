@@ -2,42 +2,42 @@
 <testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-22T23:40:38 IST" name="Default suite" finished-at="2026-04-22T23:41:11 IST" duration-ms="33272">
+  <suite started-at="2026-05-12T15:18:38 IST" name="Default suite" finished-at="2026-05-12T15:19:09 IST" duration-ms="31675">
     <groups>
       <group name="regression">
-        <method signature="MyEnrollmentPageTestCase.verifyMyEnrollmentUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase@2abf4075]" name="verifyMyEnrollmentUrlTest" class="com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase"/>
+        <method signature="CourseCatalogPageTestCase.verifyCourseCatalogUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.CourseCatalogPageTestCase@3972a855]" name="verifyCourseCatalogUrlTest" class="com.qa.gyruslearner.testcases.CourseCatalogPageTestCase"/>
       </group> <!-- regression -->
       <group name="smoke">
-        <method signature="MyEnrollmentPageTestCase.verifyMyEndrollmentTitileTest()[pri:2, instance:com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase@2abf4075]" name="verifyMyEndrollmentTitileTest" class="com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase"/>
+        <method signature="CourseCatalogPageTestCase.verifyCourseCatalogTitileTest()[pri:2, instance:com.qa.gyruslearner.testcases.CourseCatalogPageTestCase@3972a855]" name="verifyCourseCatalogTitileTest" class="com.qa.gyruslearner.testcases.CourseCatalogPageTestCase"/>
       </group> <!-- smoke -->
     </groups>
-    <test started-at="2026-04-22T23:40:38 IST" name="Default test" finished-at="2026-04-22T23:41:11 IST" duration-ms="33272">
-      <class name="com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase@2abf4075]" started-at="2026-04-22T23:40:38 IST" name="setUp" finished-at="2026-04-22T23:40:56 IST" duration-ms="17688" status="PASS">
+    <test started-at="2026-05-12T15:18:38 IST" name="Default test" finished-at="2026-05-12T15:19:09 IST" duration-ms="31675">
+      <class name="com.qa.gyruslearner.testcases.CourseCatalogPageTestCase">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.qa.gyruslearner.testcases.CourseCatalogPageTestCase@3972a855]" started-at="2026-05-12T15:18:38 IST" name="setUp" finished-at="2026-05-12T15:18:54 IST" duration-ms="16623" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase@2abf4075]" started-at="2026-04-22T23:40:56 IST" name="pageRefresh" finished-at="2026-04-22T23:41:02 IST" duration-ms="6307" status="PASS">
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.CourseCatalogPageTestCase@3972a855]" started-at="2026-05-12T15:18:54 IST" name="pageRefresh" finished-at="2026-05-12T15:18:55 IST" duration-ms="357" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyMyEnrollmentUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase@2abf4075]" started-at="2026-04-22T23:41:02 IST" name="verifyMyEnrollmentUrlTest" finished-at="2026-04-22T23:41:08 IST" duration-ms="5940" status="PASS">
+        <test-method signature="verifyCourseCatalogUrlTest()[pri:1, instance:com.qa.gyruslearner.testcases.CourseCatalogPageTestCase@3972a855]" started-at="2026-05-12T15:18:55 IST" name="verifyCourseCatalogUrlTest" finished-at="2026-05-12T15:19:07 IST" duration-ms="12837" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyMyEnrollmentUrlTest -->
-        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase@2abf4075]" started-at="2026-04-22T23:41:08 IST" name="pageRefresh" finished-at="2026-04-22T23:41:08 IST" duration-ms="22" status="PASS">
+        </test-method> <!-- verifyCourseCatalogUrlTest -->
+        <test-method is-config="true" signature="pageRefresh()[pri:0, instance:com.qa.gyruslearner.testcases.CourseCatalogPageTestCase@3972a855]" started-at="2026-05-12T15:19:07 IST" name="pageRefresh" finished-at="2026-05-12T15:19:07 IST" duration-ms="43" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- pageRefresh -->
-        <test-method signature="verifyMyEndrollmentTitileTest()[pri:2, instance:com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase@2abf4075]" started-at="2026-04-22T23:41:08 IST" name="verifyMyEndrollmentTitileTest" finished-at="2026-04-22T23:41:10 IST" duration-ms="2003" status="PASS">
+        <test-method signature="verifyCourseCatalogTitileTest()[pri:2, instance:com.qa.gyruslearner.testcases.CourseCatalogPageTestCase@3972a855]" started-at="2026-05-12T15:19:07 IST" name="verifyCourseCatalogTitileTest" finished-at="2026-05-12T15:19:09 IST" duration-ms="1048" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyMyEndrollmentTitileTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase@2abf4075]" started-at="2026-04-22T23:41:10 IST" name="tearDown" finished-at="2026-04-22T23:41:11 IST" duration-ms="1245" status="PASS">
+        </test-method> <!-- verifyCourseCatalogTitileTest -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.qa.gyruslearner.testcases.CourseCatalogPageTestCase@3972a855]" started-at="2026-05-12T15:19:09 IST" name="tearDown" finished-at="2026-05-12T15:19:09 IST" duration-ms="714" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.CourseCatalogPageTestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

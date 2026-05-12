@@ -8,7 +8,7 @@ import com.qa.gyruslearner.base.TestBase;
 public class AppConstants extends TestBase {
 	
 	
-	public final static String BaseUrl=prop.getProperty("prelivebaseUrl");
+	public final static String BaseUrl=prop.getProperty("baseUrl");
 
 	public final static int DEFAULT_TIME_OUT = 5;
 	public final static int SHORT_TIME_OUT = 10;
@@ -25,6 +25,8 @@ public class AppConstants extends TestBase {
 	public final static String MYPROFILE_PAGE_TITLE ="My Profile";
 	public final static String IDP_PAGE_TITLE ="IDP";
 	public final static String MYENROLLMENT_PAGE_TITLE ="My Enrollments";
+	public final static String TRAINING_TRANSCRIPT_PAGE_TITLE ="Training Transcript";
+	public final static String COURSE_CATALOG_PAGE_TITLE ="Course Catalog";
 	
 	
 	public final static String LOGIN_PAGE_URL = BaseUrl + "/auth/login";
@@ -36,7 +38,9 @@ public class AppConstants extends TestBase {
 	public final static String MYPROFILE_PAGE_URL=BaseUrl +"/v2/profile";
 	public final static String IDP_PAGE_URL=BaseUrl +"/v2/idp";
 	public final static String ACTIVITYFEED_PAGE_URL=BaseUrl +"/v2/activityFeed";
-	public final static String MYENROLLMENT_PAGE_URL=BaseUrl +"/v2/myEnrollment";
+	public final static String MYENROLLMENT_PAGE_URL=BaseUrl +"/v2/myenrollment";
+	public final static String TRAINING_TRANSCRIPT_PAGE_URL=BaseUrl +"/v2/trainingtranscript";
+	public final static String COURSE_CATALOG_PAGE_URL=BaseUrl +"/v2/coursecatalog";
 	
 						//************Sheet path********/
 	          

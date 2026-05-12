@@ -976,11 +976,11 @@ public class IDPPage extends TestBase {
 		
 		// Phase-2 New Funcationlity  added Cover Scanarios 
 		
-		//String filtersCount = appliedFiltersCount.getText();
-		//filtersCount = filtersCount.replaceAll("[^0-9.]", "");
-		//int count = Integer.parseInt(filtersCount);
+		String filtersCount = appliedFiltersCount.getText();
+		filtersCount = filtersCount.replaceAll("[^0-9.]", "");
+		int count = Integer.parseInt(filtersCount);
 		
-		//if(count>0) {
+		if(count>0) {
 			
 			Assert.assertTrue(isClearAllBtnDisplay(), "Clear All button  Advance Filter was not visible");
 
@@ -990,10 +990,10 @@ public class IDPPage extends TestBase {
 
 			eleUtil.waitForLoaderToDisappear();
 			
-		//}else {
+		}else {
 			
-		//	eleUtil.doClick(advanceFilterCloseicon);
-		//}
+			eleUtil.doClick(advanceFilterCloseicon);
+		}
 
 	}
 
