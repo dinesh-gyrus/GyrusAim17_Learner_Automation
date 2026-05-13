@@ -23,11 +23,13 @@ public class MyEnrollmentPageTestCase extends TestBase {
 	ExcelUtil excelUtil;
 
 	public MyEnrollmentPageTestCase() {
+		
 		super();
 	}
 
 	@BeforeClass(alwaysRun = true)
 	public void setUp() {
+		
 		initialazation();
 		loginpage = new LoginPage();
 		dashboard = new DashboardPage();

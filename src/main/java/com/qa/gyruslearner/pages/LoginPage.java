@@ -45,6 +45,7 @@ public class LoginPage extends TestBase {
 	WebElement InvalidUserNamePasswordToastmsg;
 
 	public LoginPage() {
+		
 		PageFactory.initElements(driver, this);
 		eleUtil = new ElementUtil();
 		jsUtil = new JavaScriptUtil();

@@ -1,17 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [Gyrus Automation Suite]" guice-stage="DEVELOPMENT">
+  <listeners>
+    <listener class-name="com.qa.gyruslearner.listeners.TestListeners"/>
+  </listeners>
+  <test thread-count="5" name="Automation Smoke Testing(failed)">
     <classes>
-      <class name="com.qa.gyruslearner.testcases.MyEvaluationsPageTestCase">
+      <class name="com.qa.gyruslearner.testcases.LoginPageTestCase">
+        <methods>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="verifyValidUserNameAndWrongPassTest" invocation-numbers="0"/>
+          <include name="goToLoginPage"/>
+        </methods>
+      </class> <!-- com.qa.gyruslearner.testcases.LoginPageTestCase -->
+      <class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase">
+        <methods>
+          <include name="pageRefresh"/>
+          <include name="tearDown"/>
+          <include name="verifyThemeTest"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.qa.gyruslearner.testcases.MyProfilePageTestCase -->
+      <class name="com.qa.gyruslearner.testcases.TrainingTranscriptPageTestCase">
+        <methods>
+          <include name="pageRefresh"/>
+          <include name="verifyTrainingTranscriptTitileTest"/>
+          <include name="verifyTrainingTranscriptUrlTest"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.qa.gyruslearner.testcases.TrainingTranscriptPageTestCase -->
+      <class name="com.qa.gyruslearner.testcases.IDPPageTestCase">
+        <methods>
+          <include name="setUp"/>
+          <include name="verifyMyLearnerLinkTest"/>
+          <include name="verifyAllElearningQuickFilterTest"/>
+          <include name="verifyFreeInQuickFilterTest"/>
+          <include name="verifyStatusCompleteQuickFilterTest"/>
+          <include name="verifyElearnigQuickFilterTest"/>
+          <include name="verifyDueDateInQuickFilterTest"/>
+          <include name="verifyExternalLinkQuickFilterTest"/>
+          <include name="verifyCategoryInQuickFilterTest"/>
+          <include name="verifyIDPHeaderPageTitleTest"/>
+          <include name="verifyidpUrlTest"/>
+          <include name="verifyAssessmentsQuickFilterTest"/>
+          <include name="verifySearchFunctionality"/>
+          <include name="verifyCertificationQuickFilterTest"/>
+          <include name="verifyRatingQuickFilterTest"/>
+          <include name="VerifyIdealCoachTextTest"/>
+          <include name="verifyMsTeamQuickFilterTest"/>
+          <include name="verifyAllCardLoadedAndCountTest"/>
+          <include name="verifyLearningPathQuickFilterTest"/>
+          <include name="verifyILTQuickFilterTest"/>
+          <include name="verifyTrainingGroupInQuickFilterTest"/>
+          <include name="tearDown"/>
+          <include name="verifyDocumentQuickFilterTest"/>
+          <include name="verifyIDPPageTitileTest"/>
+          <include name="pageRefresh"/>
+          <include name="verifyQuickFilterDailgoBoxTest"/>
+          <include name="verifyAllCardsStatusAndpercentageTest"/>
+        </methods>
+      </class> <!-- com.qa.gyruslearner.testcases.IDPPageTestCase -->
+      <class name="com.qa.gyruslearner.testcases.DashboardPageTestCase">
         <methods>
           <include name="tearDown"/>
-          <include name="verifyMyEvaluationsUrlTest"/>
+          <include name="verifyLearningStatusInProgressDataTest"/>
           <include name="setUp"/>
-          <include name="verifyMyEvaluationsTitileTest"/>
+          <include name="verifyQuickLinksTest"/>
           <include name="pageRefresh"/>
         </methods>
-      </class> <!-- com.qa.gyruslearner.testcases.MyEvaluationsPageTestCase -->
+      </class> <!-- com.qa.gyruslearner.testcases.DashboardPageTestCase -->
+      <class name="com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase">
+        <methods>
+          <include name="verifyMyEndrollmentTitileTest"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+          <include name="pageRefresh"/>
+          <include name="verifyMyEnrollmentUrlTest"/>
+        </methods>
+      </class> <!-- com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- Automation Smoke Testing(failed) -->
+</suite> <!-- Failed suite [Gyrus Automation Suite] -->

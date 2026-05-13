@@ -22,6 +22,7 @@ public class MyEnrollmentPage extends TestBase {
 		eleUtil = new ElementUtil();
 		jsUtil = new JavaScriptUtil();
 		myprofile = new MyProfilePage();
+		
 	}
 	
 	@FindBy(xpath = "//span[contains(@data-key,'navMyLearning')]")
