@@ -8,7 +8,7 @@ import com.qa.gyruslearner.base.TestBase;
 public class AppConstants extends TestBase {
 	
 	
-	public final static String BaseUrl=prop.getProperty("baseUrl");
+	public final static String BaseUrl=prop.getProperty("prelivebaseUrl");
 
 	public final static int DEFAULT_TIME_OUT = 5;
 	public final static int SHORT_TIME_OUT = 10;
@@ -55,7 +55,7 @@ public class AppConstants extends TestBase {
 	
 						//************Sheet path********/
 	          
-	public static String LOGIN_DATA_SHEET_PATH = ".\\src\\test\\resources\\testdata\\LoginData.xlsx";
+	public static String LOGIN_DATA_SHEET_PATH = ".\\src\\test\\resources\\testdata\\LoginData 3.xlsx";
 	public static String CHANGEPASSWORD_DATA_SHEET_PATH = ".\\src\\test\\resources\\testdata\\ChangePassword.xlsx";
 	public static String MYPROFILE_DATA_SHEET_PATH = ".\\src\\test\\resources\\testdata\\MyProfileData.xlsx";
 	public static String IDP_DATA_SHEET_PATH = ".\\src\\test\\resources\\testdata\\IdpData.xlsx";

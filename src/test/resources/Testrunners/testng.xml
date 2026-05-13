@@ -14,6 +14,12 @@
 			<class name="com.qa.gyruslearner.testcases.DashboardPageTestCase"/>
 			<class name="com.qa.gyruslearner.testcases.MyProfilePageTestCase"/>
 			<class name="com.qa.gyruslearner.testcases.IDPPageTestCase"/>
+			<class name="com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase"/>
+			<class name="com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase"/>
+			<class name="com.qa.gyruslearner.testcases.TrainingTranscriptPageTestCase"/>
+			<class name="com.qa.gyruslearner.testcases.GapAnalysisPageTestCase"/>
+			<class name="com.qa.gyruslearner.testcases.MyAssessmentsPageTestCase"/>
+			<class name="com.qa.gyruslearner.testcases.MyEnrollmentPageTestCase"/>
 		</classes>
 		
 	</test>
